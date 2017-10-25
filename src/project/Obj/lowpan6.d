@@ -1,0 +1,15 @@
+.\obj\lowpan6.o: ..\lwip\netif\lowpan6.c
+.\obj\lowpan6.o: ..\lwip\include\netif/lowpan6.h
+.\obj\lowpan6.o: ..\lwip\include\netif/lowpan6_opts.h
+.\obj\lowpan6.o: ..\lwip\include\lwip/opt.h
+.\obj\lowpan6.o: ..\lwip\include\lwip/lwipopts.h
+.\obj\lowpan6.o: ..\lwip\include\lwip/debug.h
+.\obj\lowpan6.o: ..\lwip\include\lwip/arch.h
+.\obj\lowpan6.o: ..\lwip\include\lwip/arch/cc.h
+.\obj\lowpan6.o: d:\Keil_v5\ARM\ARMCC\Bin\..\include\stdio.h
+.\obj\lowpan6.o: d:\Keil_v5\ARM\ARMCC\Bin\..\include\stdlib.h
+.\obj\lowpan6.o: d:\Keil_v5\ARM\ARMCC\Bin\..\include\stddef.h
+.\obj\lowpan6.o: d:\Keil_v5\ARM\ARMCC\Bin\..\include\stdint.h
+.\obj\lowpan6.o: d:\Keil_v5\ARM\ARMCC\Bin\..\include\inttypes.h
+.\obj\lowpan6.o: d:\Keil_v5\ARM\ARMCC\Bin\..\include\limits.h
+.\obj\lowpan6.o: ..\lwip\include\lwip/opt.h
