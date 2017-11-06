@@ -462,12 +462,12 @@ ARM Macro Assembler    Page 8
   289 00000034         
   290 00000034                 END
 Command Line: --debug --xref --diag_suppress=9931 --cpu=Cortex-M3 --apcs=interw
-ork --depend=.\obj\cpu_a.d -o.\obj\cpu_a.o -IE:\kingsum\newgetway\gateway\proje
-ct\RTE -Id:\Keil_v5\ARM\PACK\ARM\CMSIS\5.1.0\CMSIS\Include -Id:\Keil_v5\ARM\PAC
-K\Keil\STM32F2xx_DFP\2.7.0\Drivers\CMSIS\Device\ST\STM32F2xx\Include --predefin
-e="__MICROLIB SETA 1" --predefine="__UVISION_VERSION SETA 517" --predefine="_RT
-E_ SETA 1" --predefine="STM32F207xx SETA 1" --list=.\lst\cpu_a.lst ..\UCOSIII\u
-C-CPU\ARM-Cortex-M3\RealView\cpu_a.asm
+ork --depend=.\obj\cpu_a.d -o.\obj\cpu_a.o -IE:\github\gatewayapp\src\project\R
+TE -Id:\Keil_v5\ARM\PACK\ARM\CMSIS\5.1.0\CMSIS\Include -Id:\Keil_v5\ARM\PACK\Ke
+il\STM32F2xx_DFP\2.7.0\Drivers\CMSIS\Device\ST\STM32F2xx\Include --predefine="_
+_MICROLIB SETA 1" --predefine="__UVISION_VERSION SETA 517" --predefine="_RTE_ S
+ETA 1" --predefine="STM32F207xx SETA 1" --list=.\lst\cpu_a.lst ..\UCOSIII\uC-CP
+U\ARM-Cortex-M3\RealView\cpu_a.asm
 
 
 
