@@ -21,12 +21,12 @@
  * NO_SYS==1: Provides VERY minimal functionality. Otherwise,
  * use lwIP facilities.
  */
-#define NO_SYS 0 //使用UCOS操作系统
+#define NO_SYS 					0 //使用UCOS操作系统
 /**
  * NO_SYS_NO_TIMERS==1: Drop support for sys_timeout when NO_SYS==1
  * Mainly for compatibility to old versions.
  */
-//#define NO_SYS_NO_TIMERS 0  // 这样就不需要定义sys_now函数
+//#define NO_SYS_NO_TIMERS 		0  // 这样就不需要定义sys_now函数
 
 
 
@@ -124,9 +124,10 @@ a lot of data that needs to be copied, this should be set high. */
    turning this on does currently not work. */
 #define LWIP_DHCP 1
 
-//#define DHCP_DOES_ARP_CHECK 1	//wzy
 
-#define LWIP_TCPIP_CORE_LOCKING_INPUT 1
+
+
+
 
 
 /* ---------- UDP options ---------- */
@@ -168,18 +169,18 @@ a lot of data that needs to be copied, this should be set high. */
   #define CHECKSUM_CHECK_TCP              1
 #endif
 
-//#define LWIP_TCPIP_CORE_LOCKING 0	//wzy
-#define LWIP_COMPAT_MUTEX_ALLOWED	//wzy
+
+
 
 /* ---------- Statistics options ---------- */
 #define LWIP_STATS 0
 #define LWIP_PROVIDE_ERRNO 1
 
 // LWIP_NETCONN==1: Enable Netconn API (require to use api_lib.c)
-#define LWIP_NETCONN 1
+#define LWIP_NETCONN 					1
 
 // LWIP_SOCKET==1: Enable Socket API (require to use sockets.c)
-#define LWIP_SOCKET 1
+#define LWIP_SOCKET 					1
 
 #define LWIP_COMPAT_MUTEX               1
 #define LWIP_SO_RCVTIMEO                1 	//通过定义LWIP_SO_RCVTIMEO使能netconn结构体中recv_timeout,使用recv_timeout可以避免阻塞线程
@@ -198,8 +199,11 @@ a lot of data that needs to be copied, this should be set high. */
 
 
 
+//#define DHCP_DOES_ARP_CHECK 1	//wzy
 
+//#define LWIP_TCPIP_CORE_LOCKING_INPUT 1
 
+#define LWIP_COMPAT_MUTEX_ALLOWED	//wzy
 
 
 #endif /* __LWIPOPTS_H__ */

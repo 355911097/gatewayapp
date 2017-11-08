@@ -35,11 +35,7 @@
 #include "includes.h"
  
  
-// typedef struct
-// {
-//	OS_EVENT *pQ;
-//	void *vQEntries[MAX_QUEUE_ENTRIES]
-// }
+
  
 #ifdef SYS_ARCH_GLOBALS
 #define SYS_ARCH_EXT

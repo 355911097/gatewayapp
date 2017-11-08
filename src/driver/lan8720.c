@@ -45,12 +45,10 @@ u32 DHCPcoarseTimer=0;	//DHCP粗糙处理计时器
 
 
 
-//????????? 
+//
 void lwip_pkt_handle(void)
 {
-
-	ethernetif_input(&lwip_netif);
-	
+	ethernetif_input(&lwip_netif);	
 }
 
 

@@ -664,7 +664,7 @@ static void dhcp_task_create(void *p_arg)
 			break;
 		}
 
-		dhcp_fine_tmr();
+//		dhcp_fine_tmr();
 		OSTimeDly(250, OS_OPT_TIME_DLY, &err);
 	}
 

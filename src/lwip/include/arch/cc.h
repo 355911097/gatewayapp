@@ -15,8 +15,8 @@
 //typedef signed     short   s16_t;   //有符号16位整数
 //typedef unsigned   long    u32_t;   //无符号32位整数
 //typedef signed     long    s32_t;   //有符号32位整数
-typedef u32 mem_ptr_t;            //内存地址型数据
-typedef int sys_prot_t;				//临界保护型数据
+//typedef u32 mem_ptr_t;            //内存地址型数据
+//typedef int sys_prot_t;				//临界保护型数据
 
 //使用操作系统时的临界区保护，这里以UCOS II为例
 //当定义了OS_CRITICAL_METHOD时就说明使用了UCOS II
