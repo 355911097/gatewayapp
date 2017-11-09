@@ -77,6 +77,8 @@ extern struct netif lwip_netif;
 #define GPRS_INIT_TASK_PRIO		5
 #define ETH_INIT_TASK_PRIO		5
 #define DHCP_TASK_PRIO			5
+#define RAWUDP_TASK_PRIO		5
+
 
 #define USART3_Q_NUM			1
 #define ETH_Q_NUM			1
@@ -105,6 +107,9 @@ CPU_STK	eth_init_task_stk[ETH_INIT_TASK_STK_SIZE];
 
 OS_TCB 	dhcp_task_TCB;
 CPU_STK	dhcp_task_stk[DHCP_TASK_STK_SIZE];
+
+OS_TCB 	rawudp_task_TCB;
+CPU_STK	rawudp_task_stk[RAWUDP_TASK_STK_SIZE];
 
 OS_TCB 	usart3_task_TCB;
 CPU_STK	usart3_task_stk[USART3_TASK_STK_SIZE];
@@ -148,7 +153,7 @@ static void eth_init_task_create(void *p_arg);
 void tmr1_callback(void *p_tmr, void *p_arg);
 void gprs_callback(void *p_tmr, void *p_arg);
 static void dhcp_task_create(void *p_arg);
-
+static void rawudp_task_create(void *p_arg);
 
 
 /*
@@ -182,28 +187,28 @@ int main(void)
 	BSP_Init(); 
 
 
-//	nn = lwip_dev_init();
-//	if(nn == 0)
-//	{
-//		USART_OUT(USART3, "lwip_dev_init OK\r");
-//	}
-//	timer_delay_1ms(1000);
-//			
-//#if LWIP_DHCP
-//	while((lwip_dev.dhcp_status != 2)&&(lwip_dev.dhcp_status != 0XFF))//等待DHCP获取成功/超时溢出
-//	{
-//		lwip_periodic_handle();
-//	}
-//#endif			
-//			
-//		udppcb = udp_demo_init(); 
-//	
-//		udp_demo_senddata(udppcb);	
-//		
-//		while(1)
-//		{
-//			lwip_periodic_handle();
-//		}
+	nn = lwip_dev_init();
+	if(nn == 0)
+	{
+		USART_OUT(USART3, "lwip_dev_init OK\r");
+	}
+	timer_delay_1ms(1000);
+			
+#if LWIP_DHCP
+	while((lwip_dev.dhcp_status != 2)&&(lwip_dev.dhcp_status != 0XFF))//等待DHCP获取成功/超时溢出
+	{
+		lwip_periodic_handle();
+	}
+#endif			
+			
+		udppcb = udp_demo_init(); 
+	
+		udp_demo_senddata(udppcb);	
+		
+		while(1)
+		{
+			lwip_periodic_handle();
+		}
 /*	
 //	fs = (FATFS*)malloc(sizeof(FATFS));
 //	fil = (FIL*)malloc(sizeof(FIL));
@@ -437,7 +442,7 @@ static  void  AppTaskCreate (void)
                  (OS_OPT      )OS_OPT_TASK_STK_CHK|OS_OPT_TASK_STK_CLR,
                  (OS_ERR 	* )&os_err);                                             /* Create Application Kernel Objects                        */
 	
-	OS_CRITICAL_ENTER();//进入临界区			 
+		 
 	OSTaskCreate((OS_TCB 	* )&dhcp_task_TCB,		
 				 (CPU_CHAR	* )"dhcp_task", 		
                  (OS_TASK_PTR )dhcp_task_create, 			
@@ -451,7 +456,22 @@ static  void  AppTaskCreate (void)
                  (void   	* )0,					
                  (OS_OPT      )OS_OPT_TASK_STK_CHK|OS_OPT_TASK_STK_CLR,
                  (OS_ERR 	* )&os_err);                                             /* Create Application Kernel Objects                        */
-	OS_CRITICAL_EXIT();	//退出临界区				 
+			 
+	
+
+		OSTaskCreate((OS_TCB 	* )&rawudp_task_TCB,		
+				 (CPU_CHAR	* )"rawudp_task", 		
+                 (OS_TASK_PTR )rawudp_task_create, 			
+                 (void		* )0,					
+                 (OS_PRIO	  )RAWUDP_TASK_PRIO,     
+                 (CPU_STK   * )&rawudp_task_stk[0],	
+                 (CPU_STK_SIZE)RAWUDP_TASK_STK_SIZE/10,	
+                 (CPU_STK_SIZE)RAWUDP_TASK_STK_SIZE,		
+                 (OS_MSG_QTY  )0,					
+                 (OS_TICK	  )0,					
+                 (void   	* )0,					
+                 (OS_OPT      )OS_OPT_TASK_STK_CHK|OS_OPT_TASK_STK_CLR,
+                 (OS_ERR 	* )&os_err); 
 				 
 }
 
@@ -664,14 +684,27 @@ static void dhcp_task_create(void *p_arg)
 			break;
 		}
 
-//		dhcp_fine_tmr();
+		dhcp_fine_tmr();
 		OSTimeDly(250, OS_OPT_TIME_DLY, &err);
 	}
 
 	lwip_comm_dhcp_delete();//删除DHCP任务 
 }
 
+static void rawudp_task_create(void *p_arg)
+{
+	OS_ERR err;
 
+
+	
+	while(DEF_TRUE)
+	{
+		
+		OSTimeDly(250, OS_OPT_TIME_DLY, &err);
+	}
+
+
+}
 
 
 static void eth_init_task_create(void *p_arg)

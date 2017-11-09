@@ -15,7 +15,7 @@
  * critical regions during buffer allocation, deallocation and memory
  * allocation and deallocation.
  */
-#define SYS_LIGHTWEIGHT_PROT 1		//为1时使用实时操作系统的轻量级保护,保护关键代码不被中断打断
+#define SYS_LIGHTWEIGHT_PROT 	1		//为1时使用实时操作系统的轻量级保护,保护关键代码不被中断打断
 
 /**
  * NO_SYS==1: Provides VERY minimal functionality. Otherwise,
@@ -26,7 +26,7 @@
  * NO_SYS_NO_TIMERS==1: Drop support for sys_timeout when NO_SYS==1
  * Mainly for compatibility to old versions.
  */
-//#define NO_SYS_NO_TIMERS 		0  // 这样就不需要定义sys_now函数
+//#define NO_SYS_NO_TIMERS 			0  // 这样就不需要定义sys_now函数
 
 
 
@@ -36,7 +36,7 @@
 /* MEM_ALIGNMENT: should be set to the alignment of the CPU for which
    lwIP is compiled. 4 byte alignment -> define MEM_ALIGNMENT to 4, 2
    byte alignment -> define MEM_ALIGNMENT to 2. */
-#define MEM_ALIGNMENT 4
+#define MEM_ALIGNMENT 	4
 
 /* MEM_SIZE: the size of the heap memory. If the application will send
 a lot of data that needs to be copied, this should be set high. */
@@ -201,7 +201,7 @@ a lot of data that needs to be copied, this should be set high. */
 
 //#define DHCP_DOES_ARP_CHECK 1	//wzy
 
-//#define LWIP_TCPIP_CORE_LOCKING_INPUT 1
+#define LWIP_TCPIP_CORE_LOCKING_INPUT 1
 
 #define LWIP_COMPAT_MUTEX_ALLOWED	//wzy
 

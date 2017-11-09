@@ -1,5 +1,5 @@
 Dependencies for Project 'uCOS-III', Target 'uCOS-III': (DO NOT MODIFY !)
-F (..\app\app.c)(0x5A017CAA)(-c --cpu Cortex-M3 -D__MICROLIB -g -W -O0 --apcs=interwork -I..\app -I..\bsp -I..\driver -I..\Libraries\STM32F2xx_StdPeriph_Driver\src -I..\Libraries\STM32F2xx_StdPeriph_Driver\inc -I..\Libraries\STM32F2x7_ETH_Driver\src -I..\Libraries\STM32F2x7_ETH_Driver\inc -I..\Libraries\CMSIS\Include -I..\Libraries\CMSIS\Device -I..\UCOSIII\uC-LIB -I..\UCOSIII\uC-CPU -I..\UCOSIII\uCOS-CONFIG -I..\UCOSIII\uC-CPU\ARM-Cortex-M3\RealView -I..\UCOSIII\uC-LIB\Ports\ARM-Cortex-M3\RealView -I..\UCOSIII\uCOS-III\Source -I..\UCOSIII\uCOS-III\Ports\ARM-Cortex-M3\Generic\RealView -I..\FATFS -I..\lwip\include -I..\lwip\apps\tcpecho_raw -I..\lwip\apps -I..\lwip\apps\socket_examples --diag_suppress=177-I E:\github\gatewayapp\src\project\RTE-I d:\Keil_v5\ARM\PACK\ARM\CMSIS\5.1.0\CMSIS\Include-I d:\Keil_v5\ARM\PACK\Keil\STM32F2xx_DFP\2.7.0\Drivers\CMSIS\Device\ST\STM32F2xx\Include-D__UVISION_VERSION="517" -D_RTE_ -DSTM32F207xx -DSTM32F2XX -DUSE_STDPERIPH_DRIVER-o .\obj\app.o --omf_browse .\obj\app.crf --depend .\obj\app.d)
+F (..\app\app.c)(0x5A0421FD)(-c --cpu Cortex-M3 -D__MICROLIB -g -W -O0 --apcs=interwork -I..\app -I..\bsp -I..\driver -I..\Libraries\STM32F2xx_StdPeriph_Driver\src -I..\Libraries\STM32F2xx_StdPeriph_Driver\inc -I..\Libraries\STM32F2x7_ETH_Driver\src -I..\Libraries\STM32F2x7_ETH_Driver\inc -I..\Libraries\CMSIS\Include -I..\Libraries\CMSIS\Device -I..\UCOSIII\uC-LIB -I..\UCOSIII\uC-CPU -I..\UCOSIII\uCOS-CONFIG -I..\UCOSIII\uC-CPU\ARM-Cortex-M3\RealView -I..\UCOSIII\uC-LIB\Ports\ARM-Cortex-M3\RealView -I..\UCOSIII\uCOS-III\Source -I..\UCOSIII\uCOS-III\Ports\ARM-Cortex-M3\Generic\RealView -I..\FATFS -I..\lwip\include -I..\lwip\apps\tcpecho_raw -I..\lwip\apps -I..\lwip\apps\socket_examples --diag_suppress=177-I E:\github\gatewayapp\src\project\RTE-I d:\Keil_v5\ARM\PACK\ARM\CMSIS\5.1.0\CMSIS\Include-I d:\Keil_v5\ARM\PACK\Keil\STM32F2xx_DFP\2.7.0\Drivers\CMSIS\Device\ST\STM32F2xx\Include-D__UVISION_VERSION="517" -D_RTE_ -DSTM32F207xx -DSTM32F2XX -DUSE_STDPERIPH_DRIVER-o .\obj\app.o --omf_browse .\obj\app.crf --depend .\obj\app.d)
 I (d:\Keil_v5\ARM\ARMCC\include\string.h)(0x55DB2B78)
 I (..\UCOSIII\uCOS-CONFIG\includes.h)(0x59F6B73B)
 I (d:\Keil_v5\ARM\ARMCC\include\stdarg.h)(0x55DB2B7E)
@@ -20,7 +20,7 @@ I (..\UCOSIII\uCOS-III\Source\os.h)(0x59F6B73B)
 I (..\UCOSIII\uCOS-CONFIG\os_cfg.h)(0x59F6B73B)
 I (..\UCOSIII\uCOS-III\Source\os_type.h)(0x59F6B73B)
 I (..\UCOSIII\uCOS-III\Ports\ARM-Cortex-M3\Generic\RealView\os_cpu.h)(0x59F6B73B)
-I (..\UCOSIII\uCOS-CONFIG\app_cfg.h)(0x59F6B73B)
+I (..\UCOSIII\uCOS-CONFIG\app_cfg.h)(0x5A040ECE)
 I (..\bsp\bsp.h)(0x59F6B73B)
 I (..\Libraries\CMSIS\Device\stm32f2xx.h)(0x59F6B73B)
 I (..\Libraries\CMSIS\Include\core_cm3.h)(0x59F6B73B)
@@ -71,7 +71,7 @@ I (..\FATFS\ff.h)(0x59F6B73B)
 I (..\lwip\apps\udp_demo.h)(0x59F6B73B)
 I (..\lwip\include\lwip/pbuf.h)(0x59F6B73B)
 I (..\lwip\include\lwip/opt.h)(0x59F6B73B)
-I (..\lwip\include\lwipopts.h)(0x5A02C885)
+I (..\lwip\include\lwipopts.h)(0x5A03FCDE)
 I (..\lwip\include\lwip/debug.h)(0x59F6B73B)
 I (..\lwip\include\lwip/arch.h)(0x5A02D2FD)
 I (..\lwip\include\arch/cc.h)(0x5A02D377)
@@ -200,7 +200,7 @@ I (..\Libraries\STM32F2xx_StdPeriph_Driver\inc\stm32f2xx_usart.h)(0x59F6B73B)
 I (..\Libraries\STM32F2xx_StdPeriph_Driver\inc\stm32f2xx_wwdg.h)(0x59F6B73B)
 I (..\Libraries\STM32F2xx_StdPeriph_Driver\inc\misc.h)(0x59F6B73B)
 I (..\bsp\bsp_ser.h)(0x59F6B73B)
-I (..\UCOSIII\uCOS-CONFIG\app_cfg.h)(0x59F6B73B)
+I (..\UCOSIII\uCOS-CONFIG\app_cfg.h)(0x5A040ECE)
 I (..\bsp\bsp_os.h)(0x59F6B73B)
 I (..\UCOSIII\uCOS-III\Source\os.h)(0x59F6B73B)
 I (..\UCOSIII\uCOS-CONFIG\os_cfg.h)(0x59F6B73B)
@@ -255,7 +255,7 @@ I (..\Libraries\STM32F2xx_StdPeriph_Driver\inc\stm32f2xx_usart.h)(0x59F6B73B)
 I (..\Libraries\STM32F2xx_StdPeriph_Driver\inc\stm32f2xx_wwdg.h)(0x59F6B73B)
 I (..\Libraries\STM32F2xx_StdPeriph_Driver\inc\misc.h)(0x59F6B73B)
 I (..\bsp\bsp_ser.h)(0x59F6B73B)
-I (..\UCOSIII\uCOS-CONFIG\app_cfg.h)(0x59F6B73B)
+I (..\UCOSIII\uCOS-CONFIG\app_cfg.h)(0x5A040ECE)
 I (..\bsp\bsp_os.h)(0x59F6B73B)
 I (..\UCOSIII\uCOS-III\Source\os.h)(0x59F6B73B)
 I (..\UCOSIII\uCOS-CONFIG\os_cfg.h)(0x59F6B73B)
@@ -315,7 +315,7 @@ I (..\Libraries\STM32F2xx_StdPeriph_Driver\inc\stm32f2xx_usart.h)(0x59F6B73B)
 I (..\Libraries\STM32F2xx_StdPeriph_Driver\inc\stm32f2xx_wwdg.h)(0x59F6B73B)
 I (..\Libraries\STM32F2xx_StdPeriph_Driver\inc\misc.h)(0x59F6B73B)
 I (..\bsp\bsp_ser.h)(0x59F6B73B)
-I (..\UCOSIII\uCOS-CONFIG\app_cfg.h)(0x59F6B73B)
+I (..\UCOSIII\uCOS-CONFIG\app_cfg.h)(0x5A040ECE)
 I (..\bsp\bsp_os.h)(0x59F6B73B)
 I (..\UCOSIII\uCOS-III\Source\os.h)(0x59F6B73B)
 I (..\UCOSIII\uCOS-CONFIG\os_cfg.h)(0x59F6B73B)
@@ -370,7 +370,7 @@ I (..\Libraries\STM32F2xx_StdPeriph_Driver\inc\stm32f2xx_usart.h)(0x59F6B73B)
 I (..\Libraries\STM32F2xx_StdPeriph_Driver\inc\stm32f2xx_wwdg.h)(0x59F6B73B)
 I (..\Libraries\STM32F2xx_StdPeriph_Driver\inc\misc.h)(0x59F6B73B)
 I (..\bsp\bsp_ser.h)(0x59F6B73B)
-I (..\UCOSIII\uCOS-CONFIG\app_cfg.h)(0x59F6B73B)
+I (..\UCOSIII\uCOS-CONFIG\app_cfg.h)(0x5A040ECE)
 I (..\bsp\bsp_os.h)(0x59F6B73B)
 I (..\UCOSIII\uCOS-III\Source\os.h)(0x59F6B73B)
 I (..\UCOSIII\uCOS-CONFIG\os_cfg.h)(0x59F6B73B)
@@ -425,7 +425,7 @@ I (..\Libraries\STM32F2xx_StdPeriph_Driver\inc\stm32f2xx_usart.h)(0x59F6B73B)
 I (..\Libraries\STM32F2xx_StdPeriph_Driver\inc\stm32f2xx_wwdg.h)(0x59F6B73B)
 I (..\Libraries\STM32F2xx_StdPeriph_Driver\inc\misc.h)(0x59F6B73B)
 I (..\bsp\bsp_ser.h)(0x59F6B73B)
-I (..\UCOSIII\uCOS-CONFIG\app_cfg.h)(0x59F6B73B)
+I (..\UCOSIII\uCOS-CONFIG\app_cfg.h)(0x5A040ECE)
 I (..\bsp\bsp_os.h)(0x59F6B73B)
 I (..\UCOSIII\uCOS-III\Source\os.h)(0x59F6B73B)
 I (..\UCOSIII\uCOS-CONFIG\os_cfg.h)(0x59F6B73B)
@@ -479,7 +479,7 @@ I (..\Libraries\STM32F2xx_StdPeriph_Driver\inc\stm32f2xx_usart.h)(0x59F6B73B)
 I (..\Libraries\STM32F2xx_StdPeriph_Driver\inc\stm32f2xx_wwdg.h)(0x59F6B73B)
 I (..\Libraries\STM32F2xx_StdPeriph_Driver\inc\misc.h)(0x59F6B73B)
 I (..\bsp\bsp_ser.h)(0x59F6B73B)
-I (..\UCOSIII\uCOS-CONFIG\app_cfg.h)(0x59F6B73B)
+I (..\UCOSIII\uCOS-CONFIG\app_cfg.h)(0x5A040ECE)
 I (..\bsp\bsp_os.h)(0x59F6B73B)
 I (..\UCOSIII\uCOS-III\Source\os.h)(0x59F6B73B)
 I (..\UCOSIII\uCOS-CONFIG\os_cfg.h)(0x59F6B73B)
@@ -533,7 +533,7 @@ I (..\Libraries\STM32F2xx_StdPeriph_Driver\inc\stm32f2xx_usart.h)(0x59F6B73B)
 I (..\Libraries\STM32F2xx_StdPeriph_Driver\inc\stm32f2xx_wwdg.h)(0x59F6B73B)
 I (..\Libraries\STM32F2xx_StdPeriph_Driver\inc\misc.h)(0x59F6B73B)
 I (..\bsp\bsp_ser.h)(0x59F6B73B)
-I (..\UCOSIII\uCOS-CONFIG\app_cfg.h)(0x59F6B73B)
+I (..\UCOSIII\uCOS-CONFIG\app_cfg.h)(0x5A040ECE)
 I (..\bsp\bsp_os.h)(0x59F6B73B)
 I (..\UCOSIII\uCOS-III\Source\os.h)(0x59F6B73B)
 I (..\UCOSIII\uCOS-CONFIG\os_cfg.h)(0x59F6B73B)
@@ -588,7 +588,7 @@ I (..\Libraries\STM32F2xx_StdPeriph_Driver\inc\stm32f2xx_usart.h)(0x59F6B73B)
 I (..\Libraries\STM32F2xx_StdPeriph_Driver\inc\stm32f2xx_wwdg.h)(0x59F6B73B)
 I (..\Libraries\STM32F2xx_StdPeriph_Driver\inc\misc.h)(0x59F6B73B)
 I (..\bsp\bsp_ser.h)(0x59F6B73B)
-I (..\UCOSIII\uCOS-CONFIG\app_cfg.h)(0x59F6B73B)
+I (..\UCOSIII\uCOS-CONFIG\app_cfg.h)(0x5A040ECE)
 I (..\bsp\bsp_os.h)(0x59F6B73B)
 I (..\UCOSIII\uCOS-III\Source\os.h)(0x59F6B73B)
 I (..\UCOSIII\uCOS-CONFIG\os_cfg.h)(0x59F6B73B)
@@ -647,7 +647,7 @@ I (..\Libraries\STM32F2xx_StdPeriph_Driver\inc\stm32f2xx_usart.h)(0x59F6B73B)
 I (..\Libraries\STM32F2xx_StdPeriph_Driver\inc\stm32f2xx_wwdg.h)(0x59F6B73B)
 I (..\Libraries\STM32F2xx_StdPeriph_Driver\inc\misc.h)(0x59F6B73B)
 I (..\bsp\bsp_ser.h)(0x59F6B73B)
-I (..\UCOSIII\uCOS-CONFIG\app_cfg.h)(0x59F6B73B)
+I (..\UCOSIII\uCOS-CONFIG\app_cfg.h)(0x5A040ECE)
 I (..\bsp\bsp_os.h)(0x59F6B73B)
 I (..\UCOSIII\uCOS-III\Source\os.h)(0x59F6B73B)
 I (..\UCOSIII\uCOS-CONFIG\os_cfg.h)(0x59F6B73B)
@@ -704,7 +704,7 @@ I (..\Libraries\STM32F2xx_StdPeriph_Driver\inc\stm32f2xx_usart.h)(0x59F6B73B)
 I (..\Libraries\STM32F2xx_StdPeriph_Driver\inc\stm32f2xx_wwdg.h)(0x59F6B73B)
 I (..\Libraries\STM32F2xx_StdPeriph_Driver\inc\misc.h)(0x59F6B73B)
 I (..\bsp\bsp_ser.h)(0x59F6B73B)
-I (..\UCOSIII\uCOS-CONFIG\app_cfg.h)(0x59F6B73B)
+I (..\UCOSIII\uCOS-CONFIG\app_cfg.h)(0x5A040ECE)
 I (..\bsp\bsp_os.h)(0x59F6B73B)
 I (..\UCOSIII\uCOS-III\Source\os.h)(0x59F6B73B)
 I (..\UCOSIII\uCOS-CONFIG\os_cfg.h)(0x59F6B73B)
@@ -761,7 +761,7 @@ I (..\UCOSIII\uCOS-CONFIG\lib_cfg.h)(0x59F6B73B)
 I (..\UCOSIII\uC-LIB\lib_str.h)(0x59F6B73B)
 I (..\UCOSIII\uC-LIB\lib_ascii.h)(0x59F6B73B)
 I (..\bsp\bsp_ser.h)(0x59F6B73B)
-I (..\UCOSIII\uCOS-CONFIG\app_cfg.h)(0x59F6B73B)
+I (..\UCOSIII\uCOS-CONFIG\app_cfg.h)(0x5A040ECE)
 I (..\bsp\bsp_os.h)(0x59F6B73B)
 I (..\UCOSIII\uCOS-III\Source\os.h)(0x59F6B73B)
 I (..\UCOSIII\uCOS-CONFIG\os_cfg.h)(0x59F6B73B)
@@ -816,7 +816,7 @@ I (..\Libraries\STM32F2xx_StdPeriph_Driver\inc\stm32f2xx_usart.h)(0x59F6B73B)
 I (..\Libraries\STM32F2xx_StdPeriph_Driver\inc\stm32f2xx_wwdg.h)(0x59F6B73B)
 I (..\Libraries\STM32F2xx_StdPeriph_Driver\inc\misc.h)(0x59F6B73B)
 I (..\bsp\bsp_ser.h)(0x59F6B73B)
-I (..\UCOSIII\uCOS-CONFIG\app_cfg.h)(0x59F6B73B)
+I (..\UCOSIII\uCOS-CONFIG\app_cfg.h)(0x5A040ECE)
 I (..\bsp\bsp_os.h)(0x59F6B73B)
 I (..\UCOSIII\uCOS-III\Source\os.h)(0x59F6B73B)
 I (..\UCOSIII\uCOS-CONFIG\os_cfg.h)(0x59F6B73B)
@@ -870,7 +870,7 @@ I (..\Libraries\STM32F2xx_StdPeriph_Driver\inc\stm32f2xx_usart.h)(0x59F6B73B)
 I (..\Libraries\STM32F2xx_StdPeriph_Driver\inc\stm32f2xx_wwdg.h)(0x59F6B73B)
 I (..\Libraries\STM32F2xx_StdPeriph_Driver\inc\misc.h)(0x59F6B73B)
 I (..\bsp\bsp_ser.h)(0x59F6B73B)
-I (..\UCOSIII\uCOS-CONFIG\app_cfg.h)(0x59F6B73B)
+I (..\UCOSIII\uCOS-CONFIG\app_cfg.h)(0x5A040ECE)
 I (..\bsp\bsp_os.h)(0x59F6B73B)
 I (..\UCOSIII\uCOS-III\Source\os.h)(0x59F6B73B)
 I (..\UCOSIII\uCOS-CONFIG\os_cfg.h)(0x59F6B73B)
@@ -879,7 +879,7 @@ I (..\UCOSIII\uCOS-III\Ports\ARM-Cortex-M3\Generic\RealView\os_cpu.h)(0x59F6B73B
 I (..\app\system.h)(0x59F6B73B)
 I (..\driver\usart.h)(0x59F6B73B)
 I (..\driver\rtc.h)(0x59F6B73B)
-F (..\driver\lan8720.c)(0x5A017D01)(-c --cpu Cortex-M3 -D__MICROLIB -g -W -O0 --apcs=interwork -I..\app -I..\bsp -I..\driver -I..\Libraries\STM32F2xx_StdPeriph_Driver\src -I..\Libraries\STM32F2xx_StdPeriph_Driver\inc -I..\Libraries\STM32F2x7_ETH_Driver\src -I..\Libraries\STM32F2x7_ETH_Driver\inc -I..\Libraries\CMSIS\Include -I..\Libraries\CMSIS\Device -I..\UCOSIII\uC-LIB -I..\UCOSIII\uC-CPU -I..\UCOSIII\uCOS-CONFIG -I..\UCOSIII\uC-CPU\ARM-Cortex-M3\RealView -I..\UCOSIII\uC-LIB\Ports\ARM-Cortex-M3\RealView -I..\UCOSIII\uCOS-III\Source -I..\UCOSIII\uCOS-III\Ports\ARM-Cortex-M3\Generic\RealView -I..\FATFS -I..\lwip\include -I..\lwip\apps\tcpecho_raw -I..\lwip\apps -I..\lwip\apps\socket_examples --diag_suppress=177-I E:\github\gatewayapp\src\project\RTE-I d:\Keil_v5\ARM\PACK\ARM\CMSIS\5.1.0\CMSIS\Include-I d:\Keil_v5\ARM\PACK\Keil\STM32F2xx_DFP\2.7.0\Drivers\CMSIS\Device\ST\STM32F2xx\Include-D__UVISION_VERSION="517" -D_RTE_ -DSTM32F207xx -DSTM32F2XX -DUSE_STDPERIPH_DRIVER-o .\obj\lan8720.o --omf_browse .\obj\lan8720.crf --depend .\obj\lan8720.d)
+F (..\driver\lan8720.c)(0x5A042119)(-c --cpu Cortex-M3 -D__MICROLIB -g -W -O0 --apcs=interwork -I..\app -I..\bsp -I..\driver -I..\Libraries\STM32F2xx_StdPeriph_Driver\src -I..\Libraries\STM32F2xx_StdPeriph_Driver\inc -I..\Libraries\STM32F2x7_ETH_Driver\src -I..\Libraries\STM32F2x7_ETH_Driver\inc -I..\Libraries\CMSIS\Include -I..\Libraries\CMSIS\Device -I..\UCOSIII\uC-LIB -I..\UCOSIII\uC-CPU -I..\UCOSIII\uCOS-CONFIG -I..\UCOSIII\uC-CPU\ARM-Cortex-M3\RealView -I..\UCOSIII\uC-LIB\Ports\ARM-Cortex-M3\RealView -I..\UCOSIII\uCOS-III\Source -I..\UCOSIII\uCOS-III\Ports\ARM-Cortex-M3\Generic\RealView -I..\FATFS -I..\lwip\include -I..\lwip\apps\tcpecho_raw -I..\lwip\apps -I..\lwip\apps\socket_examples --diag_suppress=177-I E:\github\gatewayapp\src\project\RTE-I d:\Keil_v5\ARM\PACK\ARM\CMSIS\5.1.0\CMSIS\Include-I d:\Keil_v5\ARM\PACK\Keil\STM32F2xx_DFP\2.7.0\Drivers\CMSIS\Device\ST\STM32F2xx\Include-D__UVISION_VERSION="517" -D_RTE_ -DSTM32F207xx -DSTM32F2XX -DUSE_STDPERIPH_DRIVER-o .\obj\lan8720.o --omf_browse .\obj\lan8720.crf --depend .\obj\lan8720.d)
 I (..\bsp\bsp.h)(0x59F6B73B)
 I (d:\Keil_v5\ARM\ARMCC\include\stdio.h)(0x55DB2B76)
 I (d:\Keil_v5\ARM\ARMCC\include\stdarg.h)(0x55DB2B7E)
@@ -926,7 +926,7 @@ I (..\Libraries\STM32F2xx_StdPeriph_Driver\inc\stm32f2xx_usart.h)(0x59F6B73B)
 I (..\Libraries\STM32F2xx_StdPeriph_Driver\inc\stm32f2xx_wwdg.h)(0x59F6B73B)
 I (..\Libraries\STM32F2xx_StdPeriph_Driver\inc\misc.h)(0x59F6B73B)
 I (..\bsp\bsp_ser.h)(0x59F6B73B)
-I (..\UCOSIII\uCOS-CONFIG\app_cfg.h)(0x59F6B73B)
+I (..\UCOSIII\uCOS-CONFIG\app_cfg.h)(0x5A040ECE)
 I (..\bsp\bsp_os.h)(0x59F6B73B)
 I (..\UCOSIII\uCOS-III\Source\os.h)(0x59F6B73B)
 I (..\UCOSIII\uCOS-CONFIG\os_cfg.h)(0x59F6B73B)
@@ -941,7 +941,7 @@ I (..\driver\usart.h)(0x59F6B73B)
 I (d:\Keil_v5\ARM\ARMCC\include\string.h)(0x55DB2B78)
 I (..\lwip\include\netif/ethernet.h)(0x59F6B73B)
 I (..\lwip\include\lwip/opt.h)(0x59F6B73B)
-I (..\lwip\include\lwipopts.h)(0x5A02C885)
+I (..\lwip\include\lwipopts.h)(0x5A03FCDE)
 I (..\lwip\include\lwip/debug.h)(0x59F6B73B)
 I (..\lwip\include\lwip/arch.h)(0x5A02D2FD)
 I (..\lwip\include\arch/cc.h)(0x5A02D377)
@@ -984,7 +984,7 @@ I (..\lwip\include\lwip/udp.h)(0x59F6B73B)
 I (..\lwip\include\lwip/prot/udp.h)(0x59F6B73B)
 I (..\lwip\include\lwip/tcpip.h)(0x59F6B73B)
 I (..\lwip\include\lwip/timeouts.h)(0x59F6B73B)
-I (..\lwip\include\lwip/sys.h)(0x5A02D703)
+I (..\lwip\include\lwip/sys.h)(0x5A04038B)
 I (..\lwip\include\arch/sys_arch.h)(0x5A02CE48)
 F (..\driver\eth.c)(0x59F6B73B)(-c --cpu Cortex-M3 -D__MICROLIB -g -W -O0 --apcs=interwork -I..\app -I..\bsp -I..\driver -I..\Libraries\STM32F2xx_StdPeriph_Driver\src -I..\Libraries\STM32F2xx_StdPeriph_Driver\inc -I..\Libraries\STM32F2x7_ETH_Driver\src -I..\Libraries\STM32F2x7_ETH_Driver\inc -I..\Libraries\CMSIS\Include -I..\Libraries\CMSIS\Device -I..\UCOSIII\uC-LIB -I..\UCOSIII\uC-CPU -I..\UCOSIII\uCOS-CONFIG -I..\UCOSIII\uC-CPU\ARM-Cortex-M3\RealView -I..\UCOSIII\uC-LIB\Ports\ARM-Cortex-M3\RealView -I..\UCOSIII\uCOS-III\Source -I..\UCOSIII\uCOS-III\Ports\ARM-Cortex-M3\Generic\RealView -I..\FATFS -I..\lwip\include -I..\lwip\apps\tcpecho_raw -I..\lwip\apps -I..\lwip\apps\socket_examples --diag_suppress=177-I E:\github\gatewayapp\src\project\RTE-I d:\Keil_v5\ARM\PACK\ARM\CMSIS\5.1.0\CMSIS\Include-I d:\Keil_v5\ARM\PACK\Keil\STM32F2xx_DFP\2.7.0\Drivers\CMSIS\Device\ST\STM32F2xx\Include-D__UVISION_VERSION="517" -D_RTE_ -DSTM32F207xx -DSTM32F2XX -DUSE_STDPERIPH_DRIVER-o .\obj\eth.o --omf_browse .\obj\eth.crf --depend .\obj\eth.d)
 I (..\bsp\bsp.h)(0x59F6B73B)
@@ -1033,7 +1033,7 @@ I (..\Libraries\STM32F2xx_StdPeriph_Driver\inc\stm32f2xx_usart.h)(0x59F6B73B)
 I (..\Libraries\STM32F2xx_StdPeriph_Driver\inc\stm32f2xx_wwdg.h)(0x59F6B73B)
 I (..\Libraries\STM32F2xx_StdPeriph_Driver\inc\misc.h)(0x59F6B73B)
 I (..\bsp\bsp_ser.h)(0x59F6B73B)
-I (..\UCOSIII\uCOS-CONFIG\app_cfg.h)(0x59F6B73B)
+I (..\UCOSIII\uCOS-CONFIG\app_cfg.h)(0x5A040ECE)
 I (..\bsp\bsp_os.h)(0x59F6B73B)
 I (..\UCOSIII\uCOS-III\Source\os.h)(0x59F6B73B)
 I (..\UCOSIII\uCOS-CONFIG\os_cfg.h)(0x59F6B73B)
@@ -2331,7 +2331,7 @@ I (..\UCOSIII\uCOS-III\Source\os.h)(0x59F6B73B)
 I (..\UCOSIII\uCOS-CONFIG\os_cfg.h)(0x59F6B73B)
 I (..\UCOSIII\uCOS-III\Source\os_type.h)(0x59F6B73B)
 I (..\UCOSIII\uCOS-III\Ports\ARM-Cortex-M3\Generic\RealView\os_cpu.h)(0x59F6B73B)
-I (..\UCOSIII\uCOS-CONFIG\app_cfg.h)(0x59F6B73B)
+I (..\UCOSIII\uCOS-CONFIG\app_cfg.h)(0x5A040ECE)
 I (..\bsp\bsp.h)(0x59F6B73B)
 I (..\Libraries\CMSIS\Device\stm32f2xx.h)(0x59F6B73B)
 I (..\Libraries\CMSIS\Include\core_cm3.h)(0x59F6B73B)
@@ -2373,9 +2373,9 @@ I (d:\Keil_v5\ARM\ARMCC\include\stddef.h)(0x55DB2B7E)
 I (d:\Keil_v5\ARM\ARMCC\include\inttypes.h)(0x55DB2B7E)
 I (d:\Keil_v5\ARM\ARMCC\include\limits.h)(0x55DB2B7E)
 I (..\lwip\include\lwip/opt.h)(0x59F6B73B)
-I (..\lwip\include\lwipopts.h)(0x5A02C885)
+I (..\lwip\include\lwipopts.h)(0x5A03FCDE)
 I (..\lwip\include\lwip/def.h)(0x59F6B73B)
-I (..\lwip\include\lwip/sys.h)(0x5A02D703)
+I (..\lwip\include\lwip/sys.h)(0x5A04038B)
 I (..\lwip\include\lwip/err.h)(0x59F6B73B)
 I (..\lwip\include\arch/sys_arch.h)(0x5A02CE48)
 I (..\lwip\include\lwip/mem.h)(0x59F6B73B)
@@ -2383,11 +2383,11 @@ I (..\driver\timer.h)(0x59F6B73B)
 I (..\UCOSIII\uCOS-CONFIG\os_cfg_app.h)(0x59F6B73B)
 I (d:\Keil_v5\ARM\ARMCC\include\string.h)(0x55DB2B78)
 I (..\driver\usart.h)(0x59F6B73B)
-F (..\lwip\apps\udp_demo.c)(0x59F6B73B)(-c --cpu Cortex-M3 -D__MICROLIB -g -W -O0 --apcs=interwork -I..\app -I..\bsp -I..\driver -I..\Libraries\STM32F2xx_StdPeriph_Driver\src -I..\Libraries\STM32F2xx_StdPeriph_Driver\inc -I..\Libraries\STM32F2x7_ETH_Driver\src -I..\Libraries\STM32F2x7_ETH_Driver\inc -I..\Libraries\CMSIS\Include -I..\Libraries\CMSIS\Device -I..\UCOSIII\uC-LIB -I..\UCOSIII\uC-CPU -I..\UCOSIII\uCOS-CONFIG -I..\UCOSIII\uC-CPU\ARM-Cortex-M3\RealView -I..\UCOSIII\uC-LIB\Ports\ARM-Cortex-M3\RealView -I..\UCOSIII\uCOS-III\Source -I..\UCOSIII\uCOS-III\Ports\ARM-Cortex-M3\Generic\RealView -I..\FATFS -I..\lwip\include -I..\lwip\apps\tcpecho_raw -I..\lwip\apps -I..\lwip\apps\socket_examples --diag_suppress=177-I E:\github\gatewayapp\src\project\RTE-I d:\Keil_v5\ARM\PACK\ARM\CMSIS\5.1.0\CMSIS\Include-I d:\Keil_v5\ARM\PACK\Keil\STM32F2xx_DFP\2.7.0\Drivers\CMSIS\Device\ST\STM32F2xx\Include-D__UVISION_VERSION="517" -D_RTE_ -DSTM32F207xx -DSTM32F2XX -DUSE_STDPERIPH_DRIVER-o .\obj\udp_demo.o --omf_browse .\obj\udp_demo.crf --depend .\obj\udp_demo.d)
+F (..\lwip\apps\udp_demo.c)(0x5A0422F6)(-c --cpu Cortex-M3 -D__MICROLIB -g -W -O0 --apcs=interwork -I..\app -I..\bsp -I..\driver -I..\Libraries\STM32F2xx_StdPeriph_Driver\src -I..\Libraries\STM32F2xx_StdPeriph_Driver\inc -I..\Libraries\STM32F2x7_ETH_Driver\src -I..\Libraries\STM32F2x7_ETH_Driver\inc -I..\Libraries\CMSIS\Include -I..\Libraries\CMSIS\Device -I..\UCOSIII\uC-LIB -I..\UCOSIII\uC-CPU -I..\UCOSIII\uCOS-CONFIG -I..\UCOSIII\uC-CPU\ARM-Cortex-M3\RealView -I..\UCOSIII\uC-LIB\Ports\ARM-Cortex-M3\RealView -I..\UCOSIII\uCOS-III\Source -I..\UCOSIII\uCOS-III\Ports\ARM-Cortex-M3\Generic\RealView -I..\FATFS -I..\lwip\include -I..\lwip\apps\tcpecho_raw -I..\lwip\apps -I..\lwip\apps\socket_examples --diag_suppress=177-I E:\github\gatewayapp\src\project\RTE-I d:\Keil_v5\ARM\PACK\ARM\CMSIS\5.1.0\CMSIS\Include-I d:\Keil_v5\ARM\PACK\Keil\STM32F2xx_DFP\2.7.0\Drivers\CMSIS\Device\ST\STM32F2xx\Include-D__UVISION_VERSION="517" -D_RTE_ -DSTM32F207xx -DSTM32F2XX -DUSE_STDPERIPH_DRIVER-o .\obj\udp_demo.o --omf_browse .\obj\udp_demo.crf --depend .\obj\udp_demo.d)
 I (..\lwip\apps\udp_demo.h)(0x59F6B73B)
 I (..\lwip\include\lwip/pbuf.h)(0x59F6B73B)
 I (..\lwip\include\lwip/opt.h)(0x59F6B73B)
-I (..\lwip\include\lwipopts.h)(0x5A02C885)
+I (..\lwip\include\lwipopts.h)(0x5A03FCDE)
 I (..\lwip\include\lwip/debug.h)(0x59F6B73B)
 I (..\lwip\include\lwip/arch.h)(0x5A02D2FD)
 I (..\lwip\include\arch/cc.h)(0x5A02D377)
@@ -2411,7 +2411,7 @@ I (..\UCOSIII\uCOS-III\Source\os.h)(0x59F6B73B)
 I (..\UCOSIII\uCOS-CONFIG\os_cfg.h)(0x59F6B73B)
 I (..\UCOSIII\uCOS-III\Source\os_type.h)(0x59F6B73B)
 I (..\UCOSIII\uCOS-III\Ports\ARM-Cortex-M3\Generic\RealView\os_cpu.h)(0x59F6B73B)
-I (..\UCOSIII\uCOS-CONFIG\app_cfg.h)(0x59F6B73B)
+I (..\UCOSIII\uCOS-CONFIG\app_cfg.h)(0x5A040ECE)
 I (..\bsp\bsp.h)(0x59F6B73B)
 I (..\Libraries\CMSIS\Device\stm32f2xx.h)(0x59F6B73B)
 I (..\Libraries\CMSIS\Include\core_cm3.h)(0x59F6B73B)
@@ -2482,7 +2482,7 @@ I (..\Libraries\STM32F2x7_ETH_Driver\inc\stm32f2x7_eth.h)(0x59F6B73B)
 I (..\Libraries\STM32F2x7_ETH_Driver\inc\stm32f2x7_eth_conf.h)(0x59F6B73B)
 F (..\lwip\api\api_lib.c)(0x59F6B73B)(-c --cpu Cortex-M3 -D__MICROLIB -g -W -O0 --apcs=interwork -I..\app -I..\bsp -I..\driver -I..\Libraries\STM32F2xx_StdPeriph_Driver\src -I..\Libraries\STM32F2xx_StdPeriph_Driver\inc -I..\Libraries\STM32F2x7_ETH_Driver\src -I..\Libraries\STM32F2x7_ETH_Driver\inc -I..\Libraries\CMSIS\Include -I..\Libraries\CMSIS\Device -I..\UCOSIII\uC-LIB -I..\UCOSIII\uC-CPU -I..\UCOSIII\uCOS-CONFIG -I..\UCOSIII\uC-CPU\ARM-Cortex-M3\RealView -I..\UCOSIII\uC-LIB\Ports\ARM-Cortex-M3\RealView -I..\UCOSIII\uCOS-III\Source -I..\UCOSIII\uCOS-III\Ports\ARM-Cortex-M3\Generic\RealView -I..\FATFS -I..\lwip\include -I..\lwip\apps\tcpecho_raw -I..\lwip\apps -I..\lwip\apps\socket_examples --diag_suppress=177-I E:\github\gatewayapp\src\project\RTE-I d:\Keil_v5\ARM\PACK\ARM\CMSIS\5.1.0\CMSIS\Include-I d:\Keil_v5\ARM\PACK\Keil\STM32F2xx_DFP\2.7.0\Drivers\CMSIS\Device\ST\STM32F2xx\Include-D__UVISION_VERSION="517" -D_RTE_ -DSTM32F207xx -DSTM32F2XX -DUSE_STDPERIPH_DRIVER-o .\obj\api_lib.o --omf_browse .\obj\api_lib.crf --depend .\obj\api_lib.d)
 I (..\lwip\include\lwip/opt.h)(0x59F6B73B)
-I (..\lwip\include\lwipopts.h)(0x5A02C885)
+I (..\lwip\include\lwipopts.h)(0x5A03FCDE)
 I (..\lwip\include\lwip/debug.h)(0x59F6B73B)
 I (..\lwip\include\lwip/arch.h)(0x5A02D2FD)
 I (..\lwip\include\arch/cc.h)(0x5A02D377)
@@ -2506,7 +2506,7 @@ I (..\UCOSIII\uCOS-III\Source\os.h)(0x59F6B73B)
 I (..\UCOSIII\uCOS-CONFIG\os_cfg.h)(0x59F6B73B)
 I (..\UCOSIII\uCOS-III\Source\os_type.h)(0x59F6B73B)
 I (..\UCOSIII\uCOS-III\Ports\ARM-Cortex-M3\Generic\RealView\os_cpu.h)(0x59F6B73B)
-I (..\UCOSIII\uCOS-CONFIG\app_cfg.h)(0x59F6B73B)
+I (..\UCOSIII\uCOS-CONFIG\app_cfg.h)(0x5A040ECE)
 I (..\bsp\bsp.h)(0x59F6B73B)
 I (..\Libraries\CMSIS\Device\stm32f2xx.h)(0x59F6B73B)
 I (..\Libraries\CMSIS\Include\core_cm3.h)(0x59F6B73B)
@@ -2555,7 +2555,7 @@ I (..\lwip\include\lwip/ip_addr.h)(0x59F6B73B)
 I (..\lwip\include\lwip/def.h)(0x59F6B73B)
 I (..\lwip\include\lwip/ip4_addr.h)(0x59F6B73B)
 I (..\lwip\include\lwip/ip6_addr.h)(0x59F6B73B)
-I (..\lwip\include\lwip/sys.h)(0x5A02D703)
+I (..\lwip\include\lwip/sys.h)(0x5A04038B)
 I (..\lwip\include\arch/sys_arch.h)(0x5A02CE48)
 I (..\lwip\include\lwip/memp.h)(0x59F6B73B)
 I (..\lwip\include\lwip/priv/memp_std.h)(0x59F6B73B)
@@ -2584,7 +2584,7 @@ I (..\lwip\include\lwip/prot/tcp.h)(0x59F6B73B)
 I (d:\Keil_v5\ARM\ARMCC\include\string.h)(0x55DB2B78)
 F (..\lwip\api\api_msg.c)(0x59F6B73B)(-c --cpu Cortex-M3 -D__MICROLIB -g -W -O0 --apcs=interwork -I..\app -I..\bsp -I..\driver -I..\Libraries\STM32F2xx_StdPeriph_Driver\src -I..\Libraries\STM32F2xx_StdPeriph_Driver\inc -I..\Libraries\STM32F2x7_ETH_Driver\src -I..\Libraries\STM32F2x7_ETH_Driver\inc -I..\Libraries\CMSIS\Include -I..\Libraries\CMSIS\Device -I..\UCOSIII\uC-LIB -I..\UCOSIII\uC-CPU -I..\UCOSIII\uCOS-CONFIG -I..\UCOSIII\uC-CPU\ARM-Cortex-M3\RealView -I..\UCOSIII\uC-LIB\Ports\ARM-Cortex-M3\RealView -I..\UCOSIII\uCOS-III\Source -I..\UCOSIII\uCOS-III\Ports\ARM-Cortex-M3\Generic\RealView -I..\FATFS -I..\lwip\include -I..\lwip\apps\tcpecho_raw -I..\lwip\apps -I..\lwip\apps\socket_examples --diag_suppress=177-I E:\github\gatewayapp\src\project\RTE-I d:\Keil_v5\ARM\PACK\ARM\CMSIS\5.1.0\CMSIS\Include-I d:\Keil_v5\ARM\PACK\Keil\STM32F2xx_DFP\2.7.0\Drivers\CMSIS\Device\ST\STM32F2xx\Include-D__UVISION_VERSION="517" -D_RTE_ -DSTM32F207xx -DSTM32F2XX -DUSE_STDPERIPH_DRIVER-o .\obj\api_msg.o --omf_browse .\obj\api_msg.crf --depend .\obj\api_msg.d)
 I (..\lwip\include\lwip/opt.h)(0x59F6B73B)
-I (..\lwip\include\lwipopts.h)(0x5A02C885)
+I (..\lwip\include\lwipopts.h)(0x5A03FCDE)
 I (..\lwip\include\lwip/debug.h)(0x59F6B73B)
 I (..\lwip\include\lwip/arch.h)(0x5A02D2FD)
 I (..\lwip\include\arch/cc.h)(0x5A02D377)
@@ -2608,7 +2608,7 @@ I (..\UCOSIII\uCOS-III\Source\os.h)(0x59F6B73B)
 I (..\UCOSIII\uCOS-CONFIG\os_cfg.h)(0x59F6B73B)
 I (..\UCOSIII\uCOS-III\Source\os_type.h)(0x59F6B73B)
 I (..\UCOSIII\uCOS-III\Ports\ARM-Cortex-M3\Generic\RealView\os_cpu.h)(0x59F6B73B)
-I (..\UCOSIII\uCOS-CONFIG\app_cfg.h)(0x59F6B73B)
+I (..\UCOSIII\uCOS-CONFIG\app_cfg.h)(0x5A040ECE)
 I (..\bsp\bsp.h)(0x59F6B73B)
 I (..\Libraries\CMSIS\Device\stm32f2xx.h)(0x59F6B73B)
 I (..\Libraries\CMSIS\Include\core_cm3.h)(0x59F6B73B)
@@ -2655,7 +2655,7 @@ I (..\lwip\include\lwip/def.h)(0x59F6B73B)
 I (..\lwip\include\lwip/ip4_addr.h)(0x59F6B73B)
 I (..\lwip\include\lwip/ip6_addr.h)(0x59F6B73B)
 I (..\lwip\include\lwip/err.h)(0x59F6B73B)
-I (..\lwip\include\lwip/sys.h)(0x5A02D703)
+I (..\lwip\include\lwip/sys.h)(0x5A04038B)
 I (..\lwip\include\arch/sys_arch.h)(0x5A02CE48)
 I (..\lwip\include\lwip/igmp.h)(0x59F6B73B)
 I (..\lwip\include\lwip/netif.h)(0x59F6B73B)
@@ -2687,7 +2687,7 @@ I (d:\Keil_v5\ARM\ARMCC\include\string.h)(0x55DB2B78)
 F (..\lwip\api\err.c)(0x59F6B73B)(-c --cpu Cortex-M3 -D__MICROLIB -g -W -O0 --apcs=interwork -I..\app -I..\bsp -I..\driver -I..\Libraries\STM32F2xx_StdPeriph_Driver\src -I..\Libraries\STM32F2xx_StdPeriph_Driver\inc -I..\Libraries\STM32F2x7_ETH_Driver\src -I..\Libraries\STM32F2x7_ETH_Driver\inc -I..\Libraries\CMSIS\Include -I..\Libraries\CMSIS\Device -I..\UCOSIII\uC-LIB -I..\UCOSIII\uC-CPU -I..\UCOSIII\uCOS-CONFIG -I..\UCOSIII\uC-CPU\ARM-Cortex-M3\RealView -I..\UCOSIII\uC-LIB\Ports\ARM-Cortex-M3\RealView -I..\UCOSIII\uCOS-III\Source -I..\UCOSIII\uCOS-III\Ports\ARM-Cortex-M3\Generic\RealView -I..\FATFS -I..\lwip\include -I..\lwip\apps\tcpecho_raw -I..\lwip\apps -I..\lwip\apps\socket_examples --diag_suppress=177-I E:\github\gatewayapp\src\project\RTE-I d:\Keil_v5\ARM\PACK\ARM\CMSIS\5.1.0\CMSIS\Include-I d:\Keil_v5\ARM\PACK\Keil\STM32F2xx_DFP\2.7.0\Drivers\CMSIS\Device\ST\STM32F2xx\Include-D__UVISION_VERSION="517" -D_RTE_ -DSTM32F207xx -DSTM32F2XX -DUSE_STDPERIPH_DRIVER-o .\obj\err.o --omf_browse .\obj\err.crf --depend .\obj\err.d)
 I (..\lwip\include\lwip/err.h)(0x59F6B73B)
 I (..\lwip\include\lwip/opt.h)(0x59F6B73B)
-I (..\lwip\include\lwipopts.h)(0x5A02C885)
+I (..\lwip\include\lwipopts.h)(0x5A03FCDE)
 I (..\lwip\include\lwip/debug.h)(0x59F6B73B)
 I (..\lwip\include\lwip/arch.h)(0x5A02D2FD)
 I (..\lwip\include\arch/cc.h)(0x5A02D377)
@@ -2711,7 +2711,7 @@ I (..\UCOSIII\uCOS-III\Source\os.h)(0x59F6B73B)
 I (..\UCOSIII\uCOS-CONFIG\os_cfg.h)(0x59F6B73B)
 I (..\UCOSIII\uCOS-III\Source\os_type.h)(0x59F6B73B)
 I (..\UCOSIII\uCOS-III\Ports\ARM-Cortex-M3\Generic\RealView\os_cpu.h)(0x59F6B73B)
-I (..\UCOSIII\uCOS-CONFIG\app_cfg.h)(0x59F6B73B)
+I (..\UCOSIII\uCOS-CONFIG\app_cfg.h)(0x5A040ECE)
 I (..\bsp\bsp.h)(0x59F6B73B)
 I (..\Libraries\CMSIS\Device\stm32f2xx.h)(0x59F6B73B)
 I (..\Libraries\CMSIS\Include\core_cm3.h)(0x59F6B73B)
@@ -2753,12 +2753,12 @@ I (d:\Keil_v5\ARM\ARMCC\include\stddef.h)(0x55DB2B7E)
 I (d:\Keil_v5\ARM\ARMCC\include\inttypes.h)(0x55DB2B7E)
 I (d:\Keil_v5\ARM\ARMCC\include\limits.h)(0x55DB2B7E)
 I (..\lwip\include\lwip/def.h)(0x59F6B73B)
-I (..\lwip\include\lwip/sys.h)(0x5A02D703)
+I (..\lwip\include\lwip/sys.h)(0x5A04038B)
 I (..\lwip\include\arch/sys_arch.h)(0x5A02CE48)
 I (..\lwip\include\lwip/errno.h)(0x59F6B73B)
 F (..\lwip\api\netbuf.c)(0x59F6B73B)(-c --cpu Cortex-M3 -D__MICROLIB -g -W -O0 --apcs=interwork -I..\app -I..\bsp -I..\driver -I..\Libraries\STM32F2xx_StdPeriph_Driver\src -I..\Libraries\STM32F2xx_StdPeriph_Driver\inc -I..\Libraries\STM32F2x7_ETH_Driver\src -I..\Libraries\STM32F2x7_ETH_Driver\inc -I..\Libraries\CMSIS\Include -I..\Libraries\CMSIS\Device -I..\UCOSIII\uC-LIB -I..\UCOSIII\uC-CPU -I..\UCOSIII\uCOS-CONFIG -I..\UCOSIII\uC-CPU\ARM-Cortex-M3\RealView -I..\UCOSIII\uC-LIB\Ports\ARM-Cortex-M3\RealView -I..\UCOSIII\uCOS-III\Source -I..\UCOSIII\uCOS-III\Ports\ARM-Cortex-M3\Generic\RealView -I..\FATFS -I..\lwip\include -I..\lwip\apps\tcpecho_raw -I..\lwip\apps -I..\lwip\apps\socket_examples --diag_suppress=177-I E:\github\gatewayapp\src\project\RTE-I d:\Keil_v5\ARM\PACK\ARM\CMSIS\5.1.0\CMSIS\Include-I d:\Keil_v5\ARM\PACK\Keil\STM32F2xx_DFP\2.7.0\Drivers\CMSIS\Device\ST\STM32F2xx\Include-D__UVISION_VERSION="517" -D_RTE_ -DSTM32F207xx -DSTM32F2XX -DUSE_STDPERIPH_DRIVER-o .\obj\netbuf.o --omf_browse .\obj\netbuf.crf --depend .\obj\netbuf.d)
 I (..\lwip\include\lwip/opt.h)(0x59F6B73B)
-I (..\lwip\include\lwipopts.h)(0x5A02C885)
+I (..\lwip\include\lwipopts.h)(0x5A03FCDE)
 I (..\lwip\include\lwip/debug.h)(0x59F6B73B)
 I (..\lwip\include\lwip/arch.h)(0x5A02D2FD)
 I (..\lwip\include\arch/cc.h)(0x5A02D377)
@@ -2782,7 +2782,7 @@ I (..\UCOSIII\uCOS-III\Source\os.h)(0x59F6B73B)
 I (..\UCOSIII\uCOS-CONFIG\os_cfg.h)(0x59F6B73B)
 I (..\UCOSIII\uCOS-III\Source\os_type.h)(0x59F6B73B)
 I (..\UCOSIII\uCOS-III\Ports\ARM-Cortex-M3\Generic\RealView\os_cpu.h)(0x59F6B73B)
-I (..\UCOSIII\uCOS-CONFIG\app_cfg.h)(0x59F6B73B)
+I (..\UCOSIII\uCOS-CONFIG\app_cfg.h)(0x5A040ECE)
 I (..\bsp\bsp.h)(0x59F6B73B)
 I (..\Libraries\CMSIS\Device\stm32f2xx.h)(0x59F6B73B)
 I (..\Libraries\CMSIS\Include\core_cm3.h)(0x59F6B73B)
@@ -2839,7 +2839,7 @@ I (d:\Keil_v5\ARM\ARMCC\include\string.h)(0x55DB2B78)
 F (..\lwip\api\netdb.c)(0x59F6B73B)(-c --cpu Cortex-M3 -D__MICROLIB -g -W -O0 --apcs=interwork -I..\app -I..\bsp -I..\driver -I..\Libraries\STM32F2xx_StdPeriph_Driver\src -I..\Libraries\STM32F2xx_StdPeriph_Driver\inc -I..\Libraries\STM32F2x7_ETH_Driver\src -I..\Libraries\STM32F2x7_ETH_Driver\inc -I..\Libraries\CMSIS\Include -I..\Libraries\CMSIS\Device -I..\UCOSIII\uC-LIB -I..\UCOSIII\uC-CPU -I..\UCOSIII\uCOS-CONFIG -I..\UCOSIII\uC-CPU\ARM-Cortex-M3\RealView -I..\UCOSIII\uC-LIB\Ports\ARM-Cortex-M3\RealView -I..\UCOSIII\uCOS-III\Source -I..\UCOSIII\uCOS-III\Ports\ARM-Cortex-M3\Generic\RealView -I..\FATFS -I..\lwip\include -I..\lwip\apps\tcpecho_raw -I..\lwip\apps -I..\lwip\apps\socket_examples --diag_suppress=177-I E:\github\gatewayapp\src\project\RTE-I d:\Keil_v5\ARM\PACK\ARM\CMSIS\5.1.0\CMSIS\Include-I d:\Keil_v5\ARM\PACK\Keil\STM32F2xx_DFP\2.7.0\Drivers\CMSIS\Device\ST\STM32F2xx\Include-D__UVISION_VERSION="517" -D_RTE_ -DSTM32F207xx -DSTM32F2XX -DUSE_STDPERIPH_DRIVER-o .\obj\netdb.o --omf_browse .\obj\netdb.crf --depend .\obj\netdb.d)
 I (..\lwip\include\lwip/netdb.h)(0x59F6B73B)
 I (..\lwip\include\lwip/opt.h)(0x59F6B73B)
-I (..\lwip\include\lwipopts.h)(0x5A02C885)
+I (..\lwip\include\lwipopts.h)(0x5A03FCDE)
 I (..\lwip\include\lwip/debug.h)(0x59F6B73B)
 I (..\lwip\include\lwip/arch.h)(0x5A02D2FD)
 I (..\lwip\include\arch/cc.h)(0x5A02D377)
@@ -2863,7 +2863,7 @@ I (..\UCOSIII\uCOS-III\Source\os.h)(0x59F6B73B)
 I (..\UCOSIII\uCOS-CONFIG\os_cfg.h)(0x59F6B73B)
 I (..\UCOSIII\uCOS-III\Source\os_type.h)(0x59F6B73B)
 I (..\UCOSIII\uCOS-III\Ports\ARM-Cortex-M3\Generic\RealView\os_cpu.h)(0x59F6B73B)
-I (..\UCOSIII\uCOS-CONFIG\app_cfg.h)(0x59F6B73B)
+I (..\UCOSIII\uCOS-CONFIG\app_cfg.h)(0x5A040ECE)
 I (..\bsp\bsp.h)(0x59F6B73B)
 I (..\Libraries\CMSIS\Device\stm32f2xx.h)(0x59F6B73B)
 I (..\Libraries\CMSIS\Include\core_cm3.h)(0x59F6B73B)
@@ -2906,7 +2906,7 @@ I (d:\Keil_v5\ARM\ARMCC\include\inttypes.h)(0x55DB2B7E)
 I (d:\Keil_v5\ARM\ARMCC\include\limits.h)(0x55DB2B7E)
 F (..\lwip\api\netifapi.c)(0x59F6B73B)(-c --cpu Cortex-M3 -D__MICROLIB -g -W -O0 --apcs=interwork -I..\app -I..\bsp -I..\driver -I..\Libraries\STM32F2xx_StdPeriph_Driver\src -I..\Libraries\STM32F2xx_StdPeriph_Driver\inc -I..\Libraries\STM32F2x7_ETH_Driver\src -I..\Libraries\STM32F2x7_ETH_Driver\inc -I..\Libraries\CMSIS\Include -I..\Libraries\CMSIS\Device -I..\UCOSIII\uC-LIB -I..\UCOSIII\uC-CPU -I..\UCOSIII\uCOS-CONFIG -I..\UCOSIII\uC-CPU\ARM-Cortex-M3\RealView -I..\UCOSIII\uC-LIB\Ports\ARM-Cortex-M3\RealView -I..\UCOSIII\uCOS-III\Source -I..\UCOSIII\uCOS-III\Ports\ARM-Cortex-M3\Generic\RealView -I..\FATFS -I..\lwip\include -I..\lwip\apps\tcpecho_raw -I..\lwip\apps -I..\lwip\apps\socket_examples --diag_suppress=177-I E:\github\gatewayapp\src\project\RTE-I d:\Keil_v5\ARM\PACK\ARM\CMSIS\5.1.0\CMSIS\Include-I d:\Keil_v5\ARM\PACK\Keil\STM32F2xx_DFP\2.7.0\Drivers\CMSIS\Device\ST\STM32F2xx\Include-D__UVISION_VERSION="517" -D_RTE_ -DSTM32F207xx -DSTM32F2XX -DUSE_STDPERIPH_DRIVER-o .\obj\netifapi.o --omf_browse .\obj\netifapi.crf --depend .\obj\netifapi.d)
 I (..\lwip\include\lwip/opt.h)(0x59F6B73B)
-I (..\lwip\include\lwipopts.h)(0x5A02C885)
+I (..\lwip\include\lwipopts.h)(0x5A03FCDE)
 I (..\lwip\include\lwip/debug.h)(0x59F6B73B)
 I (..\lwip\include\lwip/arch.h)(0x5A02D2FD)
 I (..\lwip\include\arch/cc.h)(0x5A02D377)
@@ -2930,7 +2930,7 @@ I (..\UCOSIII\uCOS-III\Source\os.h)(0x59F6B73B)
 I (..\UCOSIII\uCOS-CONFIG\os_cfg.h)(0x59F6B73B)
 I (..\UCOSIII\uCOS-III\Source\os_type.h)(0x59F6B73B)
 I (..\UCOSIII\uCOS-III\Ports\ARM-Cortex-M3\Generic\RealView\os_cpu.h)(0x59F6B73B)
-I (..\UCOSIII\uCOS-CONFIG\app_cfg.h)(0x59F6B73B)
+I (..\UCOSIII\uCOS-CONFIG\app_cfg.h)(0x5A040ECE)
 I (..\bsp\bsp.h)(0x59F6B73B)
 I (..\Libraries\CMSIS\Device\stm32f2xx.h)(0x59F6B73B)
 I (..\Libraries\CMSIS\Include\core_cm3.h)(0x59F6B73B)
@@ -2973,7 +2973,7 @@ I (d:\Keil_v5\ARM\ARMCC\include\inttypes.h)(0x55DB2B7E)
 I (d:\Keil_v5\ARM\ARMCC\include\limits.h)(0x55DB2B7E)
 F (..\lwip\api\sockets.c)(0x59F6B73B)(-c --cpu Cortex-M3 -D__MICROLIB -g -W -O0 --apcs=interwork -I..\app -I..\bsp -I..\driver -I..\Libraries\STM32F2xx_StdPeriph_Driver\src -I..\Libraries\STM32F2xx_StdPeriph_Driver\inc -I..\Libraries\STM32F2x7_ETH_Driver\src -I..\Libraries\STM32F2x7_ETH_Driver\inc -I..\Libraries\CMSIS\Include -I..\Libraries\CMSIS\Device -I..\UCOSIII\uC-LIB -I..\UCOSIII\uC-CPU -I..\UCOSIII\uCOS-CONFIG -I..\UCOSIII\uC-CPU\ARM-Cortex-M3\RealView -I..\UCOSIII\uC-LIB\Ports\ARM-Cortex-M3\RealView -I..\UCOSIII\uCOS-III\Source -I..\UCOSIII\uCOS-III\Ports\ARM-Cortex-M3\Generic\RealView -I..\FATFS -I..\lwip\include -I..\lwip\apps\tcpecho_raw -I..\lwip\apps -I..\lwip\apps\socket_examples --diag_suppress=177-I E:\github\gatewayapp\src\project\RTE-I d:\Keil_v5\ARM\PACK\ARM\CMSIS\5.1.0\CMSIS\Include-I d:\Keil_v5\ARM\PACK\Keil\STM32F2xx_DFP\2.7.0\Drivers\CMSIS\Device\ST\STM32F2xx\Include-D__UVISION_VERSION="517" -D_RTE_ -DSTM32F207xx -DSTM32F2XX -DUSE_STDPERIPH_DRIVER-o .\obj\sockets.o --omf_browse .\obj\sockets.crf --depend .\obj\sockets.d)
 I (..\lwip\include\lwip/opt.h)(0x59F6B73B)
-I (..\lwip\include\lwipopts.h)(0x5A02C885)
+I (..\lwip\include\lwipopts.h)(0x5A03FCDE)
 I (..\lwip\include\lwip/debug.h)(0x59F6B73B)
 I (..\lwip\include\lwip/arch.h)(0x5A02D2FD)
 I (..\lwip\include\arch/cc.h)(0x5A02D377)
@@ -2997,7 +2997,7 @@ I (..\UCOSIII\uCOS-III\Source\os.h)(0x59F6B73B)
 I (..\UCOSIII\uCOS-CONFIG\os_cfg.h)(0x59F6B73B)
 I (..\UCOSIII\uCOS-III\Source\os_type.h)(0x59F6B73B)
 I (..\UCOSIII\uCOS-III\Ports\ARM-Cortex-M3\Generic\RealView\os_cpu.h)(0x59F6B73B)
-I (..\UCOSIII\uCOS-CONFIG\app_cfg.h)(0x59F6B73B)
+I (..\UCOSIII\uCOS-CONFIG\app_cfg.h)(0x5A040ECE)
 I (..\bsp\bsp.h)(0x59F6B73B)
 I (..\Libraries\CMSIS\Device\stm32f2xx.h)(0x59F6B73B)
 I (..\Libraries\CMSIS\Include\core_cm3.h)(0x59F6B73B)
@@ -3049,7 +3049,7 @@ I (..\lwip\include\lwip/errno.h)(0x59F6B73B)
 I (..\lwip\include\lwip/api.h)(0x59F6B73B)
 I (..\lwip\include\lwip/netbuf.h)(0x59F6B73B)
 I (..\lwip\include\lwip/pbuf.h)(0x59F6B73B)
-I (..\lwip\include\lwip/sys.h)(0x5A02D703)
+I (..\lwip\include\lwip/sys.h)(0x5A04038B)
 I (..\lwip\include\arch/sys_arch.h)(0x5A02CE48)
 I (..\lwip\include\lwip/igmp.h)(0x59F6B73B)
 I (..\lwip\include\lwip/netif.h)(0x59F6B73B)
@@ -3075,7 +3075,7 @@ I (..\lwip\include\lwip/timeouts.h)(0x59F6B73B)
 I (d:\Keil_v5\ARM\ARMCC\include\string.h)(0x55DB2B78)
 F (..\lwip\api\tcpip.c)(0x59F6B73B)(-c --cpu Cortex-M3 -D__MICROLIB -g -W -O0 --apcs=interwork -I..\app -I..\bsp -I..\driver -I..\Libraries\STM32F2xx_StdPeriph_Driver\src -I..\Libraries\STM32F2xx_StdPeriph_Driver\inc -I..\Libraries\STM32F2x7_ETH_Driver\src -I..\Libraries\STM32F2x7_ETH_Driver\inc -I..\Libraries\CMSIS\Include -I..\Libraries\CMSIS\Device -I..\UCOSIII\uC-LIB -I..\UCOSIII\uC-CPU -I..\UCOSIII\uCOS-CONFIG -I..\UCOSIII\uC-CPU\ARM-Cortex-M3\RealView -I..\UCOSIII\uC-LIB\Ports\ARM-Cortex-M3\RealView -I..\UCOSIII\uCOS-III\Source -I..\UCOSIII\uCOS-III\Ports\ARM-Cortex-M3\Generic\RealView -I..\FATFS -I..\lwip\include -I..\lwip\apps\tcpecho_raw -I..\lwip\apps -I..\lwip\apps\socket_examples --diag_suppress=177-I E:\github\gatewayapp\src\project\RTE-I d:\Keil_v5\ARM\PACK\ARM\CMSIS\5.1.0\CMSIS\Include-I d:\Keil_v5\ARM\PACK\Keil\STM32F2xx_DFP\2.7.0\Drivers\CMSIS\Device\ST\STM32F2xx\Include-D__UVISION_VERSION="517" -D_RTE_ -DSTM32F207xx -DSTM32F2XX -DUSE_STDPERIPH_DRIVER-o .\obj\tcpip.o --omf_browse .\obj\tcpip.crf --depend .\obj\tcpip.d)
 I (..\lwip\include\lwip/opt.h)(0x59F6B73B)
-I (..\lwip\include\lwipopts.h)(0x5A02C885)
+I (..\lwip\include\lwipopts.h)(0x5A03FCDE)
 I (..\lwip\include\lwip/debug.h)(0x59F6B73B)
 I (..\lwip\include\lwip/arch.h)(0x5A02D2FD)
 I (..\lwip\include\arch/cc.h)(0x5A02D377)
@@ -3099,7 +3099,7 @@ I (..\UCOSIII\uCOS-III\Source\os.h)(0x59F6B73B)
 I (..\UCOSIII\uCOS-CONFIG\os_cfg.h)(0x59F6B73B)
 I (..\UCOSIII\uCOS-III\Source\os_type.h)(0x59F6B73B)
 I (..\UCOSIII\uCOS-III\Ports\ARM-Cortex-M3\Generic\RealView\os_cpu.h)(0x59F6B73B)
-I (..\UCOSIII\uCOS-CONFIG\app_cfg.h)(0x59F6B73B)
+I (..\UCOSIII\uCOS-CONFIG\app_cfg.h)(0x5A040ECE)
 I (..\bsp\bsp.h)(0x59F6B73B)
 I (..\Libraries\CMSIS\Device\stm32f2xx.h)(0x59F6B73B)
 I (..\Libraries\CMSIS\Include\core_cm3.h)(0x59F6B73B)
@@ -3144,7 +3144,7 @@ I (..\lwip\include\lwip/priv/tcpip_priv.h)(0x59F6B73B)
 I (..\lwip\include\lwip/tcpip.h)(0x59F6B73B)
 I (..\lwip\include\lwip/err.h)(0x59F6B73B)
 I (..\lwip\include\lwip/timeouts.h)(0x59F6B73B)
-I (..\lwip\include\lwip/sys.h)(0x5A02D703)
+I (..\lwip\include\lwip/sys.h)(0x5A04038B)
 I (..\lwip\include\arch/sys_arch.h)(0x5A02CE48)
 I (..\lwip\include\lwip/netif.h)(0x59F6B73B)
 I (..\lwip\include\lwip/ip_addr.h)(0x59F6B73B)
@@ -3169,7 +3169,7 @@ I (..\lwip\include\lwip/prot/etharp.h)(0x59F6B73B)
 I (..\lwip\include\netif/ethernet.h)(0x59F6B73B)
 F (..\lwip\netif\ethernet.c)(0x59F6B73C)(-c --cpu Cortex-M3 -D__MICROLIB -g -W -O0 --apcs=interwork -I..\app -I..\bsp -I..\driver -I..\Libraries\STM32F2xx_StdPeriph_Driver\src -I..\Libraries\STM32F2xx_StdPeriph_Driver\inc -I..\Libraries\STM32F2x7_ETH_Driver\src -I..\Libraries\STM32F2x7_ETH_Driver\inc -I..\Libraries\CMSIS\Include -I..\Libraries\CMSIS\Device -I..\UCOSIII\uC-LIB -I..\UCOSIII\uC-CPU -I..\UCOSIII\uCOS-CONFIG -I..\UCOSIII\uC-CPU\ARM-Cortex-M3\RealView -I..\UCOSIII\uC-LIB\Ports\ARM-Cortex-M3\RealView -I..\UCOSIII\uCOS-III\Source -I..\UCOSIII\uCOS-III\Ports\ARM-Cortex-M3\Generic\RealView -I..\FATFS -I..\lwip\include -I..\lwip\apps\tcpecho_raw -I..\lwip\apps -I..\lwip\apps\socket_examples --diag_suppress=177-I E:\github\gatewayapp\src\project\RTE-I d:\Keil_v5\ARM\PACK\ARM\CMSIS\5.1.0\CMSIS\Include-I d:\Keil_v5\ARM\PACK\Keil\STM32F2xx_DFP\2.7.0\Drivers\CMSIS\Device\ST\STM32F2xx\Include-D__UVISION_VERSION="517" -D_RTE_ -DSTM32F207xx -DSTM32F2XX -DUSE_STDPERIPH_DRIVER-o .\obj\ethernet.o --omf_browse .\obj\ethernet.crf --depend .\obj\ethernet.d)
 I (..\lwip\include\lwip/opt.h)(0x59F6B73B)
-I (..\lwip\include\lwipopts.h)(0x5A02C885)
+I (..\lwip\include\lwipopts.h)(0x5A03FCDE)
 I (..\lwip\include\lwip/debug.h)(0x59F6B73B)
 I (..\lwip\include\lwip/arch.h)(0x5A02D2FD)
 I (..\lwip\include\arch/cc.h)(0x5A02D377)
@@ -3193,7 +3193,7 @@ I (..\UCOSIII\uCOS-III\Source\os.h)(0x59F6B73B)
 I (..\UCOSIII\uCOS-CONFIG\os_cfg.h)(0x59F6B73B)
 I (..\UCOSIII\uCOS-III\Source\os_type.h)(0x59F6B73B)
 I (..\UCOSIII\uCOS-III\Ports\ARM-Cortex-M3\Generic\RealView\os_cpu.h)(0x59F6B73B)
-I (..\UCOSIII\uCOS-CONFIG\app_cfg.h)(0x59F6B73B)
+I (..\UCOSIII\uCOS-CONFIG\app_cfg.h)(0x5A040ECE)
 I (..\bsp\bsp.h)(0x59F6B73B)
 I (..\Libraries\CMSIS\Device\stm32f2xx.h)(0x59F6B73B)
 I (..\Libraries\CMSIS\Include\core_cm3.h)(0x59F6B73B)
@@ -3260,7 +3260,7 @@ I (d:\Keil_v5\ARM\ARMCC\include\string.h)(0x55DB2B78)
 I (..\lwip\include\netif/ppp/ppp_opts.h)(0x59F6B73C)
 F (..\lwip\netif\ethernetif.c)(0x59F6B73C)(-c --cpu Cortex-M3 -D__MICROLIB -g -W -O0 --apcs=interwork -I..\app -I..\bsp -I..\driver -I..\Libraries\STM32F2xx_StdPeriph_Driver\src -I..\Libraries\STM32F2xx_StdPeriph_Driver\inc -I..\Libraries\STM32F2x7_ETH_Driver\src -I..\Libraries\STM32F2x7_ETH_Driver\inc -I..\Libraries\CMSIS\Include -I..\Libraries\CMSIS\Device -I..\UCOSIII\uC-LIB -I..\UCOSIII\uC-CPU -I..\UCOSIII\uCOS-CONFIG -I..\UCOSIII\uC-CPU\ARM-Cortex-M3\RealView -I..\UCOSIII\uC-LIB\Ports\ARM-Cortex-M3\RealView -I..\UCOSIII\uCOS-III\Source -I..\UCOSIII\uCOS-III\Ports\ARM-Cortex-M3\Generic\RealView -I..\FATFS -I..\lwip\include -I..\lwip\apps\tcpecho_raw -I..\lwip\apps -I..\lwip\apps\socket_examples --diag_suppress=177-I E:\github\gatewayapp\src\project\RTE-I d:\Keil_v5\ARM\PACK\ARM\CMSIS\5.1.0\CMSIS\Include-I d:\Keil_v5\ARM\PACK\Keil\STM32F2xx_DFP\2.7.0\Drivers\CMSIS\Device\ST\STM32F2xx\Include-D__UVISION_VERSION="517" -D_RTE_ -DSTM32F207xx -DSTM32F2XX -DUSE_STDPERIPH_DRIVER-o .\obj\ethernetif.o --omf_browse .\obj\ethernetif.crf --depend .\obj\ethernetif.d)
 I (..\lwip\include\lwip/opt.h)(0x59F6B73B)
-I (..\lwip\include\lwipopts.h)(0x5A02C885)
+I (..\lwip\include\lwipopts.h)(0x5A03FCDE)
 I (..\lwip\include\lwip/debug.h)(0x59F6B73B)
 I (..\lwip\include\lwip/arch.h)(0x5A02D2FD)
 I (..\lwip\include\arch/cc.h)(0x5A02D377)
@@ -3284,7 +3284,7 @@ I (..\UCOSIII\uCOS-III\Source\os.h)(0x59F6B73B)
 I (..\UCOSIII\uCOS-CONFIG\os_cfg.h)(0x59F6B73B)
 I (..\UCOSIII\uCOS-III\Source\os_type.h)(0x59F6B73B)
 I (..\UCOSIII\uCOS-III\Ports\ARM-Cortex-M3\Generic\RealView\os_cpu.h)(0x59F6B73B)
-I (..\UCOSIII\uCOS-CONFIG\app_cfg.h)(0x59F6B73B)
+I (..\UCOSIII\uCOS-CONFIG\app_cfg.h)(0x5A040ECE)
 I (..\bsp\bsp.h)(0x59F6B73B)
 I (..\Libraries\CMSIS\Device\stm32f2xx.h)(0x59F6B73B)
 I (..\Libraries\CMSIS\Include\core_cm3.h)(0x59F6B73B)
@@ -3352,7 +3352,7 @@ I (..\lwip\include\netif/ppp/pppoe.h)(0x59F6B73C)
 I (..\lwip\include\netif/ppp/ppp_opts.h)(0x59F6B73C)
 F (..\lwip\core\def.c)(0x59F6B73B)(-c --cpu Cortex-M3 -D__MICROLIB -g -W -O0 --apcs=interwork -I..\app -I..\bsp -I..\driver -I..\Libraries\STM32F2xx_StdPeriph_Driver\src -I..\Libraries\STM32F2xx_StdPeriph_Driver\inc -I..\Libraries\STM32F2x7_ETH_Driver\src -I..\Libraries\STM32F2x7_ETH_Driver\inc -I..\Libraries\CMSIS\Include -I..\Libraries\CMSIS\Device -I..\UCOSIII\uC-LIB -I..\UCOSIII\uC-CPU -I..\UCOSIII\uCOS-CONFIG -I..\UCOSIII\uC-CPU\ARM-Cortex-M3\RealView -I..\UCOSIII\uC-LIB\Ports\ARM-Cortex-M3\RealView -I..\UCOSIII\uCOS-III\Source -I..\UCOSIII\uCOS-III\Ports\ARM-Cortex-M3\Generic\RealView -I..\FATFS -I..\lwip\include -I..\lwip\apps\tcpecho_raw -I..\lwip\apps -I..\lwip\apps\socket_examples --diag_suppress=177-I E:\github\gatewayapp\src\project\RTE-I d:\Keil_v5\ARM\PACK\ARM\CMSIS\5.1.0\CMSIS\Include-I d:\Keil_v5\ARM\PACK\Keil\STM32F2xx_DFP\2.7.0\Drivers\CMSIS\Device\ST\STM32F2xx\Include-D__UVISION_VERSION="517" -D_RTE_ -DSTM32F207xx -DSTM32F2XX -DUSE_STDPERIPH_DRIVER-o .\obj\def.o --omf_browse .\obj\def.crf --depend .\obj\def.d)
 I (..\lwip\include\lwip/opt.h)(0x59F6B73B)
-I (..\lwip\include\lwipopts.h)(0x5A02C885)
+I (..\lwip\include\lwipopts.h)(0x5A03FCDE)
 I (..\lwip\include\lwip/debug.h)(0x59F6B73B)
 I (..\lwip\include\lwip/arch.h)(0x5A02D2FD)
 I (..\lwip\include\arch/cc.h)(0x5A02D377)
@@ -3376,7 +3376,7 @@ I (..\UCOSIII\uCOS-III\Source\os.h)(0x59F6B73B)
 I (..\UCOSIII\uCOS-CONFIG\os_cfg.h)(0x59F6B73B)
 I (..\UCOSIII\uCOS-III\Source\os_type.h)(0x59F6B73B)
 I (..\UCOSIII\uCOS-III\Ports\ARM-Cortex-M3\Generic\RealView\os_cpu.h)(0x59F6B73B)
-I (..\UCOSIII\uCOS-CONFIG\app_cfg.h)(0x59F6B73B)
+I (..\UCOSIII\uCOS-CONFIG\app_cfg.h)(0x5A040ECE)
 I (..\bsp\bsp.h)(0x59F6B73B)
 I (..\Libraries\CMSIS\Device\stm32f2xx.h)(0x59F6B73B)
 I (..\Libraries\CMSIS\Include\core_cm3.h)(0x59F6B73B)
@@ -3421,7 +3421,7 @@ I (..\lwip\include\lwip/def.h)(0x59F6B73B)
 I (d:\Keil_v5\ARM\ARMCC\include\string.h)(0x55DB2B78)
 F (..\lwip\core\dns.c)(0x59F6B73B)(-c --cpu Cortex-M3 -D__MICROLIB -g -W -O0 --apcs=interwork -I..\app -I..\bsp -I..\driver -I..\Libraries\STM32F2xx_StdPeriph_Driver\src -I..\Libraries\STM32F2xx_StdPeriph_Driver\inc -I..\Libraries\STM32F2x7_ETH_Driver\src -I..\Libraries\STM32F2x7_ETH_Driver\inc -I..\Libraries\CMSIS\Include -I..\Libraries\CMSIS\Device -I..\UCOSIII\uC-LIB -I..\UCOSIII\uC-CPU -I..\UCOSIII\uCOS-CONFIG -I..\UCOSIII\uC-CPU\ARM-Cortex-M3\RealView -I..\UCOSIII\uC-LIB\Ports\ARM-Cortex-M3\RealView -I..\UCOSIII\uCOS-III\Source -I..\UCOSIII\uCOS-III\Ports\ARM-Cortex-M3\Generic\RealView -I..\FATFS -I..\lwip\include -I..\lwip\apps\tcpecho_raw -I..\lwip\apps -I..\lwip\apps\socket_examples --diag_suppress=177-I E:\github\gatewayapp\src\project\RTE-I d:\Keil_v5\ARM\PACK\ARM\CMSIS\5.1.0\CMSIS\Include-I d:\Keil_v5\ARM\PACK\Keil\STM32F2xx_DFP\2.7.0\Drivers\CMSIS\Device\ST\STM32F2xx\Include-D__UVISION_VERSION="517" -D_RTE_ -DSTM32F207xx -DSTM32F2XX -DUSE_STDPERIPH_DRIVER-o .\obj\dns.o --omf_browse .\obj\dns.crf --depend .\obj\dns.d)
 I (..\lwip\include\lwip/opt.h)(0x59F6B73B)
-I (..\lwip\include\lwipopts.h)(0x5A02C885)
+I (..\lwip\include\lwipopts.h)(0x5A03FCDE)
 I (..\lwip\include\lwip/debug.h)(0x59F6B73B)
 I (..\lwip\include\lwip/arch.h)(0x5A02D2FD)
 I (..\lwip\include\arch/cc.h)(0x5A02D377)
@@ -3445,7 +3445,7 @@ I (..\UCOSIII\uCOS-III\Source\os.h)(0x59F6B73B)
 I (..\UCOSIII\uCOS-CONFIG\os_cfg.h)(0x59F6B73B)
 I (..\UCOSIII\uCOS-III\Source\os_type.h)(0x59F6B73B)
 I (..\UCOSIII\uCOS-III\Ports\ARM-Cortex-M3\Generic\RealView\os_cpu.h)(0x59F6B73B)
-I (..\UCOSIII\uCOS-CONFIG\app_cfg.h)(0x59F6B73B)
+I (..\UCOSIII\uCOS-CONFIG\app_cfg.h)(0x5A040ECE)
 I (..\bsp\bsp.h)(0x59F6B73B)
 I (..\Libraries\CMSIS\Device\stm32f2xx.h)(0x59F6B73B)
 I (..\Libraries\CMSIS\Include\core_cm3.h)(0x59F6B73B)
@@ -3488,7 +3488,7 @@ I (d:\Keil_v5\ARM\ARMCC\include\inttypes.h)(0x55DB2B7E)
 I (d:\Keil_v5\ARM\ARMCC\include\limits.h)(0x55DB2B7E)
 F (..\lwip\core\inet_chksum.c)(0x59F6B73B)(-c --cpu Cortex-M3 -D__MICROLIB -g -W -O0 --apcs=interwork -I..\app -I..\bsp -I..\driver -I..\Libraries\STM32F2xx_StdPeriph_Driver\src -I..\Libraries\STM32F2xx_StdPeriph_Driver\inc -I..\Libraries\STM32F2x7_ETH_Driver\src -I..\Libraries\STM32F2x7_ETH_Driver\inc -I..\Libraries\CMSIS\Include -I..\Libraries\CMSIS\Device -I..\UCOSIII\uC-LIB -I..\UCOSIII\uC-CPU -I..\UCOSIII\uCOS-CONFIG -I..\UCOSIII\uC-CPU\ARM-Cortex-M3\RealView -I..\UCOSIII\uC-LIB\Ports\ARM-Cortex-M3\RealView -I..\UCOSIII\uCOS-III\Source -I..\UCOSIII\uCOS-III\Ports\ARM-Cortex-M3\Generic\RealView -I..\FATFS -I..\lwip\include -I..\lwip\apps\tcpecho_raw -I..\lwip\apps -I..\lwip\apps\socket_examples --diag_suppress=177-I E:\github\gatewayapp\src\project\RTE-I d:\Keil_v5\ARM\PACK\ARM\CMSIS\5.1.0\CMSIS\Include-I d:\Keil_v5\ARM\PACK\Keil\STM32F2xx_DFP\2.7.0\Drivers\CMSIS\Device\ST\STM32F2xx\Include-D__UVISION_VERSION="517" -D_RTE_ -DSTM32F207xx -DSTM32F2XX -DUSE_STDPERIPH_DRIVER-o .\obj\inet_chksum.o --omf_browse .\obj\inet_chksum.crf --depend .\obj\inet_chksum.d)
 I (..\lwip\include\lwip/opt.h)(0x59F6B73B)
-I (..\lwip\include\lwipopts.h)(0x5A02C885)
+I (..\lwip\include\lwipopts.h)(0x5A03FCDE)
 I (..\lwip\include\lwip/debug.h)(0x59F6B73B)
 I (..\lwip\include\lwip/arch.h)(0x5A02D2FD)
 I (..\lwip\include\arch/cc.h)(0x5A02D377)
@@ -3512,7 +3512,7 @@ I (..\UCOSIII\uCOS-III\Source\os.h)(0x59F6B73B)
 I (..\UCOSIII\uCOS-CONFIG\os_cfg.h)(0x59F6B73B)
 I (..\UCOSIII\uCOS-III\Source\os_type.h)(0x59F6B73B)
 I (..\UCOSIII\uCOS-III\Ports\ARM-Cortex-M3\Generic\RealView\os_cpu.h)(0x59F6B73B)
-I (..\UCOSIII\uCOS-CONFIG\app_cfg.h)(0x59F6B73B)
+I (..\UCOSIII\uCOS-CONFIG\app_cfg.h)(0x5A040ECE)
 I (..\bsp\bsp.h)(0x59F6B73B)
 I (..\Libraries\CMSIS\Device\stm32f2xx.h)(0x59F6B73B)
 I (..\Libraries\CMSIS\Include\core_cm3.h)(0x59F6B73B)
@@ -3563,7 +3563,7 @@ I (..\lwip\include\lwip/ip6_addr.h)(0x59F6B73B)
 I (d:\Keil_v5\ARM\ARMCC\include\string.h)(0x55DB2B78)
 F (..\lwip\core\init.c)(0x59F6B73B)(-c --cpu Cortex-M3 -D__MICROLIB -g -W -O0 --apcs=interwork -I..\app -I..\bsp -I..\driver -I..\Libraries\STM32F2xx_StdPeriph_Driver\src -I..\Libraries\STM32F2xx_StdPeriph_Driver\inc -I..\Libraries\STM32F2x7_ETH_Driver\src -I..\Libraries\STM32F2x7_ETH_Driver\inc -I..\Libraries\CMSIS\Include -I..\Libraries\CMSIS\Device -I..\UCOSIII\uC-LIB -I..\UCOSIII\uC-CPU -I..\UCOSIII\uCOS-CONFIG -I..\UCOSIII\uC-CPU\ARM-Cortex-M3\RealView -I..\UCOSIII\uC-LIB\Ports\ARM-Cortex-M3\RealView -I..\UCOSIII\uCOS-III\Source -I..\UCOSIII\uCOS-III\Ports\ARM-Cortex-M3\Generic\RealView -I..\FATFS -I..\lwip\include -I..\lwip\apps\tcpecho_raw -I..\lwip\apps -I..\lwip\apps\socket_examples --diag_suppress=177-I E:\github\gatewayapp\src\project\RTE-I d:\Keil_v5\ARM\PACK\ARM\CMSIS\5.1.0\CMSIS\Include-I d:\Keil_v5\ARM\PACK\Keil\STM32F2xx_DFP\2.7.0\Drivers\CMSIS\Device\ST\STM32F2xx\Include-D__UVISION_VERSION="517" -D_RTE_ -DSTM32F207xx -DSTM32F2XX -DUSE_STDPERIPH_DRIVER-o .\obj\init.o --omf_browse .\obj\init.crf --depend .\obj\init.d)
 I (..\lwip\include\lwip/opt.h)(0x59F6B73B)
-I (..\lwip\include\lwipopts.h)(0x5A02C885)
+I (..\lwip\include\lwipopts.h)(0x5A03FCDE)
 I (..\lwip\include\lwip/debug.h)(0x59F6B73B)
 I (..\lwip\include\lwip/arch.h)(0x5A02D2FD)
 I (..\lwip\include\arch/cc.h)(0x5A02D377)
@@ -3587,7 +3587,7 @@ I (..\UCOSIII\uCOS-III\Source\os.h)(0x59F6B73B)
 I (..\UCOSIII\uCOS-CONFIG\os_cfg.h)(0x59F6B73B)
 I (..\UCOSIII\uCOS-III\Source\os_type.h)(0x59F6B73B)
 I (..\UCOSIII\uCOS-III\Ports\ARM-Cortex-M3\Generic\RealView\os_cpu.h)(0x59F6B73B)
-I (..\UCOSIII\uCOS-CONFIG\app_cfg.h)(0x59F6B73B)
+I (..\UCOSIII\uCOS-CONFIG\app_cfg.h)(0x5A040ECE)
 I (..\bsp\bsp.h)(0x59F6B73B)
 I (..\Libraries\CMSIS\Device\stm32f2xx.h)(0x59F6B73B)
 I (..\Libraries\CMSIS\Include\core_cm3.h)(0x59F6B73B)
@@ -3634,7 +3634,7 @@ I (..\lwip\include\lwip/mem.h)(0x59F6B73B)
 I (..\lwip\include\lwip/memp.h)(0x59F6B73B)
 I (..\lwip\include\lwip/priv/memp_std.h)(0x59F6B73B)
 I (..\lwip\include\lwip/priv/memp_priv.h)(0x59F6B73B)
-I (..\lwip\include\lwip/sys.h)(0x5A02D703)
+I (..\lwip\include\lwip/sys.h)(0x5A04038B)
 I (..\lwip\include\lwip/err.h)(0x59F6B73B)
 I (..\lwip\include\arch/sys_arch.h)(0x5A02CE48)
 I (..\lwip\include\lwip/pbuf.h)(0x59F6B73B)
@@ -3673,7 +3673,7 @@ I (..\lwip\include\netif/ppp/ppp_opts.h)(0x59F6B73C)
 I (..\lwip\include\netif/ppp/ppp_impl.h)(0x59F6B73C)
 F (..\lwip\core\ip.c)(0x59F6B73B)(-c --cpu Cortex-M3 -D__MICROLIB -g -W -O0 --apcs=interwork -I..\app -I..\bsp -I..\driver -I..\Libraries\STM32F2xx_StdPeriph_Driver\src -I..\Libraries\STM32F2xx_StdPeriph_Driver\inc -I..\Libraries\STM32F2x7_ETH_Driver\src -I..\Libraries\STM32F2x7_ETH_Driver\inc -I..\Libraries\CMSIS\Include -I..\Libraries\CMSIS\Device -I..\UCOSIII\uC-LIB -I..\UCOSIII\uC-CPU -I..\UCOSIII\uCOS-CONFIG -I..\UCOSIII\uC-CPU\ARM-Cortex-M3\RealView -I..\UCOSIII\uC-LIB\Ports\ARM-Cortex-M3\RealView -I..\UCOSIII\uCOS-III\Source -I..\UCOSIII\uCOS-III\Ports\ARM-Cortex-M3\Generic\RealView -I..\FATFS -I..\lwip\include -I..\lwip\apps\tcpecho_raw -I..\lwip\apps -I..\lwip\apps\socket_examples --diag_suppress=177-I E:\github\gatewayapp\src\project\RTE-I d:\Keil_v5\ARM\PACK\ARM\CMSIS\5.1.0\CMSIS\Include-I d:\Keil_v5\ARM\PACK\Keil\STM32F2xx_DFP\2.7.0\Drivers\CMSIS\Device\ST\STM32F2xx\Include-D__UVISION_VERSION="517" -D_RTE_ -DSTM32F207xx -DSTM32F2XX -DUSE_STDPERIPH_DRIVER-o .\obj\ip.o --omf_browse .\obj\ip.crf --depend .\obj\ip.d)
 I (..\lwip\include\lwip/opt.h)(0x59F6B73B)
-I (..\lwip\include\lwipopts.h)(0x5A02C885)
+I (..\lwip\include\lwipopts.h)(0x5A03FCDE)
 I (..\lwip\include\lwip/debug.h)(0x59F6B73B)
 I (..\lwip\include\lwip/arch.h)(0x5A02D2FD)
 I (..\lwip\include\arch/cc.h)(0x5A02D377)
@@ -3697,7 +3697,7 @@ I (..\UCOSIII\uCOS-III\Source\os.h)(0x59F6B73B)
 I (..\UCOSIII\uCOS-CONFIG\os_cfg.h)(0x59F6B73B)
 I (..\UCOSIII\uCOS-III\Source\os_type.h)(0x59F6B73B)
 I (..\UCOSIII\uCOS-III\Ports\ARM-Cortex-M3\Generic\RealView\os_cpu.h)(0x59F6B73B)
-I (..\UCOSIII\uCOS-CONFIG\app_cfg.h)(0x59F6B73B)
+I (..\UCOSIII\uCOS-CONFIG\app_cfg.h)(0x5A040ECE)
 I (..\bsp\bsp.h)(0x59F6B73B)
 I (..\Libraries\CMSIS\Device\stm32f2xx.h)(0x59F6B73B)
 I (..\Libraries\CMSIS\Include\core_cm3.h)(0x59F6B73B)
@@ -3757,7 +3757,7 @@ I (..\lwip\include\lwip/ip6.h)(0x59F6B73B)
 I (..\lwip\include\lwip/prot/ip.h)(0x59F6B73B)
 F (..\lwip\core\mem.c)(0x59F6B73B)(-c --cpu Cortex-M3 -D__MICROLIB -g -W -O0 --apcs=interwork -I..\app -I..\bsp -I..\driver -I..\Libraries\STM32F2xx_StdPeriph_Driver\src -I..\Libraries\STM32F2xx_StdPeriph_Driver\inc -I..\Libraries\STM32F2x7_ETH_Driver\src -I..\Libraries\STM32F2x7_ETH_Driver\inc -I..\Libraries\CMSIS\Include -I..\Libraries\CMSIS\Device -I..\UCOSIII\uC-LIB -I..\UCOSIII\uC-CPU -I..\UCOSIII\uCOS-CONFIG -I..\UCOSIII\uC-CPU\ARM-Cortex-M3\RealView -I..\UCOSIII\uC-LIB\Ports\ARM-Cortex-M3\RealView -I..\UCOSIII\uCOS-III\Source -I..\UCOSIII\uCOS-III\Ports\ARM-Cortex-M3\Generic\RealView -I..\FATFS -I..\lwip\include -I..\lwip\apps\tcpecho_raw -I..\lwip\apps -I..\lwip\apps\socket_examples --diag_suppress=177-I E:\github\gatewayapp\src\project\RTE-I d:\Keil_v5\ARM\PACK\ARM\CMSIS\5.1.0\CMSIS\Include-I d:\Keil_v5\ARM\PACK\Keil\STM32F2xx_DFP\2.7.0\Drivers\CMSIS\Device\ST\STM32F2xx\Include-D__UVISION_VERSION="517" -D_RTE_ -DSTM32F207xx -DSTM32F2XX -DUSE_STDPERIPH_DRIVER-o .\obj\mem.o --omf_browse .\obj\mem.crf --depend .\obj\mem.d)
 I (..\lwip\include\lwip/opt.h)(0x59F6B73B)
-I (..\lwip\include\lwipopts.h)(0x5A02C885)
+I (..\lwip\include\lwipopts.h)(0x5A03FCDE)
 I (..\lwip\include\lwip/debug.h)(0x59F6B73B)
 I (..\lwip\include\lwip/arch.h)(0x5A02D2FD)
 I (..\lwip\include\arch/cc.h)(0x5A02D377)
@@ -3781,7 +3781,7 @@ I (..\UCOSIII\uCOS-III\Source\os.h)(0x59F6B73B)
 I (..\UCOSIII\uCOS-CONFIG\os_cfg.h)(0x59F6B73B)
 I (..\UCOSIII\uCOS-III\Source\os_type.h)(0x59F6B73B)
 I (..\UCOSIII\uCOS-III\Ports\ARM-Cortex-M3\Generic\RealView\os_cpu.h)(0x59F6B73B)
-I (..\UCOSIII\uCOS-CONFIG\app_cfg.h)(0x59F6B73B)
+I (..\UCOSIII\uCOS-CONFIG\app_cfg.h)(0x5A040ECE)
 I (..\bsp\bsp.h)(0x59F6B73B)
 I (..\Libraries\CMSIS\Device\stm32f2xx.h)(0x59F6B73B)
 I (..\Libraries\CMSIS\Include\core_cm3.h)(0x59F6B73B)
@@ -3824,7 +3824,7 @@ I (d:\Keil_v5\ARM\ARMCC\include\inttypes.h)(0x55DB2B7E)
 I (d:\Keil_v5\ARM\ARMCC\include\limits.h)(0x55DB2B7E)
 I (..\lwip\include\lwip/mem.h)(0x59F6B73B)
 I (..\lwip\include\lwip/def.h)(0x59F6B73B)
-I (..\lwip\include\lwip/sys.h)(0x5A02D703)
+I (..\lwip\include\lwip/sys.h)(0x5A04038B)
 I (..\lwip\include\lwip/err.h)(0x59F6B73B)
 I (..\lwip\include\arch/sys_arch.h)(0x5A02CE48)
 I (..\lwip\include\lwip/stats.h)(0x59F6B73B)
@@ -3834,7 +3834,7 @@ I (..\lwip\include\lwip/priv/memp_priv.h)(0x59F6B73B)
 I (d:\Keil_v5\ARM\ARMCC\include\string.h)(0x55DB2B78)
 F (..\lwip\core\memp.c)(0x59F6B73B)(-c --cpu Cortex-M3 -D__MICROLIB -g -W -O0 --apcs=interwork -I..\app -I..\bsp -I..\driver -I..\Libraries\STM32F2xx_StdPeriph_Driver\src -I..\Libraries\STM32F2xx_StdPeriph_Driver\inc -I..\Libraries\STM32F2x7_ETH_Driver\src -I..\Libraries\STM32F2x7_ETH_Driver\inc -I..\Libraries\CMSIS\Include -I..\Libraries\CMSIS\Device -I..\UCOSIII\uC-LIB -I..\UCOSIII\uC-CPU -I..\UCOSIII\uCOS-CONFIG -I..\UCOSIII\uC-CPU\ARM-Cortex-M3\RealView -I..\UCOSIII\uC-LIB\Ports\ARM-Cortex-M3\RealView -I..\UCOSIII\uCOS-III\Source -I..\UCOSIII\uCOS-III\Ports\ARM-Cortex-M3\Generic\RealView -I..\FATFS -I..\lwip\include -I..\lwip\apps\tcpecho_raw -I..\lwip\apps -I..\lwip\apps\socket_examples --diag_suppress=177-I E:\github\gatewayapp\src\project\RTE-I d:\Keil_v5\ARM\PACK\ARM\CMSIS\5.1.0\CMSIS\Include-I d:\Keil_v5\ARM\PACK\Keil\STM32F2xx_DFP\2.7.0\Drivers\CMSIS\Device\ST\STM32F2xx\Include-D__UVISION_VERSION="517" -D_RTE_ -DSTM32F207xx -DSTM32F2XX -DUSE_STDPERIPH_DRIVER-o .\obj\memp.o --omf_browse .\obj\memp.crf --depend .\obj\memp.d)
 I (..\lwip\include\lwip/opt.h)(0x59F6B73B)
-I (..\lwip\include\lwipopts.h)(0x5A02C885)
+I (..\lwip\include\lwipopts.h)(0x5A03FCDE)
 I (..\lwip\include\lwip/debug.h)(0x59F6B73B)
 I (..\lwip\include\lwip/arch.h)(0x5A02D2FD)
 I (..\lwip\include\arch/cc.h)(0x5A02D377)
@@ -3858,7 +3858,7 @@ I (..\UCOSIII\uCOS-III\Source\os.h)(0x59F6B73B)
 I (..\UCOSIII\uCOS-CONFIG\os_cfg.h)(0x59F6B73B)
 I (..\UCOSIII\uCOS-III\Source\os_type.h)(0x59F6B73B)
 I (..\UCOSIII\uCOS-III\Ports\ARM-Cortex-M3\Generic\RealView\os_cpu.h)(0x59F6B73B)
-I (..\UCOSIII\uCOS-CONFIG\app_cfg.h)(0x59F6B73B)
+I (..\UCOSIII\uCOS-CONFIG\app_cfg.h)(0x5A040ECE)
 I (..\bsp\bsp.h)(0x59F6B73B)
 I (..\Libraries\CMSIS\Device\stm32f2xx.h)(0x59F6B73B)
 I (..\Libraries\CMSIS\Include\core_cm3.h)(0x59F6B73B)
@@ -3904,7 +3904,7 @@ I (..\lwip\include\lwip/priv/memp_std.h)(0x59F6B73B)
 I (..\lwip\include\lwip/priv/memp_priv.h)(0x59F6B73B)
 I (..\lwip\include\lwip/mem.h)(0x59F6B73B)
 I (..\lwip\include\lwip/stats.h)(0x59F6B73B)
-I (..\lwip\include\lwip/sys.h)(0x5A02D703)
+I (..\lwip\include\lwip/sys.h)(0x5A04038B)
 I (..\lwip\include\lwip/err.h)(0x59F6B73B)
 I (..\lwip\include\arch/sys_arch.h)(0x5A02CE48)
 I (d:\Keil_v5\ARM\ARMCC\include\string.h)(0x55DB2B78)
@@ -3950,7 +3950,7 @@ I (..\lwip\include\lwip/ip6_frag.h)(0x59F6B73B)
 I (..\lwip\include\lwip/mld6.h)(0x59F6B73B)
 F (..\lwip\core\netif.c)(0x59F6B73B)(-c --cpu Cortex-M3 -D__MICROLIB -g -W -O0 --apcs=interwork -I..\app -I..\bsp -I..\driver -I..\Libraries\STM32F2xx_StdPeriph_Driver\src -I..\Libraries\STM32F2xx_StdPeriph_Driver\inc -I..\Libraries\STM32F2x7_ETH_Driver\src -I..\Libraries\STM32F2x7_ETH_Driver\inc -I..\Libraries\CMSIS\Include -I..\Libraries\CMSIS\Device -I..\UCOSIII\uC-LIB -I..\UCOSIII\uC-CPU -I..\UCOSIII\uCOS-CONFIG -I..\UCOSIII\uC-CPU\ARM-Cortex-M3\RealView -I..\UCOSIII\uC-LIB\Ports\ARM-Cortex-M3\RealView -I..\UCOSIII\uCOS-III\Source -I..\UCOSIII\uCOS-III\Ports\ARM-Cortex-M3\Generic\RealView -I..\FATFS -I..\lwip\include -I..\lwip\apps\tcpecho_raw -I..\lwip\apps -I..\lwip\apps\socket_examples --diag_suppress=177-I E:\github\gatewayapp\src\project\RTE-I d:\Keil_v5\ARM\PACK\ARM\CMSIS\5.1.0\CMSIS\Include-I d:\Keil_v5\ARM\PACK\Keil\STM32F2xx_DFP\2.7.0\Drivers\CMSIS\Device\ST\STM32F2xx\Include-D__UVISION_VERSION="517" -D_RTE_ -DSTM32F207xx -DSTM32F2XX -DUSE_STDPERIPH_DRIVER-o .\obj\netif.o --omf_browse .\obj\netif.crf --depend .\obj\netif.d)
 I (..\lwip\include\lwip/opt.h)(0x59F6B73B)
-I (..\lwip\include\lwipopts.h)(0x5A02C885)
+I (..\lwip\include\lwipopts.h)(0x5A03FCDE)
 I (..\lwip\include\lwip/debug.h)(0x59F6B73B)
 I (..\lwip\include\lwip/arch.h)(0x5A02D2FD)
 I (..\lwip\include\arch/cc.h)(0x5A02D377)
@@ -3974,7 +3974,7 @@ I (..\UCOSIII\uCOS-III\Source\os.h)(0x59F6B73B)
 I (..\UCOSIII\uCOS-CONFIG\os_cfg.h)(0x59F6B73B)
 I (..\UCOSIII\uCOS-III\Source\os_type.h)(0x59F6B73B)
 I (..\UCOSIII\uCOS-III\Ports\ARM-Cortex-M3\Generic\RealView\os_cpu.h)(0x59F6B73B)
-I (..\UCOSIII\uCOS-CONFIG\app_cfg.h)(0x59F6B73B)
+I (..\UCOSIII\uCOS-CONFIG\app_cfg.h)(0x5A040ECE)
 I (..\bsp\bsp.h)(0x59F6B73B)
 I (..\Libraries\CMSIS\Device\stm32f2xx.h)(0x59F6B73B)
 I (..\Libraries\CMSIS\Include\core_cm3.h)(0x59F6B73B)
@@ -4046,13 +4046,13 @@ I (..\lwip\include\lwip/igmp.h)(0x59F6B73B)
 I (..\lwip\include\lwip/etharp.h)(0x59F6B73B)
 I (..\lwip\include\lwip/prot/ethernet.h)(0x59F6B73B)
 I (..\lwip\include\lwip/prot/etharp.h)(0x59F6B73B)
-I (..\lwip\include\lwip/sys.h)(0x5A02D703)
+I (..\lwip\include\lwip/sys.h)(0x5A04038B)
 I (..\lwip\include\arch/sys_arch.h)(0x5A02CE48)
 I (..\lwip\include\netif/ethernet.h)(0x59F6B73B)
 I (..\lwip\include\lwip/dhcp.h)(0x59F6B73B)
 F (..\lwip\core\pbuf.c)(0x59F6B73B)(-c --cpu Cortex-M3 -D__MICROLIB -g -W -O0 --apcs=interwork -I..\app -I..\bsp -I..\driver -I..\Libraries\STM32F2xx_StdPeriph_Driver\src -I..\Libraries\STM32F2xx_StdPeriph_Driver\inc -I..\Libraries\STM32F2x7_ETH_Driver\src -I..\Libraries\STM32F2x7_ETH_Driver\inc -I..\Libraries\CMSIS\Include -I..\Libraries\CMSIS\Device -I..\UCOSIII\uC-LIB -I..\UCOSIII\uC-CPU -I..\UCOSIII\uCOS-CONFIG -I..\UCOSIII\uC-CPU\ARM-Cortex-M3\RealView -I..\UCOSIII\uC-LIB\Ports\ARM-Cortex-M3\RealView -I..\UCOSIII\uCOS-III\Source -I..\UCOSIII\uCOS-III\Ports\ARM-Cortex-M3\Generic\RealView -I..\FATFS -I..\lwip\include -I..\lwip\apps\tcpecho_raw -I..\lwip\apps -I..\lwip\apps\socket_examples --diag_suppress=177-I E:\github\gatewayapp\src\project\RTE-I d:\Keil_v5\ARM\PACK\ARM\CMSIS\5.1.0\CMSIS\Include-I d:\Keil_v5\ARM\PACK\Keil\STM32F2xx_DFP\2.7.0\Drivers\CMSIS\Device\ST\STM32F2xx\Include-D__UVISION_VERSION="517" -D_RTE_ -DSTM32F207xx -DSTM32F2XX -DUSE_STDPERIPH_DRIVER-o .\obj\pbuf.o --omf_browse .\obj\pbuf.crf --depend .\obj\pbuf.d)
 I (..\lwip\include\lwip/opt.h)(0x59F6B73B)
-I (..\lwip\include\lwipopts.h)(0x5A02C885)
+I (..\lwip\include\lwipopts.h)(0x5A03FCDE)
 I (..\lwip\include\lwip/debug.h)(0x59F6B73B)
 I (..\lwip\include\lwip/arch.h)(0x5A02D2FD)
 I (..\lwip\include\arch/cc.h)(0x5A02D377)
@@ -4076,7 +4076,7 @@ I (..\UCOSIII\uCOS-III\Source\os.h)(0x59F6B73B)
 I (..\UCOSIII\uCOS-CONFIG\os_cfg.h)(0x59F6B73B)
 I (..\UCOSIII\uCOS-III\Source\os_type.h)(0x59F6B73B)
 I (..\UCOSIII\uCOS-III\Ports\ARM-Cortex-M3\Generic\RealView\os_cpu.h)(0x59F6B73B)
-I (..\UCOSIII\uCOS-CONFIG\app_cfg.h)(0x59F6B73B)
+I (..\UCOSIII\uCOS-CONFIG\app_cfg.h)(0x5A040ECE)
 I (..\bsp\bsp.h)(0x59F6B73B)
 I (..\Libraries\CMSIS\Device\stm32f2xx.h)(0x59F6B73B)
 I (..\Libraries\CMSIS\Include\core_cm3.h)(0x59F6B73B)
@@ -4125,12 +4125,12 @@ I (..\lwip\include\lwip/priv/memp_priv.h)(0x59F6B73B)
 I (..\lwip\include\lwip/def.h)(0x59F6B73B)
 I (..\lwip\include\lwip/pbuf.h)(0x59F6B73B)
 I (..\lwip\include\lwip/err.h)(0x59F6B73B)
-I (..\lwip\include\lwip/sys.h)(0x5A02D703)
+I (..\lwip\include\lwip/sys.h)(0x5A04038B)
 I (..\lwip\include\arch/sys_arch.h)(0x5A02CE48)
 I (d:\Keil_v5\ARM\ARMCC\include\string.h)(0x55DB2B78)
 F (..\lwip\core\raw.c)(0x59F6B73B)(-c --cpu Cortex-M3 -D__MICROLIB -g -W -O0 --apcs=interwork -I..\app -I..\bsp -I..\driver -I..\Libraries\STM32F2xx_StdPeriph_Driver\src -I..\Libraries\STM32F2xx_StdPeriph_Driver\inc -I..\Libraries\STM32F2x7_ETH_Driver\src -I..\Libraries\STM32F2x7_ETH_Driver\inc -I..\Libraries\CMSIS\Include -I..\Libraries\CMSIS\Device -I..\UCOSIII\uC-LIB -I..\UCOSIII\uC-CPU -I..\UCOSIII\uCOS-CONFIG -I..\UCOSIII\uC-CPU\ARM-Cortex-M3\RealView -I..\UCOSIII\uC-LIB\Ports\ARM-Cortex-M3\RealView -I..\UCOSIII\uCOS-III\Source -I..\UCOSIII\uCOS-III\Ports\ARM-Cortex-M3\Generic\RealView -I..\FATFS -I..\lwip\include -I..\lwip\apps\tcpecho_raw -I..\lwip\apps -I..\lwip\apps\socket_examples --diag_suppress=177-I E:\github\gatewayapp\src\project\RTE-I d:\Keil_v5\ARM\PACK\ARM\CMSIS\5.1.0\CMSIS\Include-I d:\Keil_v5\ARM\PACK\Keil\STM32F2xx_DFP\2.7.0\Drivers\CMSIS\Device\ST\STM32F2xx\Include-D__UVISION_VERSION="517" -D_RTE_ -DSTM32F207xx -DSTM32F2XX -DUSE_STDPERIPH_DRIVER-o .\obj\raw.o --omf_browse .\obj\raw.crf --depend .\obj\raw.d)
 I (..\lwip\include\lwip/opt.h)(0x59F6B73B)
-I (..\lwip\include\lwipopts.h)(0x5A02C885)
+I (..\lwip\include\lwipopts.h)(0x5A03FCDE)
 I (..\lwip\include\lwip/debug.h)(0x59F6B73B)
 I (..\lwip\include\lwip/arch.h)(0x5A02D2FD)
 I (..\lwip\include\arch/cc.h)(0x5A02D377)
@@ -4154,7 +4154,7 @@ I (..\UCOSIII\uCOS-III\Source\os.h)(0x59F6B73B)
 I (..\UCOSIII\uCOS-CONFIG\os_cfg.h)(0x59F6B73B)
 I (..\UCOSIII\uCOS-III\Source\os_type.h)(0x59F6B73B)
 I (..\UCOSIII\uCOS-III\Ports\ARM-Cortex-M3\Generic\RealView\os_cpu.h)(0x59F6B73B)
-I (..\UCOSIII\uCOS-CONFIG\app_cfg.h)(0x59F6B73B)
+I (..\UCOSIII\uCOS-CONFIG\app_cfg.h)(0x5A040ECE)
 I (..\bsp\bsp.h)(0x59F6B73B)
 I (..\Libraries\CMSIS\Device\stm32f2xx.h)(0x59F6B73B)
 I (..\Libraries\CMSIS\Include\core_cm3.h)(0x59F6B73B)
@@ -4197,7 +4197,7 @@ I (d:\Keil_v5\ARM\ARMCC\include\inttypes.h)(0x55DB2B7E)
 I (d:\Keil_v5\ARM\ARMCC\include\limits.h)(0x55DB2B7E)
 F (..\lwip\core\stats.c)(0x59F6B73B)(-c --cpu Cortex-M3 -D__MICROLIB -g -W -O0 --apcs=interwork -I..\app -I..\bsp -I..\driver -I..\Libraries\STM32F2xx_StdPeriph_Driver\src -I..\Libraries\STM32F2xx_StdPeriph_Driver\inc -I..\Libraries\STM32F2x7_ETH_Driver\src -I..\Libraries\STM32F2x7_ETH_Driver\inc -I..\Libraries\CMSIS\Include -I..\Libraries\CMSIS\Device -I..\UCOSIII\uC-LIB -I..\UCOSIII\uC-CPU -I..\UCOSIII\uCOS-CONFIG -I..\UCOSIII\uC-CPU\ARM-Cortex-M3\RealView -I..\UCOSIII\uC-LIB\Ports\ARM-Cortex-M3\RealView -I..\UCOSIII\uCOS-III\Source -I..\UCOSIII\uCOS-III\Ports\ARM-Cortex-M3\Generic\RealView -I..\FATFS -I..\lwip\include -I..\lwip\apps\tcpecho_raw -I..\lwip\apps -I..\lwip\apps\socket_examples --diag_suppress=177-I E:\github\gatewayapp\src\project\RTE-I d:\Keil_v5\ARM\PACK\ARM\CMSIS\5.1.0\CMSIS\Include-I d:\Keil_v5\ARM\PACK\Keil\STM32F2xx_DFP\2.7.0\Drivers\CMSIS\Device\ST\STM32F2xx\Include-D__UVISION_VERSION="517" -D_RTE_ -DSTM32F207xx -DSTM32F2XX -DUSE_STDPERIPH_DRIVER-o .\obj\stats.o --omf_browse .\obj\stats.crf --depend .\obj\stats.d)
 I (..\lwip\include\lwip/opt.h)(0x59F6B73B)
-I (..\lwip\include\lwipopts.h)(0x5A02C885)
+I (..\lwip\include\lwipopts.h)(0x5A03FCDE)
 I (..\lwip\include\lwip/debug.h)(0x59F6B73B)
 I (..\lwip\include\lwip/arch.h)(0x5A02D2FD)
 I (..\lwip\include\arch/cc.h)(0x5A02D377)
@@ -4221,7 +4221,7 @@ I (..\UCOSIII\uCOS-III\Source\os.h)(0x59F6B73B)
 I (..\UCOSIII\uCOS-CONFIG\os_cfg.h)(0x59F6B73B)
 I (..\UCOSIII\uCOS-III\Source\os_type.h)(0x59F6B73B)
 I (..\UCOSIII\uCOS-III\Ports\ARM-Cortex-M3\Generic\RealView\os_cpu.h)(0x59F6B73B)
-I (..\UCOSIII\uCOS-CONFIG\app_cfg.h)(0x59F6B73B)
+I (..\UCOSIII\uCOS-CONFIG\app_cfg.h)(0x5A040ECE)
 I (..\bsp\bsp.h)(0x59F6B73B)
 I (..\Libraries\CMSIS\Device\stm32f2xx.h)(0x59F6B73B)
 I (..\Libraries\CMSIS\Include\core_cm3.h)(0x59F6B73B)
@@ -4264,7 +4264,7 @@ I (d:\Keil_v5\ARM\ARMCC\include\inttypes.h)(0x55DB2B7E)
 I (d:\Keil_v5\ARM\ARMCC\include\limits.h)(0x55DB2B7E)
 F (..\lwip\core\sys.c)(0x59F6B73B)(-c --cpu Cortex-M3 -D__MICROLIB -g -W -O0 --apcs=interwork -I..\app -I..\bsp -I..\driver -I..\Libraries\STM32F2xx_StdPeriph_Driver\src -I..\Libraries\STM32F2xx_StdPeriph_Driver\inc -I..\Libraries\STM32F2x7_ETH_Driver\src -I..\Libraries\STM32F2x7_ETH_Driver\inc -I..\Libraries\CMSIS\Include -I..\Libraries\CMSIS\Device -I..\UCOSIII\uC-LIB -I..\UCOSIII\uC-CPU -I..\UCOSIII\uCOS-CONFIG -I..\UCOSIII\uC-CPU\ARM-Cortex-M3\RealView -I..\UCOSIII\uC-LIB\Ports\ARM-Cortex-M3\RealView -I..\UCOSIII\uCOS-III\Source -I..\UCOSIII\uCOS-III\Ports\ARM-Cortex-M3\Generic\RealView -I..\FATFS -I..\lwip\include -I..\lwip\apps\tcpecho_raw -I..\lwip\apps -I..\lwip\apps\socket_examples --diag_suppress=177-I E:\github\gatewayapp\src\project\RTE-I d:\Keil_v5\ARM\PACK\ARM\CMSIS\5.1.0\CMSIS\Include-I d:\Keil_v5\ARM\PACK\Keil\STM32F2xx_DFP\2.7.0\Drivers\CMSIS\Device\ST\STM32F2xx\Include-D__UVISION_VERSION="517" -D_RTE_ -DSTM32F207xx -DSTM32F2XX -DUSE_STDPERIPH_DRIVER-o .\obj\sys.o --omf_browse .\obj\sys.crf --depend .\obj\sys.d)
 I (..\lwip\include\lwip/opt.h)(0x59F6B73B)
-I (..\lwip\include\lwipopts.h)(0x5A02C885)
+I (..\lwip\include\lwipopts.h)(0x5A03FCDE)
 I (..\lwip\include\lwip/debug.h)(0x59F6B73B)
 I (..\lwip\include\lwip/arch.h)(0x5A02D2FD)
 I (..\lwip\include\arch/cc.h)(0x5A02D377)
@@ -4288,7 +4288,7 @@ I (..\UCOSIII\uCOS-III\Source\os.h)(0x59F6B73B)
 I (..\UCOSIII\uCOS-CONFIG\os_cfg.h)(0x59F6B73B)
 I (..\UCOSIII\uCOS-III\Source\os_type.h)(0x59F6B73B)
 I (..\UCOSIII\uCOS-III\Ports\ARM-Cortex-M3\Generic\RealView\os_cpu.h)(0x59F6B73B)
-I (..\UCOSIII\uCOS-CONFIG\app_cfg.h)(0x59F6B73B)
+I (..\UCOSIII\uCOS-CONFIG\app_cfg.h)(0x5A040ECE)
 I (..\bsp\bsp.h)(0x59F6B73B)
 I (..\Libraries\CMSIS\Device\stm32f2xx.h)(0x59F6B73B)
 I (..\Libraries\CMSIS\Include\core_cm3.h)(0x59F6B73B)
@@ -4329,12 +4329,12 @@ I (..\app\system.h)(0x59F6B73B)
 I (d:\Keil_v5\ARM\ARMCC\include\stddef.h)(0x55DB2B7E)
 I (d:\Keil_v5\ARM\ARMCC\include\inttypes.h)(0x55DB2B7E)
 I (d:\Keil_v5\ARM\ARMCC\include\limits.h)(0x55DB2B7E)
-I (..\lwip\include\lwip/sys.h)(0x5A02D703)
+I (..\lwip\include\lwip/sys.h)(0x5A04038B)
 I (..\lwip\include\lwip/err.h)(0x59F6B73B)
 I (..\lwip\include\arch/sys_arch.h)(0x5A02CE48)
 F (..\lwip\core\tcp.c)(0x59F6B73B)(-c --cpu Cortex-M3 -D__MICROLIB -g -W -O0 --apcs=interwork -I..\app -I..\bsp -I..\driver -I..\Libraries\STM32F2xx_StdPeriph_Driver\src -I..\Libraries\STM32F2xx_StdPeriph_Driver\inc -I..\Libraries\STM32F2x7_ETH_Driver\src -I..\Libraries\STM32F2x7_ETH_Driver\inc -I..\Libraries\CMSIS\Include -I..\Libraries\CMSIS\Device -I..\UCOSIII\uC-LIB -I..\UCOSIII\uC-CPU -I..\UCOSIII\uCOS-CONFIG -I..\UCOSIII\uC-CPU\ARM-Cortex-M3\RealView -I..\UCOSIII\uC-LIB\Ports\ARM-Cortex-M3\RealView -I..\UCOSIII\uCOS-III\Source -I..\UCOSIII\uCOS-III\Ports\ARM-Cortex-M3\Generic\RealView -I..\FATFS -I..\lwip\include -I..\lwip\apps\tcpecho_raw -I..\lwip\apps -I..\lwip\apps\socket_examples --diag_suppress=177-I E:\github\gatewayapp\src\project\RTE-I d:\Keil_v5\ARM\PACK\ARM\CMSIS\5.1.0\CMSIS\Include-I d:\Keil_v5\ARM\PACK\Keil\STM32F2xx_DFP\2.7.0\Drivers\CMSIS\Device\ST\STM32F2xx\Include-D__UVISION_VERSION="517" -D_RTE_ -DSTM32F207xx -DSTM32F2XX -DUSE_STDPERIPH_DRIVER-o .\obj\tcp.o --omf_browse .\obj\tcp.crf --depend .\obj\tcp.d)
 I (..\lwip\include\lwip/opt.h)(0x59F6B73B)
-I (..\lwip\include\lwipopts.h)(0x5A02C885)
+I (..\lwip\include\lwipopts.h)(0x5A03FCDE)
 I (..\lwip\include\lwip/debug.h)(0x59F6B73B)
 I (..\lwip\include\lwip/arch.h)(0x5A02D2FD)
 I (..\lwip\include\arch/cc.h)(0x5A02D377)
@@ -4358,7 +4358,7 @@ I (..\UCOSIII\uCOS-III\Source\os.h)(0x59F6B73B)
 I (..\UCOSIII\uCOS-CONFIG\os_cfg.h)(0x59F6B73B)
 I (..\UCOSIII\uCOS-III\Source\os_type.h)(0x59F6B73B)
 I (..\UCOSIII\uCOS-III\Ports\ARM-Cortex-M3\Generic\RealView\os_cpu.h)(0x59F6B73B)
-I (..\UCOSIII\uCOS-CONFIG\app_cfg.h)(0x59F6B73B)
+I (..\UCOSIII\uCOS-CONFIG\app_cfg.h)(0x5A040ECE)
 I (..\bsp\bsp.h)(0x59F6B73B)
 I (..\Libraries\CMSIS\Device\stm32f2xx.h)(0x59F6B73B)
 I (..\Libraries\CMSIS\Include\core_cm3.h)(0x59F6B73B)
@@ -4425,7 +4425,7 @@ I (..\lwip\include\lwip/nd6.h)(0x59F6B73B)
 I (d:\Keil_v5\ARM\ARMCC\include\string.h)(0x55DB2B78)
 F (..\lwip\core\tcp_in.c)(0x59F6B73B)(-c --cpu Cortex-M3 -D__MICROLIB -g -W -O0 --apcs=interwork -I..\app -I..\bsp -I..\driver -I..\Libraries\STM32F2xx_StdPeriph_Driver\src -I..\Libraries\STM32F2xx_StdPeriph_Driver\inc -I..\Libraries\STM32F2x7_ETH_Driver\src -I..\Libraries\STM32F2x7_ETH_Driver\inc -I..\Libraries\CMSIS\Include -I..\Libraries\CMSIS\Device -I..\UCOSIII\uC-LIB -I..\UCOSIII\uC-CPU -I..\UCOSIII\uCOS-CONFIG -I..\UCOSIII\uC-CPU\ARM-Cortex-M3\RealView -I..\UCOSIII\uC-LIB\Ports\ARM-Cortex-M3\RealView -I..\UCOSIII\uCOS-III\Source -I..\UCOSIII\uCOS-III\Ports\ARM-Cortex-M3\Generic\RealView -I..\FATFS -I..\lwip\include -I..\lwip\apps\tcpecho_raw -I..\lwip\apps -I..\lwip\apps\socket_examples --diag_suppress=177-I E:\github\gatewayapp\src\project\RTE-I d:\Keil_v5\ARM\PACK\ARM\CMSIS\5.1.0\CMSIS\Include-I d:\Keil_v5\ARM\PACK\Keil\STM32F2xx_DFP\2.7.0\Drivers\CMSIS\Device\ST\STM32F2xx\Include-D__UVISION_VERSION="517" -D_RTE_ -DSTM32F207xx -DSTM32F2XX -DUSE_STDPERIPH_DRIVER-o .\obj\tcp_in.o --omf_browse .\obj\tcp_in.crf --depend .\obj\tcp_in.d)
 I (..\lwip\include\lwip/opt.h)(0x59F6B73B)
-I (..\lwip\include\lwipopts.h)(0x5A02C885)
+I (..\lwip\include\lwipopts.h)(0x5A03FCDE)
 I (..\lwip\include\lwip/debug.h)(0x59F6B73B)
 I (..\lwip\include\lwip/arch.h)(0x5A02D2FD)
 I (..\lwip\include\arch/cc.h)(0x5A02D377)
@@ -4449,7 +4449,7 @@ I (..\UCOSIII\uCOS-III\Source\os.h)(0x59F6B73B)
 I (..\UCOSIII\uCOS-CONFIG\os_cfg.h)(0x59F6B73B)
 I (..\UCOSIII\uCOS-III\Source\os_type.h)(0x59F6B73B)
 I (..\UCOSIII\uCOS-III\Ports\ARM-Cortex-M3\Generic\RealView\os_cpu.h)(0x59F6B73B)
-I (..\UCOSIII\uCOS-CONFIG\app_cfg.h)(0x59F6B73B)
+I (..\UCOSIII\uCOS-CONFIG\app_cfg.h)(0x5A040ECE)
 I (..\bsp\bsp.h)(0x59F6B73B)
 I (..\Libraries\CMSIS\Device\stm32f2xx.h)(0x59F6B73B)
 I (..\Libraries\CMSIS\Include\core_cm3.h)(0x59F6B73B)
@@ -4516,7 +4516,7 @@ I (..\lwip\include\lwip/inet_chksum.h)(0x59F6B73B)
 I (..\lwip\include\lwip/nd6.h)(0x59F6B73B)
 F (..\lwip\core\tcp_out.c)(0x59F6B73B)(-c --cpu Cortex-M3 -D__MICROLIB -g -W -O0 --apcs=interwork -I..\app -I..\bsp -I..\driver -I..\Libraries\STM32F2xx_StdPeriph_Driver\src -I..\Libraries\STM32F2xx_StdPeriph_Driver\inc -I..\Libraries\STM32F2x7_ETH_Driver\src -I..\Libraries\STM32F2x7_ETH_Driver\inc -I..\Libraries\CMSIS\Include -I..\Libraries\CMSIS\Device -I..\UCOSIII\uC-LIB -I..\UCOSIII\uC-CPU -I..\UCOSIII\uCOS-CONFIG -I..\UCOSIII\uC-CPU\ARM-Cortex-M3\RealView -I..\UCOSIII\uC-LIB\Ports\ARM-Cortex-M3\RealView -I..\UCOSIII\uCOS-III\Source -I..\UCOSIII\uCOS-III\Ports\ARM-Cortex-M3\Generic\RealView -I..\FATFS -I..\lwip\include -I..\lwip\apps\tcpecho_raw -I..\lwip\apps -I..\lwip\apps\socket_examples --diag_suppress=177-I E:\github\gatewayapp\src\project\RTE-I d:\Keil_v5\ARM\PACK\ARM\CMSIS\5.1.0\CMSIS\Include-I d:\Keil_v5\ARM\PACK\Keil\STM32F2xx_DFP\2.7.0\Drivers\CMSIS\Device\ST\STM32F2xx\Include-D__UVISION_VERSION="517" -D_RTE_ -DSTM32F207xx -DSTM32F2XX -DUSE_STDPERIPH_DRIVER-o .\obj\tcp_out.o --omf_browse .\obj\tcp_out.crf --depend .\obj\tcp_out.d)
 I (..\lwip\include\lwip/opt.h)(0x59F6B73B)
-I (..\lwip\include\lwipopts.h)(0x5A02C885)
+I (..\lwip\include\lwipopts.h)(0x5A03FCDE)
 I (..\lwip\include\lwip/debug.h)(0x59F6B73B)
 I (..\lwip\include\lwip/arch.h)(0x5A02D2FD)
 I (..\lwip\include\arch/cc.h)(0x5A02D377)
@@ -4540,7 +4540,7 @@ I (..\UCOSIII\uCOS-III\Source\os.h)(0x59F6B73B)
 I (..\UCOSIII\uCOS-CONFIG\os_cfg.h)(0x59F6B73B)
 I (..\UCOSIII\uCOS-III\Source\os_type.h)(0x59F6B73B)
 I (..\UCOSIII\uCOS-III\Ports\ARM-Cortex-M3\Generic\RealView\os_cpu.h)(0x59F6B73B)
-I (..\UCOSIII\uCOS-CONFIG\app_cfg.h)(0x59F6B73B)
+I (..\UCOSIII\uCOS-CONFIG\app_cfg.h)(0x5A040ECE)
 I (..\bsp\bsp.h)(0x59F6B73B)
 I (..\Libraries\CMSIS\Device\stm32f2xx.h)(0x59F6B73B)
 I (..\Libraries\CMSIS\Include\core_cm3.h)(0x59F6B73B)
@@ -4607,7 +4607,7 @@ I (..\lwip\include\lwip/inet_chksum.h)(0x59F6B73B)
 I (d:\Keil_v5\ARM\ARMCC\include\string.h)(0x55DB2B78)
 F (..\lwip\core\timeouts.c)(0x59F6B73B)(-c --cpu Cortex-M3 -D__MICROLIB -g -W -O0 --apcs=interwork -I..\app -I..\bsp -I..\driver -I..\Libraries\STM32F2xx_StdPeriph_Driver\src -I..\Libraries\STM32F2xx_StdPeriph_Driver\inc -I..\Libraries\STM32F2x7_ETH_Driver\src -I..\Libraries\STM32F2x7_ETH_Driver\inc -I..\Libraries\CMSIS\Include -I..\Libraries\CMSIS\Device -I..\UCOSIII\uC-LIB -I..\UCOSIII\uC-CPU -I..\UCOSIII\uCOS-CONFIG -I..\UCOSIII\uC-CPU\ARM-Cortex-M3\RealView -I..\UCOSIII\uC-LIB\Ports\ARM-Cortex-M3\RealView -I..\UCOSIII\uCOS-III\Source -I..\UCOSIII\uCOS-III\Ports\ARM-Cortex-M3\Generic\RealView -I..\FATFS -I..\lwip\include -I..\lwip\apps\tcpecho_raw -I..\lwip\apps -I..\lwip\apps\socket_examples --diag_suppress=177-I E:\github\gatewayapp\src\project\RTE-I d:\Keil_v5\ARM\PACK\ARM\CMSIS\5.1.0\CMSIS\Include-I d:\Keil_v5\ARM\PACK\Keil\STM32F2xx_DFP\2.7.0\Drivers\CMSIS\Device\ST\STM32F2xx\Include-D__UVISION_VERSION="517" -D_RTE_ -DSTM32F207xx -DSTM32F2XX -DUSE_STDPERIPH_DRIVER-o .\obj\timeouts.o --omf_browse .\obj\timeouts.crf --depend .\obj\timeouts.d)
 I (..\lwip\include\lwip/opt.h)(0x59F6B73B)
-I (..\lwip\include\lwipopts.h)(0x5A02C885)
+I (..\lwip\include\lwipopts.h)(0x5A03FCDE)
 I (..\lwip\include\lwip/debug.h)(0x59F6B73B)
 I (..\lwip\include\lwip/arch.h)(0x5A02D2FD)
 I (..\lwip\include\arch/cc.h)(0x5A02D377)
@@ -4631,7 +4631,7 @@ I (..\UCOSIII\uCOS-III\Source\os.h)(0x59F6B73B)
 I (..\UCOSIII\uCOS-CONFIG\os_cfg.h)(0x59F6B73B)
 I (..\UCOSIII\uCOS-III\Source\os_type.h)(0x59F6B73B)
 I (..\UCOSIII\uCOS-III\Ports\ARM-Cortex-M3\Generic\RealView\os_cpu.h)(0x59F6B73B)
-I (..\UCOSIII\uCOS-CONFIG\app_cfg.h)(0x59F6B73B)
+I (..\UCOSIII\uCOS-CONFIG\app_cfg.h)(0x5A040ECE)
 I (..\bsp\bsp.h)(0x59F6B73B)
 I (..\Libraries\CMSIS\Device\stm32f2xx.h)(0x59F6B73B)
 I (..\Libraries\CMSIS\Include\core_cm3.h)(0x59F6B73B)
@@ -4674,7 +4674,7 @@ I (d:\Keil_v5\ARM\ARMCC\include\inttypes.h)(0x55DB2B7E)
 I (d:\Keil_v5\ARM\ARMCC\include\limits.h)(0x55DB2B7E)
 I (..\lwip\include\lwip/timeouts.h)(0x59F6B73B)
 I (..\lwip\include\lwip/err.h)(0x59F6B73B)
-I (..\lwip\include\lwip/sys.h)(0x5A02D703)
+I (..\lwip\include\lwip/sys.h)(0x5A04038B)
 I (..\lwip\include\arch/sys_arch.h)(0x5A02CE48)
 I (..\lwip\include\lwip/priv/tcp_priv.h)(0x59F6B73B)
 I (..\lwip\include\lwip/tcp.h)(0x59F6B73B)
@@ -4714,7 +4714,7 @@ I (..\lwip\include\lwip/ip6_frag.h)(0x59F6B73B)
 I (..\lwip\include\lwip/mld6.h)(0x59F6B73B)
 F (..\lwip\core\udp.c)(0x59F6B73B)(-c --cpu Cortex-M3 -D__MICROLIB -g -W -O0 --apcs=interwork -I..\app -I..\bsp -I..\driver -I..\Libraries\STM32F2xx_StdPeriph_Driver\src -I..\Libraries\STM32F2xx_StdPeriph_Driver\inc -I..\Libraries\STM32F2x7_ETH_Driver\src -I..\Libraries\STM32F2x7_ETH_Driver\inc -I..\Libraries\CMSIS\Include -I..\Libraries\CMSIS\Device -I..\UCOSIII\uC-LIB -I..\UCOSIII\uC-CPU -I..\UCOSIII\uCOS-CONFIG -I..\UCOSIII\uC-CPU\ARM-Cortex-M3\RealView -I..\UCOSIII\uC-LIB\Ports\ARM-Cortex-M3\RealView -I..\UCOSIII\uCOS-III\Source -I..\UCOSIII\uCOS-III\Ports\ARM-Cortex-M3\Generic\RealView -I..\FATFS -I..\lwip\include -I..\lwip\apps\tcpecho_raw -I..\lwip\apps -I..\lwip\apps\socket_examples --diag_suppress=177-I E:\github\gatewayapp\src\project\RTE-I d:\Keil_v5\ARM\PACK\ARM\CMSIS\5.1.0\CMSIS\Include-I d:\Keil_v5\ARM\PACK\Keil\STM32F2xx_DFP\2.7.0\Drivers\CMSIS\Device\ST\STM32F2xx\Include-D__UVISION_VERSION="517" -D_RTE_ -DSTM32F207xx -DSTM32F2XX -DUSE_STDPERIPH_DRIVER-o .\obj\udp.o --omf_browse .\obj\udp.crf --depend .\obj\udp.d)
 I (..\lwip\include\lwip/opt.h)(0x59F6B73B)
-I (..\lwip\include\lwipopts.h)(0x5A02C885)
+I (..\lwip\include\lwipopts.h)(0x5A03FCDE)
 I (..\lwip\include\lwip/debug.h)(0x59F6B73B)
 I (..\lwip\include\lwip/arch.h)(0x5A02D2FD)
 I (..\lwip\include\arch/cc.h)(0x5A02D377)
@@ -4738,7 +4738,7 @@ I (..\UCOSIII\uCOS-III\Source\os.h)(0x59F6B73B)
 I (..\UCOSIII\uCOS-CONFIG\os_cfg.h)(0x59F6B73B)
 I (..\UCOSIII\uCOS-III\Source\os_type.h)(0x59F6B73B)
 I (..\UCOSIII\uCOS-III\Ports\ARM-Cortex-M3\Generic\RealView\os_cpu.h)(0x59F6B73B)
-I (..\UCOSIII\uCOS-CONFIG\app_cfg.h)(0x59F6B73B)
+I (..\UCOSIII\uCOS-CONFIG\app_cfg.h)(0x5A040ECE)
 I (..\bsp\bsp.h)(0x59F6B73B)
 I (..\Libraries\CMSIS\Device\stm32f2xx.h)(0x59F6B73B)
 I (..\Libraries\CMSIS\Include\core_cm3.h)(0x59F6B73B)
@@ -4808,7 +4808,7 @@ I (..\lwip\include\lwip/dhcp.h)(0x59F6B73B)
 I (d:\Keil_v5\ARM\ARMCC\include\string.h)(0x55DB2B78)
 F (..\lwip\core\ipv4\autoip.c)(0x59F6B73B)(-c --cpu Cortex-M3 -D__MICROLIB -g -W -O0 --apcs=interwork -I..\app -I..\bsp -I..\driver -I..\Libraries\STM32F2xx_StdPeriph_Driver\src -I..\Libraries\STM32F2xx_StdPeriph_Driver\inc -I..\Libraries\STM32F2x7_ETH_Driver\src -I..\Libraries\STM32F2x7_ETH_Driver\inc -I..\Libraries\CMSIS\Include -I..\Libraries\CMSIS\Device -I..\UCOSIII\uC-LIB -I..\UCOSIII\uC-CPU -I..\UCOSIII\uCOS-CONFIG -I..\UCOSIII\uC-CPU\ARM-Cortex-M3\RealView -I..\UCOSIII\uC-LIB\Ports\ARM-Cortex-M3\RealView -I..\UCOSIII\uCOS-III\Source -I..\UCOSIII\uCOS-III\Ports\ARM-Cortex-M3\Generic\RealView -I..\FATFS -I..\lwip\include -I..\lwip\apps\tcpecho_raw -I..\lwip\apps -I..\lwip\apps\socket_examples --diag_suppress=177-I E:\github\gatewayapp\src\project\RTE-I d:\Keil_v5\ARM\PACK\ARM\CMSIS\5.1.0\CMSIS\Include-I d:\Keil_v5\ARM\PACK\Keil\STM32F2xx_DFP\2.7.0\Drivers\CMSIS\Device\ST\STM32F2xx\Include-D__UVISION_VERSION="517" -D_RTE_ -DSTM32F207xx -DSTM32F2XX -DUSE_STDPERIPH_DRIVER-o .\obj\autoip.o --omf_browse .\obj\autoip.crf --depend .\obj\autoip.d)
 I (..\lwip\include\lwip/opt.h)(0x59F6B73B)
-I (..\lwip\include\lwipopts.h)(0x5A02C885)
+I (..\lwip\include\lwipopts.h)(0x5A03FCDE)
 I (..\lwip\include\lwip/debug.h)(0x59F6B73B)
 I (..\lwip\include\lwip/arch.h)(0x5A02D2FD)
 I (..\lwip\include\arch/cc.h)(0x5A02D377)
@@ -4832,7 +4832,7 @@ I (..\UCOSIII\uCOS-III\Source\os.h)(0x59F6B73B)
 I (..\UCOSIII\uCOS-CONFIG\os_cfg.h)(0x59F6B73B)
 I (..\UCOSIII\uCOS-III\Source\os_type.h)(0x59F6B73B)
 I (..\UCOSIII\uCOS-III\Ports\ARM-Cortex-M3\Generic\RealView\os_cpu.h)(0x59F6B73B)
-I (..\UCOSIII\uCOS-CONFIG\app_cfg.h)(0x59F6B73B)
+I (..\UCOSIII\uCOS-CONFIG\app_cfg.h)(0x5A040ECE)
 I (..\bsp\bsp.h)(0x59F6B73B)
 I (..\Libraries\CMSIS\Device\stm32f2xx.h)(0x59F6B73B)
 I (..\Libraries\CMSIS\Include\core_cm3.h)(0x59F6B73B)
@@ -4875,7 +4875,7 @@ I (d:\Keil_v5\ARM\ARMCC\include\inttypes.h)(0x55DB2B7E)
 I (d:\Keil_v5\ARM\ARMCC\include\limits.h)(0x55DB2B7E)
 F (..\lwip\core\ipv4\dhcp.c)(0x59F6B73B)(-c --cpu Cortex-M3 -D__MICROLIB -g -W -O0 --apcs=interwork -I..\app -I..\bsp -I..\driver -I..\Libraries\STM32F2xx_StdPeriph_Driver\src -I..\Libraries\STM32F2xx_StdPeriph_Driver\inc -I..\Libraries\STM32F2x7_ETH_Driver\src -I..\Libraries\STM32F2x7_ETH_Driver\inc -I..\Libraries\CMSIS\Include -I..\Libraries\CMSIS\Device -I..\UCOSIII\uC-LIB -I..\UCOSIII\uC-CPU -I..\UCOSIII\uCOS-CONFIG -I..\UCOSIII\uC-CPU\ARM-Cortex-M3\RealView -I..\UCOSIII\uC-LIB\Ports\ARM-Cortex-M3\RealView -I..\UCOSIII\uCOS-III\Source -I..\UCOSIII\uCOS-III\Ports\ARM-Cortex-M3\Generic\RealView -I..\FATFS -I..\lwip\include -I..\lwip\apps\tcpecho_raw -I..\lwip\apps -I..\lwip\apps\socket_examples --diag_suppress=177-I E:\github\gatewayapp\src\project\RTE-I d:\Keil_v5\ARM\PACK\ARM\CMSIS\5.1.0\CMSIS\Include-I d:\Keil_v5\ARM\PACK\Keil\STM32F2xx_DFP\2.7.0\Drivers\CMSIS\Device\ST\STM32F2xx\Include-D__UVISION_VERSION="517" -D_RTE_ -DSTM32F207xx -DSTM32F2XX -DUSE_STDPERIPH_DRIVER-o .\obj\dhcp.o --omf_browse .\obj\dhcp.crf --depend .\obj\dhcp.d)
 I (..\lwip\include\lwip/opt.h)(0x59F6B73B)
-I (..\lwip\include\lwipopts.h)(0x5A02C885)
+I (..\lwip\include\lwipopts.h)(0x5A03FCDE)
 I (..\lwip\include\lwip/debug.h)(0x59F6B73B)
 I (..\lwip\include\lwip/arch.h)(0x5A02D2FD)
 I (..\lwip\include\arch/cc.h)(0x5A02D377)
@@ -4899,7 +4899,7 @@ I (..\UCOSIII\uCOS-III\Source\os.h)(0x59F6B73B)
 I (..\UCOSIII\uCOS-CONFIG\os_cfg.h)(0x59F6B73B)
 I (..\UCOSIII\uCOS-III\Source\os_type.h)(0x59F6B73B)
 I (..\UCOSIII\uCOS-III\Ports\ARM-Cortex-M3\Generic\RealView\os_cpu.h)(0x59F6B73B)
-I (..\UCOSIII\uCOS-CONFIG\app_cfg.h)(0x59F6B73B)
+I (..\UCOSIII\uCOS-CONFIG\app_cfg.h)(0x5A040ECE)
 I (..\bsp\bsp.h)(0x59F6B73B)
 I (..\Libraries\CMSIS\Device\stm32f2xx.h)(0x59F6B73B)
 I (..\Libraries\CMSIS\Include\core_cm3.h)(0x59F6B73B)
@@ -4970,7 +4970,7 @@ I (d:\Keil_v5\ARM\ARMCC\include\string.h)(0x55DB2B78)
 I (..\driver\usart.h)(0x59F6B73B)
 F (..\lwip\core\ipv4\etharp.c)(0x59F6B73B)(-c --cpu Cortex-M3 -D__MICROLIB -g -W -O0 --apcs=interwork -I..\app -I..\bsp -I..\driver -I..\Libraries\STM32F2xx_StdPeriph_Driver\src -I..\Libraries\STM32F2xx_StdPeriph_Driver\inc -I..\Libraries\STM32F2x7_ETH_Driver\src -I..\Libraries\STM32F2x7_ETH_Driver\inc -I..\Libraries\CMSIS\Include -I..\Libraries\CMSIS\Device -I..\UCOSIII\uC-LIB -I..\UCOSIII\uC-CPU -I..\UCOSIII\uCOS-CONFIG -I..\UCOSIII\uC-CPU\ARM-Cortex-M3\RealView -I..\UCOSIII\uC-LIB\Ports\ARM-Cortex-M3\RealView -I..\UCOSIII\uCOS-III\Source -I..\UCOSIII\uCOS-III\Ports\ARM-Cortex-M3\Generic\RealView -I..\FATFS -I..\lwip\include -I..\lwip\apps\tcpecho_raw -I..\lwip\apps -I..\lwip\apps\socket_examples --diag_suppress=177-I E:\github\gatewayapp\src\project\RTE-I d:\Keil_v5\ARM\PACK\ARM\CMSIS\5.1.0\CMSIS\Include-I d:\Keil_v5\ARM\PACK\Keil\STM32F2xx_DFP\2.7.0\Drivers\CMSIS\Device\ST\STM32F2xx\Include-D__UVISION_VERSION="517" -D_RTE_ -DSTM32F207xx -DSTM32F2XX -DUSE_STDPERIPH_DRIVER-o .\obj\etharp.o --omf_browse .\obj\etharp.crf --depend .\obj\etharp.d)
 I (..\lwip\include\lwip/opt.h)(0x59F6B73B)
-I (..\lwip\include\lwipopts.h)(0x5A02C885)
+I (..\lwip\include\lwipopts.h)(0x5A03FCDE)
 I (..\lwip\include\lwip/debug.h)(0x59F6B73B)
 I (..\lwip\include\lwip/arch.h)(0x5A02D2FD)
 I (..\lwip\include\arch/cc.h)(0x5A02D377)
@@ -4994,7 +4994,7 @@ I (..\UCOSIII\uCOS-III\Source\os.h)(0x59F6B73B)
 I (..\UCOSIII\uCOS-CONFIG\os_cfg.h)(0x59F6B73B)
 I (..\UCOSIII\uCOS-III\Source\os_type.h)(0x59F6B73B)
 I (..\UCOSIII\uCOS-III\Ports\ARM-Cortex-M3\Generic\RealView\os_cpu.h)(0x59F6B73B)
-I (..\UCOSIII\uCOS-CONFIG\app_cfg.h)(0x59F6B73B)
+I (..\UCOSIII\uCOS-CONFIG\app_cfg.h)(0x5A040ECE)
 I (..\bsp\bsp.h)(0x59F6B73B)
 I (..\Libraries\CMSIS\Device\stm32f2xx.h)(0x59F6B73B)
 I (..\Libraries\CMSIS\Include\core_cm3.h)(0x59F6B73B)
@@ -5064,7 +5064,7 @@ I (..\lwip\include\netif/ethernet.h)(0x59F6B73B)
 I (d:\Keil_v5\ARM\ARMCC\include\string.h)(0x55DB2B78)
 F (..\lwip\core\ipv4\icmp.c)(0x59F6B73B)(-c --cpu Cortex-M3 -D__MICROLIB -g -W -O0 --apcs=interwork -I..\app -I..\bsp -I..\driver -I..\Libraries\STM32F2xx_StdPeriph_Driver\src -I..\Libraries\STM32F2xx_StdPeriph_Driver\inc -I..\Libraries\STM32F2x7_ETH_Driver\src -I..\Libraries\STM32F2x7_ETH_Driver\inc -I..\Libraries\CMSIS\Include -I..\Libraries\CMSIS\Device -I..\UCOSIII\uC-LIB -I..\UCOSIII\uC-CPU -I..\UCOSIII\uCOS-CONFIG -I..\UCOSIII\uC-CPU\ARM-Cortex-M3\RealView -I..\UCOSIII\uC-LIB\Ports\ARM-Cortex-M3\RealView -I..\UCOSIII\uCOS-III\Source -I..\UCOSIII\uCOS-III\Ports\ARM-Cortex-M3\Generic\RealView -I..\FATFS -I..\lwip\include -I..\lwip\apps\tcpecho_raw -I..\lwip\apps -I..\lwip\apps\socket_examples --diag_suppress=177-I E:\github\gatewayapp\src\project\RTE-I d:\Keil_v5\ARM\PACK\ARM\CMSIS\5.1.0\CMSIS\Include-I d:\Keil_v5\ARM\PACK\Keil\STM32F2xx_DFP\2.7.0\Drivers\CMSIS\Device\ST\STM32F2xx\Include-D__UVISION_VERSION="517" -D_RTE_ -DSTM32F207xx -DSTM32F2XX -DUSE_STDPERIPH_DRIVER-o .\obj\icmp.o --omf_browse .\obj\icmp.crf --depend .\obj\icmp.d)
 I (..\lwip\include\lwip/opt.h)(0x59F6B73B)
-I (..\lwip\include\lwipopts.h)(0x5A02C885)
+I (..\lwip\include\lwipopts.h)(0x5A03FCDE)
 I (..\lwip\include\lwip/debug.h)(0x59F6B73B)
 I (..\lwip\include\lwip/arch.h)(0x5A02D2FD)
 I (..\lwip\include\arch/cc.h)(0x5A02D377)
@@ -5088,7 +5088,7 @@ I (..\UCOSIII\uCOS-III\Source\os.h)(0x59F6B73B)
 I (..\UCOSIII\uCOS-CONFIG\os_cfg.h)(0x59F6B73B)
 I (..\UCOSIII\uCOS-III\Source\os_type.h)(0x59F6B73B)
 I (..\UCOSIII\uCOS-III\Ports\ARM-Cortex-M3\Generic\RealView\os_cpu.h)(0x59F6B73B)
-I (..\UCOSIII\uCOS-CONFIG\app_cfg.h)(0x59F6B73B)
+I (..\UCOSIII\uCOS-CONFIG\app_cfg.h)(0x5A040ECE)
 I (..\bsp\bsp.h)(0x59F6B73B)
 I (..\Libraries\CMSIS\Device\stm32f2xx.h)(0x59F6B73B)
 I (..\Libraries\CMSIS\Include\core_cm3.h)(0x59F6B73B)
@@ -5152,7 +5152,7 @@ I (..\lwip\include\lwip/prot/ip.h)(0x59F6B73B)
 I (d:\Keil_v5\ARM\ARMCC\include\string.h)(0x55DB2B78)
 F (..\lwip\core\ipv4\igmp.c)(0x59F6B73B)(-c --cpu Cortex-M3 -D__MICROLIB -g -W -O0 --apcs=interwork -I..\app -I..\bsp -I..\driver -I..\Libraries\STM32F2xx_StdPeriph_Driver\src -I..\Libraries\STM32F2xx_StdPeriph_Driver\inc -I..\Libraries\STM32F2x7_ETH_Driver\src -I..\Libraries\STM32F2x7_ETH_Driver\inc -I..\Libraries\CMSIS\Include -I..\Libraries\CMSIS\Device -I..\UCOSIII\uC-LIB -I..\UCOSIII\uC-CPU -I..\UCOSIII\uCOS-CONFIG -I..\UCOSIII\uC-CPU\ARM-Cortex-M3\RealView -I..\UCOSIII\uC-LIB\Ports\ARM-Cortex-M3\RealView -I..\UCOSIII\uCOS-III\Source -I..\UCOSIII\uCOS-III\Ports\ARM-Cortex-M3\Generic\RealView -I..\FATFS -I..\lwip\include -I..\lwip\apps\tcpecho_raw -I..\lwip\apps -I..\lwip\apps\socket_examples --diag_suppress=177-I E:\github\gatewayapp\src\project\RTE-I d:\Keil_v5\ARM\PACK\ARM\CMSIS\5.1.0\CMSIS\Include-I d:\Keil_v5\ARM\PACK\Keil\STM32F2xx_DFP\2.7.0\Drivers\CMSIS\Device\ST\STM32F2xx\Include-D__UVISION_VERSION="517" -D_RTE_ -DSTM32F207xx -DSTM32F2XX -DUSE_STDPERIPH_DRIVER-o .\obj\igmp.o --omf_browse .\obj\igmp.crf --depend .\obj\igmp.d)
 I (..\lwip\include\lwip/opt.h)(0x59F6B73B)
-I (..\lwip\include\lwipopts.h)(0x5A02C885)
+I (..\lwip\include\lwipopts.h)(0x5A03FCDE)
 I (..\lwip\include\lwip/debug.h)(0x59F6B73B)
 I (..\lwip\include\lwip/arch.h)(0x5A02D2FD)
 I (..\lwip\include\arch/cc.h)(0x5A02D377)
@@ -5176,7 +5176,7 @@ I (..\UCOSIII\uCOS-III\Source\os.h)(0x59F6B73B)
 I (..\UCOSIII\uCOS-CONFIG\os_cfg.h)(0x59F6B73B)
 I (..\UCOSIII\uCOS-III\Source\os_type.h)(0x59F6B73B)
 I (..\UCOSIII\uCOS-III\Ports\ARM-Cortex-M3\Generic\RealView\os_cpu.h)(0x59F6B73B)
-I (..\UCOSIII\uCOS-CONFIG\app_cfg.h)(0x59F6B73B)
+I (..\UCOSIII\uCOS-CONFIG\app_cfg.h)(0x5A040ECE)
 I (..\bsp\bsp.h)(0x59F6B73B)
 I (..\Libraries\CMSIS\Device\stm32f2xx.h)(0x59F6B73B)
 I (..\Libraries\CMSIS\Include\core_cm3.h)(0x59F6B73B)
@@ -5219,7 +5219,7 @@ I (d:\Keil_v5\ARM\ARMCC\include\inttypes.h)(0x55DB2B7E)
 I (d:\Keil_v5\ARM\ARMCC\include\limits.h)(0x55DB2B7E)
 F (..\lwip\core\ipv4\ip4.c)(0x59F6B73B)(-c --cpu Cortex-M3 -D__MICROLIB -g -W -O0 --apcs=interwork -I..\app -I..\bsp -I..\driver -I..\Libraries\STM32F2xx_StdPeriph_Driver\src -I..\Libraries\STM32F2xx_StdPeriph_Driver\inc -I..\Libraries\STM32F2x7_ETH_Driver\src -I..\Libraries\STM32F2x7_ETH_Driver\inc -I..\Libraries\CMSIS\Include -I..\Libraries\CMSIS\Device -I..\UCOSIII\uC-LIB -I..\UCOSIII\uC-CPU -I..\UCOSIII\uCOS-CONFIG -I..\UCOSIII\uC-CPU\ARM-Cortex-M3\RealView -I..\UCOSIII\uC-LIB\Ports\ARM-Cortex-M3\RealView -I..\UCOSIII\uCOS-III\Source -I..\UCOSIII\uCOS-III\Ports\ARM-Cortex-M3\Generic\RealView -I..\FATFS -I..\lwip\include -I..\lwip\apps\tcpecho_raw -I..\lwip\apps -I..\lwip\apps\socket_examples --diag_suppress=177-I E:\github\gatewayapp\src\project\RTE-I d:\Keil_v5\ARM\PACK\ARM\CMSIS\5.1.0\CMSIS\Include-I d:\Keil_v5\ARM\PACK\Keil\STM32F2xx_DFP\2.7.0\Drivers\CMSIS\Device\ST\STM32F2xx\Include-D__UVISION_VERSION="517" -D_RTE_ -DSTM32F207xx -DSTM32F2XX -DUSE_STDPERIPH_DRIVER-o .\obj\ip4.o --omf_browse .\obj\ip4.crf --depend .\obj\ip4.d)
 I (..\lwip\include\lwip/opt.h)(0x59F6B73B)
-I (..\lwip\include\lwipopts.h)(0x5A02C885)
+I (..\lwip\include\lwipopts.h)(0x5A03FCDE)
 I (..\lwip\include\lwip/debug.h)(0x59F6B73B)
 I (..\lwip\include\lwip/arch.h)(0x5A02D2FD)
 I (..\lwip\include\arch/cc.h)(0x5A02D377)
@@ -5243,7 +5243,7 @@ I (..\UCOSIII\uCOS-III\Source\os.h)(0x59F6B73B)
 I (..\UCOSIII\uCOS-CONFIG\os_cfg.h)(0x59F6B73B)
 I (..\UCOSIII\uCOS-III\Source\os_type.h)(0x59F6B73B)
 I (..\UCOSIII\uCOS-III\Ports\ARM-Cortex-M3\Generic\RealView\os_cpu.h)(0x59F6B73B)
-I (..\UCOSIII\uCOS-CONFIG\app_cfg.h)(0x59F6B73B)
+I (..\UCOSIII\uCOS-CONFIG\app_cfg.h)(0x5A040ECE)
 I (..\bsp\bsp.h)(0x59F6B73B)
 I (..\Libraries\CMSIS\Device\stm32f2xx.h)(0x59F6B73B)
 I (..\Libraries\CMSIS\Include\core_cm3.h)(0x59F6B73B)
@@ -5317,7 +5317,7 @@ I (..\lwip\include\lwip/prot/dhcp.h)(0x59F6B73B)
 I (d:\Keil_v5\ARM\ARMCC\include\string.h)(0x55DB2B78)
 F (..\lwip\core\ipv4\ip4_addr.c)(0x59F6B73B)(-c --cpu Cortex-M3 -D__MICROLIB -g -W -O0 --apcs=interwork -I..\app -I..\bsp -I..\driver -I..\Libraries\STM32F2xx_StdPeriph_Driver\src -I..\Libraries\STM32F2xx_StdPeriph_Driver\inc -I..\Libraries\STM32F2x7_ETH_Driver\src -I..\Libraries\STM32F2x7_ETH_Driver\inc -I..\Libraries\CMSIS\Include -I..\Libraries\CMSIS\Device -I..\UCOSIII\uC-LIB -I..\UCOSIII\uC-CPU -I..\UCOSIII\uCOS-CONFIG -I..\UCOSIII\uC-CPU\ARM-Cortex-M3\RealView -I..\UCOSIII\uC-LIB\Ports\ARM-Cortex-M3\RealView -I..\UCOSIII\uCOS-III\Source -I..\UCOSIII\uCOS-III\Ports\ARM-Cortex-M3\Generic\RealView -I..\FATFS -I..\lwip\include -I..\lwip\apps\tcpecho_raw -I..\lwip\apps -I..\lwip\apps\socket_examples --diag_suppress=177-I E:\github\gatewayapp\src\project\RTE-I d:\Keil_v5\ARM\PACK\ARM\CMSIS\5.1.0\CMSIS\Include-I d:\Keil_v5\ARM\PACK\Keil\STM32F2xx_DFP\2.7.0\Drivers\CMSIS\Device\ST\STM32F2xx\Include-D__UVISION_VERSION="517" -D_RTE_ -DSTM32F207xx -DSTM32F2XX -DUSE_STDPERIPH_DRIVER-o .\obj\ip4_addr.o --omf_browse .\obj\ip4_addr.crf --depend .\obj\ip4_addr.d)
 I (..\lwip\include\lwip/opt.h)(0x59F6B73B)
-I (..\lwip\include\lwipopts.h)(0x5A02C885)
+I (..\lwip\include\lwipopts.h)(0x5A03FCDE)
 I (..\lwip\include\lwip/debug.h)(0x59F6B73B)
 I (..\lwip\include\lwip/arch.h)(0x5A02D2FD)
 I (..\lwip\include\arch/cc.h)(0x5A02D377)
@@ -5341,7 +5341,7 @@ I (..\UCOSIII\uCOS-III\Source\os.h)(0x59F6B73B)
 I (..\UCOSIII\uCOS-CONFIG\os_cfg.h)(0x59F6B73B)
 I (..\UCOSIII\uCOS-III\Source\os_type.h)(0x59F6B73B)
 I (..\UCOSIII\uCOS-III\Ports\ARM-Cortex-M3\Generic\RealView\os_cpu.h)(0x59F6B73B)
-I (..\UCOSIII\uCOS-CONFIG\app_cfg.h)(0x59F6B73B)
+I (..\UCOSIII\uCOS-CONFIG\app_cfg.h)(0x5A040ECE)
 I (..\bsp\bsp.h)(0x59F6B73B)
 I (..\Libraries\CMSIS\Device\stm32f2xx.h)(0x59F6B73B)
 I (..\Libraries\CMSIS\Include\core_cm3.h)(0x59F6B73B)
@@ -5396,7 +5396,7 @@ I (..\lwip\include\lwip/priv/memp_std.h)(0x59F6B73B)
 I (..\lwip\include\lwip/priv/memp_priv.h)(0x59F6B73B)
 F (..\lwip\core\ipv4\ip4_frag.c)(0x59F6B73B)(-c --cpu Cortex-M3 -D__MICROLIB -g -W -O0 --apcs=interwork -I..\app -I..\bsp -I..\driver -I..\Libraries\STM32F2xx_StdPeriph_Driver\src -I..\Libraries\STM32F2xx_StdPeriph_Driver\inc -I..\Libraries\STM32F2x7_ETH_Driver\src -I..\Libraries\STM32F2x7_ETH_Driver\inc -I..\Libraries\CMSIS\Include -I..\Libraries\CMSIS\Device -I..\UCOSIII\uC-LIB -I..\UCOSIII\uC-CPU -I..\UCOSIII\uCOS-CONFIG -I..\UCOSIII\uC-CPU\ARM-Cortex-M3\RealView -I..\UCOSIII\uC-LIB\Ports\ARM-Cortex-M3\RealView -I..\UCOSIII\uCOS-III\Source -I..\UCOSIII\uCOS-III\Ports\ARM-Cortex-M3\Generic\RealView -I..\FATFS -I..\lwip\include -I..\lwip\apps\tcpecho_raw -I..\lwip\apps -I..\lwip\apps\socket_examples --diag_suppress=177-I E:\github\gatewayapp\src\project\RTE-I d:\Keil_v5\ARM\PACK\ARM\CMSIS\5.1.0\CMSIS\Include-I d:\Keil_v5\ARM\PACK\Keil\STM32F2xx_DFP\2.7.0\Drivers\CMSIS\Device\ST\STM32F2xx\Include-D__UVISION_VERSION="517" -D_RTE_ -DSTM32F207xx -DSTM32F2XX -DUSE_STDPERIPH_DRIVER-o .\obj\ip4_frag.o --omf_browse .\obj\ip4_frag.crf --depend .\obj\ip4_frag.d)
 I (..\lwip\include\lwip/opt.h)(0x59F6B73B)
-I (..\lwip\include\lwipopts.h)(0x5A02C885)
+I (..\lwip\include\lwipopts.h)(0x5A03FCDE)
 I (..\lwip\include\lwip/debug.h)(0x59F6B73B)
 I (..\lwip\include\lwip/arch.h)(0x5A02D2FD)
 I (..\lwip\include\arch/cc.h)(0x5A02D377)
@@ -5420,7 +5420,7 @@ I (..\UCOSIII\uCOS-III\Source\os.h)(0x59F6B73B)
 I (..\UCOSIII\uCOS-CONFIG\os_cfg.h)(0x59F6B73B)
 I (..\UCOSIII\uCOS-III\Source\os_type.h)(0x59F6B73B)
 I (..\UCOSIII\uCOS-III\Ports\ARM-Cortex-M3\Generic\RealView\os_cpu.h)(0x59F6B73B)
-I (..\UCOSIII\uCOS-CONFIG\app_cfg.h)(0x59F6B73B)
+I (..\UCOSIII\uCOS-CONFIG\app_cfg.h)(0x5A040ECE)
 I (..\bsp\bsp.h)(0x59F6B73B)
 I (..\Libraries\CMSIS\Device\stm32f2xx.h)(0x59F6B73B)
 I (..\Libraries\CMSIS\Include\core_cm3.h)(0x59F6B73B)

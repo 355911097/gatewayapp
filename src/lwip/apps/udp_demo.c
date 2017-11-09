@@ -73,19 +73,10 @@ struct udp_pcb *udp_demo_init(void)
 			if(err==ERR_OK)	//绑定完成
 			{						
 				udp_recv(udppcb, udp_demo_recv, NULL);//注册接收回调函数 
-
 			}
 		}		
 	}
 	
-//	while(res==0)
-//	{
-//		
-//		udp_demo_senddata(udppcb);	
-//		lwip_periodic_handle();
-//		timer_delay_1ms(3);
-//	}
-//	udp_demo_connection_close(udppcb); 
 	return udppcb;
 } 
 
