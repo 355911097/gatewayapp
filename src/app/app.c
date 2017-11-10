@@ -137,6 +137,10 @@ FATFS *fatfs[FF_VOLUMES];//逻辑磁盘工作区.
 
 
 
+
+
+struct udp_pcb *udppcb;  	//定义一个TCP服务器控制块
+
 /*
 *********************************************************************************************************
 *                                         FUNCTION PROTOTYPES
@@ -187,29 +191,29 @@ int main(void)
 	BSP_Init(); 
 
 
-	nn = lwip_dev_init();
-	if(nn == 0)
-	{
-		USART_OUT(USART3, "lwip_dev_init OK\r");
-	}
-	timer_delay_1ms(1000);
-			
-#if LWIP_DHCP
-	while((lwip_dev.dhcp_status != 2)&&(lwip_dev.dhcp_status != 0XFF))//等待DHCP获取成功/超时溢出
-	{
-		lwip_periodic_handle();
-	}
-#endif			
-			
-		udppcb = udp_demo_init(); 
-	
-		udp_demo_senddata(udppcb);	
-		
-		while(1)
-		{
-			lwip_periodic_handle();
-		}
-/*	
+//	nn = lwip_dev_init();
+//	if(nn == 0)
+//	{
+//		USART_OUT(USART3, "lwip_dev_init OK\r");
+//	}
+//	timer_delay_1ms(1000);
+//			
+//#if LWIP_DHCP
+//	while((lwip_dev.dhcp_status != 2)&&(lwip_dev.dhcp_status != 0XFF))//等待DHCP获取成功/超时溢出
+//	{
+//		lwip_periodic_handle();
+//	}
+//#endif			
+//			
+//		udppcb = udp_demo_init(); 
+//	
+//		udp_demo_senddata(udppcb);	
+//		
+//		while(1)
+//		{
+//			lwip_periodic_handle();
+//		}
+///*	
 //	fs = (FATFS*)malloc(sizeof(FATFS));
 //	fil = (FIL*)malloc(sizeof(FIL));
 //	res = f_mkfs("", FM_ANY, 4096, work, sizeof (work));
@@ -249,7 +253,7 @@ int main(void)
 //	{
 //		USART_OUT(USART3, "fr1= %d\r", fr);
 //	}
-*/
+
 
 
 //    BSP_IntDisAll();                                            /* Disable all interrupts.                                  */
@@ -638,8 +642,6 @@ static void dhcp_task_create(void *p_arg)
 	
 	while(DEF_TRUE)
 	{
-//		ucos_time=OSTimeGet(&err);
-//		USART_OUT(USART3, "ucos_time = %d\r\n", ucos_time); 
 
 		ip=lwip_netif.ip_addr.addr;		//读取新IP地址
 		netmask=lwip_netif.netmask.addr;//读取子网掩码
@@ -694,12 +696,32 @@ static void dhcp_task_create(void *p_arg)
 static void rawudp_task_create(void *p_arg)
 {
 	OS_ERR err;
+		
 
-
+	struct ip4_addr rmtipaddr;  	//远端ip地址
+ 	
 	
+//	udppcb = udp_new();
+//	
+//	if(udppcb)//创建成功
+//	{		
+//		IP4_ADDR(&rmtipaddr, lwip_dev.remote_ip[0], lwip_dev.remote_ip[1], lwip_dev.remote_ip[2], lwip_dev.remote_ip[3]);
+//		USART_OUT(USART3,   "远程IP........................%d.%d.%d.%d\r\n", lwip_dev.remote_ip[0], lwip_dev.remote_ip[1], lwip_dev.remote_ip[2], lwip_dev.remote_ip[3]);
+//		err = udp_connect(udppcb, &rmtipaddr, 16650);//UDP客户端连接到指定IP地址和端口号的服务器
+//		if(err == ERR_OK)
+//		{
+//			err = udp_bind(udppcb, IP_ADDR_ANY, 16650);//绑定本地IP地址与端口号
+//			if(err == ERR_OK)	//绑定完成
+//			{						
+//				udp_recv(udppcb, udp_demo_recv, NULL);//注册接收回调函数 
+//			}
+//		}		
+//	}
+//	udp_demo_senddata(udppcb);	
 	while(DEF_TRUE)
 	{
 		
+	//	lwip_periodic_handle();
 		OSTimeDly(250, OS_OPT_TIME_DLY, &err);
 	}
 
@@ -730,8 +752,7 @@ static void gprs_init_task_create(void *p_arg)
 	u8 size1;
 	u8 ret = 0;
 	static u8 gprs_init_flag = TRUE;		//第一次上电运行
-	
-	
+		
 	while(DEF_TRUE)
 	{
 		if (gprs_init_flag == TRUE)

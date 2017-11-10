@@ -59,7 +59,7 @@ err_t sys_mbox_new( sys_mbox_t *mbox, int size)
 {
 	
 	OS_ERR err;
-	if(size>MAX_QUEUE_ENTRIES)size=MAX_QUEUE_ENTRIES;		//消息队列最多容纳MAX_QUEUE_ENTRIES消息数目 
+	if(size>MAX_QUEUE_ENTRIES)size = MAX_QUEUE_ENTRIES;		//消息队列最多容纳MAX_QUEUE_ENTRIES消息数目 
 	OSQCreate((OS_Q*		)mbox,				//消息队列
               (CPU_CHAR*	)"LWIP Quiue",		//消息队列名称
               (OS_MSG_QTY	)size,				//消息队列长度

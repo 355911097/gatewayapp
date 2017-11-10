@@ -56,7 +56,7 @@ void lwip_periodic_handle(void)
 {
 	
 #if LWIP_TCP
-	//?250ms????tcp_tmr()??
+	//
 	if (lwip_localtime - TCPTimer >= TCP_TMR_INTERVAL)
 	{
 		TCPTimer =  lwip_localtime;
@@ -68,7 +68,7 @@ void lwip_periodic_handle(void)
 	{
 		ARPTimer =  lwip_localtime;
 		etharp_tmr();
-	//	USART_OUT(USART3, "etharp_tmr\r");  
+	 
 	}
   
 
@@ -92,7 +92,6 @@ void lwip_periodic_handle(void)
 	}  
 #endif
 
-	
   
 }
 

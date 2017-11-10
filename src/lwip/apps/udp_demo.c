@@ -37,6 +37,7 @@
 u8 udp_demo_recvbuf[UDP_DEMO_RX_BUFSIZE];	//UDP接收数据缓冲区 
 //UDP发送数据内容
 u8 data[50];
+u8 rawudp_send_buff[100];
 u32 message_count = 0;
 
 //UDP 测试全局状态标记变量
@@ -55,11 +56,7 @@ struct udp_pcb *udp_demo_init(void)
 	struct udp_pcb *udppcb;  	//定义一个TCP服务器控制块
 	struct ip4_addr rmtipaddr;  	//远端ip地址
  	
-	u8 *tbuf;
- 	u8 key;
-	u8 res=0;		
-	u8 t=0; 
- 	
+
 	
 	udppcb = udp_new();
 	if(udppcb)//创建成功
@@ -127,6 +124,20 @@ void udp_demo_senddata(struct udp_pcb *upcb)
 {
 	struct pbuf *ptr;
 	sprintf((char*)data, "sending udp client message %d\r", (int*)lwip_localtime);
+	ptr=pbuf_alloc(PBUF_TRANSPORT, strlen((char*)data), PBUF_POOL); //申请内存
+	if(ptr)
+	{
+		pbuf_take(ptr, (char*)data, strlen((char*)data)); //将tcp_demo_sendbuf中的数据打包进pbuf结构中
+		udp_send(upcb, ptr);	//udp发送数据 
+		pbuf_free(ptr);//释放内存
+	} 
+} 
+
+
+void rawudp_send_data(struct udp_pcb *upcb, u8 *pdata)
+{
+	struct pbuf *ptr;
+	sprintf((char*)rawudp_send_buff, (char*)pdata, (int*)lwip_localtime);
 	ptr=pbuf_alloc(PBUF_TRANSPORT, strlen((char*)data), PBUF_POOL); //申请内存
 	if(ptr)
 	{

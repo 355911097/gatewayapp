@@ -201,9 +201,12 @@ a lot of data that needs to be copied, this should be set high. */
 
 //#define DHCP_DOES_ARP_CHECK 1	//wzy
 
-#define LWIP_TCPIP_CORE_LOCKING_INPUT 1
+#define LWIP_TCPIP_CORE_LOCKING_INPUT 1			//为0的时候dhcp获取不到ip
+//#define LWIP_TCPIP_CORE_LOCKING 1
 
 #define LWIP_COMPAT_MUTEX_ALLOWED	//wzy
+
+
 
 
 #endif /* __LWIPOPTS_H__ */
