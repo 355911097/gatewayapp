@@ -867,9 +867,9 @@
           <GroupName>lwip\apps</GroupName>
           <Files>
             <File>
-              <FileName>udp_demo.c</FileName>
+              <FileName>rawudp.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\lwip\apps\udp_demo.c</FilePath>
+              <FilePath>..\lwip\apps\rawudp.c</FilePath>
             </File>
           </Files>
         </Group>
