@@ -48,7 +48,7 @@
 #include "udp_demo.h"
 #include "lan8720.h"
 #include "lwip/dhcp.h"
-
+#include "udp_demo.h" 
 
 
 
@@ -77,7 +77,7 @@ extern struct netif lwip_netif;
 #define GPRS_INIT_TASK_PRIO		5
 #define ETH_INIT_TASK_PRIO		5
 #define DHCP_TASK_PRIO			5
-#define RAWUDP_TASK_PRIO		5
+
 
 
 #define USART3_Q_NUM			1
@@ -108,15 +108,15 @@ CPU_STK	eth_init_task_stk[ETH_INIT_TASK_STK_SIZE];
 OS_TCB 	dhcp_task_TCB;
 CPU_STK	dhcp_task_stk[DHCP_TASK_STK_SIZE];
 
-OS_TCB 	rawudp_task_TCB;
-CPU_STK	rawudp_task_stk[RAWUDP_TASK_STK_SIZE];
+
 
 OS_TCB 	usart3_task_TCB;
 CPU_STK	usart3_task_stk[USART3_TASK_STK_SIZE];
 
 
-CPU_STK *TCPIP_THREAD_TASK_STK;	
 
+//OS_TCB tcpip_thread_task_TCB1;//LWIP内核任务的任务控制块
+//CPU_STK tcpip_thread_task_stk1[1000];
 
 
 OS_Q usart3_msg;
@@ -139,7 +139,7 @@ FATFS *fatfs[FF_VOLUMES];//逻辑磁盘工作区.
 
 
 
-struct udp_pcb *udppcb;  	//定义一个TCP服务器控制块
+
 
 /*
 *********************************************************************************************************
@@ -149,15 +149,21 @@ struct udp_pcb *udppcb;  	//定义一个TCP服务器控制块
 static void AppObjCreate(void);
 static void AppTaskCreate(void);
 static void AppTaskStart(void *p_arg);
-static void led0_task_create(void *p_arg);
-static void led1_task_create(void *p_arg);
-static void usart3_task_create(void *p_arg);
-static void gprs_init_task_create(void *p_arg);
-static void eth_init_task_create(void *p_arg);
+static void led0_task_fun(void *p_arg);
+static void led1_task_fun(void *p_arg);
+static void usart3_task_fun(void *p_arg);
+static void gprs_init_task_fun(void *p_arg);
+static void eth_init_task_fun(void *p_arg);
+static void dhcp_task_fun(void *p_arg);
+
+
+void lwip_comm_dhcp_delete(void);
+
+
+
 void tmr1_callback(void *p_tmr, void *p_arg);
 void gprs_callback(void *p_tmr, void *p_arg);
-static void dhcp_task_create(void *p_arg);
-static void rawudp_task_create(void *p_arg);
+
 
 
 /*
@@ -376,7 +382,7 @@ static  void  AppTaskCreate (void)
 	
 	OSTaskCreate((OS_TCB 	* )&led0_task_TCB,		
 				 (CPU_CHAR	* )"led0 task", 		
-                 (OS_TASK_PTR )led0_task_create, 			
+                 (OS_TASK_PTR )led0_task_fun, 			
                  (void		* )0,					
                  (OS_PRIO	  )LED0_TASK_PRIO,     
                  (CPU_STK   * )&led0_task_stk[0],	
@@ -391,7 +397,7 @@ static  void  AppTaskCreate (void)
 	
 	OSTaskCreate((OS_TCB 	* )&led1_task_TCB,		
 				 (CPU_CHAR	* )"led1 task", 		
-                 (OS_TASK_PTR )led1_task_create, 			
+                 (OS_TASK_PTR )led1_task_fun, 			
                  (void		* )0,					
                  (OS_PRIO	  )LED1_TASK_PRIO,     
                  (CPU_STK   * )&led1_task_stk[0],	
@@ -406,7 +412,7 @@ static  void  AppTaskCreate (void)
 				 
 	OSTaskCreate((OS_TCB 	* )&usart3_task_TCB,		
 				 (CPU_CHAR	* )"usart3 task", 		
-                 (OS_TASK_PTR )usart3_task_create, 			
+                 (OS_TASK_PTR )usart3_task_fun, 			
                  (void		* )0,					
                  (OS_PRIO	  )USART3_TASK_PRIO,     
                  (CPU_STK   * )&usart3_task_stk[0],	
@@ -420,7 +426,7 @@ static  void  AppTaskCreate (void)
 
 	OSTaskCreate((OS_TCB 	* )&gprs_init_task_TCB,		
 				 (CPU_CHAR	* )"gprs_init_task", 		
-                 (OS_TASK_PTR )gprs_init_task_create, 			
+                 (OS_TASK_PTR )gprs_init_task_fun, 			
                  (void		* )0,					
                  (OS_PRIO	  )GPRS_INIT_TASK_PRIO,     
                  (CPU_STK   * )&gprs_init_task_stk[0],	
@@ -434,7 +440,7 @@ static  void  AppTaskCreate (void)
 
 	OSTaskCreate((OS_TCB 	* )&eth_init_task_TCB,		
 				 (CPU_CHAR	* )"eth_init_task", 		
-                 (OS_TASK_PTR )eth_init_task_create, 			
+                 (OS_TASK_PTR )eth_init_task_fun, 			
                  (void		* )0,					
                  (OS_PRIO	  )ETH_INIT_TASK_PRIO,     
                  (CPU_STK   * )&eth_init_task_stk[0],	
@@ -446,10 +452,10 @@ static  void  AppTaskCreate (void)
                  (OS_OPT      )OS_OPT_TASK_STK_CHK|OS_OPT_TASK_STK_CLR,
                  (OS_ERR 	* )&os_err);                                             /* Create Application Kernel Objects                        */
 	
-		 
+	USART_OUT(USART3, "\eth_init_task err=%d\r", os_err);	 
 	OSTaskCreate((OS_TCB 	* )&dhcp_task_TCB,		
 				 (CPU_CHAR	* )"dhcp_task", 		
-                 (OS_TASK_PTR )dhcp_task_create, 			
+                 (OS_TASK_PTR )dhcp_task_fun, 			
                  (void		* )0,					
                  (OS_PRIO	  )DHCP_TASK_PRIO,     
                  (CPU_STK   * )&dhcp_task_stk[0],	
@@ -461,22 +467,11 @@ static  void  AppTaskCreate (void)
                  (OS_OPT      )OS_OPT_TASK_STK_CHK|OS_OPT_TASK_STK_CLR,
                  (OS_ERR 	* )&os_err);                                             /* Create Application Kernel Objects                        */
 			 
-	
+	USART_OUT(USART3, "\dhcp_task err=%d\r", os_err);
 
-		OSTaskCreate((OS_TCB 	* )&rawudp_task_TCB,		
-				 (CPU_CHAR	* )"rawudp_task", 		
-                 (OS_TASK_PTR )rawudp_task_create, 			
-                 (void		* )0,					
-                 (OS_PRIO	  )RAWUDP_TASK_PRIO,     
-                 (CPU_STK   * )&rawudp_task_stk[0],	
-                 (CPU_STK_SIZE)RAWUDP_TASK_STK_SIZE/10,	
-                 (CPU_STK_SIZE)RAWUDP_TASK_STK_SIZE,		
-                 (OS_MSG_QTY  )0,					
-                 (OS_TICK	  )0,					
-                 (void   	* )0,					
-                 (OS_OPT      )OS_OPT_TASK_STK_CHK|OS_OPT_TASK_STK_CLR,
-                 (OS_ERR 	* )&os_err); 
-				 
+		 
+	
+			 
 }
 
 
@@ -498,7 +493,7 @@ static  void  AppTaskCreate (void)
 * Note(s)     : none.
 *********************************************************************************************************
 */
-static void led0_task_create(void *p_arg)
+static void led0_task_fun(void *p_arg)
 {
 	OS_ERR err;
 
@@ -521,7 +516,7 @@ static void led0_task_create(void *p_arg)
 	
 }
 
-static void led1_task_create(void *p_arg)
+static void led1_task_fun(void *p_arg)
 {
 	OS_ERR err;
 
@@ -548,7 +543,7 @@ static void led1_task_create(void *p_arg)
 	
 }
 
-static void usart3_task_create(void *p_arg)
+static void usart3_task_fun(void *p_arg)
 {
 	OS_ERR err;
 	OS_MSG_SIZE size = 0;
@@ -612,16 +607,9 @@ static void usart3_task_create(void *p_arg)
 		
 }
 
-void lwip_comm_dhcp_delete(void)
-{
-	OS_ERR err;
-	
-	dhcp_stop(&lwip_netif); 		//关闭DHCP
-	OSTaskDel(&dhcp_task_TCB, &err);//删除DHCP任务
-}
 
 
-static void dhcp_task_create(void *p_arg)
+static void dhcp_task_fun(void *p_arg)
 {
 	OS_ERR err;
 	u8 nn = 0;
@@ -686,50 +674,30 @@ static void dhcp_task_create(void *p_arg)
 			break;
 		}
 
-		dhcp_fine_tmr();
+
 		OSTimeDly(250, OS_OPT_TIME_DLY, &err);
 	}
 
+	rawudp_task_create();
+	
 	lwip_comm_dhcp_delete();//删除DHCP任务 
-}
 
-static void rawudp_task_create(void *p_arg)
+		
+	
+}
+void lwip_comm_dhcp_delete(void)
 {
 	OS_ERR err;
-		
-
-	struct ip4_addr rmtipaddr;  	//远端ip地址
- 	
 	
-//	udppcb = udp_new();
-//	
-//	if(udppcb)//创建成功
-//	{		
-//		IP4_ADDR(&rmtipaddr, lwip_dev.remote_ip[0], lwip_dev.remote_ip[1], lwip_dev.remote_ip[2], lwip_dev.remote_ip[3]);
-//		USART_OUT(USART3,   "远程IP........................%d.%d.%d.%d\r\n", lwip_dev.remote_ip[0], lwip_dev.remote_ip[1], lwip_dev.remote_ip[2], lwip_dev.remote_ip[3]);
-//		err = udp_connect(udppcb, &rmtipaddr, 16650);//UDP客户端连接到指定IP地址和端口号的服务器
-//		if(err == ERR_OK)
-//		{
-//			err = udp_bind(udppcb, IP_ADDR_ANY, 16650);//绑定本地IP地址与端口号
-//			if(err == ERR_OK)	//绑定完成
-//			{						
-//				udp_recv(udppcb, udp_demo_recv, NULL);//注册接收回调函数 
-//			}
-//		}		
-//	}
-//	udp_demo_senddata(udppcb);	
-	while(DEF_TRUE)
-	{
-		
-	//	lwip_periodic_handle();
-		OSTimeDly(250, OS_OPT_TIME_DLY, &err);
-	}
-
-
+	dhcp_stop(&lwip_netif); 		//关闭DHCP
+	OSTaskDel(&dhcp_task_TCB, &err);//删除DHCP任务
 }
 
 
-static void eth_init_task_create(void *p_arg)
+
+
+
+static void eth_init_task_fun(void *p_arg)
 {
 	OS_ERR err;
 	u8 nn = 0;
@@ -743,8 +711,20 @@ static void eth_init_task_create(void *p_arg)
 
 }
 
+static void tcpip_task_fun(void *p_arg)
+{
+	OS_ERR err;
+	u8 nn = 0;
 
-static void gprs_init_task_create(void *p_arg)
+	while(DEF_TRUE)
+	{
+
+
+		OSTimeDly(1000, OS_OPT_TIME_DLY, &err);
+	}
+
+}
+static void gprs_init_task_fun(void *p_arg)
 {
 	OS_ERR err;
 	OS_MSG_SIZE size = 0;
@@ -1048,14 +1028,14 @@ static  void  AppObjCreate (void)
 				
 	OSTmrCreate((OS_TMR		*)&gprs,		//定时器1
                 (CPU_CHAR	*)"gprs",		//定时器名字
-                (OS_TICK	 )10000,			//ms
+                (OS_TICK	 )100,			//ms
                 (OS_TICK	 )0,          	//ms
                 (OS_OPT		 )OS_OPT_TMR_ONE_SHOT, //周期模式
                 (OS_TMR_CALLBACK_PTR)gprs_callback,//定时器1回调函数
                 (void	    *)0,			//参数为0
                 (OS_ERR	    *)&err);		//返回的错误码	
 	
-	OSTmrStart(&gprs,&err);		
+	
 				
 	OSQCreate ((OS_Q*		)&usart3_msg,	//消息队列
                 (CPU_CHAR*	)"usart3 msg",	//消息队列名称
@@ -1089,6 +1069,7 @@ void tmr1_callback(void *p_tmr, void *p_arg)
 
 void gprs_callback(void *p_tmr, void *p_arg)
 {
+
 	usart2_rx_status = 1;
 	
 	USART_OUT(USART3, "gprs_callback\r");

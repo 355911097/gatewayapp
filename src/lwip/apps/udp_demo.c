@@ -23,15 +23,14 @@
 ////////////////////////////////////////////////////////////////////////////////// 	   
  
  
- 
-
- extern u32 lwip_localtime;
+ extern u32 lwip_localtime;	
  extern lwip_dev_t lwip_dev;
- 
 
+struct udp_pcb *udppcb;  	//定义一个TCP服务器控制块
 
-
-
+OS_TCB 	rawudp_task_TCB;
+CPU_STK	rawudp_task_stk[RAWUDP_TASK_STK_SIZE];
+#define RAWUDP_TASK_PRIO		5
 
 //UDP接收数据缓冲区
 u8 udp_demo_recvbuf[UDP_DEMO_RX_BUFSIZE];	//UDP接收数据缓冲区 
@@ -40,45 +39,59 @@ u8 data[50];
 u8 rawudp_send_buff[100];
 u32 message_count = 0;
 
-//UDP 测试全局状态标记变量
-//bit7:没有用到
-//bit6:0,没有收到数据;1,收到数据了.
-//bit5:0,没有连接上;1,连接上了.
-//bit4~0:保留
-u8 udp_demo_flag;
 
 
 
-//UDP测试
-struct udp_pcb *udp_demo_init(void)
+
+
+
+
+
+static void rawudp_task_fun(void *p_arg);
+
+
+
+
+
+static void rawudp_task_fun(void *p_arg)
 {
- 	err_t err;
-	struct udp_pcb *udppcb;  	//定义一个TCP服务器控制块
+	OS_ERR err;
+
 	struct ip4_addr rmtipaddr;  	//远端ip地址
  	
-
 	
 	udppcb = udp_new();
-	if(udppcb)//创建成功
+
+	if( udppcb )//创建成功
 	{		
-		IP4_ADDR(&rmtipaddr,lwip_dev.remote_ip[0],lwip_dev.remote_ip[1],lwip_dev.remote_ip[2],lwip_dev.remote_ip[3]);
-		USART_OUT(USART3,   "远程IP........................%d.%d.%d.%d\r\n",lwip_dev.remote_ip[0],lwip_dev.remote_ip[1],lwip_dev.remote_ip[2],lwip_dev.remote_ip[3]);
-		err=udp_connect(udppcb, &rmtipaddr, 16650);//UDP客户端连接到指定IP地址和端口号的服务器
-		if(err==ERR_OK)
+		IP4_ADDR(&rmtipaddr, lwip_dev.remote_ip[0], lwip_dev.remote_ip[1], lwip_dev.remote_ip[2], lwip_dev.remote_ip[3]);
+		USART_OUT(USART3,   "远程IP........................%d.%d.%d.%d\r\n", lwip_dev.remote_ip[0], lwip_dev.remote_ip[1], lwip_dev.remote_ip[2], lwip_dev.remote_ip[3]);
+		err = udp_connect(udppcb, &rmtipaddr, 16650);//UDP客户端连接到指定IP地址和端口号的服务器
+		if(err == ERR_OK)
 		{
-			err=udp_bind(udppcb,IP_ADDR_ANY,16650);//绑定本地IP地址与端口号
-			if(err==ERR_OK)	//绑定完成
+			err = udp_bind(udppcb, IP_ADDR_ANY, 16650);//绑定本地IP地址与端口号
+			if(err == ERR_OK)	//绑定完成
 			{						
-				udp_recv(udppcb, udp_demo_recv, NULL);//注册接收回调函数 
+				udp_recv(udppcb, rawudp_recv, NULL);//注册接收回调函数 
 			}
 		}		
 	}
-	
-	return udppcb;
-} 
+//	udp_demo_senddata(udppcb);	
+	rawudp_send_data(udppcb, "www");
+	while(DEF_TRUE)
+	{
+		
+		OSTimeDly(250, OS_OPT_TIME_DLY, &err);
+	}
 
-//UDP回调函数
-void udp_demo_recv(void *arg, struct udp_pcb *upcb, struct pbuf *p, const ip_addr_t *addr, u16_t port)
+
+}
+
+
+
+
+
+void rawudp_recv(void *arg, struct udp_pcb *upcb, struct pbuf *p, const ip_addr_t *addr, u16_t port)
 {
 	u32 data_len = 0;
 	struct pbuf *q;
@@ -116,9 +129,9 @@ void udp_demo_recv(void *arg, struct udp_pcb *upcb, struct pbuf *p, const ip_add
 	{
 		udp_disconnect(upcb); 
 	
-		udp_demo_flag &= ~(1<<5);	//标记连接断开
 	} 
 } 
+
 //UDP服务器发送数据
 void udp_demo_senddata(struct udp_pcb *upcb)
 {
@@ -132,8 +145,6 @@ void udp_demo_senddata(struct udp_pcb *upcb)
 		pbuf_free(ptr);//释放内存
 	} 
 } 
-
-
 void rawudp_send_data(struct udp_pcb *upcb, u8 *pdata)
 {
 	struct pbuf *ptr;
@@ -147,10 +158,38 @@ void rawudp_send_data(struct udp_pcb *upcb, u8 *pdata)
 	} 
 } 
 //关闭UDP连接
-void udp_demo_connection_close(struct udp_pcb *upcb)
+void rawudp_connection_close(struct udp_pcb *upcb)
 {
 	udp_disconnect(upcb); 
 	udp_remove(upcb);			//断开UDP连接 
+
+}
+
+
+
+void rawudp_task_create(void)
+{
+	OS_ERR os_err;
+	CPU_SR_ALLOC();
+
+	
+	CPU_CRITICAL_ENTER();
+	OSTaskCreate((OS_TCB 	* )&rawudp_task_TCB,		
+				 (CPU_CHAR	* )"rawudp_task", 		
+                 (OS_TASK_PTR )rawudp_task_fun, 			
+                 (void		* )0,					
+                 (OS_PRIO	  )RAWUDP_TASK_PRIO,     
+                 (CPU_STK   * )&rawudp_task_stk[0],	
+                 (CPU_STK_SIZE)RAWUDP_TASK_STK_SIZE/10,	
+                 (CPU_STK_SIZE)RAWUDP_TASK_STK_SIZE,		
+                 (OS_MSG_QTY  )0,					
+                 (OS_TICK	  )0,					
+                 (void   	* )0,					
+                 (OS_OPT      )OS_OPT_TASK_STK_CHK|OS_OPT_TASK_STK_CLR,
+                 (OS_ERR 	* )&os_err); 
+				 
+	CPU_CRITICAL_EXIT();			 
+	USART_OUT(USART3, "\rawudp_task err=%d\r", os_err);	
 
 }
 

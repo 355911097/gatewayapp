@@ -17,9 +17,12 @@
 
  
 struct udp_pcb *udp_demo_init(void);
-void udp_demo_recv(void *arg, struct udp_pcb *upcb, struct pbuf *p, const ip_addr_t *addr, u16_t port);
+void rawudp_recv(void *arg, struct udp_pcb *upcb, struct pbuf *p, const ip_addr_t *addr, u16_t port);
 void udp_demo_senddata(struct udp_pcb *upcb);
-void udp_demo_connection_close(struct udp_pcb *upcb);
+void rawudp_connection_close(struct udp_pcb *upcb);
+void rawudp_task_create(void);
+void rawudp_send_data(struct udp_pcb *upcb, u8 *pdata);
+
 
 #endif
 

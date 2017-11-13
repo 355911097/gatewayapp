@@ -285,9 +285,10 @@ void sys_init(void)
     //这里,我们在该函数,不做任何事情
 }
 
-extern CPU_STK * TCPIP_THREAD_TASK_STK;//TCP IP内核任务堆栈,在lwip_comm函数定义
-//LWIP内核任务的任务控制块
-OS_TCB TcpipthreadTaskTCB;
+//CPU_STK *TCPIP_THREAD_TASK_STK;//TCP IP内核任务堆栈,在lwip_comm函数定义
+CPU_STK tcpip_thread_task_stk[1000];
+
+OS_TCB tcpip_thread_task_TCB;//LWIP内核任务的任务控制块
 //创建一个新进程
 //*name:进程名称
 //thred:进程任务函数
@@ -302,12 +303,12 @@ sys_thread_t sys_thread_new(const char *name, lwip_thread_fn thread, void *arg, 
 	{
 		OS_CRITICAL_ENTER();	//进入临界区			 
 		//创建开始任务
-		OSTaskCreate((OS_TCB 	* )&TcpipthreadTaskTCB,			//任务控制块
-					 (CPU_CHAR	* )"TCPIPThread task", 			//任务名字
+		OSTaskCreate((OS_TCB 	* )&tcpip_thread_task_TCB,			//任务控制块
+					 (CPU_CHAR	* )"TCPIP_thread task", 			//任务名字
                      (OS_TASK_PTR )thread, 						//任务函数
                      (void		* )0,							//传递给任务函数的参数
                      (OS_PRIO	  )prio,     					//任务优先级
-                     (CPU_STK   * )&TCPIP_THREAD_TASK_STK[0],	//任务堆栈基地址
+                     (CPU_STK   * )&tcpip_thread_task_stk[0],	//任务堆栈基地址
                      (CPU_STK_SIZE)stacksize/10,				//任务堆栈深度限位
                      (CPU_STK_SIZE)stacksize,					//任务堆栈大小
                      (OS_MSG_QTY  )0,							//任务内部消息队列能够接收的最大消息数目,为0时禁止接收消息
@@ -317,6 +318,7 @@ sys_thread_t sys_thread_new(const char *name, lwip_thread_fn thread, void *arg, 
                      (OS_ERR 	* )&err);					//存放该函数错误时的返回值
 		OS_CRITICAL_EXIT();	//退出临界区
 	} 
+	USART_OUT(USART3, "\rsys_thread_new err1=%d\r", err);
 	return 0;
 } 
 //lwip延时函数

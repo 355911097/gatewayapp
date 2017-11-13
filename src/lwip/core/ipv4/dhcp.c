@@ -469,7 +469,6 @@ dhcp_fine_tmr(void)
     /* proceed to next network interface */
     netif = netif->next;
   }
-  USART_OUT(USART3, "dhcp_fine_tmr OK\r");
 }
 
 /**
