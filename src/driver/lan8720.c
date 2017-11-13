@@ -37,7 +37,7 @@ struct netif lwip_netif;
 
 u32 TCPTimer=0;		
 u32 ARPTimer=0;			
-u32 lwip_localtime;		//lwip???????,??:ms
+u32 lwip_localtime;		//
 #if LWIP_DHCP
 u32 DHCPfineTimer=0;	//DHCP精细处理计时器
 u32 DHCPcoarseTimer=0;	//DHCP粗糙处理计时器
@@ -148,8 +148,10 @@ u8 lwip_dev_init(void)
 #if LWIP_DHCP
 	ipaddr.addr = 0;
 	netmask.addr = 0;
-	gw.addr = 0;	
-#else	
+	gw.addr = 0;
+	lwip_dev.dhcp_status = 0;
+#else
+	lwip_dev.dhcp_status = 3;
 	IP4_ADDR(&ipaddr, lwip_dev.ip[0], lwip_dev.ip[1], lwip_dev.ip[2], lwip_dev.ip[3]); // 
     IP4_ADDR(&netmask, lwip_dev.netmask[0], lwip_dev.netmask[1], lwip_dev.netmask[2], lwip_dev.netmask[3]); // 
     IP4_ADDR(&gw, lwip_dev.gateway[0], lwip_dev.gateway[1], lwip_dev.gateway[2], lwip_dev.gateway[3]); // 

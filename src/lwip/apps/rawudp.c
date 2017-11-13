@@ -1,4 +1,4 @@
-#include "udp_demo.h" 
+#include "rawudp.h" 
 #include "usart.h"
 #include "malloc.h"
 #include "stdio.h"
@@ -6,37 +6,54 @@
 #include "timer.h"
 #include "lwip/ip4_addr.h"
 #include "lan8720.h"
+#include "app.h"
  
- 
- 
- extern u32 lwip_localtime;	
- extern lwip_dev_t lwip_dev;
+
+
+extern lwip_dev_t lwip_dev;
 
 struct udp_pcb *udppcb;  	//定义一个TCP服务器控制块
 
 OS_TCB 	rawudp_task_TCB;
 CPU_STK	rawudp_task_stk[RAWUDP_TASK_STK_SIZE];
-#define RAWUDP_TASK_PRIO		5
 
 
 
-u8 rawudp_recv_buff[RAWUDP_RX_BUFSIZE];	//UDP接收数据缓冲区 
-u8 rawudp_send_buff[50];		//UDP发送数据内容
-
-u32 message_count = 0;
-
-
-
-
-
-
-
+u8 rawudp_recv_buff[RAWUDP_RX_BUFSIZE];		//UDP接收数据缓冲区 
+u8 rawudp_send_buff[RAWUDP_RX_BUFSIZE];		//UDP发送数据内容
 
 
 static void rawudp_task_fun(void *p_arg);
 
 
+void rawudp_task_create(void)
+{
+	OS_ERR os_err;
+	CPU_SR_ALLOC();
 
+	
+	CPU_CRITICAL_ENTER();
+	OSTaskCreate((OS_TCB 	* )&rawudp_task_TCB,		
+				 (CPU_CHAR	* )"rawudp_task", 		
+                 (OS_TASK_PTR )rawudp_task_fun, 			
+                 (void		* )0,					
+                 (OS_PRIO	  )RAWUDP_TASK_PRIO,     
+                 (CPU_STK   * )&rawudp_task_stk[0],	
+                 (CPU_STK_SIZE)RAWUDP_TASK_STK_SIZE/10,	
+                 (CPU_STK_SIZE)RAWUDP_TASK_STK_SIZE,		
+                 (OS_MSG_QTY  )0,					
+                 (OS_TICK	  )0,					
+                 (void   	* )0,					
+                 (OS_OPT      )OS_OPT_TASK_STK_CHK|OS_OPT_TASK_STK_CLR,
+                 (OS_ERR 	* )&os_err); 
+				 
+	CPU_CRITICAL_EXIT();
+				 
+	OSTimeDly(10, OS_OPT_TIME_DLY, &os_err);
+	
+	USART_OUT(USART3, "\rrawudp_task err=%d\r", os_err);	
+
+}
 
 
 static void rawudp_task_fun(void *p_arg)
@@ -52,32 +69,31 @@ static void rawudp_task_fun(void *p_arg)
 	{		
 		IP4_ADDR(&rmtipaddr, lwip_dev.remote_ip[0], lwip_dev.remote_ip[1], lwip_dev.remote_ip[2], lwip_dev.remote_ip[3]);
 		USART_OUT(USART3,   "远程IP........................%d.%d.%d.%d\r\n", lwip_dev.remote_ip[0], lwip_dev.remote_ip[1], lwip_dev.remote_ip[2], lwip_dev.remote_ip[3]);
-		err = udp_connect(udppcb, &rmtipaddr, 16650);//UDP客户端连接到指定IP地址和端口号的服务器
+		err = udp_connect(udppcb, &rmtipaddr, 16650);			//UDP客户端连接到指定IP地址和端口号的服务器
 		if(err == ERR_OK)
 		{
-			err = udp_bind(udppcb, IP_ADDR_ANY, 16650);//绑定本地IP地址与端口号
+			err = udp_bind(udppcb, IP_ADDR_ANY, 16650);			//绑定本地IP地址与端口号
 			if(err == ERR_OK)	//绑定完成
 			{						
-				udp_recv(udppcb, rawudp_recv, NULL);//注册接收回调函数 
+				udp_recv(udppcb, rawudp_recv_callback, NULL);	//注册接收回调函数 
 			}
 		}		
 	}
-//	udp_demo_senddata(udppcb);	
+
 	rawudp_send_data(udppcb, "www");
 	while(DEF_TRUE)
 	{
 		
 		OSTimeDly(250, OS_OPT_TIME_DLY, &err);
 	}
-
-
+	
 }
 
 
 
 
 
-void rawudp_recv(void *arg, struct udp_pcb *upcb, struct pbuf *p, const ip_addr_t *addr, u16_t port)
+void rawudp_recv_callback(void *arg, struct udp_pcb *upcb, struct pbuf *p, const ip_addr_t *addr, u16_t port)
 {
 	u32 data_len = 0;
 	struct pbuf *q;
@@ -106,10 +122,10 @@ void rawudp_recv(void *arg, struct udp_pcb *upcb, struct pbuf *p, const ip_addr_
 		
 		upcb->remote_ip=*addr; 				//记录远程主机的eIP地址
 		upcb->remote_port=port;  			//记录远程主机的端口号
-		lwip_dev.remote_ip[0]=upcb->remote_ip.addr&0xff; 		//IADDR4
-		lwip_dev.remote_ip[1]=(upcb->remote_ip.addr>>8)&0xff; //IADDR3
-		lwip_dev.remote_ip[2]=(upcb->remote_ip.addr>>16)&0xff;//IADDR2
-		lwip_dev.remote_ip[3]=(upcb->remote_ip.addr>>24)&0xff;//IADDR1 
+		lwip_dev.remote_ip[0] = upcb->remote_ip.addr&0xff; 		//IADDR4
+		lwip_dev.remote_ip[1] = (upcb->remote_ip.addr>>8)&0xff; //IADDR3
+		lwip_dev.remote_ip[2] = (upcb->remote_ip.addr>>16)&0xff;//IADDR2
+		lwip_dev.remote_ip[3] = (upcb->remote_ip.addr>>24)&0xff;//IADDR1 
 		pbuf_free(p);//释放内存
 	}else
 	{
@@ -118,19 +134,7 @@ void rawudp_recv(void *arg, struct udp_pcb *upcb, struct pbuf *p, const ip_addr_
 	} 
 } 
 
-//UDP服务器发送数据
-//void udp_demo_senddata(struct udp_pcb *upcb)
-//{
-//	struct pbuf *ptr;
-//	sprintf((char*)data, "sending udp client message %d\r", (int*)lwip_localtime);
-//	ptr=pbuf_alloc(PBUF_TRANSPORT, strlen((char*)data), PBUF_POOL); //申请内存
-//	if(ptr)
-//	{
-//		pbuf_take(ptr, (char*)data, strlen((char*)data)); //将tcp_demo_sendbuf中的数据打包进pbuf结构中
-//		udp_send(upcb, ptr);	//udp发送数据 
-//		pbuf_free(ptr);//释放内存
-//	} 
-//} 
+
 void rawudp_send_data(struct udp_pcb *upcb, u8 *pdata)
 {
 	struct pbuf *ptr;
@@ -149,38 +153,10 @@ void rawudp_connection_close(struct udp_pcb *upcb)
 {
 	udp_disconnect(upcb); 
 	udp_remove(upcb);			//断开UDP连接 
-
 }
 
 
 
-void rawudp_task_create(void)
-{
-	OS_ERR os_err;
-	CPU_SR_ALLOC();
-
-	
-	CPU_CRITICAL_ENTER();
-	OSTaskCreate((OS_TCB 	* )&rawudp_task_TCB,		
-				 (CPU_CHAR	* )"rawudp_task", 		
-                 (OS_TASK_PTR )rawudp_task_fun, 			
-                 (void		* )0,					
-                 (OS_PRIO	  )RAWUDP_TASK_PRIO,     
-                 (CPU_STK   * )&rawudp_task_stk[0],	
-                 (CPU_STK_SIZE)RAWUDP_TASK_STK_SIZE/10,	
-                 (CPU_STK_SIZE)RAWUDP_TASK_STK_SIZE,		
-                 (OS_MSG_QTY  )0,					
-                 (OS_TICK	  )0,					
-                 (void   	* )0,					
-                 (OS_OPT      )OS_OPT_TASK_STK_CHK|OS_OPT_TASK_STK_CLR,
-                 (OS_ERR 	* )&os_err); 
-				 
-	CPU_CRITICAL_EXIT();
-				 
-	OSTimeDly(10, OS_OPT_TIME_DLY, &os_err);
-	USART_OUT(USART3, "\rrawudp_task err=%d\r", os_err);	
-
-}
 
 
 

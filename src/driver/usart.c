@@ -27,7 +27,7 @@
 
 
 extern OS_Q usart3_msg;
-extern OS_TCB 	usart3_task_TCB;
+extern OS_TCB usart3_task_TCB;
 extern OS_TMR gprs;
 
 

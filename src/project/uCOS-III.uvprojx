@@ -871,6 +871,11 @@
               <FileType>1</FileType>
               <FilePath>..\lwip\apps\rawudp.c</FilePath>
             </File>
+            <File>
+              <FileName>dhcp.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\lwip\apps\dhcp.c</FilePath>
+            </File>
           </Files>
         </Group>
         <Group>

@@ -39,7 +39,7 @@ typedef struct
 
 
 
-#define LWIP_MAX_DHCP_TRIES		4   //DHCP服务器最大重试次数
+#define LWIP_MAX_DHCP_TRIES		10   //DHCP服务器最大重试次数
 
 
 #define LAN8720_PHY_ADDRESS  	0x00				//LAN8720 PHY芯片地址.
