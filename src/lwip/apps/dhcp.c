@@ -23,7 +23,7 @@ OS_TCB 	dhcp_task_TCB;
 CPU_STK	dhcp_task_stk[DHCP_TASK_STK_SIZE];
 
 static void dhcp_task_fun(void *p_arg);
-
+void dhcp_task_delete(void);
 
 void dhcp_task_create(void)
 {
@@ -76,7 +76,6 @@ static void dhcp_task_fun(void *p_arg)
 		USART_OUT(USART3, "lwip_dev_init OK\r");
 	}	
 		
-
 	pdhcp->tries = 0;
 	
 	while(DEF_TRUE)

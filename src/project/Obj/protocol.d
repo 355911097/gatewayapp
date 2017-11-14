@@ -56,3 +56,7 @@
 .\obj\protocol.o: ..\app\system.h
 .\obj\protocol.o: ..\bsp\bsp.h
 .\obj\protocol.o: ..\app\protocol.h
+.\obj\protocol.o: ..\UCOSIII\uCOS-CONFIG\includes.h
+.\obj\protocol.o: d:\Keil_v5\ARM\ARMCC\Bin\..\include\stdlib.h
+.\obj\protocol.o: d:\Keil_v5\ARM\ARMCC\Bin\..\include\math.h
+.\obj\protocol.o: ..\UCOSIII\uC-LIB\lib_math.h
