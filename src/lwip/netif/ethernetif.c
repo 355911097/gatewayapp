@@ -46,6 +46,7 @@
 #include "lwip/opt.h"
 #include "string.h"
 #include "lan8720.h"
+#include "lwip_comm.h"
 #if 1 /* don't build, this is only a skeleton, see previous comment */
 
 #include "lwip/def.h"

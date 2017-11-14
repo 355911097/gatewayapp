@@ -73,6 +73,7 @@
 .\obj\ethernetif.o: ..\driver\lan8720.h
 .\obj\ethernetif.o: ..\Libraries\STM32F2x7_ETH_Driver\inc\stm32f2x7_eth.h
 .\obj\ethernetif.o: ..\Libraries\STM32F2x7_ETH_Driver\inc\stm32f2x7_eth_conf.h
+.\obj\ethernetif.o: ..\lwip\apps\lwip_comm.h
 .\obj\ethernetif.o: ..\lwip\include\lwip/def.h
 .\obj\ethernetif.o: ..\lwip\include\lwip/mem.h
 .\obj\ethernetif.o: ..\lwip\include\lwip/pbuf.h

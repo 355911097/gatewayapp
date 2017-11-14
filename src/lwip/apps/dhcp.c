@@ -11,6 +11,7 @@
 #include "lwip/ip4_addr.h"
 #include "lwip/dhcp.h"
 #include "lan8720.h"
+#include "lwip_comm.h"
 #include "app.h"
 #include "rawudp.h"
 
@@ -69,14 +70,14 @@ static void dhcp_task_fun(void *p_arg)
 	u32_t ucos_time, lwip_time;
 
 
-	nn = lwip_dev_init();
+	nn = lwip_comm_dev_init();
 	if(nn == 0)
 	{
 		USART_OUT(USART3, "lwip_dev_init OK\r");
 	}	
 		
-//	lwip_dev.dhcp_status = 0;	//ÕýÔÚDHCP
-//	pdhcp->tries = 0;
+
+	pdhcp->tries = 0;
 	
 	while(DEF_TRUE)
 	{

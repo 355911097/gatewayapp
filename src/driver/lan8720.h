@@ -19,16 +19,6 @@
 
 
 
-typedef struct 
-{
-	u8 mac[6];
-	u8 remote_ip[4];
-	u8 ip[4];
-	u8 netmask[4];
-	u8 gateway[4];
-	u8 dhcp_status;
-	
-}lwip_dev_t;
 
 
 
@@ -39,7 +29,6 @@ typedef struct
 
 
 
-#define LWIP_MAX_DHCP_TRIES		10   //DHCP服务器最大重试次数
 
 
 #define LAN8720_PHY_ADDRESS  	0x00				//LAN8720 PHY芯片地址.
@@ -57,17 +46,15 @@ extern ETH_DMADESCTypeDef  DMATxDscrTab[ETH_TXBUFNB];
 extern uint8_t Rx_Buff[ETH_RXBUFNB][ETH_RX_BUF_SIZE];
 extern uint8_t Tx_Buff[ETH_TXBUFNB][ETH_TX_BUF_SIZE];
 
-extern lwip_dev_t lwip_dev;
 
 
 
 
 
 
-void lwip_pkt_handle(void);
-void lwip_periodic_handle(void);
-u8 lwip_dev_init(void);
-void lwip_dhcp_process_handle(void);
+
+
+
 
 /////////////////////////////////////////
 u8 LAN8720_Init(void);

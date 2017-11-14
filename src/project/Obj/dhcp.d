@@ -99,6 +99,7 @@
 .\obj\dhcp.o: ..\driver\lan8720.h
 .\obj\dhcp.o: ..\Libraries\STM32F2x7_ETH_Driver\inc\stm32f2x7_eth.h
 .\obj\dhcp.o: ..\Libraries\STM32F2x7_ETH_Driver\inc\stm32f2x7_eth_conf.h
+.\obj\dhcp.o: ..\lwip\apps\lwip_comm.h
 .\obj\dhcp.o: ..\app\app.h
 .\obj\dhcp.o: ..\lwip\apps\rawudp.h
 .\obj\dhcp.o: ..\lwip\include\lwip/tcp.h

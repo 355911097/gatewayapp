@@ -9,245 +9,19 @@
 *                                             INCLUDE FILES
 *********************************************************************************************************
 */
-
 #include "bsp.h"
 #include "timer.h"
 #include "lan8720.h"
 #include "usart.h"
 #include "string.h"
-/////////////////////////////
-#include "netif/ethernet.h"
-#include "lwip/init.h"
-#include "lwip/etharp.h"
-#include "lwip/priv/tcp_priv.h"
-#include "lwip/ip_addr.h"
-#include "lwip/mem.h"
-#include "lwip/dhcp.h"
-#include "lwip/tcpip.h" 
-
-extern err_t ethernetif_init(struct netif *netif);
-extern void ethernetif_input(struct netif *netif);
-extern err_t ethernet_input(struct pbuf *p, struct netif *netif);
 
 
 
 
-lwip_dev_t lwip_dev;
-struct netif lwip_netif;				
-
-u32 TCPTimer=0;		
-u32 ARPTimer=0;			
-u32 lwip_localtime;		//
-#if LWIP_DHCP
-u32 DHCPfineTimer=0;	//DHCP精细处理计时器
-u32 DHCPcoarseTimer=0;	//DHCP粗糙处理计时器
-#endif
-
-
-
-//
-void lwip_pkt_handle(void)
-{
-	ethernetif_input(&lwip_netif);	
-}
-
-
-void lwip_periodic_handle(void)
-{
-	
-#if LWIP_TCP
-	//
-	if (lwip_localtime - TCPTimer >= TCP_TMR_INTERVAL)
-	{
-		TCPTimer =  lwip_localtime;
-		tcp_tmr();
-	}
-#endif
-  //ARP
-	if ((lwip_localtime - ARPTimer) >= ARP_TMR_INTERVAL)
-	{
-		ARPTimer =  lwip_localtime;
-		etharp_tmr();
-	 
-	}
-  
-
-#if LWIP_DHCP //如果使用DHCP的话
-  //每500ms调用一次dhcp_fine_tmr()
-	if (lwip_localtime - DHCPfineTimer >= DHCP_FINE_TIMER_MSECS)
-	{
-		DHCPfineTimer =  lwip_localtime;
-		dhcp_fine_tmr();
-		if ((lwip_dev.dhcp_status != 2)&&(lwip_dev.dhcp_status != 0XFF))
-		{ 
-			lwip_dhcp_process_handle();  //DHCP处理
-		}
-	}
-
-  //每60s执行一次DHCP粗糙处理
-	if (lwip_localtime - DHCPcoarseTimer >= DHCP_COARSE_TIMER_MSECS)
-	{
-		DHCPcoarseTimer =  lwip_localtime;
-		dhcp_coarse_tmr();
-	}  
-#endif
-
-  
-}
-
-
-void lwip_comm_default_ip_set(lwip_dev_t *lwipx)
-{
-	
-	u32 sn0;
-	sn0=*(vu32*)(0x1FFF7A10);//
-		
-	lwipx->mac[0]=2;//
-	lwipx->mac[1]=0;
-	lwipx->mac[2]=0;
-	lwipx->mac[3]=(sn0>>16)&0XFF;//
-	lwipx->mac[4]=(sn0>>8)&0XFFF;;
-	lwipx->mac[5]=sn0&0XFF; 
-	
-	lwipx->remote_ip[0] = 192;
-	lwipx->remote_ip[1] = 168;
-	lwipx->remote_ip[2] = 3;
-	lwipx->remote_ip[3] = 130;
-
-	lwipx->ip[0] = 192;
-	lwipx->ip[1] = 168;
-	lwipx->ip[2] = 3;
-	lwipx->ip[3] = 133;
-	
-	lwipx->netmask[0] = 255;
-	lwipx->netmask[1] = 255;
-	lwipx->netmask[2] = 255;
-	lwipx->netmask[3] = 0;
-
-	lwipx->gateway[0] = 192;
-	lwipx->gateway[1] = 168;
-	lwipx->gateway[2] = 3;
-	lwipx->gateway[3] = 1;	
-	
-	lwipx->dhcp_status = 0;	
-}
-
-u8 lwip_dev_init(void)
-{
-	CPU_SR_ALLOC();	
-	struct netif *Netif_Init_Flag;
-	struct ip4_addr ipaddr, netmask, gw;
-
-	if(LAN8720_Init())
-		return 2;	
-
-	tcpip_init(NULL,NULL);	
-
-	lwip_comm_default_ip_set(&lwip_dev);
-
-#if LWIP_DHCP
-	ipaddr.addr = 0;
-	netmask.addr = 0;
-	gw.addr = 0;
-	lwip_dev.dhcp_status = 0;
-#else
-	lwip_dev.dhcp_status = 3;
-	IP4_ADDR(&ipaddr, lwip_dev.ip[0], lwip_dev.ip[1], lwip_dev.ip[2], lwip_dev.ip[3]); // 
-    IP4_ADDR(&netmask, lwip_dev.netmask[0], lwip_dev.netmask[1], lwip_dev.netmask[2], lwip_dev.netmask[3]); // 
-    IP4_ADDR(&gw, lwip_dev.gateway[0], lwip_dev.gateway[1], lwip_dev.gateway[2], lwip_dev.gateway[3]); // 
-	USART_OUT(USART3, "\r??en?MAC???:................%d.%d.%d.%d.%d.%d\r\n",lwip_dev.mac[0],lwip_dev.mac[1],lwip_dev.mac[2],lwip_dev.mac[3],lwip_dev.mac[4],lwip_dev.mac[5]);
-	USART_OUT(USART3, "??IP??........................%d.%d.%d.%d\r\n",lwip_dev.ip[0],lwip_dev.ip[1],lwip_dev.ip[2],lwip_dev.ip[3]);
-	USART_OUT(USART3, "????..........................%d.%d.%d.%d\r\n",lwip_dev.netmask[0],lwip_dev.netmask[1],lwip_dev.netmask[2],lwip_dev.netmask[3]);
-	USART_OUT(USART3, "????..........................%d.%d.%d.%d\r\n",lwip_dev.gateway[0],lwip_dev.gateway[1],lwip_dev.gateway[2],lwip_dev.gateway[3]);
-#endif
-	
-	OS_CRITICAL_ENTER();  //进入临界区
-	Netif_Init_Flag = netif_add(&lwip_netif, &ipaddr, &netmask, &gw, NULL, &ethernetif_init, &tcpip_input);
-//	Netif_Init_Flag = netif_add(&lwip_netif, &ipaddr, &netmask, &gw, NULL, &ethernetif_init, &ethernet_input);
-	OS_CRITICAL_EXIT();  //退出临界区
-
-	if(Netif_Init_Flag == NULL)
-	{
-		return 3;
-	}
-	else	
-	{
-		netif_set_default(&lwip_netif);
-		netif_set_up(&lwip_netif);
-		
-		USART_OUT(USART3, "netif_add OK\r");
-	}
-	lwip_dev.dhcp_status = 0;	//DHCP标记为0
-	return 0;
-}
-
-
-
-#if LWIP_DHCP
-
-void lwip_dhcp_process_handle(void)
-{
-	u32 ip=0, netmask=0, gw=0;
-	struct dhcp *pdhcp;
-
-	switch(lwip_dev.dhcp_status)
-	{
-		case 0: 	//开启DHCP
-			dhcp_start(&lwip_netif);
-			lwip_dev.dhcp_status = 1;		//等待通过DHCP获取到的地址
-			USART_OUT(USART3, "正在查找DHCP服务器,请稍等...........\r\n");  
-		break;
-		case 1:		//等待获取到IP地址
-			ip=lwip_netif.ip_addr.addr;		//读取新IP地址
-			netmask=lwip_netif.netmask.addr;//读取子网掩码
-			gw=lwip_netif.gw.addr;			//读取默认网关 
 			
-			if(ip != 0)			//正确获取到IP地址的时候
-			{
-				lwip_dev.dhcp_status = 2;	//DHCP成功
-				USART_OUT(USART3, "网卡en的MAC地址为:................%d.%d.%d.%d.%d.%d\r\n",lwip_dev.mac[0],lwip_dev.mac[1],lwip_dev.mac[2],lwip_dev.mac[3],lwip_dev.mac[4],lwip_dev.mac[5]);
-				//解析出通过DHCP获取到的IP地址
-				lwip_dev.ip[3]=(uint8_t)(ip>>24); 
-				lwip_dev.ip[2]=(uint8_t)(ip>>16);
-				lwip_dev.ip[1]=(uint8_t)(ip>>8);
-				lwip_dev.ip[0]=(uint8_t)(ip);
-				USART_OUT(USART3, "通过DHCP获取到IP地址..............%d.%d.%d.%d\r\n",lwip_dev.ip[0],lwip_dev.ip[1],lwip_dev.ip[2],lwip_dev.ip[3]);
-				//解析通过DHCP获取到的子网掩码地址
-				lwip_dev.netmask[3]=(uint8_t)(netmask>>24);
-				lwip_dev.netmask[2]=(uint8_t)(netmask>>16);
-				lwip_dev.netmask[1]=(uint8_t)(netmask>>8);
-				lwip_dev.netmask[0]=(uint8_t)(netmask);
-				USART_OUT(USART3, "通过DHCP获取到子网掩码............%d.%d.%d.%d\r\n",lwip_dev.netmask[0],lwip_dev.netmask[1],lwip_dev.netmask[2],lwip_dev.netmask[3]);
-				//解析出通过DHCP获取到的默认网关	
-				lwip_dev.gateway[3]=(uint8_t)(gw>>24);
-				lwip_dev.gateway[2]=(uint8_t)(gw>>16);
-				lwip_dev.gateway[1]=(uint8_t)(gw>>8);
-				lwip_dev.gateway[0]=(uint8_t)(gw);
-				USART_OUT(USART3, "通过DHCP获取到的默认网关..........%d.%d.%d.%d\r\n",lwip_dev.gateway[0],lwip_dev.gateway[1],lwip_dev.gateway[2],lwip_dev.gateway[3]);
-			}
-			else if(pdhcp->tries > LWIP_MAX_DHCP_TRIES) //通过DHCP服务获取IP地址失败,且超过最大尝试次数
-			{
-				lwip_dev.dhcp_status=0XFF;//DHCP超时失败.
-				//使用静态IP地址
-				IP4_ADDR(&(lwip_netif.ip_addr),lwip_dev.ip[0],lwip_dev.ip[1],lwip_dev.ip[2],lwip_dev.ip[3]);
-				IP4_ADDR(&(lwip_netif.netmask),lwip_dev.netmask[0],lwip_dev.netmask[1],lwip_dev.netmask[2],lwip_dev.netmask[3]);
-				IP4_ADDR(&(lwip_netif.gw),lwip_dev.gateway[0],lwip_dev.gateway[1],lwip_dev.gateway[2],lwip_dev.gateway[3]);
-				USART_OUT(USART3, "DHCP服务超时,使用静态IP地址!\r\n");
-				USART_OUT(USART3, "网卡en的MAC地址为:................%d.%d.%d.%d.%d.%d\r\n",lwip_dev.mac[0],lwip_dev.mac[1],lwip_dev.mac[2],lwip_dev.mac[3],lwip_dev.mac[4],lwip_dev.mac[5]);
-				USART_OUT(USART3, "静态IP地址........................%d.%d.%d.%d\r\n",lwip_dev.ip[0],lwip_dev.ip[1],lwip_dev.ip[2],lwip_dev.ip[3]);
-				USART_OUT(USART3, "子网掩码..........................%d.%d.%d.%d\r\n",lwip_dev.netmask[0],lwip_dev.netmask[1],lwip_dev.netmask[2],lwip_dev.netmask[3]);
-				USART_OUT(USART3, "默认网关..........................%d.%d.%d.%d\r\n",lwip_dev.gateway[0],lwip_dev.gateway[1],lwip_dev.gateway[2],lwip_dev.gateway[3]);
-			}
-		break;
-		default: 
-		break;
-	}
 
-}
-
-
-#endif
-
+		
+u32 lwip_localtime;		//
 
 
 
@@ -262,7 +36,7 @@ u8 LAN8720_Init(void)
 	SYSCFG_ETH_MediaInterfaceConfig(SYSCFG_ETH_MediaInterface_RMII); //MAC和PHY之间使用RMII接口
 	 
 	ETH_RESET_L();
-	timer_delay_1ms(50);
+	timer_delay_1ms(20);
 	ETH_RESET_H();
 	
 	BSP_IntVectSet(BSP_INT_ID_ETH, ETH_IRQHandler);
@@ -343,13 +117,13 @@ u8 LAN8720_Get_Speed(void)
 
 
 
-extern void lwip_pkt_handle(void);
+extern void lwip_comm_pkt_handle(void);
 //以太网DMA接收中断服务函数
 void ETH_IRQHandler(void)
 {
 	while(ETH_GetRxPktSize(DMARxDescToGet)!=0) 	//检测是否收到数据包
 	{ 
-		lwip_pkt_handle();		
+		lwip_comm_pkt_handle();		
 	}
 	ETH_DMAClearITPendingBit(ETH_DMA_IT_R); 	//清除DMA中断标志位
 	ETH_DMAClearITPendingBit(ETH_DMA_IT_NIS);	//清除DMA接收中断标志位

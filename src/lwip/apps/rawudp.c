@@ -6,13 +6,15 @@
 #include "timer.h"
 #include "lwip/ip4_addr.h"
 #include "lan8720.h"
+#include "lwip_comm.h"
 #include "app.h"
  
 
 
-extern lwip_dev_t lwip_dev;
 
-struct udp_pcb *udppcb;  	//定义一个TCP服务器控制块
+
+struct udp_pcb *udppcb;  	//定义一个UDP服务器控制块
+
 
 OS_TCB 	rawudp_task_TCB;
 CPU_STK	rawudp_task_stk[RAWUDP_TASK_STK_SIZE];
