@@ -20,6 +20,9 @@
 #define TELEGRAM_END		0x16
 
 
+#define DIR_UP_FLAG			(u8)(1<<0)
+
+
 
 
 //Ð­ÒéÃüÁî×Ö

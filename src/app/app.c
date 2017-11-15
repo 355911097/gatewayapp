@@ -50,6 +50,7 @@
 #include "lwip/dhcp.h"
 #include "rawudp.h" 
 #include "dhcp.h"
+#include "gprs.h"
 
 
 
@@ -119,8 +120,6 @@ OS_TMR gprs;
 
 
 
-uint8_t status = 0;	//GPRS???
-uint8_t gprs_err_cnt = 0;
 
 FATFS *fatfs[FF_VOLUMES];//逻辑磁盘工作区.	 
 
@@ -404,20 +403,7 @@ static  void  AppTaskCreate (void)
                  (void   	* )0,					
                  (OS_OPT      )OS_OPT_TASK_STK_CHK|OS_OPT_TASK_STK_CLR,
                  (OS_ERR 	* )&os_err);                                             /* Create Application Kernel Objects                        */
-
-	OSTaskCreate((OS_TCB 	* )&gprs_init_task_TCB,		
-				 (CPU_CHAR	* )"gprs_init_task", 		
-                 (OS_TASK_PTR )gprs_init_task_fun, 			
-                 (void		* )0,					
-                 (OS_PRIO	  )GPRS_INIT_TASK_PRIO,     
-                 (CPU_STK   * )&gprs_init_task_stk[0],	
-                 (CPU_STK_SIZE)GPRS_INIT_TASK_STK_SIZE/10,	
-                 (CPU_STK_SIZE)GPRS_INIT_TASK_STK_SIZE,		
-                 (OS_MSG_QTY  )0,					
-                 (OS_TICK	  )0,					
-                 (void   	* )0,					
-                 (OS_OPT      )OS_OPT_TASK_STK_CHK|OS_OPT_TASK_STK_CLR,
-                 (OS_ERR 	* )&os_err);                                             /* Create Application Kernel Objects                        */
+                                           /* Create Application Kernel Objects                        */
 
 	OSTaskCreate((OS_TCB 	* )&eth_init_task_TCB,		
 				 (CPU_CHAR	* )"eth_init_task", 		
@@ -434,14 +420,18 @@ static  void  AppTaskCreate (void)
                  (OS_ERR 	* )&os_err);                                             /* Create Application Kernel Objects                        */
 	
 	USART_OUT(USART3, "\eth_init_task err=%d\r", os_err);
-
-#if LWIP_DHCP
 				 
+#if 0
+				 
+	gprs_task_create();	
+				 
+#else
+				 
+#if LWIP_DHCP
 	dhcp_task_create();				 
-
 #endif
 		 
-	
+#endif	
 			 
 }
 
@@ -609,274 +599,7 @@ static void tcpip_task_fun(void *p_arg)
 	}
 
 }
-static void gprs_init_task_fun(void *p_arg)
-{
-	OS_ERR err;
-	OS_MSG_SIZE size = 0;
-	u8 *msg;
-	u8 size1;
-	u8 ret = 0;
-	static u8 gprs_init_flag = TRUE;		//第一次上电运行
-		
-	while(DEF_TRUE)
-	{
-		if (gprs_init_flag == TRUE)
-		{			
-			
-			switch(status)
-			{
-				case 0:
-					gprs_power_on();
-					OSTimeDlyHMSM(0,0,3,0,OS_OPT_TIME_HMSM_STRICT,&err);
-					status = 1;
-					gprs_err_cnt = 0;
-				break;
-						
-				case 1:
-					ret = gprs_send_at("\r\nAT\r\n", "OK", 800,10000);
-					if (ret == 0)
-					{
-						status++;
-						gprs_err_cnt = 0;
-					}
-					else
-					{
-						gprs_err_cnt++;
-						if (gprs_err_cnt > 5)
-						{
-							status = 0;
-						}
-					}
-				break;
-				
-				case 2:
-					ret = gprs_send_at("\r\nATI\r\n", "OK", 800, 10000);
-					if (ret == 0)
-					{
-						status++;
-						gprs_err_cnt = 0;
-					}
-					else
-					{
-						gprs_err_cnt++;
-						if (gprs_err_cnt > 5)
-						{
-							status = 0;
-						}
-					}
-				break;
-				
-				case 3:			
-					ret = gprs_send_at("\r\nAT+CPIN?\r\n", "OK", 800, 10000);
-					if (ret == 0)
-					{
-						status++;
-						gprs_err_cnt = 0;
-					}
-					else
-					{
-						gprs_err_cnt++;
-						if (gprs_err_cnt > 5)
-						{
-							status = 0;
-						}
-					}
-				break;
-				
-				case 4:
-					ret = gprs_send_at("\r\nAT+CREG=1\r\n", "OK", 800, 10000);
-					if (ret == 0)
-					{
-						status++;
-						gprs_err_cnt = 0;
-					}
-					else
-					{
-						gprs_err_cnt++;
-						if (gprs_err_cnt > 5)
-						{
-							status = 0;
-						}
-					}
-				break;
-				
-				case 5:
-					ret = gprs_send_at("\r\nAT+CSQ\r\n", "OK", 800, 10000);
-					if (ret == 0)
-					{
-						status++;
-						gprs_err_cnt = 0;
-					}
-					else
-					{
-						if (gprs_err_cnt > 5)
-						{
-							status = 0;
-						}
-					}
-				break;
-				
-				case 6:
-					ret = gprs_send_at("\r\nAT+CREG?\r\n", "OK", 800, 10000);
-					if (ret == 0)
-					{
-						status++;
-						gprs_err_cnt = 0;
-					}
-					else
-					{
-						gprs_err_cnt++;
-						if (gprs_err_cnt > 5)
-						{
-							status = 0;
-						}
-					}
-				break;
-				
-				case 7:
-					ret = gprs_send_at("\r\nAT^SICS=0,conType,GPRS0\r\n", "OK", 800, 10000);//建立连接Profile 设置conType
-					if (ret == 0)
-					{
-						status++;
-						gprs_err_cnt = 0;
-					}
-					else
-					{
-						gprs_err_cnt++;
-						if (gprs_err_cnt > 5)
-						{
-							status = 0;
-						}
-					}
-				break;
-				
-				case 8:
-					ret = gprs_send_at("\r\nAT^SICS=0,APN,CMNET\r\n", "OK", 800, 10000);//建立连接Profile 设置APN
-					if (ret == 0)
-					{
-						status++;
-						gprs_err_cnt = 0;
-					}
-					else
-					{
-						gprs_err_cnt++;
-						if (gprs_err_cnt > 5)
-						{
-							status = 0;
-						}
-					}
-				break;
-				
-				case 9:
-					ret = gprs_send_at("\r\nAT^SISS=0,srvType,Socket\r\n", "OK", 800, 10000);//建立服务Profile 设置srvType
-					if (ret == 0)
-					{
-						status++;
-						gprs_err_cnt = 0;
-					}
-					else
-					{
-						gprs_err_cnt++;
-						if (gprs_err_cnt > 5)
-						{
-							status = 0;
-						}
-					}
-				break;
-				
-				case 10:
-					ret = gprs_send_at("\r\nAT^SISS=0,conId,0\r\n", "OK", 800, 10000);//建立服务Profile 设置conId
-					if (ret == 0)
-					{
-						status++;
-						gprs_err_cnt = 0;
-					}
-					else
-					{
-						gprs_err_cnt++;
-						if (gprs_err_cnt > 5)
-						{
-							status = 0;
-						}
-					}
-				break;
-						
-				case 11:
-					ret = gprs_send_at("\r\nAT^SISS=0,address,\"socktcp://180.169.14.34:16650\"\r\n", "OK", 800, 10000);//建立服务Profile 设置address
-					if (ret == 0)
-					{
-						status++;
-						gprs_err_cnt = 0;
-					}
-					else
-					{
-						gprs_err_cnt++;
-						if (gprs_err_cnt > 5)
-						{
-							status = 0;
-						}
-					}
-				break;
-				
-				case 12:
-					ret = gprs_send_at("\r\nAT^SISO=0\r\n", "OK", 5000, 20000);//打开指定的Internet服务
-					if (ret == 0)
-					{
-						status++;
-						gprs_err_cnt = 0;
-					}
-					else
-					{
-						gprs_err_cnt++;
-						if (gprs_err_cnt > 5)
-						{
-							status = 0;
-						}
-					}
 
-				break;
-				
-				case 13:
-					ret = gprs_send_at("\r\nAT^IPCFL=5,20\r\n", "OK", 800, 10000);//设置透传模式网络参数 设置透传定时器的值
-					if (ret == 0)
-					{
-						status++;
-						gprs_err_cnt = 0;
-					}
-					else
-					{
-						gprs_err_cnt++;
-						if (gprs_err_cnt > 5)
-						{
-							status = 0;
-						}
-					}
-
-				break;
-				
-				case 14:
-					ret = gprs_send_at("\r\nAT^IPENTRANS=0\r\n", "OK", 800, 10000);//进入透传模式
-					if (ret == 0)
-					{
-						status = 255;
-						gprs_init_flag = FALSE;
-					}
-					else
-					{
-						gprs_err_cnt++;
-						if (gprs_err_cnt > 5)
-						{
-							status = 0;
-						}
-					}		
-				break;
-					
-				default:
-				break;		
-			}	//switch end			
-		} // if end		
-	} // while end
-}
 
 
 /*

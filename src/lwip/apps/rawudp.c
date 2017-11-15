@@ -1,3 +1,6 @@
+
+
+
 #include "rawudp.h" 
 #include "usart.h"
 #include "malloc.h"
@@ -53,7 +56,10 @@ void rawudp_task_create(void)
 				 
 	OSTimeDly(10, OS_OPT_TIME_DLY, &os_err);
 	
-	USART_OUT(USART3, "\rrawudp_task err=%d\r", os_err);	
+	if(os_err != OS_ERR_NONE)
+	{
+		USART_OUT(USART3, "\rrawudp_task fail\r");			 
+	}			 
 
 }
 

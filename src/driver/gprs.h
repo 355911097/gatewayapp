@@ -30,6 +30,13 @@
 
 
 
+
+
+
+
+
+
+
 #define GPRS_STATUS_0						0
 #define GPRS_STATUS_1						1
 #define GPRS_STATUS_2						2
@@ -52,6 +59,9 @@ void gprs_power_on(void);
 u8 gprs_send_at(u8 *cmd, u8 *ack, u16 waittime, u16 timeout);
 uint8_t send_at_cmd(uint8_t *cmd, uint8_t *str, uint32_t timeout);
 uint8_t gprs_init(void);
+void gprs_task_create(void);
+
+
 
 #endif
 

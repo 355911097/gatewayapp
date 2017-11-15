@@ -59,3 +59,8 @@
 .\obj\gprs.o: ..\bsp\bsp.h
 .\obj\gprs.o: ..\driver\usart.h
 .\obj\gprs.o: ..\driver\timer.h
+.\obj\gprs.o: ..\app\app.h
+.\obj\gprs.o: ..\UCOSIII\uCOS-CONFIG\includes.h
+.\obj\gprs.o: d:\Keil_v5\ARM\ARMCC\Bin\..\include\stdlib.h
+.\obj\gprs.o: d:\Keil_v5\ARM\ARMCC\Bin\..\include\math.h
+.\obj\gprs.o: ..\UCOSIII\uC-LIB\lib_math.h

@@ -24,21 +24,36 @@
 #include "bsp.h"
 #include "usart.h"
 #include "timer.h"
+#include "app.h"
 
 
-dev_info_t dev_info;
 
 extern usart_buff_t  *gprs_rx_buff;
 extern u16 usart2_rx_status;
 
+extern OS_TCB 	gprs_init_task_TCB;
+extern CPU_STK	gprs_init_task_stk[GPRS_INIT_TASK_STK_SIZE];
 
 
 
+static void gprs_init_task_fun(void *p_arg);
+
+dev_info_t dev_info;
+
+
+uint8_t gprs_err_cnt = 0; 	//GPRS错误计数器
 uint8_t gprs_status = 0;	//GPRS的状态
+
 uint8_t gprs_rx_buf[256];
 uint16_t gprs_rx_cnt = 0;
 
 uint8_t send_at_flag = 0;	
+
+
+
+
+
+
 
 /*
 *********************************************************************************************************
@@ -161,7 +176,306 @@ u8 gprs_send_at(u8 *cmd, u8 *ack, u16 waittime, u16 timeout)
 
 
 
+void gprs_task_create(void)
+{
+	OS_ERR os_err;
+	CPU_SR_ALLOC();
 
+	
+	CPU_CRITICAL_ENTER();
+	OSTaskCreate((OS_TCB 	* )&gprs_init_task_TCB,		
+				 (CPU_CHAR	* )"gprs_init_task", 		
+                 (OS_TASK_PTR )gprs_init_task_fun, 			
+                 (void		* )0,					
+                 (OS_PRIO	  )GPRS_INIT_TASK_PRIO,     
+                 (CPU_STK   * )&gprs_init_task_stk[0],	
+                 (CPU_STK_SIZE)GPRS_INIT_TASK_STK_SIZE/10,	
+                 (CPU_STK_SIZE)GPRS_INIT_TASK_STK_SIZE,		
+                 (OS_MSG_QTY  )0,					
+                 (OS_TICK	  )0,					
+                 (void   	* )0,					
+                 (OS_OPT      )OS_OPT_TASK_STK_CHK|OS_OPT_TASK_STK_CLR,
+                 (OS_ERR 	* )&os_err);  
+				 				 
+	CPU_CRITICAL_EXIT();
+	
+	if(os_err != OS_ERR_NONE)
+	{
+		USART_OUT(USART3, "\gprs_init_task fail\r");			 
+	}
+		
+}
+
+
+
+static void gprs_init_task_fun(void *p_arg)
+{
+	OS_ERR err;
+	OS_MSG_SIZE size = 0;
+	u8 *msg;
+	u8 size1;
+	u8 ret = 0;
+	static u8 gprs_init_flag = TRUE;		//
+		
+	while(DEF_TRUE)
+	{
+		if (gprs_init_flag == TRUE)
+		{			
+			
+			switch(gprs_status)
+			{
+				case 0:
+					gprs_power_on();
+					OSTimeDlyHMSM(0,0,3,0,OS_OPT_TIME_HMSM_STRICT,&err);
+					gprs_status = 1;
+					gprs_err_cnt = 0;
+				break;
+						
+				case 1:
+					ret = gprs_send_at("\r\nAT\r\n", "OK", 800,10000);
+					if (ret == 0)
+					{
+						gprs_status++;
+						gprs_err_cnt = 0;
+					}
+					else
+					{
+						gprs_err_cnt++;
+						if (gprs_err_cnt > 5)
+						{
+							gprs_status = 0;
+						}
+					}
+				break;
+				
+				case 2:
+					ret = gprs_send_at("\r\nATI\r\n", "OK", 800, 10000);
+					if (ret == 0)
+					{
+						gprs_status++;
+						gprs_err_cnt = 0;
+					}
+					else
+					{
+						gprs_err_cnt++;
+						if (gprs_err_cnt > 5)
+						{
+							gprs_status = 0;
+						}
+					}
+				break;
+				
+				case 3:			
+					ret = gprs_send_at("\r\nAT+CPIN?\r\n", "OK", 800, 10000);
+					if (ret == 0)
+					{
+						gprs_status++;
+						gprs_err_cnt = 0;
+					}
+					else
+					{
+						gprs_err_cnt++;
+						if (gprs_err_cnt > 5)
+						{
+							gprs_status = 0;
+						}
+					}
+				break;
+				
+				case 4:
+					ret = gprs_send_at("\r\nAT+CREG=1\r\n", "OK", 800, 10000);
+					if (ret == 0)
+					{
+						gprs_status++;
+						gprs_err_cnt = 0;
+					}
+					else
+					{
+						gprs_err_cnt++;
+						if (gprs_err_cnt > 5)
+						{
+							gprs_status = 0;
+						}
+					}
+				break;
+				
+				case 5:
+					ret = gprs_send_at("\r\nAT+CSQ\r\n", "OK", 800, 10000);
+					if (ret == 0)
+					{
+						gprs_status++;
+						gprs_err_cnt = 0;
+					}
+					else
+					{
+						if (gprs_err_cnt > 5)
+						{
+							gprs_status = 0;
+						}
+					}
+				break;
+				
+				case 6:
+					ret = gprs_send_at("\r\nAT+CREG?\r\n", "OK", 800, 10000);
+					if (ret == 0)
+					{
+						gprs_status++;
+						gprs_err_cnt = 0;
+					}
+					else
+					{
+						gprs_err_cnt++;
+						if (gprs_err_cnt > 5)
+						{
+							gprs_status = 0;
+						}
+					}
+				break;
+				
+				case 7:
+					ret = gprs_send_at("\r\nAT^SICS=0,conType,GPRS0\r\n", "OK", 800, 10000);//½¨Á¢Á¬½ÓProfile ÉèÖÃconType
+					if (ret == 0)
+					{
+						gprs_status++;
+						gprs_err_cnt = 0;
+					}
+					else
+					{
+						gprs_err_cnt++;
+						if (gprs_err_cnt > 5)
+						{
+							gprs_status = 0;
+						}
+					}
+				break;
+				
+				case 8:
+					ret = gprs_send_at("\r\nAT^SICS=0,APN,CMNET\r\n", "OK", 800, 10000);//½¨Á¢Á¬½ÓProfile ÉèÖÃAPN
+					if (ret == 0)
+					{
+						gprs_status++;
+						gprs_err_cnt = 0;
+					}
+					else
+					{
+						gprs_err_cnt++;
+						if (gprs_err_cnt > 5)
+						{
+							gprs_status = 0;
+						}
+					}
+				break;
+				
+				case 9:
+					ret = gprs_send_at("\r\nAT^SISS=0,srvType,Socket\r\n", "OK", 800, 10000);//½¨Á¢·þÎñProfile ÉèÖÃsrvType
+					if (ret == 0)
+					{
+						gprs_status++;
+						gprs_err_cnt = 0;
+					}
+					else
+					{
+						gprs_err_cnt++;
+						if (gprs_err_cnt > 5)
+						{
+							gprs_status = 0;
+						}
+					}
+				break;
+				
+				case 10:
+					ret = gprs_send_at("\r\nAT^SISS=0,conId,0\r\n", "OK", 800, 10000);//½¨Á¢·þÎñProfile ÉèÖÃconId
+					if (ret == 0)
+					{
+						gprs_status++;
+						gprs_err_cnt = 0;
+					}
+					else
+					{
+						gprs_err_cnt++;
+						if (gprs_err_cnt > 5)
+						{
+							gprs_status = 0;
+						}
+					}
+				break;
+						
+				case 11:
+					ret = gprs_send_at("\r\nAT^SISS=0,address,\"socktcp://180.169.14.34:16650\"\r\n", "OK", 800, 10000);//½¨Á¢·þÎñProfile ÉèÖÃaddress
+					if (ret == 0)
+					{
+						gprs_status++;
+						gprs_err_cnt = 0;
+					}
+					else
+					{
+						gprs_err_cnt++;
+						if (gprs_err_cnt > 5)
+						{
+							gprs_status = 0;
+						}
+					}
+				break;
+				
+				case 12:
+					ret = gprs_send_at("\r\nAT^SISO=0\r\n", "OK", 5000, 20000);//´ò¿ªÖ¸¶¨µÄInternet·þÎñ
+					if (ret == 0)
+					{
+						gprs_status++;
+						gprs_err_cnt = 0;
+					}
+					else
+					{
+						gprs_err_cnt++;
+						if (gprs_err_cnt > 5)
+						{
+							gprs_status = 0;
+						}
+					}
+
+				break;
+				
+				case 13:
+					ret = gprs_send_at("\r\nAT^IPCFL=5,20\r\n", "OK", 800, 10000);//ÉèÖÃÍ¸´«Ä£Ê½ÍøÂç²ÎÊý ÉèÖÃÍ¸´«¶¨Ê±Æ÷µÄÖµ
+					if (ret == 0)
+					{
+						gprs_status++;
+						gprs_err_cnt = 0;
+					}
+					else
+					{
+						gprs_err_cnt++;
+						if (gprs_err_cnt > 5)
+						{
+							gprs_status = 0;
+						}
+					}
+
+				break;
+				
+				case 14:
+					ret = gprs_send_at("\r\nAT^IPENTRANS=0\r\n", "OK", 800, 10000);//½øÈëÍ¸´«Ä£Ê½
+					if (ret == 0)
+					{
+						gprs_status = 255;
+						gprs_init_flag = FALSE;
+					}
+					else
+					{
+						gprs_err_cnt++;
+						if (gprs_err_cnt > 5)
+						{
+							gprs_status = 0;
+						}
+					}		
+				break;
+					
+				default:
+				break;		
+			}	//switch end			
+		} // if end		
+	} // while end
+}
 
 
 

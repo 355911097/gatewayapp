@@ -104,9 +104,8 @@ u8 lwip_comm_dev_init(void)
 	{
 		netif_set_default(&lwip_netif);
 		netif_set_up(&lwip_netif);
-		
-		USART_OUT(USART3, "netif_add OK\r");
 	}
+	
 	return 0;
 }
 
