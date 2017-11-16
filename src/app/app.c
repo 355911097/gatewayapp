@@ -524,8 +524,6 @@ static void usart3_task_fun(void *p_arg)
 	while(DEF_TRUE)
 	{
 
-
-
 	
 	
 	
@@ -567,7 +565,6 @@ static void usart3_task_fun(void *p_arg)
 	}
 		
 }
-
 
 
 

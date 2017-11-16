@@ -516,6 +516,11 @@
               <FileType>1</FileType>
               <FilePath>..\driver\eth.c</FilePath>
             </File>
+            <File>
+              <FileName>button.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\driver\button.c</FilePath>
+            </File>
           </Files>
         </Group>
         <Group>

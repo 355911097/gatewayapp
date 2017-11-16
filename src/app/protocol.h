@@ -34,7 +34,19 @@
 
 
 
-
+typedef struct
+{
+	u8 head;
+	u16 len;
+	u32 addr;
+	u8 ctr_uint;
+	u16 dev_type;
+	u16 cmd;
+	u8 *data;
+	u8 time[6];
+	u16 crc16;
+	u8 end;
+}telegram_t;
 
 
 
