@@ -60,3 +60,4 @@
 .\obj\protocol.o: d:\Keil_v5\ARM\ARMCC\Bin\..\include\stdlib.h
 .\obj\protocol.o: d:\Keil_v5\ARM\ARMCC\Bin\..\include\math.h
 .\obj\protocol.o: ..\UCOSIII\uC-LIB\lib_math.h
+.\obj\protocol.o: ..\driver\usart.h

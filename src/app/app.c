@@ -181,30 +181,7 @@ int main(void)
 	
 	BSP_Init(); 
 
-
-//	nn = lwip_dev_init();
-//	if(nn == 0)
-//	{
-//		USART_OUT(USART3, "lwip_dev_init OK\r");
-//	}
-//	timer_delay_1ms(1000);
-//			
-//#if LWIP_DHCP
-//	while((lwip_dev.dhcp_status != 2)&&(lwip_dev.dhcp_status != 0XFF))//等待DHCP获取成功/超时溢出
-//	{
-//		lwip_periodic_handle();
-//	}
-//#endif			
-//			
-//		udppcb = udp_demo_init(); 
-//	
-//		udp_demo_senddata(udppcb);	
-//		
-//		while(1)
-//		{
-//			lwip_periodic_handle();
-//		}
-///*	
+	
 //	fs = (FATFS*)malloc(sizeof(FATFS));
 //	fil = (FIL*)malloc(sizeof(FIL));
 //	res = f_mkfs("", FM_ANY, 4096, work, sizeof (work));
@@ -254,6 +231,8 @@ int main(void)
     OSInit(&err);  
 
 	CPU_CRITICAL_ENTER();
+	
+	
 	
 	OSTaskCreate((OS_TCB     *)&AppTaskStartTCB,                /* Create the start task                                    */
                  (CPU_CHAR   *)"App Task Start",
@@ -306,6 +285,7 @@ static void  AppTaskStart (void *p_arg)
 //	BSP_Init();                                                 /* Init BSP fncts.                                          */   
     CPU_Init();                                                 /* Init CPU name & int. dis. time measuring fncts.          */
 	BSP_CPU_TickInit();                                              /* Init CPU name & int. dis. time measuring fncts.          */
+	
 	
 	
 #if(OS_CFG_STAT_TASK_EN > 0)

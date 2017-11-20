@@ -9,7 +9,7 @@
 */
 #include "bsp.h"
 #include "protocol.h"
-
+#include "usart.h"
 
 
 const u16 crc_table[256] = {
@@ -94,16 +94,83 @@ u16 crc16_modbus(u8 *data, int len)
 
 
 
+u8 svr_to_ctu(u8 *buff, u32 size, u8 channel)
+{
+	
+	
+	
+	
+	
+}
+
+
+
+
+bool ctu_to_srv(u8 *buff, u32 size, u8 channel)
+{
+	telegram_t tele;
+	u16 i = 0, crc = 0;
+	u16 telegram_lenth = 0;
+	u8 tel[512] = {0};
+	
+	tel[0] = TELEGRAM_HEAD;
+	tel[1] = (u8)size;
+	tel[3] = (u8)(size>>8);
+	
+	for (i=0; i<i+4; i++)
+	{
+		tel[i+3] = 0;
+	}
+	
+	tel[i++] = 0x01;	//¿ØÖÆµ¥Ôª
+	
+	for (i=0; i<size-8; i++)
+	{
+		tel[i+8] = *buff++;
+	}
+	
+	crc = crc16_modbus(tel+6, size);
+	
+	tel[size+6] = (u8)crc;
+	tel[size+7] = (u8)crc>>8;
+	tel[size+8] = TELEGRAM_END;
+	
+	
+//	telegram_lenth  = size+9;
+	
+	if(channel == CHANNEL_GPRS)
+	{
+		USART_OUT(USART2, tel);
+	}
+	else if(channel == CHANNEL_ETH)
+	{
+		
+	}
+	
+	return TRUE;
+}
 
 
 
 
 
 
-void sign_in(void)
+
+
+
+
+
+
+
+
+
+void sign_in(u8 *buff, u32 size)
 {
 
 
+	
+	
+	
 }
 
 

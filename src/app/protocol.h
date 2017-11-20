@@ -34,6 +34,17 @@
 
 
 
+
+
+
+#define CHANNEL_GPRS			((u8)0x0)
+#define CHANNEL_ETH				((u8)0x1)
+#define CHANNEL_RS485			((u8)0x2)
+
+
+
+
+
 typedef struct
 {
 	u8 head;

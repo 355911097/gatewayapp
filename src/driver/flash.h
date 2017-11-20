@@ -15,7 +15,7 @@
 *************************************************/
 #ifndef _FLASH_H
 #define _FLASH_H
-#include <stm32f10x.h>
+#include <stm32f2xx.h>
 
 
 // STM32F103C8 每个扇区 1k
@@ -29,9 +29,7 @@
 #define APP_ADDR								0x8006400	 	//  
 #define APP_SECTOR_SUM							50  		// 50k
 
-//  存储区 sector76 ~ sector124
-#define STORAGE_ADDR							0x8012C00		// 0x8012C00 ~ 0x801F3FF		
-#define STORAGE_SECTOR_SUM						50			// 50k
+
 
 // 标志位区 sector125
 #define FLAG_BASE_ADDR							0x801F400		// sector 125 的地址
@@ -47,6 +45,35 @@
 #define APP_SIZE_INFO_OFFSET					0
 #define APP_SIZE_INFO_SIZE						10
 #define SOFTWARE_VERSION_INFO_ADDR				0x801F820
+
+
+
+
+
+
+
+
+
+#define ADDR_FLASH_SECTOR_0						((u32)0x08000000)
+#define ADDR_FLASH_SECTOR_1						((u32)0x08000000)
+#define ADDR_FLASH_SECTOR_2						((u32)0x08000000)
+#define ADDR_FLASH_SECTOR_3						((u32)0x08000000)
+#define ADDR_FLASH_SECTOR_4						((u32)0x08000000)
+#define ADDR_FLASH_SECTOR_5						((u32)0x08000000)
+#define ADDR_FLASH_SECTOR_6						((u32)0x08000000)
+#define ADDR_FLASH_SECTOR_7						((u32)0x08000000)
+#define ADDR_FLASH_SECTOR_8						((u32)0x08000000)
+#define ADDR_FLASH_SECTOR_9						((u32)0x08000000)
+#define ADDR_FLASH_SECTOR_10					((u32)0x08000000)
+#define ADDR_FLASH_SECTOR_11					((u32)0x08000000)
+
+
+
+
+
+
+
+
 
 
 

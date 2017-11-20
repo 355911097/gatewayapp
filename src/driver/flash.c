@@ -13,9 +13,25 @@
        Modification:
     2. ...
 *************************************************/
-#include <stm32f10x_flash.h>
+#include <stm32f2xx_flash.h>
 #include "flash.h"
-#include "common.h"
+
+
+
+
+
+
+
+
+
+
+u32 flash_get_sector(u32 addr)
+{
+
+
+
+}
+
 
 
 /*
@@ -39,15 +55,34 @@ void flash_page_erase(uint32_t start_addr, uint32_t sector_sum)
 
 	FLASH_Unlock();
 
-	FLASH_ClearFlag(FLASH_FLAG_BSY | FLASH_FLAG_EOP | FLASH_FLAG_PGERR | FLASH_FLAG_WRPRTERR);
+	FLASH_ClearFlag(FLASH_FLAG_BSY | FLASH_FLAG_EOP | FLASH_FLAG_OPERR | FLASH_FLAG_WRPERR | FLASH_FLAG_PGAERR | FLASH_FLAG_PGPERR | FLASH_FLAG_PGSERR);
 
 	for (i=0; (i<sector_sum) && (flash_status==FLASH_COMPLETE); i++)
 	{
-		flash_status = FLASH_ErasePage(start_addr + (PAGE_SIZE * i));
+	//	flash_status = FLASH_ProgramByte(start_addr + (PAGE_SIZE * i));
 	}
 	
 	FLASH_Lock();
 	
+}
+
+void flash_erase_sector(u8 start_sector, u8 sector_sum, u8 voltage_range)
+{
+	FLASH_Status flash_status;
+	u8 end_sector = start_sector + sector_sum;
+	u8 i = 0;
+	
+	
+	FLASH_Unlock();
+	
+	FLASH_ClearFlag(FLASH_FLAG_BSY | FLASH_FLAG_EOP | FLASH_FLAG_OPERR | FLASH_FLAG_WRPERR | FLASH_FLAG_PGAERR | FLASH_FLAG_PGPERR | FLASH_FLAG_PGSERR);
+	
+	for (i=start_sector; (i<end_sector)&&(flash_status==FLASH_COMPLETE); i++)
+	{
+		flash_status = FLASH_EraseSector(i, voltage_range);
+	}
+	
+	FLASH_Lock();	
 }
 
 /*
@@ -66,14 +101,16 @@ void flash_page_erase(uint32_t start_addr, uint32_t sector_sum)
 */
 bool flash_write_data(uint32_t addr, uint8_t *data, uint16_t size)
 {
-	uint16_t *tmp_data = (uint16_t *)data;
+	uint8_t *tmp_data = data;
 	uint32_t tmp_addr = addr;	
+	
+	
 	
 	FLASH_Unlock();
 	for (tmp_addr=addr; tmp_addr<(addr + size); tmp_data++, tmp_addr += 2)
 	{
-		FLASH_ProgramHalfWord(tmp_addr, *tmp_data);	
-		if (*tmp_data != *(uint16_t *)tmp_addr)	 		// 验证要写入的数据 和 已经写入的数据 是否相等
+		FLASH_ProgramByte(tmp_addr, *tmp_data);	
+		if (*tmp_data != *(uint8_t *)tmp_addr)	 		// 验证要写入的数据 和 已经写入的数据 是否相等
 		{
 			return FALSE;								// 
 		}
@@ -105,6 +142,7 @@ void flash_read_data(uint32_t addr, uint8_t *pdata, uint32_t size)
 
 	while (tmp_addr < end_addr) 
 	{
+		
 		pdata[i++] = (*(uint32_t*)tmp_addr);
 		tmp_addr++;
 	}
@@ -127,12 +165,9 @@ bool flash_write_byte(uint32_t addr, uint8_t ch)
 {
 	
 	FLASH_Unlock();
-	FLASH_ProgramHalfWord(addr, ch);
-	if (ch != *(uint16_t *)addr)	 		
-	{
-		return FALSE;								
-	}
 	
+	FLASH_ProgramByte(addr, ch);
+
 	FLASH_Lock();
 		
 	return TRUE;
@@ -152,11 +187,11 @@ bool flash_write_byte(uint32_t addr, uint8_t ch)
 */
 uint8_t flash_read_byte(uint32_t addr)
 {
-	uint8_t value;
+	uint8_t ch;
 
-	value = *(uint32_t*)addr;
+	ch = *(uint32_t*)addr;
 
-	return value;
+	return ch;
 }
 
 

@@ -3,11 +3,11 @@
 <title>Static Call Graph - [.\Obj\uCOS-III.axf]</title></head>
 <body><HR>
 <H1>Static Call Graph for image .\Obj\uCOS-III.axf</H1><HR>
-<BR><P>#&#060CALLGRAPH&#062# ARM Linker, 5060061: Last Updated: Thu Nov 16 15:20:54 2017
+<BR><P>#&#060CALLGRAPH&#062# ARM Linker, 5060061: Last Updated: Mon Nov 20 18:01:42 2017
 <BR><P>
 <H3>Maximum Stack Usage =        868 bytes + Unknown(Functions without stacksize, Cycles, Untraceable Function Pointers)</H3><H3>
 Call chain for Maximum Stack Depth:</H3>
-usart3_task_fun &rArr; dhcp_coarse_tmr &rArr; dhcp_release &rArr; netif_set_addr &rArr; netif_set_ipaddr &rArr; tcp_netif_ip_addr_changed &rArr; tcp_netif_ip_addr_changed_pcblist &rArr; tcp_abort &rArr; tcp_abandon &rArr; tcp_pcb_remove &rArr; tcp_output &rArr; tcp_output_segment &rArr; ip4_output_if &rArr; ip4_output_if_src &rArr; ip4_frag &rArr; pbuf_alloc &rArr; pbuf_free &rArr; mem_free &rArr; sys_arch_sem_wait &rArr; OSSemPend &rArr; OS_Pend &rArr; OS_TaskBlock &rArr; OS_RdyListRemove &rArr; OS_PrioRemove
+usart3_task_fun &rArr; dhcp_coarse_tmr &rArr; dhcp_release &rArr; netif_set_addr &rArr; netif_set_ipaddr &rArr; tcp_netif_ip_addr_changed &rArr; tcp_netif_ip_addr_changed_pcblist &rArr; tcp_abort &rArr; tcp_abandon &rArr; tcp_pcb_remove &rArr; tcp_output &rArr; tcp_output_segment &rArr; ip4_output_if &rArr; ip4_output_if_src &rArr; ip4_frag &rArr; pbuf_alloc &rArr; pbuf_free &rArr; mem_free &rArr; sys_arch_sem_wait &rArr; OSSemPend &rArr; OS_Pend &rArr; OS_TaskBlock &rArr; OS_TickListInsert
 <P>
 <H3>
 Functions with no stack information
@@ -1441,7 +1441,7 @@ Global Symbols
 
 <P><STRONG><a name="[10d]"></a>ETH_IRQHandler</STRONG> (Thumb, 36 bytes, Stack size 8 bytes, lan8720.o(.text))
 <BR><BR>[Stack]<UL><LI>Max Depth = 348 + Unknown Stack Size
-<LI>Call Chain = ETH_IRQHandler &rArr; lwip_comm_pkt_handle &rArr; ethernetif_input &rArr; low_level_input &rArr; pbuf_alloc &rArr; pbuf_free &rArr; mem_free &rArr; sys_arch_sem_wait &rArr; OSSemPend &rArr; OS_Pend &rArr; OS_TaskBlock &rArr; OS_RdyListRemove &rArr; OS_PrioRemove
+<LI>Call Chain = ETH_IRQHandler &rArr; lwip_comm_pkt_handle &rArr; ethernetif_input &rArr; low_level_input &rArr; pbuf_alloc &rArr; pbuf_free &rArr; mem_free &rArr; sys_arch_sem_wait &rArr; OSSemPend &rArr; OS_Pend &rArr; OS_TaskBlock &rArr; OS_TickListInsert
 </UL>
 <BR>[Calls]<UL><LI><a href="#[10e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;lwip_comm_pkt_handle
 <LI><a href="#[10f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ETH_GetRxPktSize
@@ -3027,7 +3027,6 @@ Global Symbols
 <LI><a href="#[8d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;OSQCreate
 <LI><a href="#[5a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
 <LI><a href="#[5f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;AppTaskStart
-<LI><a href="#[1c2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;OS_SchedRoundRobin
 <LI><a href="#[1a7]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;OSSchedRoundRobinYield
 <LI><a href="#[1a6]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;OSSchedUnlock
 <LI><a href="#[1a4]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;OSSchedLock
@@ -3099,6 +3098,7 @@ Global Symbols
 <LI><a href="#[1ca]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;OSFlagPend
 <LI><a href="#[1c7]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;OSFlagDel
 <LI><a href="#[1c3]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;OSFlagCreate
+<LI><a href="#[1c2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;OS_SchedRoundRobin
 <LI><a href="#[297]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;pbuf_ref
 <LI><a href="#[283]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;do_memp_free_pool
 <LI><a href="#[281]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;do_memp_malloc_pool
@@ -3126,7 +3126,6 @@ Global Symbols
 <LI><a href="#[8d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;OSQCreate
 <LI><a href="#[5a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
 <LI><a href="#[5f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;AppTaskStart
-<LI><a href="#[1c2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;OS_SchedRoundRobin
 <LI><a href="#[1a7]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;OSSchedRoundRobinYield
 <LI><a href="#[1a6]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;OSSchedUnlock
 <LI><a href="#[1a4]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;OSSchedLock
@@ -3198,6 +3197,7 @@ Global Symbols
 <LI><a href="#[1ca]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;OSFlagPend
 <LI><a href="#[1c7]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;OSFlagDel
 <LI><a href="#[1c3]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;OSFlagCreate
+<LI><a href="#[1c2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;OS_SchedRoundRobin
 <LI><a href="#[297]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;pbuf_ref
 <LI><a href="#[283]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;do_memp_free_pool
 <LI><a href="#[281]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;do_memp_malloc_pool
@@ -3326,8 +3326,7 @@ Global Symbols
 <BR><BR>[Stack]<UL><LI>Max Depth = 168 + Unknown Stack Size
 <LI>Call Chain = OSInit &rArr; OS_TmrInit &rArr; OSTaskCreate &rArr; OSSched &rArr; OS_PrioGetHighest
 </UL>
-<BR>[Calls]<UL><LI><a href="#[19f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;OS_Dbg_Init
-<LI><a href="#[194]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;OS_RdyListInit
+<BR>[Calls]<UL><LI><a href="#[194]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;OS_RdyListInit
 <LI><a href="#[191]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;OS_IdleTaskInit
 <LI><a href="#[1a0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;OSCfg_Init
 <LI><a href="#[192]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;OSInitHook
@@ -3342,6 +3341,7 @@ Global Symbols
 <LI><a href="#[197]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;OS_MsgPoolInit
 <LI><a href="#[196]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;OS_MemInit
 <LI><a href="#[195]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;OS_FlagInit
+<LI><a href="#[19f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;OS_Dbg_Init
 </UL>
 <BR>[Called By]<UL><LI><a href="#[5a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
 </UL>
@@ -3470,8 +3470,8 @@ Global Symbols
 <P><STRONG><a name="[1a8]"></a>OS_RdyListMoveHeadToTail</STRONG> (Thumb, 68 bytes, Stack size 8 bytes, os_core.o(.text))
 <BR><BR>[Stack]<UL><LI>Max Depth = 8<LI>Call Chain = OS_RdyListMoveHeadToTail
 </UL>
-<BR>[Called By]<UL><LI><a href="#[1c2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;OS_SchedRoundRobin
-<LI><a href="#[1a7]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;OSSchedRoundRobinYield
+<BR>[Called By]<UL><LI><a href="#[1a7]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;OSSchedRoundRobinYield
+<LI><a href="#[1c2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;OS_SchedRoundRobin
 </UL>
 
 <P><STRONG><a name="[1a7]"></a>OSSchedRoundRobinYield</STRONG> (Thumb, 164 bytes, Stack size 24 bytes, os_core.o(.text), UNUSED)
@@ -3519,31 +3519,31 @@ Global Symbols
 </UL>
 <BR>[Called By]<UL><LI><a href="#[7f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;OSTimeDlyHMSM
 <LI><a href="#[7d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;OSTimeDly
-<LI><a href="#[1ac]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;OS_TaskBlock
 <LI><a href="#[210]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;OS_TaskSuspend
 <LI><a href="#[1ff]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;OSTaskDel
 <LI><a href="#[1fa]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;OSTaskChangePrio
 <LI><a href="#[1db]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;OSMutexPost
 <LI><a href="#[1d9]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;OSMutexPend
 <LI><a href="#[1d7]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;OSMutexDel
+<LI><a href="#[1ac]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;OS_TaskBlock
 </UL>
 
 <P><STRONG><a name="[1ac]"></a>OS_TaskBlock</STRONG> (Thumb, 56 bytes, Stack size 16 bytes, os_core.o(.text))
-<BR><BR>[Stack]<UL><LI>Max Depth = 52<LI>Call Chain = OS_TaskBlock &rArr; OS_RdyListRemove &rArr; OS_PrioRemove
+<BR><BR>[Stack]<UL><LI>Max Depth = 52<LI>Call Chain = OS_TaskBlock &rArr; OS_TickListInsert
 </UL>
-<BR>[Calls]<UL><LI><a href="#[1aa]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;OS_RdyListRemove
-<LI><a href="#[1ad]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;OS_TickListInsert
+<BR>[Calls]<UL><LI><a href="#[1ad]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;OS_TickListInsert
+<LI><a href="#[1aa]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;OS_RdyListRemove
 </UL>
 <BR>[Called By]<UL><LI><a href="#[1ae]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;OS_Pend
 </UL>
 
 <P><STRONG><a name="[1ae]"></a>OS_Pend</STRONG> (Thumb, 98 bytes, Stack size 24 bytes, os_core.o(.text))
-<BR><BR>[Stack]<UL><LI>Max Depth = 76<LI>Call Chain = OS_Pend &rArr; OS_TaskBlock &rArr; OS_RdyListRemove &rArr; OS_PrioRemove
+<BR><BR>[Stack]<UL><LI>Max Depth = 76<LI>Call Chain = OS_Pend &rArr; OS_TaskBlock &rArr; OS_TickListInsert
 </UL>
-<BR>[Calls]<UL><LI><a href="#[1ac]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;OS_TaskBlock
-<LI><a href="#[1af]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;OS_PendDataInit
-<LI><a href="#[1b0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;OS_PendListInsertPrio
+<BR>[Calls]<UL><LI><a href="#[1b0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;OS_PendListInsertPrio
 <LI><a href="#[1b1]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;OS_PendDbgNameAdd
+<LI><a href="#[1ac]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;OS_TaskBlock
+<LI><a href="#[1af]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;OS_PendDataInit
 </UL>
 <BR>[Called By]<UL><LI><a href="#[1ed]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;OSSemPend
 <LI><a href="#[20b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;OSTaskSemPend
@@ -3565,12 +3565,12 @@ Global Symbols
 </UL>
 <BR>[Calls]<UL><LI><a href="#[1b3]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;OS_PendListRemove1
 </UL>
-<BR>[Called By]<UL><LI><a href="#[1bf]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;OS_Post
-<LI><a href="#[1bd]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;OS_PendObjDel
-<LI><a href="#[1ba]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;OS_PendAbort
-<LI><a href="#[213]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;OS_TickListUpdate
+<BR>[Called By]<UL><LI><a href="#[213]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;OS_TickListUpdate
 <LI><a href="#[1ff]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;OSTaskDel
 <LI><a href="#[1cd]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;OS_FlagTaskRdy
+<LI><a href="#[1bf]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;OS_Post
+<LI><a href="#[1bd]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;OS_PendObjDel
+<LI><a href="#[1ba]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;OS_PendAbort
 </UL>
 
 <P><STRONG><a name="[1bb]"></a>OS_PendAbort1</STRONG> (Thumb, 36 bytes, Stack size 12 bytes, os_core.o(.text), UNUSED)
@@ -3580,51 +3580,51 @@ Global Symbols
 <P><STRONG><a name="[1b7]"></a>OS_RdyListInsertHead</STRONG> (Thumb, 58 bytes, Stack size 8 bytes, os_core.o(.text))
 <BR><BR>[Stack]<UL><LI>Max Depth = 8<LI>Call Chain = OS_RdyListInsertHead
 </UL>
-<BR>[Called By]<UL><LI><a href="#[1b4]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;OS_RdyListInsert
-<LI><a href="#[1fa]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;OSTaskChangePrio
+<BR>[Called By]<UL><LI><a href="#[1fa]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;OSTaskChangePrio
 <LI><a href="#[1d9]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;OSMutexPend
+<LI><a href="#[1b4]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;OS_RdyListInsert
 </UL>
 
 <P><STRONG><a name="[1b6]"></a>OS_RdyListInsertTail</STRONG> (Thumb, 56 bytes, Stack size 8 bytes, os_core.o(.text))
 <BR><BR>[Stack]<UL><LI>Max Depth = 8<LI>Call Chain = OS_RdyListInsertTail
 </UL>
 <BR>[Called By]<UL><LI><a href="#[85]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;OSTaskCreate
-<LI><a href="#[1b4]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;OS_RdyListInsert
 <LI><a href="#[1fa]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;OSTaskChangePrio
 <LI><a href="#[1db]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;OSMutexPost
 <LI><a href="#[1d7]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;OSMutexDel
+<LI><a href="#[1b4]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;OS_RdyListInsert
 </UL>
 
 <P><STRONG><a name="[1b4]"></a>OS_RdyListInsert</STRONG> (Thumb, 40 bytes, Stack size 8 bytes, os_core.o(.text))
 <BR><BR>[Stack]<UL><LI>Max Depth = 20<LI>Call Chain = OS_RdyListInsert &rArr; OS_PrioInsert
 </UL>
-<BR>[Calls]<UL><LI><a href="#[1b6]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;OS_RdyListInsertTail
+<BR>[Calls]<UL><LI><a href="#[1b5]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;OS_PrioInsert
+<LI><a href="#[1b6]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;OS_RdyListInsertTail
 <LI><a href="#[1b7]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;OS_RdyListInsertHead
-<LI><a href="#[1b5]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;OS_PrioInsert
 </UL>
-<BR>[Called By]<UL><LI><a href="#[1b8]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;OS_TaskRdy
-<LI><a href="#[216]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;OSTimeDlyResume
+<BR>[Called By]<UL><LI><a href="#[216]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;OSTimeDlyResume
+<LI><a href="#[1b8]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;OS_TaskRdy
 </UL>
 
 <P><STRONG><a name="[1b8]"></a>OS_TaskRdy</STRONG> (Thumb, 28 bytes, Stack size 8 bytes, os_core.o(.text))
 <BR><BR>[Stack]<UL><LI>Max Depth = 28<LI>Call Chain = OS_TaskRdy &rArr; OS_RdyListInsert &rArr; OS_PrioInsert
 </UL>
-<BR>[Calls]<UL><LI><a href="#[1b4]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;OS_RdyListInsert
-<LI><a href="#[1b9]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;OS_TickListRemove
+<BR>[Calls]<UL><LI><a href="#[1b9]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;OS_TickListRemove
+<LI><a href="#[1b4]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;OS_RdyListInsert
 </UL>
-<BR>[Called By]<UL><LI><a href="#[1bf]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;OS_Post
-<LI><a href="#[1bd]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;OS_PendObjDel
-<LI><a href="#[1ba]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;OS_PendAbort
-<LI><a href="#[213]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;OS_TickListUpdate
+<BR>[Called By]<UL><LI><a href="#[213]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;OS_TickListUpdate
 <LI><a href="#[20a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;OS_TaskResume
 <LI><a href="#[1cd]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;OS_FlagTaskRdy
+<LI><a href="#[1bf]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;OS_Post
+<LI><a href="#[1bd]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;OS_PendObjDel
+<LI><a href="#[1ba]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;OS_PendAbort
 </UL>
 
 <P><STRONG><a name="[1ba]"></a>OS_PendAbort</STRONG> (Thumb, 166 bytes, Stack size 16 bytes, os_core.o(.text), UNUSED)
-<BR><BR>[Calls]<UL><LI><a href="#[1b8]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;OS_TaskRdy
+<BR><BR>[Calls]<UL><LI><a href="#[1b9]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;OS_TickListRemove
+<LI><a href="#[1b8]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;OS_TaskRdy
 <LI><a href="#[1bb]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;OS_PendAbort1
 <LI><a href="#[1b2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;OS_PendListRemove
-<LI><a href="#[1b9]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;OS_TickListRemove
 </UL>
 <BR>[Called By]<UL><LI><a href="#[20c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;OSTaskSemPendAbort
 <LI><a href="#[204]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;OSTaskQPendAbort
@@ -3641,8 +3641,8 @@ Global Symbols
 </UL>
 
 <P><STRONG><a name="[1bc]"></a>OS_PendListChangePrio</STRONG> (Thumb, 70 bytes, Stack size 28 bytes, os_core.o(.text), UNUSED)
-<BR><BR>[Calls]<UL><LI><a href="#[1b3]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;OS_PendListRemove1
-<LI><a href="#[1b0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;OS_PendListInsertPrio
+<BR><BR>[Calls]<UL><LI><a href="#[1b0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;OS_PendListInsertPrio
+<LI><a href="#[1b3]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;OS_PendListRemove1
 </UL>
 <BR>[Called By]<UL><LI><a href="#[1fa]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;OSTaskChangePrio
 <LI><a href="#[1d9]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;OSMutexPend
@@ -3667,10 +3667,10 @@ Global Symbols
 </UL>
 
 <P><STRONG><a name="[1bd]"></a>OS_PendObjDel</STRONG> (Thumb, 162 bytes, Stack size 16 bytes, os_core.o(.text), UNUSED)
-<BR><BR>[Calls]<UL><LI><a href="#[1be]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;OS_PendObjDel1
+<BR><BR>[Calls]<UL><LI><a href="#[1b9]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;OS_TickListRemove
+<LI><a href="#[1be]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;OS_PendObjDel1
 <LI><a href="#[1b8]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;OS_TaskRdy
 <LI><a href="#[1b2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;OS_PendListRemove
-<LI><a href="#[1b9]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;OS_TickListRemove
 </UL>
 <BR>[Called By]<UL><LI><a href="#[1eb]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;OSSemDel
 <LI><a href="#[1e0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;OSQDel
@@ -3687,11 +3687,11 @@ Global Symbols
 <P><STRONG><a name="[1bf]"></a>OS_Post</STRONG> (Thumb, 192 bytes, Stack size 32 bytes, os_core.o(.text))
 <BR><BR>[Stack]<UL><LI>Max Depth = 64<LI>Call Chain = OS_Post &rArr; OS_PendListRemove &rArr; OS_PendListRemove1
 </UL>
-<BR>[Calls]<UL><LI><a href="#[1c0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;OS_Post1
+<BR>[Calls]<UL><LI><a href="#[1b9]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;OS_TickListRemove
+<LI><a href="#[1c0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;OS_Post1
 <LI><a href="#[1c1]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;OS_PendDbgNameRemove
 <LI><a href="#[1b8]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;OS_TaskRdy
 <LI><a href="#[1b2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;OS_PendListRemove
-<LI><a href="#[1b9]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;OS_TickListRemove
 </UL>
 <BR>[Called By]<UL><LI><a href="#[20d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;OS_TaskSemPost
 <LI><a href="#[205]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;OS_TaskQPost
@@ -3722,8 +3722,8 @@ Global Symbols
 <P><STRONG><a name="[1c3]"></a>OSFlagCreate</STRONG> (Thumb, 116 bytes, Stack size 24 bytes, os_flag.o(.text), UNUSED)
 <BR><BR>[Calls]<UL><LI><a href="#[92]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;CPU_SR_Save
 <LI><a href="#[93]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;CPU_SR_Restore
-<LI><a href="#[1c4]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;OS_PendListInit
 <LI><a href="#[1c5]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;OS_FlagDbgListAdd
+<LI><a href="#[1c4]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;OS_PendListInit
 </UL>
 
 <P><STRONG><a name="[1c6]"></a>OS_FlagClr</STRONG> (Thumb, 28 bytes, Stack size 16 bytes, os_flag.o(.text), UNUSED)
@@ -3740,10 +3740,10 @@ Global Symbols
 <BR><BR>[Calls]<UL><LI><a href="#[17f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;CPU_TS_TmrRd
 <LI><a href="#[92]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;CPU_SR_Save
 <LI><a href="#[93]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;CPU_SR_Restore
-<LI><a href="#[1bd]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;OS_PendObjDel
 <LI><a href="#[1a2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;OSSched
 <LI><a href="#[1c8]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;OS_FlagDbgListRemove
 <LI><a href="#[1c6]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;OS_FlagClr
+<LI><a href="#[1bd]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;OS_PendObjDel
 </UL>
 
 <P><STRONG><a name="[1c9]"></a>OS_FlagBlock</STRONG> (Thumb, 58 bytes, Stack size 24 bytes, os_flag.o(.text), UNUSED)
@@ -3763,8 +3763,8 @@ Global Symbols
 <BR><BR>[Calls]<UL><LI><a href="#[17f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;CPU_TS_TmrRd
 <LI><a href="#[92]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;CPU_SR_Save
 <LI><a href="#[93]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;CPU_SR_Restore
-<LI><a href="#[1ba]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;OS_PendAbort
 <LI><a href="#[1a2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;OSSched
+<LI><a href="#[1ba]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;OS_PendAbort
 </UL>
 
 <P><STRONG><a name="[1cc]"></a>OSFlagPendGetFlagsRdy</STRONG> (Thumb, 86 bytes, Stack size 16 bytes, os_flag.o(.text), UNUSED)
@@ -3864,8 +3864,8 @@ Global Symbols
 <P><STRONG><a name="[1d4]"></a>OSMutexCreate</STRONG> (Thumb, 122 bytes, Stack size 24 bytes, os_mutex.o(.text), UNUSED)
 <BR><BR>[Calls]<UL><LI><a href="#[92]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;CPU_SR_Save
 <LI><a href="#[93]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;CPU_SR_Restore
-<LI><a href="#[1c4]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;OS_PendListInit
 <LI><a href="#[1d5]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;OS_MutexDbgListAdd
+<LI><a href="#[1c4]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;OS_PendListInit
 </UL>
 
 <P><STRONG><a name="[1d6]"></a>OS_MutexClr</STRONG> (Thumb, 38 bytes, Stack size 8 bytes, os_mutex.o(.text), UNUSED)
@@ -3882,44 +3882,44 @@ Global Symbols
 <BR><BR>[Calls]<UL><LI><a href="#[17f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;CPU_TS_TmrRd
 <LI><a href="#[92]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;CPU_SR_Save
 <LI><a href="#[93]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;CPU_SR_Restore
-<LI><a href="#[1bd]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;OS_PendObjDel
-<LI><a href="#[1bc]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;OS_PendListChangePrio
-<LI><a href="#[1b6]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;OS_RdyListInsertTail
-<LI><a href="#[1aa]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;OS_RdyListRemove
 <LI><a href="#[1a2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;OSSched
 <LI><a href="#[1d8]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;OS_MutexDbgListRemove
 <LI><a href="#[1d6]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;OS_MutexClr
 <LI><a href="#[1b5]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;OS_PrioInsert
+<LI><a href="#[1bd]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;OS_PendObjDel
+<LI><a href="#[1bc]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;OS_PendListChangePrio
+<LI><a href="#[1b6]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;OS_RdyListInsertTail
+<LI><a href="#[1aa]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;OS_RdyListRemove
 </UL>
 
 <P><STRONG><a name="[1d9]"></a>OSMutexPend</STRONG> (Thumb, 618 bytes, Stack size 64 bytes, os_mutex.o(.text), UNUSED)
 <BR><BR>[Calls]<UL><LI><a href="#[92]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;CPU_SR_Save
 <LI><a href="#[93]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;CPU_SR_Restore
+<LI><a href="#[1a2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;OSSched
+<LI><a href="#[1b5]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;OS_PrioInsert
 <LI><a href="#[1bc]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;OS_PendListChangePrio
 <LI><a href="#[1b7]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;OS_RdyListInsertHead
 <LI><a href="#[1ae]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;OS_Pend
 <LI><a href="#[1aa]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;OS_RdyListRemove
-<LI><a href="#[1a2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;OSSched
-<LI><a href="#[1b5]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;OS_PrioInsert
 </UL>
 
 <P><STRONG><a name="[1da]"></a>OSMutexPendAbort</STRONG> (Thumb, 236 bytes, Stack size 40 bytes, os_mutex.o(.text), UNUSED)
 <BR><BR>[Calls]<UL><LI><a href="#[17f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;CPU_TS_TmrRd
 <LI><a href="#[92]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;CPU_SR_Save
 <LI><a href="#[93]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;CPU_SR_Restore
-<LI><a href="#[1ba]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;OS_PendAbort
 <LI><a href="#[1a2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;OSSched
+<LI><a href="#[1ba]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;OS_PendAbort
 </UL>
 
 <P><STRONG><a name="[1db]"></a>OSMutexPost</STRONG> (Thumb, 354 bytes, Stack size 40 bytes, os_mutex.o(.text), UNUSED)
 <BR><BR>[Calls]<UL><LI><a href="#[17f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;CPU_TS_TmrRd
 <LI><a href="#[92]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;CPU_SR_Save
 <LI><a href="#[93]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;CPU_SR_Restore
+<LI><a href="#[1a2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;OSSched
+<LI><a href="#[1b5]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;OS_PrioInsert
 <LI><a href="#[1bf]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;OS_Post
 <LI><a href="#[1b6]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;OS_RdyListInsertTail
 <LI><a href="#[1aa]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;OS_RdyListRemove
-<LI><a href="#[1a2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;OSSched
-<LI><a href="#[1b5]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;OS_PrioInsert
 </UL>
 
 <P><STRONG><a name="[198]"></a>OS_MutexInit</STRONG> (Thumb, 14 bytes, Stack size 0 bytes, os_mutex.o(.text))
@@ -3945,11 +3945,11 @@ Global Symbols
 <BR><BR>[Stack]<UL><LI>Max Depth = 12<LI>Call Chain = OS_PrioInsert
 </UL>
 <BR>[Called By]<UL><LI><a href="#[85]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;OSTaskCreate
-<LI><a href="#[1b4]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;OS_RdyListInsert
 <LI><a href="#[1fa]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;OSTaskChangePrio
 <LI><a href="#[1db]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;OSMutexPost
 <LI><a href="#[1d9]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;OSMutexPend
 <LI><a href="#[1d7]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;OSMutexDel
+<LI><a href="#[1b4]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;OS_RdyListInsert
 </UL>
 
 <P><STRONG><a name="[1ab]"></a>OS_PrioRemove</STRONG> (Thumb, 32 bytes, Stack size 12 bytes, os_prio.o(.text))
@@ -3968,18 +3968,18 @@ Global Symbols
 </UL>
 <BR>[Calls]<UL><LI><a href="#[92]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;CPU_SR_Save
 <LI><a href="#[93]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;CPU_SR_Restore
-<LI><a href="#[1c4]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;OS_PendListInit
 <LI><a href="#[1dd]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;OS_QDbgListAdd
 <LI><a href="#[1dc]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;OS_MsgQInit
+<LI><a href="#[1c4]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;OS_PendListInit
 </UL>
 <BR>[Called By]<UL><LI><a href="#[8a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;AppObjCreate
 <LI><a href="#[225]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;sys_mbox_new
 </UL>
 
 <P><STRONG><a name="[1de]"></a>OS_QClr</STRONG> (Thumb, 40 bytes, Stack size 8 bytes, os_q.o(.text), UNUSED)
-<BR><BR>[Calls]<UL><LI><a href="#[1c4]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;OS_PendListInit
-<LI><a href="#[1dc]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;OS_MsgQInit
+<BR><BR>[Calls]<UL><LI><a href="#[1dc]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;OS_MsgQInit
 <LI><a href="#[1df]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;OS_MsgQFreeAll
+<LI><a href="#[1c4]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;OS_PendListInit
 </UL>
 <BR>[Called By]<UL><LI><a href="#[1e0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;OSQDel
 </UL>
@@ -3992,10 +3992,10 @@ Global Symbols
 <BR><BR>[Calls]<UL><LI><a href="#[17f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;CPU_TS_TmrRd
 <LI><a href="#[92]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;CPU_SR_Save
 <LI><a href="#[93]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;CPU_SR_Restore
-<LI><a href="#[1bd]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;OS_PendObjDel
 <LI><a href="#[1a2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;OSSched
 <LI><a href="#[1e1]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;OS_QDbgListRemove
 <LI><a href="#[1de]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;OS_QClr
+<LI><a href="#[1bd]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;OS_PendObjDel
 </UL>
 <BR>[Called By]<UL><LI><a href="#[226]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;sys_mbox_free
 </UL>
@@ -4010,13 +4010,13 @@ Global Symbols
 
 <P><STRONG><a name="[1e3]"></a>OSQPend</STRONG> (Thumb, 484 bytes, Stack size 72 bytes, os_q.o(.text))
 <BR><BR>[Stack]<UL><LI>Max Depth = 148 + Unknown Stack Size
-<LI>Call Chain = OSQPend &rArr; OS_Pend &rArr; OS_TaskBlock &rArr; OS_RdyListRemove &rArr; OS_PrioRemove
+<LI>Call Chain = OSQPend &rArr; OS_Pend &rArr; OS_TaskBlock &rArr; OS_TickListInsert
 </UL>
 <BR>[Calls]<UL><LI><a href="#[92]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;CPU_SR_Save
 <LI><a href="#[93]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;CPU_SR_Restore
-<LI><a href="#[1ae]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;OS_Pend
 <LI><a href="#[1a2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;OSSched
 <LI><a href="#[1e4]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;OS_MsgQGet
+<LI><a href="#[1ae]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;OS_Pend
 </UL>
 <BR>[Called By]<UL><LI><a href="#[22b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;sys_arch_mbox_fetch
 </UL>
@@ -4025,8 +4025,8 @@ Global Symbols
 <BR><BR>[Calls]<UL><LI><a href="#[17f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;CPU_TS_TmrRd
 <LI><a href="#[92]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;CPU_SR_Save
 <LI><a href="#[93]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;CPU_SR_Restore
-<LI><a href="#[1ba]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;OS_PendAbort
 <LI><a href="#[1a2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;OSSched
+<LI><a href="#[1ba]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;OS_PendAbort
 </UL>
 
 <P><STRONG><a name="[1e6]"></a>OS_QPost</STRONG> (Thumb, 190 bytes, Stack size 56 bytes, os_q.o(.text))
@@ -4035,9 +4035,9 @@ Global Symbols
 </UL>
 <BR>[Calls]<UL><LI><a href="#[92]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;CPU_SR_Save
 <LI><a href="#[93]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;CPU_SR_Restore
-<LI><a href="#[1bf]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;OS_Post
 <LI><a href="#[1a2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;OSSched
 <LI><a href="#[1e7]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;OS_MsgQPut
+<LI><a href="#[1bf]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;OS_Post
 </UL>
 <BR>[Called By]<UL><LI><a href="#[db]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;OSQPost
 </UL>
@@ -4069,8 +4069,8 @@ Global Symbols
 </UL>
 <BR>[Calls]<UL><LI><a href="#[92]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;CPU_SR_Save
 <LI><a href="#[93]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;CPU_SR_Restore
-<LI><a href="#[1c4]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;OS_PendListInit
 <LI><a href="#[1e9]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;OS_SemDbgListAdd
+<LI><a href="#[1c4]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;OS_PendListInit
 </UL>
 <BR>[Called By]<UL><LI><a href="#[230]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;sys_sem_new
 </UL>
@@ -4089,22 +4089,22 @@ Global Symbols
 <BR><BR>[Calls]<UL><LI><a href="#[17f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;CPU_TS_TmrRd
 <LI><a href="#[92]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;CPU_SR_Save
 <LI><a href="#[93]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;CPU_SR_Restore
-<LI><a href="#[1bd]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;OS_PendObjDel
 <LI><a href="#[1a2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;OSSched
 <LI><a href="#[1ec]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;OS_SemDbgListRemove
 <LI><a href="#[1ea]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;OS_SemClr
+<LI><a href="#[1bd]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;OS_PendObjDel
 </UL>
 <BR>[Called By]<UL><LI><a href="#[233]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;sys_sem_free
 </UL>
 
 <P><STRONG><a name="[1ed]"></a>OSSemPend</STRONG> (Thumb, 406 bytes, Stack size 64 bytes, os_sem.o(.text))
 <BR><BR>[Stack]<UL><LI>Max Depth = 140 + Unknown Stack Size
-<LI>Call Chain = OSSemPend &rArr; OS_Pend &rArr; OS_TaskBlock &rArr; OS_RdyListRemove &rArr; OS_PrioRemove
+<LI>Call Chain = OSSemPend &rArr; OS_Pend &rArr; OS_TaskBlock &rArr; OS_TickListInsert
 </UL>
 <BR>[Calls]<UL><LI><a href="#[92]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;CPU_SR_Save
 <LI><a href="#[93]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;CPU_SR_Restore
-<LI><a href="#[1ae]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;OS_Pend
 <LI><a href="#[1a2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;OSSched
+<LI><a href="#[1ae]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;OS_Pend
 </UL>
 <BR>[Called By]<UL><LI><a href="#[231]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;sys_arch_sem_wait
 </UL>
@@ -4113,8 +4113,8 @@ Global Symbols
 <BR><BR>[Calls]<UL><LI><a href="#[17f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;CPU_TS_TmrRd
 <LI><a href="#[92]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;CPU_SR_Save
 <LI><a href="#[93]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;CPU_SR_Restore
-<LI><a href="#[1ba]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;OS_PendAbort
 <LI><a href="#[1a2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;OSSched
+<LI><a href="#[1ba]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;OS_PendAbort
 </UL>
 
 <P><STRONG><a name="[1ef]"></a>OS_SemPost</STRONG> (Thumb, 294 bytes, Stack size 56 bytes, os_sem.o(.text))
@@ -4123,8 +4123,8 @@ Global Symbols
 </UL>
 <BR>[Calls]<UL><LI><a href="#[92]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;CPU_SR_Save
 <LI><a href="#[93]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;CPU_SR_Restore
-<LI><a href="#[1bf]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;OS_Post
 <LI><a href="#[1a2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;OSSched
+<LI><a href="#[1bf]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;OS_Post
 </UL>
 <BR>[Called By]<UL><LI><a href="#[1f0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;OSSemPost
 </UL>
@@ -4176,7 +4176,7 @@ Global Symbols
 
 <P><STRONG><a name="[1f7]"></a>OS_StatTask</STRONG> (Thumb, 768 bytes, Stack size 24 bytes, os_stat.o(.text))
 <BR><BR>[Stack]<UL><LI>Max Depth = 84 + Unknown Stack Size
-<LI>Call Chain = OS_StatTask &rArr; OSTimeDly &rArr; OS_RdyListRemove &rArr; OS_PrioRemove
+<LI>Call Chain = OS_StatTask &rArr; OSTimeDly &rArr; OS_TickListInsert
 </UL>
 <BR>[Calls]<UL><LI><a href="#[17f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;CPU_TS_TmrRd
 <LI><a href="#[7d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;OSTimeDly
@@ -4200,12 +4200,12 @@ Global Symbols
 <P><STRONG><a name="[1fa]"></a>OSTaskChangePrio</STRONG> (Thumb, 274 bytes, Stack size 24 bytes, os_task.o(.text), UNUSED)
 <BR><BR>[Calls]<UL><LI><a href="#[92]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;CPU_SR_Save
 <LI><a href="#[93]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;CPU_SR_Restore
+<LI><a href="#[1a2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;OSSched
+<LI><a href="#[1b5]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;OS_PrioInsert
 <LI><a href="#[1bc]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;OS_PendListChangePrio
 <LI><a href="#[1b6]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;OS_RdyListInsertTail
 <LI><a href="#[1b7]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;OS_RdyListInsertHead
 <LI><a href="#[1aa]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;OS_RdyListRemove
-<LI><a href="#[1a2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;OSSched
-<LI><a href="#[1b5]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;OS_PrioInsert
 </UL>
 
 <P><STRONG><a name="[1fe]"></a>OS_TaskDbgListAdd</STRONG> (Thumb, 42 bytes, Stack size 0 bytes, os_task.o(.text))
@@ -4228,7 +4228,6 @@ Global Symbols
 </UL>
 <BR>[Calls]<UL><LI><a href="#[92]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;CPU_SR_Save
 <LI><a href="#[93]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;CPU_SR_Restore
-<LI><a href="#[1b6]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;OS_RdyListInsertTail
 <LI><a href="#[1a2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;OSSched
 <LI><a href="#[1fc]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;OSTaskStkInit
 <LI><a href="#[1fd]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;OSTaskCreateHook
@@ -4236,6 +4235,7 @@ Global Symbols
 <LI><a href="#[1fe]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;OS_TaskDbgListAdd
 <LI><a href="#[1dc]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;OS_MsgQInit
 <LI><a href="#[1b5]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;OS_PrioInsert
+<LI><a href="#[1b6]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;OS_RdyListInsertTail
 </UL>
 <BR>[Called By]<UL><LI><a href="#[87]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;dhcp_task_create
 <LI><a href="#[5a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
@@ -4258,14 +4258,14 @@ Global Symbols
 </UL>
 <BR>[Calls]<UL><LI><a href="#[92]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;CPU_SR_Save
 <LI><a href="#[93]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;CPU_SR_Restore
-<LI><a href="#[1b2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;OS_PendListRemove
-<LI><a href="#[1aa]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;OS_RdyListRemove
 <LI><a href="#[1a2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;OSSched
 <LI><a href="#[200]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;OSTaskDelHook
 <LI><a href="#[201]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;OS_TaskDbgListRemove
 <LI><a href="#[1fb]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;OS_TaskInitTCB
 <LI><a href="#[1df]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;OS_MsgQFreeAll
 <LI><a href="#[1b9]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;OS_TickListRemove
+<LI><a href="#[1b2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;OS_PendListRemove
+<LI><a href="#[1aa]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;OS_RdyListRemove
 </UL>
 <BR>[Called By]<UL><LI><a href="#[61]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;OS_TaskReturn
 <LI><a href="#[246]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;dhcp_task_delete
@@ -4281,25 +4281,25 @@ Global Symbols
 <BR><BR>[Calls]<UL><LI><a href="#[17f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;CPU_TS_TmrRd
 <LI><a href="#[92]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;CPU_SR_Save
 <LI><a href="#[93]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;CPU_SR_Restore
-<LI><a href="#[1ae]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;OS_Pend
 <LI><a href="#[1a2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;OSSched
 <LI><a href="#[1e4]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;OS_MsgQGet
+<LI><a href="#[1ae]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;OS_Pend
 </UL>
 
 <P><STRONG><a name="[204]"></a>OSTaskQPendAbort</STRONG> (Thumb, 206 bytes, Stack size 24 bytes, os_task.o(.text), UNUSED)
 <BR><BR>[Calls]<UL><LI><a href="#[17f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;CPU_TS_TmrRd
 <LI><a href="#[92]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;CPU_SR_Save
 <LI><a href="#[93]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;CPU_SR_Restore
-<LI><a href="#[1ba]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;OS_PendAbort
 <LI><a href="#[1a2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;OSSched
+<LI><a href="#[1ba]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;OS_PendAbort
 </UL>
 
 <P><STRONG><a name="[205]"></a>OS_TaskQPost</STRONG> (Thumb, 220 bytes, Stack size 40 bytes, os_task.o(.text), UNUSED)
 <BR><BR>[Calls]<UL><LI><a href="#[92]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;CPU_SR_Save
 <LI><a href="#[93]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;CPU_SR_Restore
-<LI><a href="#[1bf]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;OS_Post
 <LI><a href="#[1a2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;OSSched
 <LI><a href="#[1e7]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;OS_MsgQPut
+<LI><a href="#[1bf]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;OS_Post
 </UL>
 <BR>[Called By]<UL><LI><a href="#[206]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;OSTaskQPost
 </UL>
@@ -4330,8 +4330,8 @@ Global Symbols
 </UL>
 <BR>[Calls]<UL><LI><a href="#[92]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;CPU_SR_Save
 <LI><a href="#[93]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;CPU_SR_Restore
-<LI><a href="#[1b8]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;OS_TaskRdy
 <LI><a href="#[1a2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;OSSched
+<LI><a href="#[1b8]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;OS_TaskRdy
 </UL>
 <BR>[Called By]<UL><LI><a href="#[1f6]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;OSTaskResume
 </UL>
@@ -4349,13 +4349,13 @@ Global Symbols
 
 <P><STRONG><a name="[20b]"></a>OSTaskSemPend</STRONG> (Thumb, 478 bytes, Stack size 32 bytes, os_task.o(.text))
 <BR><BR>[Stack]<UL><LI>Max Depth = 108 + Unknown Stack Size
-<LI>Call Chain = OSTaskSemPend &rArr; OS_Pend &rArr; OS_TaskBlock &rArr; OS_RdyListRemove &rArr; OS_PrioRemove
+<LI>Call Chain = OSTaskSemPend &rArr; OS_Pend &rArr; OS_TaskBlock &rArr; OS_TickListInsert
 </UL>
 <BR>[Calls]<UL><LI><a href="#[17f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;CPU_TS_TmrRd
 <LI><a href="#[92]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;CPU_SR_Save
 <LI><a href="#[93]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;CPU_SR_Restore
-<LI><a href="#[1ae]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;OS_Pend
 <LI><a href="#[1a2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;OSSched
+<LI><a href="#[1ae]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;OS_Pend
 </UL>
 <BR>[Called By]<UL><LI><a href="#[223]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;OS_TmrTask
 <LI><a href="#[214]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;OS_TickTask
@@ -4365,8 +4365,8 @@ Global Symbols
 <BR><BR>[Calls]<UL><LI><a href="#[17f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;CPU_TS_TmrRd
 <LI><a href="#[92]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;CPU_SR_Save
 <LI><a href="#[93]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;CPU_SR_Restore
-<LI><a href="#[1ba]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;OS_PendAbort
 <LI><a href="#[1a2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;OSSched
+<LI><a href="#[1ba]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;OS_PendAbort
 </UL>
 
 <P><STRONG><a name="[20d]"></a>OS_TaskSemPost</STRONG> (Thumb, 448 bytes, Stack size 32 bytes, os_task.o(.text))
@@ -4375,8 +4375,8 @@ Global Symbols
 </UL>
 <BR>[Calls]<UL><LI><a href="#[92]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;CPU_SR_Save
 <LI><a href="#[93]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;CPU_SR_Restore
-<LI><a href="#[1bf]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;OS_Post
 <LI><a href="#[1a2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;OSSched
+<LI><a href="#[1bf]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;OS_Post
 </UL>
 <BR>[Called By]<UL><LI><a href="#[20e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;OSTaskSemPost
 </UL>
@@ -4412,8 +4412,8 @@ Global Symbols
 </UL>
 <BR>[Calls]<UL><LI><a href="#[92]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;CPU_SR_Save
 <LI><a href="#[93]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;CPU_SR_Restore
-<LI><a href="#[1aa]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;OS_RdyListRemove
 <LI><a href="#[1a2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;OSSched
+<LI><a href="#[1aa]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;OS_RdyListRemove
 </UL>
 <BR>[Called By]<UL><LI><a href="#[1f5]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;OSTaskSuspend
 </UL>
@@ -4448,13 +4448,13 @@ Global Symbols
 <P><STRONG><a name="[1b9]"></a>OS_TickListRemove</STRONG> (Thumb, 56 bytes, Stack size 8 bytes, os_tick.o(.text))
 <BR><BR>[Stack]<UL><LI>Max Depth = 8<LI>Call Chain = OS_TickListRemove
 </UL>
-<BR>[Called By]<UL><LI><a href="#[1bf]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;OS_Post
+<BR>[Called By]<UL><LI><a href="#[216]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;OSTimeDlyResume
+<LI><a href="#[213]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;OS_TickListUpdate
+<LI><a href="#[1ff]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;OSTaskDel
+<LI><a href="#[1bf]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;OS_Post
 <LI><a href="#[1bd]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;OS_PendObjDel
 <LI><a href="#[1ba]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;OS_PendAbort
 <LI><a href="#[1b8]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;OS_TaskRdy
-<LI><a href="#[216]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;OSTimeDlyResume
-<LI><a href="#[213]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;OS_TickListUpdate
-<LI><a href="#[1ff]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;OSTaskDel
 </UL>
 
 <P><STRONG><a name="[213]"></a>OS_TickListUpdate</STRONG> (Thumb, 376 bytes, Stack size 40 bytes, os_tick.o(.text))
@@ -4464,16 +4464,16 @@ Global Symbols
 <BR>[Calls]<UL><LI><a href="#[17f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;CPU_TS_TmrRd
 <LI><a href="#[92]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;CPU_SR_Save
 <LI><a href="#[93]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;CPU_SR_Restore
+<LI><a href="#[1b9]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;OS_TickListRemove
 <LI><a href="#[1b8]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;OS_TaskRdy
 <LI><a href="#[1b2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;OS_PendListRemove
-<LI><a href="#[1b9]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;OS_TickListRemove
 </UL>
 <BR>[Called By]<UL><LI><a href="#[214]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;OS_TickTask
 </UL>
 
 <P><STRONG><a name="[214]"></a>OS_TickTask</STRONG> (Thumb, 38 bytes, Stack size 16 bytes, os_tick.o(.text))
 <BR><BR>[Stack]<UL><LI>Max Depth = 124 + Unknown Stack Size
-<LI>Call Chain = OS_TickTask &rArr; OSTaskSemPend &rArr; OS_Pend &rArr; OS_TaskBlock &rArr; OS_RdyListRemove &rArr; OS_PrioRemove
+<LI>Call Chain = OS_TickTask &rArr; OSTaskSemPend &rArr; OS_Pend &rArr; OS_TaskBlock &rArr; OS_TickListInsert
 </UL>
 <BR>[Calls]<UL><LI><a href="#[213]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;OS_TickListUpdate
 <LI><a href="#[20b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;OSTaskSemPend
@@ -4508,13 +4508,13 @@ Global Symbols
 
 <P><STRONG><a name="[7d]"></a>OSTimeDly</STRONG> (Thumb, 182 bytes, Stack size 24 bytes, os_time.o(.text))
 <BR><BR>[Stack]<UL><LI>Max Depth = 60 + Unknown Stack Size
-<LI>Call Chain = OSTimeDly &rArr; OS_RdyListRemove &rArr; OS_PrioRemove
+<LI>Call Chain = OSTimeDly &rArr; OS_TickListInsert
 </UL>
 <BR>[Calls]<UL><LI><a href="#[92]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;CPU_SR_Save
 <LI><a href="#[93]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;CPU_SR_Restore
-<LI><a href="#[1aa]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;OS_RdyListRemove
 <LI><a href="#[1a2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;OSSched
 <LI><a href="#[1ad]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;OS_TickListInsert
+<LI><a href="#[1aa]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;OS_RdyListRemove
 </UL>
 <BR>[Called By]<UL><LI><a href="#[87]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;dhcp_task_create
 <LI><a href="#[90]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;OSStatTaskCPUUsageInit
@@ -4528,13 +4528,13 @@ Global Symbols
 
 <P><STRONG><a name="[7f]"></a>OSTimeDlyHMSM</STRONG> (Thumb, 394 bytes, Stack size 56 bytes, os_time.o(.text))
 <BR><BR>[Stack]<UL><LI>Max Depth = 92 + Unknown Stack Size
-<LI>Call Chain = OSTimeDlyHMSM &rArr; OS_RdyListRemove &rArr; OS_PrioRemove
+<LI>Call Chain = OSTimeDlyHMSM &rArr; OS_TickListInsert
 </UL>
 <BR>[Calls]<UL><LI><a href="#[92]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;CPU_SR_Save
 <LI><a href="#[93]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;CPU_SR_Restore
-<LI><a href="#[1aa]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;OS_RdyListRemove
 <LI><a href="#[1a2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;OSSched
 <LI><a href="#[1ad]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;OS_TickListInsert
+<LI><a href="#[1aa]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;OS_RdyListRemove
 </UL>
 <BR>[Called By]<UL><LI><a href="#[5b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;led0_task_fun
 <LI><a href="#[5c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;led1_task_fun
@@ -4545,9 +4545,9 @@ Global Symbols
 <P><STRONG><a name="[216]"></a>OSTimeDlyResume</STRONG> (Thumb, 334 bytes, Stack size 16 bytes, os_time.o(.text), UNUSED)
 <BR><BR>[Calls]<UL><LI><a href="#[92]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;CPU_SR_Save
 <LI><a href="#[93]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;CPU_SR_Restore
-<LI><a href="#[1b4]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;OS_RdyListInsert
 <LI><a href="#[1a2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;OSSched
 <LI><a href="#[1b9]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;OS_TickListRemove
+<LI><a href="#[1b4]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;OS_RdyListInsert
 </UL>
 
 <P><STRONG><a name="[217]"></a>OSTimeGet</STRONG> (Thumb, 46 bytes, Stack size 16 bytes, os_time.o(.text))
@@ -4571,9 +4571,9 @@ Global Symbols
 <BR><BR>[Stack]<UL><LI>Max Depth = 128 + Unknown Stack Size
 <LI>Call Chain = OSTimeTick &rArr; OSTaskSemPost &rArr; OS_TaskSemPost &rArr; OS_Post &rArr; OS_PendListRemove &rArr; OS_PendListRemove1
 </UL>
-<BR>[Calls]<UL><LI><a href="#[1c2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;OS_SchedRoundRobin
-<LI><a href="#[219]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;OSTimeTickHook
+<BR>[Calls]<UL><LI><a href="#[219]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;OSTimeTickHook
 <LI><a href="#[20e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;OSTaskSemPost
+<LI><a href="#[1c2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;OS_SchedRoundRobin
 </UL>
 <BR>[Called By]<UL><LI><a href="#[8]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;OS_CPU_SysTickHandler
 </UL>
@@ -4655,7 +4655,7 @@ Global Symbols
 
 <P><STRONG><a name="[223]"></a>OS_TmrTask</STRONG> (Thumb, 176 bytes, Stack size 16 bytes, os_tmr.o(.text))
 <BR><BR>[Stack]<UL><LI>Max Depth = 124 + Unknown Stack Size
-<LI>Call Chain = OS_TmrTask &rArr; OSTaskSemPend &rArr; OS_Pend &rArr; OS_TaskBlock &rArr; OS_RdyListRemove &rArr; OS_PrioRemove
+<LI>Call Chain = OS_TmrTask &rArr; OSTaskSemPend &rArr; OS_Pend &rArr; OS_TaskBlock &rArr; OS_TickListInsert
 </UL>
 <BR>[Calls]<UL><LI><a href="#[17f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;CPU_TS_TmrRd
 <LI><a href="#[1a6]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;OSSchedUnlock
@@ -4765,7 +4765,7 @@ Global Symbols
 
 <P><STRONG><a name="[22b]"></a>sys_arch_mbox_fetch</STRONG> (Thumb, 172 bytes, Stack size 48 bytes, sys_arch.o(.text))
 <BR><BR>[Stack]<UL><LI>Max Depth = 196 + Unknown Stack Size
-<LI>Call Chain = sys_arch_mbox_fetch &rArr; OSQPend &rArr; OS_Pend &rArr; OS_TaskBlock &rArr; OS_RdyListRemove &rArr; OS_PrioRemove
+<LI>Call Chain = sys_arch_mbox_fetch &rArr; OSQPend &rArr; OS_Pend &rArr; OS_TaskBlock &rArr; OS_TickListInsert
 </UL>
 <BR>[Calls]<UL><LI><a href="#[217]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;OSTimeGet
 <LI><a href="#[1e3]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;OSQPend
@@ -4805,19 +4805,19 @@ Global Symbols
 
 <P><STRONG><a name="[231]"></a>sys_arch_sem_wait</STRONG> (Thumb, 118 bytes, Stack size 32 bytes, sys_arch.o(.text))
 <BR><BR>[Stack]<UL><LI>Max Depth = 172 + Unknown Stack Size
-<LI>Call Chain = sys_arch_sem_wait &rArr; OSSemPend &rArr; OS_Pend &rArr; OS_TaskBlock &rArr; OS_RdyListRemove &rArr; OS_PrioRemove
+<LI>Call Chain = sys_arch_sem_wait &rArr; OSSemPend &rArr; OS_Pend &rArr; OS_TaskBlock &rArr; OS_TickListInsert
 </UL>
 <BR>[Calls]<UL><LI><a href="#[1ed]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;OSSemPend
 <LI><a href="#[217]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;OSTimeGet
 </UL>
 <BR>[Called By]<UL><LI><a href="#[255]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;tcpip_send_msg_wait_sem
-<LI><a href="#[2ed]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;sys_check_timeouts
 <LI><a href="#[27e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;mem_trim
 <LI><a href="#[26a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;mem_malloc
 <LI><a href="#[6b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;mem_free
 <LI><a href="#[256]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;tcpip_api_call
 <LI><a href="#[252]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;tcpip_inpkt
 <LI><a href="#[69]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;tcpip_thread
+<LI><a href="#[2ed]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;sys_check_timeouts
 </UL>
 
 <P><STRONG><a name="[232]"></a>sys_sem_signal</STRONG> (Thumb, 42 bytes, Stack size 16 bytes, sys_arch.o(.text))
@@ -4828,13 +4828,13 @@ Global Symbols
 <LI><a href="#[227]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__2printf
 </UL>
 <BR>[Called By]<UL><LI><a href="#[255]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;tcpip_send_msg_wait_sem
-<LI><a href="#[2ed]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;sys_check_timeouts
 <LI><a href="#[27e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;mem_trim
 <LI><a href="#[26a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;mem_malloc
 <LI><a href="#[6b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;mem_free
 <LI><a href="#[256]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;tcpip_api_call
 <LI><a href="#[252]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;tcpip_inpkt
 <LI><a href="#[69]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;tcpip_thread
+<LI><a href="#[2ed]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;sys_check_timeouts
 </UL>
 
 <P><STRONG><a name="[233]"></a>sys_sem_free</STRONG> (Thumb, 46 bytes, Stack size 16 bytes, sys_arch.o(.text), UNUSED)
@@ -4878,16 +4878,16 @@ Global Symbols
 </UL>
 <BR>[Calls]<UL><LI><a href="#[217]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;OSTimeGet
 </UL>
-<BR>[Called By]<UL><LI><a href="#[2ef]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;sys_timeouts_sleeptime
-<LI><a href="#[2ed]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;sys_check_timeouts
-<LI><a href="#[27c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;sys_timeouts_init
+<BR>[Called By]<UL><LI><a href="#[27c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;sys_timeouts_init
 <LI><a href="#[2ee]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;sys_restart_timeouts
 <LI><a href="#[2eb]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;sys_timeout
+<LI><a href="#[2ef]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;sys_timeouts_sleeptime
+<LI><a href="#[2ed]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;sys_check_timeouts
 </UL>
 
 <P><STRONG><a name="[238]"></a>rawudp_send_data</STRONG> (Thumb, 76 bytes, Stack size 24 bytes, rawudp.o(.text))
 <BR><BR>[Stack]<UL><LI>Max Depth = 580 + Unknown Stack Size
-<LI>Call Chain = rawudp_send_data &rArr; udp_send &rArr; udp_sendto &rArr; udp_sendto_if &rArr; udp_sendto_if_src &rArr; ip4_output_if_src &rArr; ip4_frag &rArr; pbuf_alloc &rArr; pbuf_free &rArr; mem_free &rArr; sys_arch_sem_wait &rArr; OSSemPend &rArr; OS_Pend &rArr; OS_TaskBlock &rArr; OS_RdyListRemove &rArr; OS_PrioRemove
+<LI>Call Chain = rawudp_send_data &rArr; udp_send &rArr; udp_sendto &rArr; udp_sendto_if &rArr; udp_sendto_if_src &rArr; ip4_output_if_src &rArr; ip4_frag &rArr; pbuf_alloc &rArr; pbuf_free &rArr; mem_free &rArr; sys_arch_sem_wait &rArr; OSSemPend &rArr; OS_Pend &rArr; OS_TaskBlock &rArr; OS_TickListInsert
 </UL>
 <BR>[Calls]<UL><LI><a href="#[23b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;udp_send
 <LI><a href="#[23a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;pbuf_take
@@ -4901,7 +4901,7 @@ Global Symbols
 
 <P><STRONG><a name="[23d]"></a>rawudp_recv_callback</STRONG> (Thumb, 160 bytes, Stack size 32 bytes, rawudp.o(.text))
 <BR><BR>[Stack]<UL><LI>Max Depth = 252 + Unknown Stack Size
-<LI>Call Chain = rawudp_recv_callback &rArr; pbuf_free &rArr; mem_free &rArr; sys_arch_sem_wait &rArr; OSSemPend &rArr; OS_Pend &rArr; OS_TaskBlock &rArr; OS_RdyListRemove &rArr; OS_PrioRemove
+<LI>Call Chain = rawudp_recv_callback &rArr; pbuf_free &rArr; mem_free &rArr; sys_arch_sem_wait &rArr; OSSemPend &rArr; OS_Pend &rArr; OS_TaskBlock &rArr; OS_TickListInsert
 </UL>
 <BR>[Calls]<UL><LI><a href="#[86]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;USART_OUT
 <LI><a href="#[23e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;udp_disconnect
@@ -4953,7 +4953,7 @@ Global Symbols
 
 <P><STRONG><a name="[248]"></a>lwip_comm_dev_init</STRONG> (Thumb, 128 bytes, Stack size 40 bytes, lwip_comm_1.o(.text))
 <BR><BR>[Stack]<UL><LI>Max Depth = 780 + Unknown Stack Size
-<LI>Call Chain = lwip_comm_dev_init &rArr; netif_add &rArr; netif_set_addr &rArr; netif_set_ipaddr &rArr; tcp_netif_ip_addr_changed &rArr; tcp_netif_ip_addr_changed_pcblist &rArr; tcp_abort &rArr; tcp_abandon &rArr; tcp_pcb_remove &rArr; tcp_output &rArr; tcp_output_segment &rArr; ip4_output_if &rArr; ip4_output_if_src &rArr; ip4_frag &rArr; pbuf_alloc &rArr; pbuf_free &rArr; mem_free &rArr; sys_arch_sem_wait &rArr; OSSemPend &rArr; OS_Pend &rArr; OS_TaskBlock &rArr; OS_RdyListRemove &rArr; OS_PrioRemove
+<LI>Call Chain = lwip_comm_dev_init &rArr; netif_add &rArr; netif_set_addr &rArr; netif_set_ipaddr &rArr; tcp_netif_ip_addr_changed &rArr; tcp_netif_ip_addr_changed_pcblist &rArr; tcp_abort &rArr; tcp_abandon &rArr; tcp_pcb_remove &rArr; tcp_output &rArr; tcp_output_segment &rArr; ip4_output_if &rArr; ip4_output_if_src &rArr; ip4_frag &rArr; pbuf_alloc &rArr; pbuf_free &rArr; mem_free &rArr; sys_arch_sem_wait &rArr; OSSemPend &rArr; OS_Pend &rArr; OS_TaskBlock &rArr; OS_TickListInsert
 </UL>
 <BR>[Calls]<UL><LI><a href="#[86]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;USART_OUT
 <LI><a href="#[92]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;CPU_SR_Save
@@ -4970,7 +4970,7 @@ Global Symbols
 
 <P><STRONG><a name="[10e]"></a>lwip_comm_pkt_handle</STRONG> (Thumb, 10 bytes, Stack size 8 bytes, lwip_comm_1.o(.text))
 <BR><BR>[Stack]<UL><LI>Max Depth = 340 + Unknown Stack Size
-<LI>Call Chain = lwip_comm_pkt_handle &rArr; ethernetif_input &rArr; low_level_input &rArr; pbuf_alloc &rArr; pbuf_free &rArr; mem_free &rArr; sys_arch_sem_wait &rArr; OSSemPend &rArr; OS_Pend &rArr; OS_TaskBlock &rArr; OS_RdyListRemove &rArr; OS_PrioRemove
+<LI>Call Chain = lwip_comm_pkt_handle &rArr; ethernetif_input &rArr; low_level_input &rArr; pbuf_alloc &rArr; pbuf_free &rArr; mem_free &rArr; sys_arch_sem_wait &rArr; OSSemPend &rArr; OS_Pend &rArr; OS_TaskBlock &rArr; OS_TickListInsert
 </UL>
 <BR>[Calls]<UL><LI><a href="#[24f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ethernetif_input
 </UL>
@@ -4979,7 +4979,7 @@ Global Symbols
 
 <P><STRONG><a name="[252]"></a>tcpip_inpkt</STRONG> (Thumb, 38 bytes, Stack size 24 bytes, tcpip.o(.text))
 <BR><BR>[Stack]<UL><LI>Max Depth = 196 + Unknown Stack Size
-<LI>Call Chain = tcpip_inpkt &rArr; sys_arch_sem_wait &rArr; OSSemPend &rArr; OS_Pend &rArr; OS_TaskBlock &rArr; OS_RdyListRemove &rArr; OS_PrioRemove
+<LI>Call Chain = tcpip_inpkt &rArr; sys_arch_sem_wait &rArr; OSSemPend &rArr; OS_Pend &rArr; OS_TaskBlock &rArr; OS_TickListInsert
 </UL>
 <BR>[Calls]<UL><LI><a href="#[232]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;sys_sem_signal
 <LI><a href="#[231]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;sys_arch_sem_wait
@@ -4989,7 +4989,7 @@ Global Symbols
 
 <P><STRONG><a name="[65]"></a>tcpip_input</STRONG> (Thumb, 40 bytes, Stack size 16 bytes, tcpip.o(.text))
 <BR><BR>[Stack]<UL><LI>Max Depth = 212 + Unknown Stack Size
-<LI>Call Chain = tcpip_input &rArr; tcpip_inpkt &rArr; sys_arch_sem_wait &rArr; OSSemPend &rArr; OS_Pend &rArr; OS_TaskBlock &rArr; OS_RdyListRemove &rArr; OS_PrioRemove
+<LI>Call Chain = tcpip_input &rArr; tcpip_inpkt &rArr; sys_arch_sem_wait &rArr; OSSemPend &rArr; OS_Pend &rArr; OS_TaskBlock &rArr; OS_TickListInsert
 </UL>
 <BR>[Calls]<UL><LI><a href="#[252]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;tcpip_inpkt
 </UL>
@@ -5054,7 +5054,7 @@ Global Symbols
 
 <P><STRONG><a name="[67]"></a>ethernet_input</STRONG> (Thumb, 196 bytes, Stack size 24 bytes, ethernet.o(.text))
 <BR><BR>[Stack]<UL><LI>Max Depth = 804 + Unknown Stack Size
-<LI>Call Chain = ethernet_input &rArr; ip4_input &rArr; tcp_input &rArr; tcp_listen_input &rArr; tcp_alloc &rArr; tcp_kill_prio &rArr; tcp_abort &rArr; tcp_abandon &rArr; tcp_pcb_remove &rArr; tcp_output &rArr; tcp_output_segment &rArr; ip4_output_if &rArr; ip4_output_if_src &rArr; ip4_frag &rArr; pbuf_alloc &rArr; pbuf_free &rArr; mem_free &rArr; sys_arch_sem_wait &rArr; OSSemPend &rArr; OS_Pend &rArr; OS_TaskBlock &rArr; OS_RdyListRemove &rArr; OS_PrioRemove
+<LI>Call Chain = ethernet_input &rArr; ip4_input &rArr; tcp_input &rArr; tcp_listen_input &rArr; tcp_alloc &rArr; tcp_kill_prio &rArr; tcp_abort &rArr; tcp_abandon &rArr; tcp_pcb_remove &rArr; tcp_output &rArr; tcp_output_segment &rArr; ip4_output_if &rArr; ip4_output_if_src &rArr; ip4_frag &rArr; pbuf_alloc &rArr; pbuf_free &rArr; mem_free &rArr; sys_arch_sem_wait &rArr; OSSemPend &rArr; OS_Pend &rArr; OS_TaskBlock &rArr; OS_TickListInsert
 </UL>
 <BR>[Calls]<UL><LI><a href="#[23c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;pbuf_free
 <LI><a href="#[25e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;pbuf_header
@@ -5082,7 +5082,7 @@ Global Symbols
 
 <P><STRONG><a name="[24f]"></a>ethernetif_input</STRONG> (Thumb, 36 bytes, Stack size 16 bytes, ethernetif.o(.text))
 <BR><BR>[Stack]<UL><LI>Max Depth = 332 + Unknown Stack Size
-<LI>Call Chain = ethernetif_input &rArr; low_level_input &rArr; pbuf_alloc &rArr; pbuf_free &rArr; mem_free &rArr; sys_arch_sem_wait &rArr; OSSemPend &rArr; OS_Pend &rArr; OS_TaskBlock &rArr; OS_RdyListRemove &rArr; OS_PrioRemove
+<LI>Call Chain = ethernetif_input &rArr; low_level_input &rArr; pbuf_alloc &rArr; pbuf_free &rArr; mem_free &rArr; sys_arch_sem_wait &rArr; OSSemPend &rArr; OS_Pend &rArr; OS_TaskBlock &rArr; OS_TickListInsert
 </UL>
 <BR>[Calls]<UL><LI><a href="#[23c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;pbuf_free
 <LI><a href="#[267]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;low_level_input
@@ -5092,7 +5092,7 @@ Global Symbols
 
 <P><STRONG><a name="[66]"></a>ethernetif_init</STRONG> (Thumb, 82 bytes, Stack size 16 bytes, ethernetif.o(.text))
 <BR><BR>[Stack]<UL><LI>Max Depth = 220 + Unknown Stack Size
-<LI>Call Chain = ethernetif_init &rArr; mem_malloc &rArr; sys_arch_sem_wait &rArr; OSSemPend &rArr; OS_Pend &rArr; OS_TaskBlock &rArr; OS_RdyListRemove &rArr; OS_PrioRemove
+<LI>Call Chain = ethernetif_init &rArr; mem_malloc &rArr; sys_arch_sem_wait &rArr; OSSemPend &rArr; OS_Pend &rArr; OS_TaskBlock &rArr; OS_TickListInsert
 </UL>
 <BR>[Calls]<UL><LI><a href="#[26a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;mem_malloc
 <LI><a href="#[262]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;low_level_init
@@ -5250,7 +5250,7 @@ Global Symbols
 
 <P><STRONG><a name="[6b]"></a>mem_free</STRONG> (Thumb, 174 bytes, Stack size 16 bytes, mem.o(.text))
 <BR><BR>[Stack]<UL><LI>Max Depth = 188 + Unknown Stack Size
-<LI>Call Chain = mem_free &rArr; sys_arch_sem_wait &rArr; OSSemPend &rArr; OS_Pend &rArr; OS_TaskBlock &rArr; OS_RdyListRemove &rArr; OS_PrioRemove
+<LI>Call Chain = mem_free &rArr; sys_arch_sem_wait &rArr; OSSemPend &rArr; OS_Pend &rArr; OS_TaskBlock &rArr; OS_TickListInsert
 </UL>
 <BR>[Calls]<UL><LI><a href="#[92]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;CPU_SR_Save
 <LI><a href="#[93]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;CPU_SR_Restore
@@ -5266,7 +5266,7 @@ Global Symbols
 </UL>
 <P><STRONG><a name="[27e]"></a>mem_trim</STRONG> (Thumb, 334 bytes, Stack size 40 bytes, mem.o(.text))
 <BR><BR>[Stack]<UL><LI>Max Depth = 212 + Unknown Stack Size
-<LI>Call Chain = mem_trim &rArr; sys_arch_sem_wait &rArr; OSSemPend &rArr; OS_Pend &rArr; OS_TaskBlock &rArr; OS_RdyListRemove &rArr; OS_PrioRemove
+<LI>Call Chain = mem_trim &rArr; sys_arch_sem_wait &rArr; OSSemPend &rArr; OS_Pend &rArr; OS_TaskBlock &rArr; OS_TickListInsert
 </UL>
 <BR>[Calls]<UL><LI><a href="#[92]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;CPU_SR_Save
 <LI><a href="#[93]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;CPU_SR_Restore
@@ -5279,7 +5279,7 @@ Global Symbols
 
 <P><STRONG><a name="[26a]"></a>mem_malloc</STRONG> (Thumb, 778 bytes, Stack size 32 bytes, mem.o(.text))
 <BR><BR>[Stack]<UL><LI>Max Depth = 204 + Unknown Stack Size
-<LI>Call Chain = mem_malloc &rArr; sys_arch_sem_wait &rArr; OSSemPend &rArr; OS_Pend &rArr; OS_TaskBlock &rArr; OS_RdyListRemove &rArr; OS_PrioRemove
+<LI>Call Chain = mem_malloc &rArr; sys_arch_sem_wait &rArr; OSSemPend &rArr; OS_Pend &rArr; OS_TaskBlock &rArr; OS_TickListInsert
 </UL>
 <BR>[Calls]<UL><LI><a href="#[232]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;sys_sem_signal
 <LI><a href="#[231]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;sys_arch_sem_wait
@@ -5349,7 +5349,6 @@ Global Symbols
 <BR>[Called By]<UL><LI><a href="#[2c3]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;tcp_listen_with_backlog_and_err
 <LI><a href="#[245]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;udp_remove
 <LI><a href="#[23c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;pbuf_free
-<LI><a href="#[2ed]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;sys_check_timeouts
 <LI><a href="#[2e2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;tcp_input
 <LI><a href="#[2d6]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;tcp_input_delayed_close
 <LI><a href="#[2bf]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;tcp_abandon
@@ -5362,6 +5361,7 @@ Global Symbols
 <LI><a href="#[332]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ip_frag_free_pbuf_custom_ref
 <LI><a href="#[32c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ip_reass_dequeue_datagram
 <LI><a href="#[2ec]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;sys_untimeout
+<LI><a href="#[2ed]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;sys_check_timeouts
 </UL>
 
 <P><STRONG><a name="[279]"></a>netif_init</STRONG> (Thumb, 2 bytes, Stack size 0 bytes, netif.o(.text))
@@ -5375,7 +5375,7 @@ Global Symbols
 
 <P><STRONG><a name="[288]"></a>netif_set_ipaddr</STRONG> (Thumb, 72 bytes, Stack size 16 bytes, netif.o(.text))
 <BR><BR>[Stack]<UL><LI>Max Depth = 684 + Unknown Stack Size
-<LI>Call Chain = netif_set_ipaddr &rArr; tcp_netif_ip_addr_changed &rArr; tcp_netif_ip_addr_changed_pcblist &rArr; tcp_abort &rArr; tcp_abandon &rArr; tcp_pcb_remove &rArr; tcp_output &rArr; tcp_output_segment &rArr; ip4_output_if &rArr; ip4_output_if_src &rArr; ip4_frag &rArr; pbuf_alloc &rArr; pbuf_free &rArr; mem_free &rArr; sys_arch_sem_wait &rArr; OSSemPend &rArr; OS_Pend &rArr; OS_TaskBlock &rArr; OS_RdyListRemove &rArr; OS_PrioRemove
+<LI>Call Chain = netif_set_ipaddr &rArr; tcp_netif_ip_addr_changed &rArr; tcp_netif_ip_addr_changed_pcblist &rArr; tcp_abort &rArr; tcp_abandon &rArr; tcp_pcb_remove &rArr; tcp_output &rArr; tcp_output_segment &rArr; ip4_output_if &rArr; ip4_output_if_src &rArr; ip4_frag &rArr; pbuf_alloc &rArr; pbuf_free &rArr; mem_free &rArr; sys_arch_sem_wait &rArr; OSSemPend &rArr; OS_Pend &rArr; OS_TaskBlock &rArr; OS_TickListInsert
 </UL>
 <BR>[Calls]<UL><LI><a href="#[28a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;udp_netif_ip_addr_changed
 <LI><a href="#[289]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;tcp_netif_ip_addr_changed
@@ -5394,7 +5394,7 @@ Global Symbols
 
 <P><STRONG><a name="[28b]"></a>netif_set_addr</STRONG> (Thumb, 72 bytes, Stack size 24 bytes, netif.o(.text))
 <BR><BR>[Stack]<UL><LI>Max Depth = 708 + Unknown Stack Size
-<LI>Call Chain = netif_set_addr &rArr; netif_set_ipaddr &rArr; tcp_netif_ip_addr_changed &rArr; tcp_netif_ip_addr_changed_pcblist &rArr; tcp_abort &rArr; tcp_abandon &rArr; tcp_pcb_remove &rArr; tcp_output &rArr; tcp_output_segment &rArr; ip4_output_if &rArr; ip4_output_if_src &rArr; ip4_frag &rArr; pbuf_alloc &rArr; pbuf_free &rArr; mem_free &rArr; sys_arch_sem_wait &rArr; OSSemPend &rArr; OS_Pend &rArr; OS_TaskBlock &rArr; OS_RdyListRemove &rArr; OS_PrioRemove
+<LI>Call Chain = netif_set_addr &rArr; netif_set_ipaddr &rArr; tcp_netif_ip_addr_changed &rArr; tcp_netif_ip_addr_changed_pcblist &rArr; tcp_abort &rArr; tcp_abandon &rArr; tcp_pcb_remove &rArr; tcp_output &rArr; tcp_output_segment &rArr; ip4_output_if &rArr; ip4_output_if_src &rArr; ip4_frag &rArr; pbuf_alloc &rArr; pbuf_free &rArr; mem_free &rArr; sys_arch_sem_wait &rArr; OSSemPend &rArr; OS_Pend &rArr; OS_TaskBlock &rArr; OS_TickListInsert
 </UL>
 <BR>[Calls]<UL><LI><a href="#[28c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;netif_set_netmask
 <LI><a href="#[28d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;netif_set_gw
@@ -5408,7 +5408,7 @@ Global Symbols
 
 <P><STRONG><a name="[24c]"></a>netif_add</STRONG> (Thumb, 126 bytes, Stack size 32 bytes, netif.o(.text))
 <BR><BR>[Stack]<UL><LI>Max Depth = 740 + Unknown Stack Size
-<LI>Call Chain = netif_add &rArr; netif_set_addr &rArr; netif_set_ipaddr &rArr; tcp_netif_ip_addr_changed &rArr; tcp_netif_ip_addr_changed_pcblist &rArr; tcp_abort &rArr; tcp_abandon &rArr; tcp_pcb_remove &rArr; tcp_output &rArr; tcp_output_segment &rArr; ip4_output_if &rArr; ip4_output_if_src &rArr; ip4_frag &rArr; pbuf_alloc &rArr; pbuf_free &rArr; mem_free &rArr; sys_arch_sem_wait &rArr; OSSemPend &rArr; OS_Pend &rArr; OS_TaskBlock &rArr; OS_RdyListRemove &rArr; OS_PrioRemove
+<LI>Call Chain = netif_add &rArr; netif_set_addr &rArr; netif_set_ipaddr &rArr; tcp_netif_ip_addr_changed &rArr; tcp_netif_ip_addr_changed_pcblist &rArr; tcp_abort &rArr; tcp_abandon &rArr; tcp_pcb_remove &rArr; tcp_output &rArr; tcp_output_segment &rArr; ip4_output_if &rArr; ip4_output_if_src &rArr; ip4_frag &rArr; pbuf_alloc &rArr; pbuf_free &rArr; mem_free &rArr; sys_arch_sem_wait &rArr; OSSemPend &rArr; OS_Pend &rArr; OS_TaskBlock &rArr; OS_TickListInsert
 </UL>
 <BR>[Calls]<UL><LI><a href="#[28b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;netif_set_addr
 <LI><a href="#[227]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__2printf
@@ -5438,7 +5438,7 @@ Global Symbols
 
 <P><STRONG><a name="[24e]"></a>netif_set_up</STRONG> (Thumb, 44 bytes, Stack size 8 bytes, netif.o(.text))
 <BR><BR>[Stack]<UL><LI>Max Depth = 380 + Unknown Stack Size
-<LI>Call Chain = netif_set_up &rArr; netif_issue_reports &rArr; etharp_request &rArr; etharp_request_dst &rArr; etharp_raw &rArr; pbuf_alloc &rArr; pbuf_free &rArr; mem_free &rArr; sys_arch_sem_wait &rArr; OSSemPend &rArr; OS_Pend &rArr; OS_TaskBlock &rArr; OS_RdyListRemove &rArr; OS_PrioRemove
+<LI>Call Chain = netif_set_up &rArr; netif_issue_reports &rArr; etharp_request &rArr; etharp_request_dst &rArr; etharp_raw &rArr; pbuf_alloc &rArr; pbuf_free &rArr; mem_free &rArr; sys_arch_sem_wait &rArr; OSSemPend &rArr; OS_Pend &rArr; OS_TaskBlock &rArr; OS_TickListInsert
 </UL>
 <BR>[Calls]<UL><LI><a href="#[286]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;netif_issue_reports
 </UL>
@@ -5454,7 +5454,7 @@ Global Symbols
 
 <P><STRONG><a name="[23c]"></a>pbuf_free</STRONG> (Thumb, 254 bytes, Stack size 32 bytes, pbuf.o(.text))
 <BR><BR>[Stack]<UL><LI>Max Depth = 220 + Unknown Stack Size
-<LI>Call Chain = pbuf_free &rArr; mem_free &rArr; sys_arch_sem_wait &rArr; OSSemPend &rArr; OS_Pend &rArr; OS_TaskBlock &rArr; OS_RdyListRemove &rArr; OS_PrioRemove
+<LI>Call Chain = pbuf_free &rArr; mem_free &rArr; sys_arch_sem_wait &rArr; OSSemPend &rArr; OS_Pend &rArr; OS_TaskBlock &rArr; OS_TickListInsert
 </UL>
 <BR>[Calls]<UL><LI><a href="#[92]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;CPU_SR_Save
 <LI><a href="#[93]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;CPU_SR_Restore
@@ -5503,7 +5503,7 @@ Global Symbols
 
 <P><STRONG><a name="[239]"></a>pbuf_alloc</STRONG> (Thumb, 660 bytes, Stack size 40 bytes, pbuf.o(.text))
 <BR><BR>[Stack]<UL><LI>Max Depth = 260 + Unknown Stack Size
-<LI>Call Chain = pbuf_alloc &rArr; pbuf_free &rArr; mem_free &rArr; sys_arch_sem_wait &rArr; OSSemPend &rArr; OS_Pend &rArr; OS_TaskBlock &rArr; OS_RdyListRemove &rArr; OS_PrioRemove
+<LI>Call Chain = pbuf_alloc &rArr; pbuf_free &rArr; mem_free &rArr; sys_arch_sem_wait &rArr; OSSemPend &rArr; OS_Pend &rArr; OS_TaskBlock &rArr; OS_TickListInsert
 </UL>
 <BR>[Calls]<UL><LI><a href="#[254]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;memp_malloc
 <LI><a href="#[23c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;pbuf_free
@@ -5537,7 +5537,7 @@ Global Symbols
 
 <P><STRONG><a name="[294]"></a>pbuf_realloc</STRONG> (Thumb, 276 bytes, Stack size 24 bytes, pbuf.o(.text))
 <BR><BR>[Stack]<UL><LI>Max Depth = 244 + Unknown Stack Size
-<LI>Call Chain = pbuf_realloc &rArr; pbuf_free &rArr; mem_free &rArr; sys_arch_sem_wait &rArr; OSSemPend &rArr; OS_Pend &rArr; OS_TaskBlock &rArr; OS_RdyListRemove &rArr; OS_PrioRemove
+<LI>Call Chain = pbuf_realloc &rArr; pbuf_free &rArr; mem_free &rArr; sys_arch_sem_wait &rArr; OSSemPend &rArr; OS_Pend &rArr; OS_TaskBlock &rArr; OS_TickListInsert
 </UL>
 <BR>[Calls]<UL><LI><a href="#[23c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;pbuf_free
 <LI><a href="#[27e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;mem_trim
@@ -5720,7 +5720,7 @@ Global Symbols
 
 <P><STRONG><a name="[2a7]"></a>tcp_seg_free</STRONG> (Thumb, 26 bytes, Stack size 8 bytes, tcp.o(.text))
 <BR><BR>[Stack]<UL><LI>Max Depth = 228 + Unknown Stack Size
-<LI>Call Chain = tcp_seg_free &rArr; pbuf_free &rArr; mem_free &rArr; sys_arch_sem_wait &rArr; OSSemPend &rArr; OS_Pend &rArr; OS_TaskBlock &rArr; OS_RdyListRemove &rArr; OS_PrioRemove
+<LI>Call Chain = tcp_seg_free &rArr; pbuf_free &rArr; mem_free &rArr; sys_arch_sem_wait &rArr; OSSemPend &rArr; OS_Pend &rArr; OS_TaskBlock &rArr; OS_TickListInsert
 </UL>
 <BR>[Calls]<UL><LI><a href="#[251]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;memp_free
 <LI><a href="#[23c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;pbuf_free
@@ -5734,7 +5734,7 @@ Global Symbols
 
 <P><STRONG><a name="[2a8]"></a>tcp_segs_free</STRONG> (Thumb, 24 bytes, Stack size 16 bytes, tcp.o(.text))
 <BR><BR>[Stack]<UL><LI>Max Depth = 244 + Unknown Stack Size
-<LI>Call Chain = tcp_segs_free &rArr; tcp_seg_free &rArr; pbuf_free &rArr; mem_free &rArr; sys_arch_sem_wait &rArr; OSSemPend &rArr; OS_Pend &rArr; OS_TaskBlock &rArr; OS_RdyListRemove &rArr; OS_PrioRemove
+<LI>Call Chain = tcp_segs_free &rArr; tcp_seg_free &rArr; pbuf_free &rArr; mem_free &rArr; sys_arch_sem_wait &rArr; OSSemPend &rArr; OS_Pend &rArr; OS_TaskBlock &rArr; OS_TickListInsert
 </UL>
 <BR>[Calls]<UL><LI><a href="#[2a7]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;tcp_seg_free
 </UL>
@@ -5745,7 +5745,7 @@ Global Symbols
 
 <P><STRONG><a name="[2a9]"></a>tcp_pcb_purge</STRONG> (Thumb, 64 bytes, Stack size 8 bytes, tcp.o(.text))
 <BR><BR>[Stack]<UL><LI>Max Depth = 252 + Unknown Stack Size
-<LI>Call Chain = tcp_pcb_purge &rArr; tcp_segs_free &rArr; tcp_seg_free &rArr; pbuf_free &rArr; mem_free &rArr; sys_arch_sem_wait &rArr; OSSemPend &rArr; OS_Pend &rArr; OS_TaskBlock &rArr; OS_RdyListRemove &rArr; OS_PrioRemove
+<LI>Call Chain = tcp_pcb_purge &rArr; tcp_segs_free &rArr; tcp_seg_free &rArr; pbuf_free &rArr; mem_free &rArr; sys_arch_sem_wait &rArr; OSSemPend &rArr; OS_Pend &rArr; OS_TaskBlock &rArr; OS_TickListInsert
 </UL>
 <BR>[Calls]<UL><LI><a href="#[23c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;pbuf_free
 <LI><a href="#[2a8]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;tcp_segs_free
@@ -5758,7 +5758,7 @@ Global Symbols
 
 <P><STRONG><a name="[2aa]"></a>tcp_slowtmr</STRONG> (Thumb, 1416 bytes, Stack size 56 bytes, tcp.o(.text))
 <BR><BR>[Stack]<UL><LI>Max Depth = 620 + Unknown Stack Size
-<LI>Call Chain = tcp_slowtmr &rArr; tcp_rexmit_rto &rArr; tcp_output &rArr; tcp_output_segment &rArr; ip4_output_if &rArr; ip4_output_if_src &rArr; ip4_frag &rArr; pbuf_alloc &rArr; pbuf_free &rArr; mem_free &rArr; sys_arch_sem_wait &rArr; OSSemPend &rArr; OS_Pend &rArr; OS_TaskBlock &rArr; OS_RdyListRemove &rArr; OS_PrioRemove
+<LI>Call Chain = tcp_slowtmr &rArr; tcp_rexmit_rto &rArr; tcp_output &rArr; tcp_output_segment &rArr; ip4_output_if &rArr; ip4_output_if_src &rArr; ip4_frag &rArr; pbuf_alloc &rArr; pbuf_free &rArr; mem_free &rArr; sys_arch_sem_wait &rArr; OSSemPend &rArr; OS_Pend &rArr; OS_TaskBlock &rArr; OS_TickListInsert
 </UL>
 <BR>[Calls]<UL><LI><a href="#[2af]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;tcp_output
 <LI><a href="#[251]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;memp_free
@@ -5774,7 +5774,7 @@ Global Symbols
 
 <P><STRONG><a name="[2b2]"></a>tcp_pcb_remove</STRONG> (Thumb, 172 bytes, Stack size 16 bytes, tcp.o(.text))
 <BR><BR>[Stack]<UL><LI>Max Depth = 564 + Unknown Stack Size
-<LI>Call Chain = tcp_pcb_remove &rArr; tcp_output &rArr; tcp_output_segment &rArr; ip4_output_if &rArr; ip4_output_if_src &rArr; ip4_frag &rArr; pbuf_alloc &rArr; pbuf_free &rArr; mem_free &rArr; sys_arch_sem_wait &rArr; OSSemPend &rArr; OS_Pend &rArr; OS_TaskBlock &rArr; OS_RdyListRemove &rArr; OS_PrioRemove
+<LI>Call Chain = tcp_pcb_remove &rArr; tcp_output &rArr; tcp_output_segment &rArr; ip4_output_if &rArr; ip4_output_if_src &rArr; ip4_frag &rArr; pbuf_alloc &rArr; pbuf_free &rArr; mem_free &rArr; sys_arch_sem_wait &rArr; OSSemPend &rArr; OS_Pend &rArr; OS_TaskBlock &rArr; OS_TickListInsert
 </UL>
 <BR>[Calls]<UL><LI><a href="#[2af]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;tcp_output
 <LI><a href="#[2a9]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;tcp_pcb_purge
@@ -5788,7 +5788,7 @@ Global Symbols
 
 <P><STRONG><a name="[2b8]"></a>tcp_close</STRONG> (Thumb, 28 bytes, Stack size 8 bytes, tcp.o(.text))
 <BR><BR>[Stack]<UL><LI>Max Depth = 596 + Unknown Stack Size
-<LI>Call Chain = tcp_close &rArr; tcp_close_shutdown &rArr; tcp_pcb_remove &rArr; tcp_output &rArr; tcp_output_segment &rArr; ip4_output_if &rArr; ip4_output_if_src &rArr; ip4_frag &rArr; pbuf_alloc &rArr; pbuf_free &rArr; mem_free &rArr; sys_arch_sem_wait &rArr; OSSemPend &rArr; OS_Pend &rArr; OS_TaskBlock &rArr; OS_RdyListRemove &rArr; OS_PrioRemove
+<LI>Call Chain = tcp_close &rArr; tcp_close_shutdown &rArr; tcp_pcb_remove &rArr; tcp_output &rArr; tcp_output_segment &rArr; ip4_output_if &rArr; ip4_output_if_src &rArr; ip4_frag &rArr; pbuf_alloc &rArr; pbuf_free &rArr; mem_free &rArr; sys_arch_sem_wait &rArr; OSSemPend &rArr; OS_Pend &rArr; OS_TaskBlock &rArr; OS_TickListInsert
 </UL>
 <BR>[Calls]<UL><LI><a href="#[2b5]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;tcp_close_shutdown
 </UL>
@@ -5806,7 +5806,7 @@ Global Symbols
 
 <P><STRONG><a name="[2ba]"></a>tcp_recved</STRONG> (Thumb, 148 bytes, Stack size 16 bytes, tcp.o(.text))
 <BR><BR>[Stack]<UL><LI>Max Depth = 564 + Unknown Stack Size
-<LI>Call Chain = tcp_recved &rArr; tcp_output &rArr; tcp_output_segment &rArr; ip4_output_if &rArr; ip4_output_if_src &rArr; ip4_frag &rArr; pbuf_alloc &rArr; pbuf_free &rArr; mem_free &rArr; sys_arch_sem_wait &rArr; OSSemPend &rArr; OS_Pend &rArr; OS_TaskBlock &rArr; OS_RdyListRemove &rArr; OS_PrioRemove
+<LI>Call Chain = tcp_recved &rArr; tcp_output &rArr; tcp_output_segment &rArr; ip4_output_if &rArr; ip4_output_if_src &rArr; ip4_frag &rArr; pbuf_alloc &rArr; pbuf_free &rArr; mem_free &rArr; sys_arch_sem_wait &rArr; OSSemPend &rArr; OS_Pend &rArr; OS_TaskBlock &rArr; OS_TickListInsert
 </UL>
 <BR>[Calls]<UL><LI><a href="#[2af]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;tcp_output
 <LI><a href="#[2b9]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;tcp_update_rcv_ann_wnd
@@ -5817,7 +5817,7 @@ Global Symbols
 
 <P><STRONG><a name="[2bb]"></a>tcp_recv_null</STRONG> (Thumb, 46 bytes, Stack size 24 bytes, tcp.o(.text))
 <BR><BR>[Stack]<UL><LI>Max Depth = 620 + Unknown Stack Size
-<LI>Call Chain = tcp_recv_null &rArr; tcp_close &rArr; tcp_close_shutdown &rArr; tcp_pcb_remove &rArr; tcp_output &rArr; tcp_output_segment &rArr; ip4_output_if &rArr; ip4_output_if_src &rArr; ip4_frag &rArr; pbuf_alloc &rArr; pbuf_free &rArr; mem_free &rArr; sys_arch_sem_wait &rArr; OSSemPend &rArr; OS_Pend &rArr; OS_TaskBlock &rArr; OS_RdyListRemove &rArr; OS_PrioRemove
+<LI>Call Chain = tcp_recv_null &rArr; tcp_close &rArr; tcp_close_shutdown &rArr; tcp_pcb_remove &rArr; tcp_output &rArr; tcp_output_segment &rArr; ip4_output_if &rArr; ip4_output_if_src &rArr; ip4_frag &rArr; pbuf_alloc &rArr; pbuf_free &rArr; mem_free &rArr; sys_arch_sem_wait &rArr; OSSemPend &rArr; OS_Pend &rArr; OS_TaskBlock &rArr; OS_TickListInsert
 </UL>
 <BR>[Calls]<UL><LI><a href="#[2ba]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;tcp_recved
 <LI><a href="#[2b8]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;tcp_close
@@ -5830,7 +5830,7 @@ Global Symbols
 </UL>
 <P><STRONG><a name="[2bc]"></a>tcp_process_refused_data</STRONG> (Thumb, 146 bytes, Stack size 24 bytes, tcp.o(.text))
 <BR><BR>[Stack]<UL><LI>Max Depth = 644 + Unknown Stack Size
-<LI>Call Chain = tcp_process_refused_data &rArr; tcp_recv_null &rArr; tcp_close &rArr; tcp_close_shutdown &rArr; tcp_pcb_remove &rArr; tcp_output &rArr; tcp_output_segment &rArr; ip4_output_if &rArr; ip4_output_if_src &rArr; ip4_frag &rArr; pbuf_alloc &rArr; pbuf_free &rArr; mem_free &rArr; sys_arch_sem_wait &rArr; OSSemPend &rArr; OS_Pend &rArr; OS_TaskBlock &rArr; OS_RdyListRemove &rArr; OS_PrioRemove
+<LI>Call Chain = tcp_process_refused_data &rArr; tcp_recv_null &rArr; tcp_close &rArr; tcp_close_shutdown &rArr; tcp_pcb_remove &rArr; tcp_output &rArr; tcp_output_segment &rArr; ip4_output_if &rArr; ip4_output_if_src &rArr; ip4_frag &rArr; pbuf_alloc &rArr; pbuf_free &rArr; mem_free &rArr; sys_arch_sem_wait &rArr; OSSemPend &rArr; OS_Pend &rArr; OS_TaskBlock &rArr; OS_TickListInsert
 </UL>
 <BR>[Calls]<UL><LI><a href="#[2bb]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;tcp_recv_null
 </UL>
@@ -5840,7 +5840,7 @@ Global Symbols
 
 <P><STRONG><a name="[2bd]"></a>tcp_fasttmr</STRONG> (Thumb, 130 bytes, Stack size 16 bytes, tcp.o(.text))
 <BR><BR>[Stack]<UL><LI>Max Depth = 660 + Unknown Stack Size
-<LI>Call Chain = tcp_fasttmr &rArr; tcp_process_refused_data &rArr; tcp_recv_null &rArr; tcp_close &rArr; tcp_close_shutdown &rArr; tcp_pcb_remove &rArr; tcp_output &rArr; tcp_output_segment &rArr; ip4_output_if &rArr; ip4_output_if_src &rArr; ip4_frag &rArr; pbuf_alloc &rArr; pbuf_free &rArr; mem_free &rArr; sys_arch_sem_wait &rArr; OSSemPend &rArr; OS_Pend &rArr; OS_TaskBlock &rArr; OS_RdyListRemove &rArr; OS_PrioRemove
+<LI>Call Chain = tcp_fasttmr &rArr; tcp_process_refused_data &rArr; tcp_recv_null &rArr; tcp_close &rArr; tcp_close_shutdown &rArr; tcp_pcb_remove &rArr; tcp_output &rArr; tcp_output_segment &rArr; ip4_output_if &rArr; ip4_output_if_src &rArr; ip4_frag &rArr; pbuf_alloc &rArr; pbuf_free &rArr; mem_free &rArr; sys_arch_sem_wait &rArr; OSSemPend &rArr; OS_Pend &rArr; OS_TaskBlock &rArr; OS_TickListInsert
 </UL>
 <BR>[Calls]<UL><LI><a href="#[2af]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;tcp_output
 <LI><a href="#[2bc]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;tcp_process_refused_data
@@ -5851,7 +5851,7 @@ Global Symbols
 
 <P><STRONG><a name="[76]"></a>tcp_tmr</STRONG> (Thumb, 30 bytes, Stack size 8 bytes, tcp.o(.text))
 <BR><BR>[Stack]<UL><LI>Max Depth = 668 + Unknown Stack Size
-<LI>Call Chain = tcp_tmr &rArr; tcp_fasttmr &rArr; tcp_process_refused_data &rArr; tcp_recv_null &rArr; tcp_close &rArr; tcp_close_shutdown &rArr; tcp_pcb_remove &rArr; tcp_output &rArr; tcp_output_segment &rArr; ip4_output_if &rArr; ip4_output_if_src &rArr; ip4_frag &rArr; pbuf_alloc &rArr; pbuf_free &rArr; mem_free &rArr; sys_arch_sem_wait &rArr; OSSemPend &rArr; OS_Pend &rArr; OS_TaskBlock &rArr; OS_RdyListRemove &rArr; OS_PrioRemove
+<LI>Call Chain = tcp_tmr &rArr; tcp_fasttmr &rArr; tcp_process_refused_data &rArr; tcp_recv_null &rArr; tcp_close &rArr; tcp_close_shutdown &rArr; tcp_pcb_remove &rArr; tcp_output &rArr; tcp_output_segment &rArr; ip4_output_if &rArr; ip4_output_if_src &rArr; ip4_frag &rArr; pbuf_alloc &rArr; pbuf_free &rArr; mem_free &rArr; sys_arch_sem_wait &rArr; OSSemPend &rArr; OS_Pend &rArr; OS_TaskBlock &rArr; OS_TickListInsert
 </UL>
 <BR>[Calls]<UL><LI><a href="#[2bd]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;tcp_fasttmr
 <LI><a href="#[2aa]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;tcp_slowtmr
@@ -5867,7 +5867,7 @@ Global Symbols
 
 <P><STRONG><a name="[2bf]"></a>tcp_abandon</STRONG> (Thumb, 248 bytes, Stack size 48 bytes, tcp.o(.text))
 <BR><BR>[Stack]<UL><LI>Max Depth = 612 + Unknown Stack Size
-<LI>Call Chain = tcp_abandon &rArr; tcp_pcb_remove &rArr; tcp_output &rArr; tcp_output_segment &rArr; ip4_output_if &rArr; ip4_output_if_src &rArr; ip4_frag &rArr; pbuf_alloc &rArr; pbuf_free &rArr; mem_free &rArr; sys_arch_sem_wait &rArr; OSSemPend &rArr; OS_Pend &rArr; OS_TaskBlock &rArr; OS_RdyListRemove &rArr; OS_PrioRemove
+<LI>Call Chain = tcp_abandon &rArr; tcp_pcb_remove &rArr; tcp_output &rArr; tcp_output_segment &rArr; ip4_output_if &rArr; ip4_output_if_src &rArr; ip4_frag &rArr; pbuf_alloc &rArr; pbuf_free &rArr; mem_free &rArr; sys_arch_sem_wait &rArr; OSSemPend &rArr; OS_Pend &rArr; OS_TaskBlock &rArr; OS_TickListInsert
 </UL>
 <BR>[Calls]<UL><LI><a href="#[251]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;memp_free
 <LI><a href="#[2ae]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;tcp_rst
@@ -5882,7 +5882,7 @@ Global Symbols
 
 <P><STRONG><a name="[2c0]"></a>tcp_abort</STRONG> (Thumb, 14 bytes, Stack size 8 bytes, tcp.o(.text))
 <BR><BR>[Stack]<UL><LI>Max Depth = 620 + Unknown Stack Size
-<LI>Call Chain = tcp_abort &rArr; tcp_abandon &rArr; tcp_pcb_remove &rArr; tcp_output &rArr; tcp_output_segment &rArr; ip4_output_if &rArr; ip4_output_if_src &rArr; ip4_frag &rArr; pbuf_alloc &rArr; pbuf_free &rArr; mem_free &rArr; sys_arch_sem_wait &rArr; OSSemPend &rArr; OS_Pend &rArr; OS_TaskBlock &rArr; OS_RdyListRemove &rArr; OS_PrioRemove
+<LI>Call Chain = tcp_abort &rArr; tcp_abandon &rArr; tcp_pcb_remove &rArr; tcp_output &rArr; tcp_output_segment &rArr; ip4_output_if &rArr; ip4_output_if_src &rArr; ip4_frag &rArr; pbuf_alloc &rArr; pbuf_free &rArr; mem_free &rArr; sys_arch_sem_wait &rArr; OSSemPend &rArr; OS_Pend &rArr; OS_TaskBlock &rArr; OS_TickListInsert
 </UL>
 <BR>[Calls]<UL><LI><a href="#[2bf]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;tcp_abandon
 </UL>
@@ -5948,7 +5948,7 @@ Global Symbols
 
 <P><STRONG><a name="[2ce]"></a>tcp_alloc</STRONG> (Thumb, 168 bytes, Stack size 16 bytes, tcp.o(.text))
 <BR><BR>[Stack]<UL><LI>Max Depth = 660 + Unknown Stack Size
-<LI>Call Chain = tcp_alloc &rArr; tcp_kill_prio &rArr; tcp_abort &rArr; tcp_abandon &rArr; tcp_pcb_remove &rArr; tcp_output &rArr; tcp_output_segment &rArr; ip4_output_if &rArr; ip4_output_if_src &rArr; ip4_frag &rArr; pbuf_alloc &rArr; pbuf_free &rArr; mem_free &rArr; sys_arch_sem_wait &rArr; OSSemPend &rArr; OS_Pend &rArr; OS_TaskBlock &rArr; OS_RdyListRemove &rArr; OS_PrioRemove
+<LI>Call Chain = tcp_alloc &rArr; tcp_kill_prio &rArr; tcp_abort &rArr; tcp_abandon &rArr; tcp_pcb_remove &rArr; tcp_output &rArr; tcp_output_segment &rArr; ip4_output_if &rArr; ip4_output_if_src &rArr; ip4_frag &rArr; pbuf_alloc &rArr; pbuf_free &rArr; mem_free &rArr; sys_arch_sem_wait &rArr; OSSemPend &rArr; OS_Pend &rArr; OS_TaskBlock &rArr; OS_TickListInsert
 </UL>
 <BR>[Calls]<UL><LI><a href="#[254]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;memp_malloc
 <LI><a href="#[2cd]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;tcp_kill_timewait
@@ -5991,7 +5991,7 @@ Global Symbols
 
 <P><STRONG><a name="[289]"></a>tcp_netif_ip_addr_changed</STRONG> (Thumb, 70 bytes, Stack size 24 bytes, tcp.o(.text))
 <BR><BR>[Stack]<UL><LI>Max Depth = 668 + Unknown Stack Size
-<LI>Call Chain = tcp_netif_ip_addr_changed &rArr; tcp_netif_ip_addr_changed_pcblist &rArr; tcp_abort &rArr; tcp_abandon &rArr; tcp_pcb_remove &rArr; tcp_output &rArr; tcp_output_segment &rArr; ip4_output_if &rArr; ip4_output_if_src &rArr; ip4_frag &rArr; pbuf_alloc &rArr; pbuf_free &rArr; mem_free &rArr; sys_arch_sem_wait &rArr; OSSemPend &rArr; OS_Pend &rArr; OS_TaskBlock &rArr; OS_RdyListRemove &rArr; OS_PrioRemove
+<LI>Call Chain = tcp_netif_ip_addr_changed &rArr; tcp_netif_ip_addr_changed_pcblist &rArr; tcp_abort &rArr; tcp_abandon &rArr; tcp_pcb_remove &rArr; tcp_output &rArr; tcp_output_segment &rArr; ip4_output_if &rArr; ip4_output_if_src &rArr; ip4_frag &rArr; pbuf_alloc &rArr; pbuf_free &rArr; mem_free &rArr; sys_arch_sem_wait &rArr; OSSemPend &rArr; OS_Pend &rArr; OS_TaskBlock &rArr; OS_TickListInsert
 </UL>
 <BR>[Calls]<UL><LI><a href="#[2d5]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;tcp_netif_ip_addr_changed_pcblist
 </UL>
@@ -6003,7 +6003,7 @@ Global Symbols
 
 <P><STRONG><a name="[2e2]"></a>tcp_input</STRONG> (Thumb, 1878 bytes, Stack size 48 bytes, tcp_in.o(.text))
 <BR><BR>[Stack]<UL><LI>Max Depth = 740 + Unknown Stack Size
-<LI>Call Chain = tcp_input &rArr; tcp_listen_input &rArr; tcp_alloc &rArr; tcp_kill_prio &rArr; tcp_abort &rArr; tcp_abandon &rArr; tcp_pcb_remove &rArr; tcp_output &rArr; tcp_output_segment &rArr; ip4_output_if &rArr; ip4_output_if_src &rArr; ip4_frag &rArr; pbuf_alloc &rArr; pbuf_free &rArr; mem_free &rArr; sys_arch_sem_wait &rArr; OSSemPend &rArr; OS_Pend &rArr; OS_TaskBlock &rArr; OS_RdyListRemove &rArr; OS_PrioRemove
+<LI>Call Chain = tcp_input &rArr; tcp_listen_input &rArr; tcp_alloc &rArr; tcp_kill_prio &rArr; tcp_abort &rArr; tcp_abandon &rArr; tcp_pcb_remove &rArr; tcp_output &rArr; tcp_output_segment &rArr; ip4_output_if &rArr; ip4_output_if_src &rArr; ip4_frag &rArr; pbuf_alloc &rArr; pbuf_free &rArr; mem_free &rArr; sys_arch_sem_wait &rArr; OSSemPend &rArr; OS_Pend &rArr; OS_TaskBlock &rArr; OS_TickListInsert
 </UL>
 <BR>[Calls]<UL><LI><a href="#[2af]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;tcp_output
 <LI><a href="#[2c0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;tcp_abort
@@ -6034,7 +6034,7 @@ Global Symbols
 
 <P><STRONG><a name="[2c9]"></a>tcp_enqueue_flags</STRONG> (Thumb, 394 bytes, Stack size 32 bytes, tcp_out.o(.text))
 <BR><BR>[Stack]<UL><LI>Max Depth = 300 + Unknown Stack Size
-<LI>Call Chain = tcp_enqueue_flags &rArr; tcp_create_segment &rArr; tcp_seg_free &rArr; pbuf_free &rArr; mem_free &rArr; sys_arch_sem_wait &rArr; OSSemPend &rArr; OS_Pend &rArr; OS_TaskBlock &rArr; OS_RdyListRemove &rArr; OS_PrioRemove
+<LI>Call Chain = tcp_enqueue_flags &rArr; tcp_create_segment &rArr; tcp_seg_free &rArr; pbuf_free &rArr; mem_free &rArr; sys_arch_sem_wait &rArr; OSSemPend &rArr; OS_Pend &rArr; OS_TaskBlock &rArr; OS_TickListInsert
 </UL>
 <BR>[Calls]<UL><LI><a href="#[239]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;pbuf_alloc
 <LI><a href="#[2e5]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;tcp_create_segment
@@ -6048,7 +6048,7 @@ Global Symbols
 
 <P><STRONG><a name="[2b1]"></a>tcp_send_fin</STRONG> (Thumb, 74 bytes, Stack size 16 bytes, tcp_out.o(.text))
 <BR><BR>[Stack]<UL><LI>Max Depth = 316 + Unknown Stack Size
-<LI>Call Chain = tcp_send_fin &rArr; tcp_enqueue_flags &rArr; tcp_create_segment &rArr; tcp_seg_free &rArr; pbuf_free &rArr; mem_free &rArr; sys_arch_sem_wait &rArr; OSSemPend &rArr; OS_Pend &rArr; OS_TaskBlock &rArr; OS_RdyListRemove &rArr; OS_PrioRemove
+<LI>Call Chain = tcp_send_fin &rArr; tcp_enqueue_flags &rArr; tcp_create_segment &rArr; tcp_seg_free &rArr; pbuf_free &rArr; mem_free &rArr; sys_arch_sem_wait &rArr; OSSemPend &rArr; OS_Pend &rArr; OS_TaskBlock &rArr; OS_TickListInsert
 </UL>
 <BR>[Calls]<UL><LI><a href="#[2c9]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;tcp_enqueue_flags
 <LI><a href="#[261]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;lwip_htons
@@ -6072,14 +6072,14 @@ Global Symbols
 
 <P><STRONG><a name="[2db]"></a>tcp_send_empty_ack</STRONG> (Thumb, 142 bytes, Stack size 48 bytes, tcp_out.o(.text))
 <BR><BR>[Stack]<UL><LI>Max Depth = 508 + Unknown Stack Size
-<LI>Call Chain = tcp_send_empty_ack &rArr; ip4_output_if &rArr; ip4_output_if_src &rArr; ip4_frag &rArr; pbuf_alloc &rArr; pbuf_free &rArr; mem_free &rArr; sys_arch_sem_wait &rArr; OSSemPend &rArr; OS_Pend &rArr; OS_TaskBlock &rArr; OS_RdyListRemove &rArr; OS_PrioRemove
+<LI>Call Chain = tcp_send_empty_ack &rArr; ip4_output_if &rArr; ip4_output_if_src &rArr; ip4_frag &rArr; pbuf_alloc &rArr; pbuf_free &rArr; mem_free &rArr; sys_arch_sem_wait &rArr; OSSemPend &rArr; OS_Pend &rArr; OS_TaskBlock &rArr; OS_TickListInsert
 </UL>
 <BR>[Calls]<UL><LI><a href="#[23c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;pbuf_free
-<LI><a href="#[2e9]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ip4_output_if
 <LI><a href="#[2e4]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;tcp_output_alloc_header
 <LI><a href="#[2c6]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ip4_route
 <LI><a href="#[270]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ip_chksum_pseudo
 <LI><a href="#[2da]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;lwip_htonl
+<LI><a href="#[2e9]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ip4_output_if
 </UL>
 <BR>[Called By]<UL><LI><a href="#[2af]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;tcp_output
 <LI><a href="#[2e2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;tcp_input
@@ -6088,7 +6088,7 @@ Global Symbols
 
 <P><STRONG><a name="[2af]"></a>tcp_output</STRONG> (Thumb, 862 bytes, Stack size 40 bytes, tcp_out.o(.text))
 <BR><BR>[Stack]<UL><LI>Max Depth = 548 + Unknown Stack Size
-<LI>Call Chain = tcp_output &rArr; tcp_output_segment &rArr; ip4_output_if &rArr; ip4_output_if_src &rArr; ip4_frag &rArr; pbuf_alloc &rArr; pbuf_free &rArr; mem_free &rArr; sys_arch_sem_wait &rArr; OSSemPend &rArr; OS_Pend &rArr; OS_TaskBlock &rArr; OS_RdyListRemove &rArr; OS_PrioRemove
+<LI>Call Chain = tcp_output &rArr; tcp_output_segment &rArr; ip4_output_if &rArr; ip4_output_if_src &rArr; ip4_frag &rArr; pbuf_alloc &rArr; pbuf_free &rArr; mem_free &rArr; sys_arch_sem_wait &rArr; OSSemPend &rArr; OS_Pend &rArr; OS_TaskBlock &rArr; OS_TickListInsert
 </UL>
 <BR>[Calls]<UL><LI><a href="#[2ea]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;tcp_output_segment
 <LI><a href="#[2db]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;tcp_send_empty_ack
@@ -6113,16 +6113,16 @@ Global Symbols
 
 <P><STRONG><a name="[2ae]"></a>tcp_rst</STRONG> (Thumb, 182 bytes, Stack size 48 bytes, tcp_out.o(.text))
 <BR><BR>[Stack]<UL><LI>Max Depth = 508 + Unknown Stack Size
-<LI>Call Chain = tcp_rst &rArr; ip4_output_if &rArr; ip4_output_if_src &rArr; ip4_frag &rArr; pbuf_alloc &rArr; pbuf_free &rArr; mem_free &rArr; sys_arch_sem_wait &rArr; OSSemPend &rArr; OS_Pend &rArr; OS_TaskBlock &rArr; OS_RdyListRemove &rArr; OS_PrioRemove
+<LI>Call Chain = tcp_rst &rArr; ip4_output_if &rArr; ip4_output_if_src &rArr; ip4_frag &rArr; pbuf_alloc &rArr; pbuf_free &rArr; mem_free &rArr; sys_arch_sem_wait &rArr; OSSemPend &rArr; OS_Pend &rArr; OS_TaskBlock &rArr; OS_TickListInsert
 </UL>
 <BR>[Calls]<UL><LI><a href="#[23c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;pbuf_free
 <LI><a href="#[239]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;pbuf_alloc
-<LI><a href="#[2e9]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ip4_output_if
 <LI><a href="#[2c6]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ip4_route
 <LI><a href="#[270]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ip_chksum_pseudo
 <LI><a href="#[2da]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;lwip_htonl
 <LI><a href="#[261]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;lwip_htons
 <LI><a href="#[227]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__2printf
+<LI><a href="#[2e9]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ip4_output_if
 </UL>
 <BR>[Called By]<UL><LI><a href="#[2e2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;tcp_input
 <LI><a href="#[2e1]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;tcp_timewait_input
@@ -6135,7 +6135,7 @@ Global Symbols
 
 <P><STRONG><a name="[2ac]"></a>tcp_rexmit_rto</STRONG> (Thumb, 66 bytes, Stack size 16 bytes, tcp_out.o(.text))
 <BR><BR>[Stack]<UL><LI>Max Depth = 564 + Unknown Stack Size
-<LI>Call Chain = tcp_rexmit_rto &rArr; tcp_output &rArr; tcp_output_segment &rArr; ip4_output_if &rArr; ip4_output_if_src &rArr; ip4_frag &rArr; pbuf_alloc &rArr; pbuf_free &rArr; mem_free &rArr; sys_arch_sem_wait &rArr; OSSemPend &rArr; OS_Pend &rArr; OS_TaskBlock &rArr; OS_RdyListRemove &rArr; OS_PrioRemove
+<LI>Call Chain = tcp_rexmit_rto &rArr; tcp_output &rArr; tcp_output_segment &rArr; ip4_output_if &rArr; ip4_output_if_src &rArr; ip4_frag &rArr; pbuf_alloc &rArr; pbuf_free &rArr; mem_free &rArr; sys_arch_sem_wait &rArr; OSSemPend &rArr; OS_Pend &rArr; OS_TaskBlock &rArr; OS_TickListInsert
 </UL>
 <BR>[Calls]<UL><LI><a href="#[2af]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;tcp_output
 </UL>
@@ -6162,30 +6162,30 @@ Global Symbols
 
 <P><STRONG><a name="[2ad]"></a>tcp_keepalive</STRONG> (Thumb, 114 bytes, Stack size 40 bytes, tcp_out.o(.text))
 <BR><BR>[Stack]<UL><LI>Max Depth = 500 + Unknown Stack Size
-<LI>Call Chain = tcp_keepalive &rArr; ip4_output_if &rArr; ip4_output_if_src &rArr; ip4_frag &rArr; pbuf_alloc &rArr; pbuf_free &rArr; mem_free &rArr; sys_arch_sem_wait &rArr; OSSemPend &rArr; OS_Pend &rArr; OS_TaskBlock &rArr; OS_RdyListRemove &rArr; OS_PrioRemove
+<LI>Call Chain = tcp_keepalive &rArr; ip4_output_if &rArr; ip4_output_if_src &rArr; ip4_frag &rArr; pbuf_alloc &rArr; pbuf_free &rArr; mem_free &rArr; sys_arch_sem_wait &rArr; OSSemPend &rArr; OS_Pend &rArr; OS_TaskBlock &rArr; OS_TickListInsert
 </UL>
 <BR>[Calls]<UL><LI><a href="#[23c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;pbuf_free
-<LI><a href="#[2e9]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ip4_output_if
 <LI><a href="#[2e4]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;tcp_output_alloc_header
 <LI><a href="#[2c6]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ip4_route
 <LI><a href="#[270]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ip_chksum_pseudo
 <LI><a href="#[2da]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;lwip_htonl
+<LI><a href="#[2e9]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ip4_output_if
 </UL>
 <BR>[Called By]<UL><LI><a href="#[2aa]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;tcp_slowtmr
 </UL>
 
 <P><STRONG><a name="[2ab]"></a>tcp_zero_window_probe</STRONG> (Thumb, 264 bytes, Stack size 56 bytes, tcp_out.o(.text))
 <BR><BR>[Stack]<UL><LI>Max Depth = 516 + Unknown Stack Size
-<LI>Call Chain = tcp_zero_window_probe &rArr; ip4_output_if &rArr; ip4_output_if_src &rArr; ip4_frag &rArr; pbuf_alloc &rArr; pbuf_free &rArr; mem_free &rArr; sys_arch_sem_wait &rArr; OSSemPend &rArr; OS_Pend &rArr; OS_TaskBlock &rArr; OS_RdyListRemove &rArr; OS_PrioRemove
+<LI>Call Chain = tcp_zero_window_probe &rArr; ip4_output_if &rArr; ip4_output_if_src &rArr; ip4_frag &rArr; pbuf_alloc &rArr; pbuf_free &rArr; mem_free &rArr; sys_arch_sem_wait &rArr; OSSemPend &rArr; OS_Pend &rArr; OS_TaskBlock &rArr; OS_TickListInsert
 </UL>
 <BR>[Calls]<UL><LI><a href="#[23c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;pbuf_free
-<LI><a href="#[2e9]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ip4_output_if
 <LI><a href="#[2e4]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;tcp_output_alloc_header
 <LI><a href="#[2c6]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ip4_route
 <LI><a href="#[270]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ip_chksum_pseudo
 <LI><a href="#[2da]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;lwip_htonl
 <LI><a href="#[29c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;pbuf_copy_partial
 <LI><a href="#[261]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;lwip_htons
+<LI><a href="#[2e9]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ip4_output_if
 </UL>
 <BR>[Called By]<UL><LI><a href="#[2aa]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;tcp_slowtmr
 </UL>
@@ -6198,10 +6198,10 @@ Global Symbols
 <LI><a href="#[237]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;sys_now
 <LI><a href="#[227]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__2printf
 </UL>
-<BR>[Called By]<UL><LI><a href="#[70]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;cyclic_timer
-<LI><a href="#[6f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;tcpip_tcp_timer
-<LI><a href="#[2b6]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;tcp_timer_needed
+<BR>[Called By]<UL><LI><a href="#[2b6]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;tcp_timer_needed
 <LI><a href="#[27c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;sys_timeouts_init
+<LI><a href="#[70]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;cyclic_timer
+<LI><a href="#[6f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;tcpip_tcp_timer
 </UL>
 
 <P><STRONG><a name="[2b6]"></a>tcp_timer_needed</STRONG> (Thumb, 38 bytes, Stack size 8 bytes, timeouts.o(.text))
@@ -6238,7 +6238,7 @@ Global Symbols
 
 <P><STRONG><a name="[250]"></a>sys_timeouts_mbox_fetch</STRONG> (Thumb, 58 bytes, Stack size 16 bytes, timeouts.o(.text))
 <BR><BR>[Stack]<UL><LI>Max Depth = 220 + Unknown Stack Size
-<LI>Call Chain = sys_timeouts_mbox_fetch &rArr; sys_check_timeouts &rArr; sys_arch_sem_wait &rArr; OSSemPend &rArr; OS_Pend &rArr; OS_TaskBlock &rArr; OS_RdyListRemove &rArr; OS_PrioRemove
+<LI>Call Chain = sys_timeouts_mbox_fetch &rArr; sys_check_timeouts &rArr; sys_arch_sem_wait &rArr; OSSemPend &rArr; OS_Pend &rArr; OS_TaskBlock &rArr; OS_TickListInsert
 </UL>
 <BR>[Calls]<UL><LI><a href="#[22b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;sys_arch_mbox_fetch
 <LI><a href="#[2ef]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;sys_timeouts_sleeptime
@@ -6253,7 +6253,7 @@ Global Symbols
 
 <P><STRONG><a name="[2f0]"></a>udp_input</STRONG> (Thumb, 362 bytes, Stack size 56 bytes, udp.o(.text))
 <BR><BR>[Stack]<UL><LI>Max Depth = 580 + Unknown Stack Size
-<LI>Call Chain = udp_input &rArr; icmp_dest_unreach &rArr; icmp_send_response &rArr; ip4_output_if &rArr; ip4_output_if_src &rArr; ip4_frag &rArr; pbuf_alloc &rArr; pbuf_free &rArr; mem_free &rArr; sys_arch_sem_wait &rArr; OSSemPend &rArr; OS_Pend &rArr; OS_TaskBlock &rArr; OS_RdyListRemove &rArr; OS_PrioRemove
+<LI>Call Chain = udp_input &rArr; icmp_dest_unreach &rArr; icmp_send_response &rArr; ip4_output_if &rArr; ip4_output_if_src &rArr; ip4_frag &rArr; pbuf_alloc &rArr; pbuf_free &rArr; mem_free &rArr; sys_arch_sem_wait &rArr; OSSemPend &rArr; OS_Pend &rArr; OS_TaskBlock &rArr; OS_TickListInsert
 </UL>
 <BR>[Calls]<UL><LI><a href="#[23c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;pbuf_free
 <LI><a href="#[2e3]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ip4_addr_isbroadcast_u32
@@ -6281,7 +6281,7 @@ Global Symbols
 
 <P><STRONG><a name="[2f4]"></a>udp_sendto_if_src</STRONG> (Thumb, 256 bytes, Stack size 56 bytes, udp.o(.text))
 <BR><BR>[Stack]<UL><LI>Max Depth = 468 + Unknown Stack Size
-<LI>Call Chain = udp_sendto_if_src &rArr; ip4_output_if_src &rArr; ip4_frag &rArr; pbuf_alloc &rArr; pbuf_free &rArr; mem_free &rArr; sys_arch_sem_wait &rArr; OSSemPend &rArr; OS_Pend &rArr; OS_TaskBlock &rArr; OS_RdyListRemove &rArr; OS_PrioRemove
+<LI>Call Chain = udp_sendto_if_src &rArr; ip4_output_if_src &rArr; ip4_frag &rArr; pbuf_alloc &rArr; pbuf_free &rArr; mem_free &rArr; sys_arch_sem_wait &rArr; OSSemPend &rArr; OS_Pend &rArr; OS_TaskBlock &rArr; OS_TickListInsert
 </UL>
 <BR>[Calls]<UL><LI><a href="#[241]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;udp_bind
 <LI><a href="#[23c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;pbuf_free
@@ -6301,7 +6301,7 @@ Global Symbols
 
 <P><STRONG><a name="[2f6]"></a>udp_sendto_if</STRONG> (Thumb, 82 bytes, Stack size 40 bytes, udp.o(.text))
 <BR><BR>[Stack]<UL><LI>Max Depth = 508 + Unknown Stack Size
-<LI>Call Chain = udp_sendto_if &rArr; udp_sendto_if_src &rArr; ip4_output_if_src &rArr; ip4_frag &rArr; pbuf_alloc &rArr; pbuf_free &rArr; mem_free &rArr; sys_arch_sem_wait &rArr; OSSemPend &rArr; OS_Pend &rArr; OS_TaskBlock &rArr; OS_RdyListRemove &rArr; OS_PrioRemove
+<LI>Call Chain = udp_sendto_if &rArr; udp_sendto_if_src &rArr; ip4_output_if_src &rArr; ip4_frag &rArr; pbuf_alloc &rArr; pbuf_free &rArr; mem_free &rArr; sys_arch_sem_wait &rArr; OSSemPend &rArr; OS_Pend &rArr; OS_TaskBlock &rArr; OS_TickListInsert
 </UL>
 <BR>[Calls]<UL><LI><a href="#[2f4]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;udp_sendto_if_src
 </UL>
@@ -6315,7 +6315,7 @@ Global Symbols
 
 <P><STRONG><a name="[2f7]"></a>udp_sendto</STRONG> (Thumb, 210 bytes, Stack size 32 bytes, udp.o(.text))
 <BR><BR>[Stack]<UL><LI>Max Depth = 540 + Unknown Stack Size
-<LI>Call Chain = udp_sendto &rArr; udp_sendto_if &rArr; udp_sendto_if_src &rArr; ip4_output_if_src &rArr; ip4_frag &rArr; pbuf_alloc &rArr; pbuf_free &rArr; mem_free &rArr; sys_arch_sem_wait &rArr; OSSemPend &rArr; OS_Pend &rArr; OS_TaskBlock &rArr; OS_RdyListRemove &rArr; OS_PrioRemove
+<LI>Call Chain = udp_sendto &rArr; udp_sendto_if &rArr; udp_sendto_if_src &rArr; ip4_output_if_src &rArr; ip4_frag &rArr; pbuf_alloc &rArr; pbuf_free &rArr; mem_free &rArr; sys_arch_sem_wait &rArr; OSSemPend &rArr; OS_Pend &rArr; OS_TaskBlock &rArr; OS_TickListInsert
 </UL>
 <BR>[Calls]<UL><LI><a href="#[2c6]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ip4_route
 <LI><a href="#[2f6]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;udp_sendto_if
@@ -6325,7 +6325,7 @@ Global Symbols
 
 <P><STRONG><a name="[23b]"></a>udp_send</STRONG> (Thumb, 30 bytes, Stack size 16 bytes, udp.o(.text))
 <BR><BR>[Stack]<UL><LI>Max Depth = 556 + Unknown Stack Size
-<LI>Call Chain = udp_send &rArr; udp_sendto &rArr; udp_sendto_if &rArr; udp_sendto_if_src &rArr; ip4_output_if_src &rArr; ip4_frag &rArr; pbuf_alloc &rArr; pbuf_free &rArr; mem_free &rArr; sys_arch_sem_wait &rArr; OSSemPend &rArr; OS_Pend &rArr; OS_TaskBlock &rArr; OS_RdyListRemove &rArr; OS_PrioRemove
+<LI>Call Chain = udp_send &rArr; udp_sendto &rArr; udp_sendto_if &rArr; udp_sendto_if_src &rArr; ip4_output_if_src &rArr; ip4_frag &rArr; pbuf_alloc &rArr; pbuf_free &rArr; mem_free &rArr; sys_arch_sem_wait &rArr; OSSemPend &rArr; OS_Pend &rArr; OS_TaskBlock &rArr; OS_TickListInsert
 </UL>
 <BR>[Calls]<UL><LI><a href="#[2f7]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;udp_sendto
 </UL>
@@ -6386,7 +6386,7 @@ Global Symbols
 
 <P><STRONG><a name="[30c]"></a>dhcp_renew</STRONG> (Thumb, 178 bytes, Stack size 32 bytes, dhcp_2.o(.text))
 <BR><BR>[Stack]<UL><LI>Max Depth = 540 + Unknown Stack Size
-<LI>Call Chain = dhcp_renew &rArr; udp_sendto_if &rArr; udp_sendto_if_src &rArr; ip4_output_if_src &rArr; ip4_frag &rArr; pbuf_alloc &rArr; pbuf_free &rArr; mem_free &rArr; sys_arch_sem_wait &rArr; OSSemPend &rArr; OS_Pend &rArr; OS_TaskBlock &rArr; OS_RdyListRemove &rArr; OS_PrioRemove
+<LI>Call Chain = dhcp_renew &rArr; udp_sendto_if &rArr; udp_sendto_if_src &rArr; ip4_output_if_src &rArr; ip4_frag &rArr; pbuf_alloc &rArr; pbuf_free &rArr; mem_free &rArr; sys_arch_sem_wait &rArr; OSSemPend &rArr; OS_Pend &rArr; OS_TaskBlock &rArr; OS_TickListInsert
 </UL>
 <BR>[Calls]<UL><LI><a href="#[294]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;pbuf_realloc
 <LI><a href="#[301]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;dhcp_set_state
@@ -6407,7 +6407,7 @@ Global Symbols
 
 <P><STRONG><a name="[310]"></a>dhcp_release</STRONG> (Thumb, 162 bytes, Stack size 32 bytes, dhcp_2.o(.text))
 <BR><BR>[Stack]<UL><LI>Max Depth = 740 + Unknown Stack Size
-<LI>Call Chain = dhcp_release &rArr; netif_set_addr &rArr; netif_set_ipaddr &rArr; tcp_netif_ip_addr_changed &rArr; tcp_netif_ip_addr_changed_pcblist &rArr; tcp_abort &rArr; tcp_abandon &rArr; tcp_pcb_remove &rArr; tcp_output &rArr; tcp_output_segment &rArr; ip4_output_if &rArr; ip4_output_if_src &rArr; ip4_frag &rArr; pbuf_alloc &rArr; pbuf_free &rArr; mem_free &rArr; sys_arch_sem_wait &rArr; OSSemPend &rArr; OS_Pend &rArr; OS_TaskBlock &rArr; OS_RdyListRemove &rArr; OS_PrioRemove
+<LI>Call Chain = dhcp_release &rArr; netif_set_addr &rArr; netif_set_ipaddr &rArr; tcp_netif_ip_addr_changed &rArr; tcp_netif_ip_addr_changed_pcblist &rArr; tcp_abort &rArr; tcp_abandon &rArr; tcp_pcb_remove &rArr; tcp_output &rArr; tcp_output_segment &rArr; ip4_output_if &rArr; ip4_output_if_src &rArr; ip4_frag &rArr; pbuf_alloc &rArr; pbuf_free &rArr; mem_free &rArr; sys_arch_sem_wait &rArr; OSSemPend &rArr; OS_Pend &rArr; OS_TaskBlock &rArr; OS_TickListInsert
 </UL>
 <BR>[Calls]<UL><LI><a href="#[294]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;pbuf_realloc
 <LI><a href="#[28b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;netif_set_addr
@@ -6427,7 +6427,7 @@ Global Symbols
 
 <P><STRONG><a name="[79]"></a>dhcp_coarse_tmr</STRONG> (Thumb, 100 bytes, Stack size 16 bytes, dhcp_2.o(.text))
 <BR><BR>[Stack]<UL><LI>Max Depth = 756 + Unknown Stack Size
-<LI>Call Chain = dhcp_coarse_tmr &rArr; dhcp_release &rArr; netif_set_addr &rArr; netif_set_ipaddr &rArr; tcp_netif_ip_addr_changed &rArr; tcp_netif_ip_addr_changed_pcblist &rArr; tcp_abort &rArr; tcp_abandon &rArr; tcp_pcb_remove &rArr; tcp_output &rArr; tcp_output_segment &rArr; ip4_output_if &rArr; ip4_output_if_src &rArr; ip4_frag &rArr; pbuf_alloc &rArr; pbuf_free &rArr; mem_free &rArr; sys_arch_sem_wait &rArr; OSSemPend &rArr; OS_Pend &rArr; OS_TaskBlock &rArr; OS_RdyListRemove &rArr; OS_PrioRemove
+<LI>Call Chain = dhcp_coarse_tmr &rArr; dhcp_release &rArr; netif_set_addr &rArr; netif_set_ipaddr &rArr; tcp_netif_ip_addr_changed &rArr; tcp_netif_ip_addr_changed_pcblist &rArr; tcp_abort &rArr; tcp_abandon &rArr; tcp_pcb_remove &rArr; tcp_output &rArr; tcp_output_segment &rArr; ip4_output_if &rArr; ip4_output_if_src &rArr; ip4_frag &rArr; pbuf_alloc &rArr; pbuf_free &rArr; mem_free &rArr; sys_arch_sem_wait &rArr; OSSemPend &rArr; OS_Pend &rArr; OS_TaskBlock &rArr; OS_TickListInsert
 </UL>
 <BR>[Calls]<UL><LI><a href="#[310]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;dhcp_release
 <LI><a href="#[30f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;dhcp_t2_timeout
@@ -6440,7 +6440,7 @@ Global Symbols
 </UL>
 <P><STRONG><a name="[7a]"></a>dhcp_fine_tmr</STRONG> (Thumb, 54 bytes, Stack size 16 bytes, dhcp_2.o(.text))
 <BR><BR>[Stack]<UL><LI>Max Depth = 772 + Unknown Stack Size
-<LI>Call Chain = dhcp_fine_tmr &rArr; dhcp_timeout &rArr; dhcp_release &rArr; netif_set_addr &rArr; netif_set_ipaddr &rArr; tcp_netif_ip_addr_changed &rArr; tcp_netif_ip_addr_changed_pcblist &rArr; tcp_abort &rArr; tcp_abandon &rArr; tcp_pcb_remove &rArr; tcp_output &rArr; tcp_output_segment &rArr; ip4_output_if &rArr; ip4_output_if_src &rArr; ip4_frag &rArr; pbuf_alloc &rArr; pbuf_free &rArr; mem_free &rArr; sys_arch_sem_wait &rArr; OSSemPend &rArr; OS_Pend &rArr; OS_TaskBlock &rArr; OS_RdyListRemove &rArr; OS_PrioRemove
+<LI>Call Chain = dhcp_fine_tmr &rArr; dhcp_timeout &rArr; dhcp_release &rArr; netif_set_addr &rArr; netif_set_ipaddr &rArr; tcp_netif_ip_addr_changed &rArr; tcp_netif_ip_addr_changed_pcblist &rArr; tcp_abort &rArr; tcp_abandon &rArr; tcp_pcb_remove &rArr; tcp_output &rArr; tcp_output_segment &rArr; ip4_output_if &rArr; ip4_output_if_src &rArr; ip4_frag &rArr; pbuf_alloc &rArr; pbuf_free &rArr; mem_free &rArr; sys_arch_sem_wait &rArr; OSSemPend &rArr; OS_Pend &rArr; OS_TaskBlock &rArr; OS_TickListInsert
 </UL>
 <BR>[Calls]<UL><LI><a href="#[313]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;dhcp_timeout
 </UL>
@@ -6470,7 +6470,7 @@ Global Symbols
 
 <P><STRONG><a name="[249]"></a>dhcp_start</STRONG> (Thumb, 230 bytes, Stack size 16 bytes, dhcp_2.o(.text))
 <BR><BR>[Stack]<UL><LI>Max Depth = 516 + Unknown Stack Size
-<LI>Call Chain = dhcp_start &rArr; dhcp_discover &rArr; udp_sendto_if_src &rArr; ip4_output_if_src &rArr; ip4_frag &rArr; pbuf_alloc &rArr; pbuf_free &rArr; mem_free &rArr; sys_arch_sem_wait &rArr; OSSemPend &rArr; OS_Pend &rArr; OS_TaskBlock &rArr; OS_RdyListRemove &rArr; OS_PrioRemove
+<LI>Call Chain = dhcp_start &rArr; dhcp_discover &rArr; udp_sendto_if_src &rArr; ip4_output_if_src &rArr; ip4_frag &rArr; pbuf_alloc &rArr; pbuf_free &rArr; mem_free &rArr; sys_arch_sem_wait &rArr; OSSemPend &rArr; OS_Pend &rArr; OS_TaskBlock &rArr; OS_TickListInsert
 </UL>
 <BR>[Calls]<UL><LI><a href="#[247]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;dhcp_stop
 <LI><a href="#[26a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;mem_malloc
@@ -6507,7 +6507,7 @@ Global Symbols
 
 <P><STRONG><a name="[318]"></a>dhcp_arp_reply</STRONG> (Thumb, 64 bytes, Stack size 16 bytes, dhcp_2.o(.text))
 <BR><BR>[Stack]<UL><LI>Max Depth = 516 + Unknown Stack Size
-<LI>Call Chain = dhcp_arp_reply &rArr; dhcp_decline &rArr; udp_sendto_if_src &rArr; ip4_output_if_src &rArr; ip4_frag &rArr; pbuf_alloc &rArr; pbuf_free &rArr; mem_free &rArr; sys_arch_sem_wait &rArr; OSSemPend &rArr; OS_Pend &rArr; OS_TaskBlock &rArr; OS_RdyListRemove &rArr; OS_PrioRemove
+<LI>Call Chain = dhcp_arp_reply &rArr; dhcp_decline &rArr; udp_sendto_if_src &rArr; ip4_output_if_src &rArr; ip4_frag &rArr; pbuf_alloc &rArr; pbuf_free &rArr; mem_free &rArr; sys_arch_sem_wait &rArr; OSSemPend &rArr; OS_Pend &rArr; OS_TaskBlock &rArr; OS_TickListInsert
 </UL>
 <BR>[Calls]<UL><LI><a href="#[227]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__2printf
 <LI><a href="#[317]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;dhcp_decline
@@ -6517,7 +6517,7 @@ Global Symbols
 
 <P><STRONG><a name="[287]"></a>etharp_request</STRONG> (Thumb, 18 bytes, Stack size 16 bytes, etharp.o(.text))
 <BR><BR>[Stack]<UL><LI>Max Depth = 356 + Unknown Stack Size
-<LI>Call Chain = etharp_request &rArr; etharp_request_dst &rArr; etharp_raw &rArr; pbuf_alloc &rArr; pbuf_free &rArr; mem_free &rArr; sys_arch_sem_wait &rArr; OSSemPend &rArr; OS_Pend &rArr; OS_TaskBlock &rArr; OS_RdyListRemove &rArr; OS_PrioRemove
+<LI>Call Chain = etharp_request &rArr; etharp_request_dst &rArr; etharp_raw &rArr; pbuf_alloc &rArr; pbuf_free &rArr; mem_free &rArr; sys_arch_sem_wait &rArr; OSSemPend &rArr; OS_Pend &rArr; OS_TaskBlock &rArr; OS_TickListInsert
 </UL>
 <BR>[Calls]<UL><LI><a href="#[31b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;etharp_request_dst
 </UL>
@@ -6529,7 +6529,7 @@ Global Symbols
 
 <P><STRONG><a name="[78]"></a>etharp_tmr</STRONG> (Thumb, 216 bytes, Stack size 16 bytes, etharp.o(.text))
 <BR><BR>[Stack]<UL><LI>Max Depth = 372 + Unknown Stack Size
-<LI>Call Chain = etharp_tmr &rArr; etharp_request &rArr; etharp_request_dst &rArr; etharp_raw &rArr; pbuf_alloc &rArr; pbuf_free &rArr; mem_free &rArr; sys_arch_sem_wait &rArr; OSSemPend &rArr; OS_Pend &rArr; OS_TaskBlock &rArr; OS_RdyListRemove &rArr; OS_PrioRemove
+<LI>Call Chain = etharp_tmr &rArr; etharp_request &rArr; etharp_request_dst &rArr; etharp_raw &rArr; pbuf_alloc &rArr; pbuf_free &rArr; mem_free &rArr; sys_arch_sem_wait &rArr; OSSemPend &rArr; OS_Pend &rArr; OS_TaskBlock &rArr; OS_TickListInsert
 </UL>
 <BR>[Calls]<UL><LI><a href="#[287]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;etharp_request
 <LI><a href="#[319]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;etharp_free_entry
@@ -6553,7 +6553,7 @@ Global Symbols
 
 <P><STRONG><a name="[25f]"></a>etharp_input</STRONG> (Thumb, 214 bytes, Stack size 48 bytes, etharp.o(.text))
 <BR><BR>[Stack]<UL><LI>Max Depth = 564 + Unknown Stack Size
-<LI>Call Chain = etharp_input &rArr; dhcp_arp_reply &rArr; dhcp_decline &rArr; udp_sendto_if_src &rArr; ip4_output_if_src &rArr; ip4_frag &rArr; pbuf_alloc &rArr; pbuf_free &rArr; mem_free &rArr; sys_arch_sem_wait &rArr; OSSemPend &rArr; OS_Pend &rArr; OS_TaskBlock &rArr; OS_RdyListRemove &rArr; OS_PrioRemove
+<LI>Call Chain = etharp_input &rArr; dhcp_arp_reply &rArr; dhcp_decline &rArr; udp_sendto_if_src &rArr; ip4_output_if_src &rArr; ip4_frag &rArr; pbuf_alloc &rArr; pbuf_free &rArr; mem_free &rArr; sys_arch_sem_wait &rArr; OSSemPend &rArr; OS_Pend &rArr; OS_TaskBlock &rArr; OS_TickListInsert
 </UL>
 <BR>[Calls]<UL><LI><a href="#[23c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;pbuf_free
 <LI><a href="#[227]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__2printf
@@ -6566,7 +6566,7 @@ Global Symbols
 
 <P><STRONG><a name="[308]"></a>etharp_query</STRONG> (Thumb, 472 bytes, Stack size 48 bytes, etharp.o(.text))
 <BR><BR>[Stack]<UL><LI>Max Depth = 404 + Unknown Stack Size
-<LI>Call Chain = etharp_query &rArr; etharp_request &rArr; etharp_request_dst &rArr; etharp_raw &rArr; pbuf_alloc &rArr; pbuf_free &rArr; mem_free &rArr; sys_arch_sem_wait &rArr; OSSemPend &rArr; OS_Pend &rArr; OS_TaskBlock &rArr; OS_RdyListRemove &rArr; OS_PrioRemove
+<LI>Call Chain = etharp_query &rArr; etharp_request &rArr; etharp_request_dst &rArr; etharp_raw &rArr; pbuf_alloc &rArr; pbuf_free &rArr; mem_free &rArr; sys_arch_sem_wait &rArr; OSSemPend &rArr; OS_Pend &rArr; OS_TaskBlock &rArr; OS_TickListInsert
 </UL>
 <BR>[Calls]<UL><LI><a href="#[23c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;pbuf_free
 <LI><a href="#[239]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;pbuf_alloc
@@ -6584,7 +6584,7 @@ Global Symbols
 
 <P><STRONG><a name="[6c]"></a>etharp_output</STRONG> (Thumb, 376 bytes, Stack size 40 bytes, etharp.o(.text))
 <BR><BR>[Stack]<UL><LI>Max Depth = 444 + Unknown Stack Size
-<LI>Call Chain = etharp_output &rArr; etharp_query &rArr; etharp_request &rArr; etharp_request_dst &rArr; etharp_raw &rArr; pbuf_alloc &rArr; pbuf_free &rArr; mem_free &rArr; sys_arch_sem_wait &rArr; OSSemPend &rArr; OS_Pend &rArr; OS_TaskBlock &rArr; OS_RdyListRemove &rArr; OS_PrioRemove
+<LI>Call Chain = etharp_output &rArr; etharp_query &rArr; etharp_request &rArr; etharp_request_dst &rArr; etharp_raw &rArr; pbuf_alloc &rArr; pbuf_free &rArr; mem_free &rArr; sys_arch_sem_wait &rArr; OSSemPend &rArr; OS_Pend &rArr; OS_TaskBlock &rArr; OS_TickListInsert
 </UL>
 <BR>[Calls]<UL><LI><a href="#[2e3]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ip4_addr_isbroadcast_u32
 <LI><a href="#[260]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ethernet_output
@@ -6596,11 +6596,10 @@ Global Symbols
 </UL>
 <P><STRONG><a name="[321]"></a>icmp_input</STRONG> (Thumb, 470 bytes, Stack size 56 bytes, icmp.o(.text))
 <BR><BR>[Stack]<UL><LI>Max Depth = 516 + Unknown Stack Size
-<LI>Call Chain = icmp_input &rArr; ip4_output_if &rArr; ip4_output_if_src &rArr; ip4_frag &rArr; pbuf_alloc &rArr; pbuf_free &rArr; mem_free &rArr; sys_arch_sem_wait &rArr; OSSemPend &rArr; OS_Pend &rArr; OS_TaskBlock &rArr; OS_RdyListRemove &rArr; OS_PrioRemove
+<LI>Call Chain = icmp_input &rArr; ip4_output_if &rArr; ip4_output_if_src &rArr; ip4_frag &rArr; pbuf_alloc &rArr; pbuf_free &rArr; mem_free &rArr; sys_arch_sem_wait &rArr; OSSemPend &rArr; OS_Pend &rArr; OS_TaskBlock &rArr; OS_TickListInsert
 </UL>
 <BR>[Calls]<UL><LI><a href="#[23c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;pbuf_free
 <LI><a href="#[239]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;pbuf_alloc
-<LI><a href="#[2e9]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ip4_output_if
 <LI><a href="#[2e3]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ip4_addr_isbroadcast_u32
 <LI><a href="#[29b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;pbuf_copy
 <LI><a href="#[275]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;inet_chksum_pbuf
@@ -6608,13 +6607,14 @@ Global Symbols
 <LI><a href="#[25e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;pbuf_header
 <LI><a href="#[227]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__2printf
 <LI><a href="#[117]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_memcpy
+<LI><a href="#[2e9]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ip4_output_if
 </UL>
 <BR>[Called By]<UL><LI><a href="#[68]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ip4_input
 </UL>
 
 <P><STRONG><a name="[2f2]"></a>icmp_dest_unreach</STRONG> (Thumb, 18 bytes, Stack size 16 bytes, icmp.o(.text))
 <BR><BR>[Stack]<UL><LI>Max Depth = 524 + Unknown Stack Size
-<LI>Call Chain = icmp_dest_unreach &rArr; icmp_send_response &rArr; ip4_output_if &rArr; ip4_output_if_src &rArr; ip4_frag &rArr; pbuf_alloc &rArr; pbuf_free &rArr; mem_free &rArr; sys_arch_sem_wait &rArr; OSSemPend &rArr; OS_Pend &rArr; OS_TaskBlock &rArr; OS_RdyListRemove &rArr; OS_PrioRemove
+<LI>Call Chain = icmp_dest_unreach &rArr; icmp_send_response &rArr; ip4_output_if &rArr; ip4_output_if_src &rArr; ip4_frag &rArr; pbuf_alloc &rArr; pbuf_free &rArr; mem_free &rArr; sys_arch_sem_wait &rArr; OSSemPend &rArr; OS_Pend &rArr; OS_TaskBlock &rArr; OS_TickListInsert
 </UL>
 <BR>[Calls]<UL><LI><a href="#[322]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;icmp_send_response
 </UL>
@@ -6624,7 +6624,7 @@ Global Symbols
 
 <P><STRONG><a name="[323]"></a>icmp_time_exceeded</STRONG> (Thumb, 18 bytes, Stack size 16 bytes, icmp.o(.text))
 <BR><BR>[Stack]<UL><LI>Max Depth = 524 + Unknown Stack Size
-<LI>Call Chain = icmp_time_exceeded &rArr; icmp_send_response &rArr; ip4_output_if &rArr; ip4_output_if_src &rArr; ip4_frag &rArr; pbuf_alloc &rArr; pbuf_free &rArr; mem_free &rArr; sys_arch_sem_wait &rArr; OSSemPend &rArr; OS_Pend &rArr; OS_TaskBlock &rArr; OS_RdyListRemove &rArr; OS_PrioRemove
+<LI>Call Chain = icmp_time_exceeded &rArr; icmp_send_response &rArr; ip4_output_if &rArr; ip4_output_if_src &rArr; ip4_frag &rArr; pbuf_alloc &rArr; pbuf_free &rArr; mem_free &rArr; sys_arch_sem_wait &rArr; OSSemPend &rArr; OS_Pend &rArr; OS_TaskBlock &rArr; OS_TickListInsert
 </UL>
 <BR>[Calls]<UL><LI><a href="#[322]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;icmp_send_response
 </UL>
@@ -6648,7 +6648,7 @@ Global Symbols
 
 <P><STRONG><a name="[68]"></a>ip4_input</STRONG> (Thumb, 510 bytes, Stack size 40 bytes, ip4.o(.text))
 <BR><BR>[Stack]<UL><LI>Max Depth = 780 + Unknown Stack Size
-<LI>Call Chain = ip4_input &rArr; tcp_input &rArr; tcp_listen_input &rArr; tcp_alloc &rArr; tcp_kill_prio &rArr; tcp_abort &rArr; tcp_abandon &rArr; tcp_pcb_remove &rArr; tcp_output &rArr; tcp_output_segment &rArr; ip4_output_if &rArr; ip4_output_if_src &rArr; ip4_frag &rArr; pbuf_alloc &rArr; pbuf_free &rArr; mem_free &rArr; sys_arch_sem_wait &rArr; OSSemPend &rArr; OS_Pend &rArr; OS_TaskBlock &rArr; OS_RdyListRemove &rArr; OS_PrioRemove
+<LI>Call Chain = ip4_input &rArr; tcp_input &rArr; tcp_listen_input &rArr; tcp_alloc &rArr; tcp_kill_prio &rArr; tcp_abort &rArr; tcp_abandon &rArr; tcp_pcb_remove &rArr; tcp_output &rArr; tcp_output_segment &rArr; ip4_output_if &rArr; ip4_output_if_src &rArr; ip4_frag &rArr; pbuf_alloc &rArr; pbuf_free &rArr; mem_free &rArr; sys_arch_sem_wait &rArr; OSSemPend &rArr; OS_Pend &rArr; OS_TaskBlock &rArr; OS_TickListInsert
 </UL>
 <BR>[Calls]<UL><LI><a href="#[23c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;pbuf_free
 <LI><a href="#[2e3]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ip4_addr_isbroadcast_u32
@@ -6670,20 +6670,20 @@ Global Symbols
 </UL>
 <P><STRONG><a name="[2f5]"></a>ip4_output_if_src</STRONG> (Thumb, 336 bytes, Stack size 56 bytes, ip4.o(.text))
 <BR><BR>[Stack]<UL><LI>Max Depth = 412 + Unknown Stack Size
-<LI>Call Chain = ip4_output_if_src &rArr; ip4_frag &rArr; pbuf_alloc &rArr; pbuf_free &rArr; mem_free &rArr; sys_arch_sem_wait &rArr; OSSemPend &rArr; OS_Pend &rArr; OS_TaskBlock &rArr; OS_RdyListRemove &rArr; OS_PrioRemove
+<LI>Call Chain = ip4_output_if_src &rArr; ip4_frag &rArr; pbuf_alloc &rArr; pbuf_free &rArr; mem_free &rArr; sys_arch_sem_wait &rArr; OSSemPend &rArr; OS_Pend &rArr; OS_TaskBlock &rArr; OS_TickListInsert
 </UL>
 <BR>[Calls]<UL><LI><a href="#[25e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;pbuf_header
 <LI><a href="#[261]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;lwip_htons
 <LI><a href="#[227]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__2printf
 <LI><a href="#[325]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ip4_frag
 </UL>
-<BR>[Called By]<UL><LI><a href="#[2e9]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ip4_output_if
-<LI><a href="#[2f4]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;udp_sendto_if_src
+<BR>[Called By]<UL><LI><a href="#[2f4]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;udp_sendto_if_src
+<LI><a href="#[2e9]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ip4_output_if
 </UL>
 
 <P><STRONG><a name="[2e9]"></a>ip4_output_if</STRONG> (Thumb, 206 bytes, Stack size 48 bytes, ip4.o(.text))
 <BR><BR>[Stack]<UL><LI>Max Depth = 460 + Unknown Stack Size
-<LI>Call Chain = ip4_output_if &rArr; ip4_output_if_src &rArr; ip4_frag &rArr; pbuf_alloc &rArr; pbuf_free &rArr; mem_free &rArr; sys_arch_sem_wait &rArr; OSSemPend &rArr; OS_Pend &rArr; OS_TaskBlock &rArr; OS_RdyListRemove &rArr; OS_PrioRemove
+<LI>Call Chain = ip4_output_if &rArr; ip4_output_if_src &rArr; ip4_frag &rArr; pbuf_alloc &rArr; pbuf_free &rArr; mem_free &rArr; sys_arch_sem_wait &rArr; OSSemPend &rArr; OS_Pend &rArr; OS_TaskBlock &rArr; OS_TickListInsert
 </UL>
 <BR>[Calls]<UL><LI><a href="#[2f5]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ip4_output_if_src
 </UL>
@@ -6698,9 +6698,9 @@ Global Symbols
 </UL>
 
 <P><STRONG><a name="[326]"></a>ip4_output</STRONG> (Thumb, 86 bytes, Stack size 48 bytes, ip4.o(.text), UNUSED)
-<BR><BR>[Calls]<UL><LI><a href="#[2e9]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ip4_output_if
-<LI><a href="#[2c6]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ip4_route
+<BR><BR>[Calls]<UL><LI><a href="#[2c6]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ip4_route
 <LI><a href="#[227]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__2printf
+<LI><a href="#[2e9]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ip4_output_if
 </UL>
 
 <P><STRONG><a name="[2e3]"></a>ip4_addr_isbroadcast_u32</STRONG> (Thumb, 78 bytes, Stack size 12 bytes, ip4_addr.o(.text))
@@ -6740,7 +6740,7 @@ Global Symbols
 
 <P><STRONG><a name="[77]"></a>ip_reass_tmr</STRONG> (Thumb, 48 bytes, Stack size 16 bytes, ip4_frag.o(.text))
 <BR><BR>[Stack]<UL><LI>Max Depth = 572 + Unknown Stack Size
-<LI>Call Chain = ip_reass_tmr &rArr; ip_reass_free_complete_datagram &rArr; icmp_time_exceeded &rArr; icmp_send_response &rArr; ip4_output_if &rArr; ip4_output_if_src &rArr; ip4_frag &rArr; pbuf_alloc &rArr; pbuf_free &rArr; mem_free &rArr; sys_arch_sem_wait &rArr; OSSemPend &rArr; OS_Pend &rArr; OS_TaskBlock &rArr; OS_RdyListRemove &rArr; OS_PrioRemove
+<LI>Call Chain = ip_reass_tmr &rArr; ip_reass_free_complete_datagram &rArr; icmp_time_exceeded &rArr; icmp_send_response &rArr; ip4_output_if &rArr; ip4_output_if_src &rArr; ip4_frag &rArr; pbuf_alloc &rArr; pbuf_free &rArr; mem_free &rArr; sys_arch_sem_wait &rArr; OSSemPend &rArr; OS_Pend &rArr; OS_TaskBlock &rArr; OS_TickListInsert
 </UL>
 <BR>[Calls]<UL><LI><a href="#[32d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ip_reass_free_complete_datagram
 </UL>
@@ -6748,7 +6748,7 @@ Global Symbols
 </UL>
 <P><STRONG><a name="[324]"></a>ip4_reass</STRONG> (Thumb, 474 bytes, Stack size 48 bytes, ip4_frag.o(.text))
 <BR><BR>[Stack]<UL><LI>Max Depth = 660 + Unknown Stack Size
-<LI>Call Chain = ip4_reass &rArr; ip_reass_enqueue_new_datagram &rArr; ip_reass_remove_oldest_datagram &rArr; ip_reass_free_complete_datagram &rArr; icmp_time_exceeded &rArr; icmp_send_response &rArr; ip4_output_if &rArr; ip4_output_if_src &rArr; ip4_frag &rArr; pbuf_alloc &rArr; pbuf_free &rArr; mem_free &rArr; sys_arch_sem_wait &rArr; OSSemPend &rArr; OS_Pend &rArr; OS_TaskBlock &rArr; OS_RdyListRemove &rArr; OS_PrioRemove
+<LI>Call Chain = ip4_reass &rArr; ip_reass_enqueue_new_datagram &rArr; ip_reass_remove_oldest_datagram &rArr; ip_reass_free_complete_datagram &rArr; icmp_time_exceeded &rArr; icmp_send_response &rArr; ip4_output_if &rArr; ip4_output_if_src &rArr; ip4_frag &rArr; pbuf_alloc &rArr; pbuf_free &rArr; mem_free &rArr; sys_arch_sem_wait &rArr; OSSemPend &rArr; OS_Pend &rArr; OS_TaskBlock &rArr; OS_TickListInsert
 </UL>
 <BR>[Calls]<UL><LI><a href="#[23c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;pbuf_free
 <LI><a href="#[2d9]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;pbuf_clen
@@ -6767,7 +6767,7 @@ Global Symbols
 
 <P><STRONG><a name="[325]"></a>ip4_frag</STRONG> (Thumb, 716 bytes, Stack size 96 bytes, ip4_frag.o(.text))
 <BR><BR>[Stack]<UL><LI>Max Depth = 356 + Unknown Stack Size
-<LI>Call Chain = ip4_frag &rArr; pbuf_alloc &rArr; pbuf_free &rArr; mem_free &rArr; sys_arch_sem_wait &rArr; OSSemPend &rArr; OS_Pend &rArr; OS_TaskBlock &rArr; OS_RdyListRemove &rArr; OS_PrioRemove
+<LI>Call Chain = ip4_frag &rArr; pbuf_alloc &rArr; pbuf_free &rArr; mem_free &rArr; sys_arch_sem_wait &rArr; OSSemPend &rArr; OS_Pend &rArr; OS_TaskBlock &rArr; OS_TickListInsert
 </UL>
 <BR>[Calls]<UL><LI><a href="#[23c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;pbuf_free
 <LI><a href="#[239]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;pbuf_alloc
@@ -7042,7 +7042,7 @@ Local Symbols
 </H3>
 <P><STRONG><a name="[5e]"></a>eth_init_task_fun</STRONG> (Thumb, 20 bytes, Stack size 8 bytes, app.o(.text))
 <BR><BR>[Stack]<UL><LI>Max Depth = 68 + Unknown Stack Size
-<LI>Call Chain = eth_init_task_fun &rArr; OSTimeDly &rArr; OS_RdyListRemove &rArr; OS_PrioRemove
+<LI>Call Chain = eth_init_task_fun &rArr; OSTimeDly &rArr; OS_TickListInsert
 </UL>
 <BR>[Calls]<UL><LI><a href="#[7d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;OSTimeDly
 </UL>
@@ -7050,7 +7050,7 @@ Local Symbols
 </UL>
 <P><STRONG><a name="[5d]"></a>usart3_task_fun</STRONG> (Thumb, 42 bytes, Stack size 112 bytes, app.o(.text))
 <BR><BR>[Stack]<UL><LI>Max Depth = 868 + Unknown Stack Size
-<LI>Call Chain = usart3_task_fun &rArr; dhcp_coarse_tmr &rArr; dhcp_release &rArr; netif_set_addr &rArr; netif_set_ipaddr &rArr; tcp_netif_ip_addr_changed &rArr; tcp_netif_ip_addr_changed_pcblist &rArr; tcp_abort &rArr; tcp_abandon &rArr; tcp_pcb_remove &rArr; tcp_output &rArr; tcp_output_segment &rArr; ip4_output_if &rArr; ip4_output_if_src &rArr; ip4_frag &rArr; pbuf_alloc &rArr; pbuf_free &rArr; mem_free &rArr; sys_arch_sem_wait &rArr; OSSemPend &rArr; OS_Pend &rArr; OS_TaskBlock &rArr; OS_RdyListRemove &rArr; OS_PrioRemove
+<LI>Call Chain = usart3_task_fun &rArr; dhcp_coarse_tmr &rArr; dhcp_release &rArr; netif_set_addr &rArr; netif_set_ipaddr &rArr; tcp_netif_ip_addr_changed &rArr; tcp_netif_ip_addr_changed_pcblist &rArr; tcp_abort &rArr; tcp_abandon &rArr; tcp_pcb_remove &rArr; tcp_output &rArr; tcp_output_segment &rArr; ip4_output_if &rArr; ip4_output_if_src &rArr; ip4_frag &rArr; pbuf_alloc &rArr; pbuf_free &rArr; mem_free &rArr; sys_arch_sem_wait &rArr; OSSemPend &rArr; OS_Pend &rArr; OS_TaskBlock &rArr; OS_TickListInsert
 </UL>
 <BR>[Calls]<UL><LI><a href="#[79]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;dhcp_coarse_tmr
 <LI><a href="#[7f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;OSTimeDlyHMSM
@@ -7060,7 +7060,7 @@ Local Symbols
 </UL>
 <P><STRONG><a name="[5c]"></a>led1_task_fun</STRONG> (Thumb, 66 bytes, Stack size 16 bytes, app.o(.text))
 <BR><BR>[Stack]<UL><LI>Max Depth = 108 + Unknown Stack Size
-<LI>Call Chain = led1_task_fun &rArr; OSTimeDlyHMSM &rArr; OS_RdyListRemove &rArr; OS_PrioRemove
+<LI>Call Chain = led1_task_fun &rArr; OSTimeDlyHMSM &rArr; OS_TickListInsert
 </UL>
 <BR>[Calls]<UL><LI><a href="#[80]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;timer_is_timeout_1MS
 <LI><a href="#[7f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;OSTimeDlyHMSM
@@ -7072,7 +7072,7 @@ Local Symbols
 </UL>
 <P><STRONG><a name="[5b]"></a>led0_task_fun</STRONG> (Thumb, 54 bytes, Stack size 16 bytes, app.o(.text))
 <BR><BR>[Stack]<UL><LI>Max Depth = 108 + Unknown Stack Size
-<LI>Call Chain = led0_task_fun &rArr; OSTimeDlyHMSM &rArr; OS_RdyListRemove &rArr; OS_PrioRemove
+<LI>Call Chain = led0_task_fun &rArr; OSTimeDlyHMSM &rArr; OS_TickListInsert
 </UL>
 <BR>[Calls]<UL><LI><a href="#[7f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;OSTimeDlyHMSM
 <LI><a href="#[83]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GPIO_SetBits
@@ -7319,7 +7319,7 @@ Local Symbols
 
 <P><STRONG><a name="[63]"></a>rawudp_task_fun</STRONG> (Thumb, 266 bytes, Stack size 24 bytes, rawudp.o(.text))
 <BR><BR>[Stack]<UL><LI>Max Depth = 604 + Unknown Stack Size
-<LI>Call Chain = rawudp_task_fun &rArr; rawudp_send_data &rArr; udp_send &rArr; udp_sendto &rArr; udp_sendto_if &rArr; udp_sendto_if_src &rArr; ip4_output_if_src &rArr; ip4_frag &rArr; pbuf_alloc &rArr; pbuf_free &rArr; mem_free &rArr; sys_arch_sem_wait &rArr; OSSemPend &rArr; OS_Pend &rArr; OS_TaskBlock &rArr; OS_RdyListRemove &rArr; OS_PrioRemove
+<LI>Call Chain = rawudp_task_fun &rArr; rawudp_send_data &rArr; udp_send &rArr; udp_sendto &rArr; udp_sendto_if &rArr; udp_sendto_if_src &rArr; ip4_output_if_src &rArr; ip4_frag &rArr; pbuf_alloc &rArr; pbuf_free &rArr; mem_free &rArr; sys_arch_sem_wait &rArr; OSSemPend &rArr; OS_Pend &rArr; OS_TaskBlock &rArr; OS_TickListInsert
 </UL>
 <BR>[Calls]<UL><LI><a href="#[86]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;USART_OUT
 <LI><a href="#[7d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;OSTimeDly
@@ -7333,7 +7333,7 @@ Local Symbols
 </UL>
 <P><STRONG><a name="[64]"></a>dhcp_task_fun</STRONG> (Thumb, 282 bytes, Stack size 24 bytes, dhcp.o(.text))
 <BR><BR>[Stack]<UL><LI>Max Depth = 804 + Unknown Stack Size
-<LI>Call Chain = dhcp_task_fun &rArr; lwip_comm_dev_init &rArr; netif_add &rArr; netif_set_addr &rArr; netif_set_ipaddr &rArr; tcp_netif_ip_addr_changed &rArr; tcp_netif_ip_addr_changed_pcblist &rArr; tcp_abort &rArr; tcp_abandon &rArr; tcp_pcb_remove &rArr; tcp_output &rArr; tcp_output_segment &rArr; ip4_output_if &rArr; ip4_output_if_src &rArr; ip4_frag &rArr; pbuf_alloc &rArr; pbuf_free &rArr; mem_free &rArr; sys_arch_sem_wait &rArr; OSSemPend &rArr; OS_Pend &rArr; OS_TaskBlock &rArr; OS_RdyListRemove &rArr; OS_PrioRemove
+<LI>Call Chain = dhcp_task_fun &rArr; lwip_comm_dev_init &rArr; netif_add &rArr; netif_set_addr &rArr; netif_set_ipaddr &rArr; tcp_netif_ip_addr_changed &rArr; tcp_netif_ip_addr_changed_pcblist &rArr; tcp_abort &rArr; tcp_abandon &rArr; tcp_pcb_remove &rArr; tcp_output &rArr; tcp_output_segment &rArr; ip4_output_if &rArr; ip4_output_if_src &rArr; ip4_frag &rArr; pbuf_alloc &rArr; pbuf_free &rArr; mem_free &rArr; sys_arch_sem_wait &rArr; OSSemPend &rArr; OS_Pend &rArr; OS_TaskBlock &rArr; OS_TickListInsert
 </UL>
 <BR>[Calls]<UL><LI><a href="#[86]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;USART_OUT
 <LI><a href="#[7d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;OSTimeDly
@@ -7345,7 +7345,7 @@ Local Symbols
 </UL>
 <P><STRONG><a name="[69]"></a>tcpip_thread</STRONG> (Thumb, 146 bytes, Stack size 8 bytes, tcpip.o(.text))
 <BR><BR>[Stack]<UL><LI>Max Depth = 228 + Unknown Stack Size
-<LI>Call Chain = tcpip_thread &rArr; sys_timeouts_mbox_fetch &rArr; sys_check_timeouts &rArr; sys_arch_sem_wait &rArr; OSSemPend &rArr; OS_Pend &rArr; OS_TaskBlock &rArr; OS_RdyListRemove &rArr; OS_PrioRemove
+<LI>Call Chain = tcpip_thread &rArr; sys_timeouts_mbox_fetch &rArr; sys_check_timeouts &rArr; sys_arch_sem_wait &rArr; OSSemPend &rArr; OS_Pend &rArr; OS_TaskBlock &rArr; OS_TickListInsert
 </UL>
 <BR>[Calls]<UL><LI><a href="#[251]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;memp_free
 <LI><a href="#[232]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;sys_sem_signal
@@ -7357,7 +7357,7 @@ Local Symbols
 </UL>
 <P><STRONG><a name="[6a]"></a>pbuf_free_int</STRONG> (Thumb, 14 bytes, Stack size 16 bytes, tcpip.o(.text))
 <BR><BR>[Stack]<UL><LI>Max Depth = 236 + Unknown Stack Size
-<LI>Call Chain = pbuf_free_int &rArr; pbuf_free &rArr; mem_free &rArr; sys_arch_sem_wait &rArr; OSSemPend &rArr; OS_Pend &rArr; OS_TaskBlock &rArr; OS_RdyListRemove &rArr; OS_PrioRemove
+<LI>Call Chain = pbuf_free_int &rArr; pbuf_free &rArr; mem_free &rArr; sys_arch_sem_wait &rArr; OSSemPend &rArr; OS_Pend &rArr; OS_TaskBlock &rArr; OS_TickListInsert
 </UL>
 <BR>[Calls]<UL><LI><a href="#[23c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;pbuf_free
 </UL>
@@ -7384,7 +7384,7 @@ Local Symbols
 </UL>
 <P><STRONG><a name="[267]"></a>low_level_input</STRONG> (Thumb, 98 bytes, Stack size 56 bytes, ethernetif.o(.text))
 <BR><BR>[Stack]<UL><LI>Max Depth = 316 + Unknown Stack Size
-<LI>Call Chain = low_level_input &rArr; pbuf_alloc &rArr; pbuf_free &rArr; mem_free &rArr; sys_arch_sem_wait &rArr; OSSemPend &rArr; OS_Pend &rArr; OS_TaskBlock &rArr; OS_RdyListRemove &rArr; OS_PrioRemove
+<LI>Call Chain = low_level_input &rArr; pbuf_alloc &rArr; pbuf_free &rArr; mem_free &rArr; sys_arch_sem_wait &rArr; OSSemPend &rArr; OS_Pend &rArr; OS_TaskBlock &rArr; OS_TickListInsert
 </UL>
 <BR>[Calls]<UL><LI><a href="#[268]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;lan8720_rxDMA_config
 <LI><a href="#[269]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;lan8720_rx_packet
@@ -7445,7 +7445,7 @@ Local Symbols
 
 <P><STRONG><a name="[286]"></a>netif_issue_reports</STRONG> (Thumb, 36 bytes, Stack size 16 bytes, netif.o(.text))
 <BR><BR>[Stack]<UL><LI>Max Depth = 372 + Unknown Stack Size
-<LI>Call Chain = netif_issue_reports &rArr; etharp_request &rArr; etharp_request_dst &rArr; etharp_raw &rArr; pbuf_alloc &rArr; pbuf_free &rArr; mem_free &rArr; sys_arch_sem_wait &rArr; OSSemPend &rArr; OS_Pend &rArr; OS_TaskBlock &rArr; OS_RdyListRemove &rArr; OS_PrioRemove
+<LI>Call Chain = netif_issue_reports &rArr; etharp_request &rArr; etharp_request_dst &rArr; etharp_raw &rArr; pbuf_alloc &rArr; pbuf_free &rArr; mem_free &rArr; sys_arch_sem_wait &rArr; OSSemPend &rArr; OS_Pend &rArr; OS_TaskBlock &rArr; OS_TickListInsert
 </UL>
 <BR>[Calls]<UL><LI><a href="#[287]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;etharp_request
 </UL>
@@ -7470,7 +7470,7 @@ Local Symbols
 
 <P><STRONG><a name="[2b0]"></a>tcp_close_shutdown_fin</STRONG> (Thumb, 132 bytes, Stack size 16 bytes, tcp.o(.text))
 <BR><BR>[Stack]<UL><LI>Max Depth = 564 + Unknown Stack Size
-<LI>Call Chain = tcp_close_shutdown_fin &rArr; tcp_output &rArr; tcp_output_segment &rArr; ip4_output_if &rArr; ip4_output_if_src &rArr; ip4_frag &rArr; pbuf_alloc &rArr; pbuf_free &rArr; mem_free &rArr; sys_arch_sem_wait &rArr; OSSemPend &rArr; OS_Pend &rArr; OS_TaskBlock &rArr; OS_RdyListRemove &rArr; OS_PrioRemove
+<LI>Call Chain = tcp_close_shutdown_fin &rArr; tcp_output &rArr; tcp_output_segment &rArr; ip4_output_if &rArr; ip4_output_if_src &rArr; ip4_frag &rArr; pbuf_alloc &rArr; pbuf_free &rArr; mem_free &rArr; sys_arch_sem_wait &rArr; OSSemPend &rArr; OS_Pend &rArr; OS_TaskBlock &rArr; OS_TickListInsert
 </UL>
 <BR>[Calls]<UL><LI><a href="#[2af]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;tcp_output
 <LI><a href="#[2b1]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;tcp_send_fin
@@ -7495,7 +7495,7 @@ Local Symbols
 
 <P><STRONG><a name="[2b5]"></a>tcp_close_shutdown</STRONG> (Thumb, 364 bytes, Stack size 24 bytes, tcp.o(.text))
 <BR><BR>[Stack]<UL><LI>Max Depth = 588 + Unknown Stack Size
-<LI>Call Chain = tcp_close_shutdown &rArr; tcp_pcb_remove &rArr; tcp_output &rArr; tcp_output_segment &rArr; ip4_output_if &rArr; ip4_output_if_src &rArr; ip4_frag &rArr; pbuf_alloc &rArr; pbuf_free &rArr; mem_free &rArr; sys_arch_sem_wait &rArr; OSSemPend &rArr; OS_Pend &rArr; OS_TaskBlock &rArr; OS_RdyListRemove &rArr; OS_PrioRemove
+<LI>Call Chain = tcp_close_shutdown &rArr; tcp_pcb_remove &rArr; tcp_output &rArr; tcp_output_segment &rArr; ip4_output_if &rArr; ip4_output_if_src &rArr; ip4_frag &rArr; pbuf_alloc &rArr; pbuf_free &rArr; mem_free &rArr; sys_arch_sem_wait &rArr; OSSemPend &rArr; OS_Pend &rArr; OS_TaskBlock &rArr; OS_TickListInsert
 </UL>
 <BR>[Calls]<UL><LI><a href="#[251]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;memp_free
 <LI><a href="#[2b7]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;tcp_trigger_input_pcb_close
@@ -7518,7 +7518,7 @@ Local Symbols
 
 <P><STRONG><a name="[6e]"></a>tcp_accept_null</STRONG> (Thumb, 20 bytes, Stack size 16 bytes, tcp.o(.text))
 <BR><BR>[Stack]<UL><LI>Max Depth = 636 + Unknown Stack Size
-<LI>Call Chain = tcp_accept_null &rArr; tcp_abort &rArr; tcp_abandon &rArr; tcp_pcb_remove &rArr; tcp_output &rArr; tcp_output_segment &rArr; ip4_output_if &rArr; ip4_output_if_src &rArr; ip4_frag &rArr; pbuf_alloc &rArr; pbuf_free &rArr; mem_free &rArr; sys_arch_sem_wait &rArr; OSSemPend &rArr; OS_Pend &rArr; OS_TaskBlock &rArr; OS_RdyListRemove &rArr; OS_PrioRemove
+<LI>Call Chain = tcp_accept_null &rArr; tcp_abort &rArr; tcp_abandon &rArr; tcp_pcb_remove &rArr; tcp_output &rArr; tcp_output_segment &rArr; ip4_output_if &rArr; ip4_output_if_src &rArr; ip4_frag &rArr; pbuf_alloc &rArr; pbuf_free &rArr; mem_free &rArr; sys_arch_sem_wait &rArr; OSSemPend &rArr; OS_Pend &rArr; OS_TaskBlock &rArr; OS_TickListInsert
 </UL>
 <BR>[Calls]<UL><LI><a href="#[2c0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;tcp_abort
 </UL>
@@ -7526,7 +7526,7 @@ Local Symbols
 </UL>
 <P><STRONG><a name="[2cb]"></a>tcp_kill_prio</STRONG> (Thumb, 78 bytes, Stack size 24 bytes, tcp.o(.text))
 <BR><BR>[Stack]<UL><LI>Max Depth = 644 + Unknown Stack Size
-<LI>Call Chain = tcp_kill_prio &rArr; tcp_abort &rArr; tcp_abandon &rArr; tcp_pcb_remove &rArr; tcp_output &rArr; tcp_output_segment &rArr; ip4_output_if &rArr; ip4_output_if_src &rArr; ip4_frag &rArr; pbuf_alloc &rArr; pbuf_free &rArr; mem_free &rArr; sys_arch_sem_wait &rArr; OSSemPend &rArr; OS_Pend &rArr; OS_TaskBlock &rArr; OS_RdyListRemove &rArr; OS_PrioRemove
+<LI>Call Chain = tcp_kill_prio &rArr; tcp_abort &rArr; tcp_abandon &rArr; tcp_pcb_remove &rArr; tcp_output &rArr; tcp_output_segment &rArr; ip4_output_if &rArr; ip4_output_if_src &rArr; ip4_frag &rArr; pbuf_alloc &rArr; pbuf_free &rArr; mem_free &rArr; sys_arch_sem_wait &rArr; OSSemPend &rArr; OS_Pend &rArr; OS_TaskBlock &rArr; OS_TickListInsert
 </UL>
 <BR>[Calls]<UL><LI><a href="#[2c0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;tcp_abort
 </UL>
@@ -7535,7 +7535,7 @@ Local Symbols
 
 <P><STRONG><a name="[2cc]"></a>tcp_kill_state</STRONG> (Thumb, 276 bytes, Stack size 24 bytes, tcp.o(.text))
 <BR><BR>[Stack]<UL><LI>Max Depth = 636 + Unknown Stack Size
-<LI>Call Chain = tcp_kill_state &rArr; tcp_abandon &rArr; tcp_pcb_remove &rArr; tcp_output &rArr; tcp_output_segment &rArr; ip4_output_if &rArr; ip4_output_if_src &rArr; ip4_frag &rArr; pbuf_alloc &rArr; pbuf_free &rArr; mem_free &rArr; sys_arch_sem_wait &rArr; OSSemPend &rArr; OS_Pend &rArr; OS_TaskBlock &rArr; OS_RdyListRemove &rArr; OS_PrioRemove
+<LI>Call Chain = tcp_kill_state &rArr; tcp_abandon &rArr; tcp_pcb_remove &rArr; tcp_output &rArr; tcp_output_segment &rArr; ip4_output_if &rArr; ip4_output_if_src &rArr; ip4_frag &rArr; pbuf_alloc &rArr; pbuf_free &rArr; mem_free &rArr; sys_arch_sem_wait &rArr; OSSemPend &rArr; OS_Pend &rArr; OS_TaskBlock &rArr; OS_TickListInsert
 </UL>
 <BR>[Calls]<UL><LI><a href="#[2bf]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;tcp_abandon
 <LI><a href="#[227]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__2printf
@@ -7545,7 +7545,7 @@ Local Symbols
 
 <P><STRONG><a name="[2cd]"></a>tcp_kill_timewait</STRONG> (Thumb, 50 bytes, Stack size 16 bytes, tcp.o(.text))
 <BR><BR>[Stack]<UL><LI>Max Depth = 636 + Unknown Stack Size
-<LI>Call Chain = tcp_kill_timewait &rArr; tcp_abort &rArr; tcp_abandon &rArr; tcp_pcb_remove &rArr; tcp_output &rArr; tcp_output_segment &rArr; ip4_output_if &rArr; ip4_output_if_src &rArr; ip4_frag &rArr; pbuf_alloc &rArr; pbuf_free &rArr; mem_free &rArr; sys_arch_sem_wait &rArr; OSSemPend &rArr; OS_Pend &rArr; OS_TaskBlock &rArr; OS_RdyListRemove &rArr; OS_PrioRemove
+<LI>Call Chain = tcp_kill_timewait &rArr; tcp_abort &rArr; tcp_abandon &rArr; tcp_pcb_remove &rArr; tcp_output &rArr; tcp_output_segment &rArr; ip4_output_if &rArr; ip4_output_if_src &rArr; ip4_frag &rArr; pbuf_alloc &rArr; pbuf_free &rArr; mem_free &rArr; sys_arch_sem_wait &rArr; OSSemPend &rArr; OS_Pend &rArr; OS_TaskBlock &rArr; OS_TickListInsert
 </UL>
 <BR>[Calls]<UL><LI><a href="#[2c0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;tcp_abort
 </UL>
@@ -7554,7 +7554,7 @@ Local Symbols
 
 <P><STRONG><a name="[2d5]"></a>tcp_netif_ip_addr_changed_pcblist</STRONG> (Thumb, 42 bytes, Stack size 24 bytes, tcp.o(.text))
 <BR><BR>[Stack]<UL><LI>Max Depth = 644 + Unknown Stack Size
-<LI>Call Chain = tcp_netif_ip_addr_changed_pcblist &rArr; tcp_abort &rArr; tcp_abandon &rArr; tcp_pcb_remove &rArr; tcp_output &rArr; tcp_output_segment &rArr; ip4_output_if &rArr; ip4_output_if_src &rArr; ip4_frag &rArr; pbuf_alloc &rArr; pbuf_free &rArr; mem_free &rArr; sys_arch_sem_wait &rArr; OSSemPend &rArr; OS_Pend &rArr; OS_TaskBlock &rArr; OS_RdyListRemove &rArr; OS_PrioRemove
+<LI>Call Chain = tcp_netif_ip_addr_changed_pcblist &rArr; tcp_abort &rArr; tcp_abandon &rArr; tcp_pcb_remove &rArr; tcp_output &rArr; tcp_output_segment &rArr; ip4_output_if &rArr; ip4_output_if_src &rArr; ip4_frag &rArr; pbuf_alloc &rArr; pbuf_free &rArr; mem_free &rArr; sys_arch_sem_wait &rArr; OSSemPend &rArr; OS_Pend &rArr; OS_TaskBlock &rArr; OS_TickListInsert
 </UL>
 <BR>[Calls]<UL><LI><a href="#[2c0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;tcp_abort
 </UL>
@@ -7563,7 +7563,7 @@ Local Symbols
 
 <P><STRONG><a name="[2d6]"></a>tcp_input_delayed_close</STRONG> (Thumb, 68 bytes, Stack size 8 bytes, tcp_in.o(.text))
 <BR><BR>[Stack]<UL><LI>Max Depth = 572 + Unknown Stack Size
-<LI>Call Chain = tcp_input_delayed_close &rArr; tcp_pcb_remove &rArr; tcp_output &rArr; tcp_output_segment &rArr; ip4_output_if &rArr; ip4_output_if_src &rArr; ip4_frag &rArr; pbuf_alloc &rArr; pbuf_free &rArr; mem_free &rArr; sys_arch_sem_wait &rArr; OSSemPend &rArr; OS_Pend &rArr; OS_TaskBlock &rArr; OS_RdyListRemove &rArr; OS_PrioRemove
+<LI>Call Chain = tcp_input_delayed_close &rArr; tcp_pcb_remove &rArr; tcp_output &rArr; tcp_output_segment &rArr; ip4_output_if &rArr; ip4_output_if_src &rArr; ip4_frag &rArr; pbuf_alloc &rArr; pbuf_free &rArr; mem_free &rArr; sys_arch_sem_wait &rArr; OSSemPend &rArr; OS_Pend &rArr; OS_TaskBlock &rArr; OS_TickListInsert
 </UL>
 <BR>[Calls]<UL><LI><a href="#[251]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;memp_free
 <LI><a href="#[2b2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;tcp_pcb_remove
@@ -7573,7 +7573,7 @@ Local Symbols
 
 <P><STRONG><a name="[2d7]"></a>tcp_receive</STRONG> (Thumb, 2036 bytes, Stack size 40 bytes, tcp_in.o(.text))
 <BR><BR>[Stack]<UL><LI>Max Depth = 548 + Unknown Stack Size
-<LI>Call Chain = tcp_receive &rArr; tcp_send_empty_ack &rArr; ip4_output_if &rArr; ip4_output_if_src &rArr; ip4_frag &rArr; pbuf_alloc &rArr; pbuf_free &rArr; mem_free &rArr; sys_arch_sem_wait &rArr; OSSemPend &rArr; OS_Pend &rArr; OS_TaskBlock &rArr; OS_RdyListRemove &rArr; OS_PrioRemove
+<LI>Call Chain = tcp_receive &rArr; tcp_send_empty_ack &rArr; ip4_output_if &rArr; ip4_output_if_src &rArr; ip4_frag &rArr; pbuf_alloc &rArr; pbuf_free &rArr; mem_free &rArr; sys_arch_sem_wait &rArr; OSSemPend &rArr; OS_Pend &rArr; OS_TaskBlock &rArr; OS_TickListInsert
 </UL>
 <BR>[Calls]<UL><LI><a href="#[2db]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;tcp_send_empty_ack
 <LI><a href="#[2d8]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;tcp_rexmit_fast
@@ -7604,7 +7604,7 @@ Local Symbols
 
 <P><STRONG><a name="[2de]"></a>tcp_process</STRONG> (Thumb, 1660 bytes, Stack size 32 bytes, tcp_in.o(.text))
 <BR><BR>[Stack]<UL><LI>Max Depth = 652 + Unknown Stack Size
-<LI>Call Chain = tcp_process &rArr; tcp_abort &rArr; tcp_abandon &rArr; tcp_pcb_remove &rArr; tcp_output &rArr; tcp_output_segment &rArr; ip4_output_if &rArr; ip4_output_if_src &rArr; ip4_frag &rArr; pbuf_alloc &rArr; pbuf_free &rArr; mem_free &rArr; sys_arch_sem_wait &rArr; OSSemPend &rArr; OS_Pend &rArr; OS_TaskBlock &rArr; OS_RdyListRemove &rArr; OS_PrioRemove
+<LI>Call Chain = tcp_process &rArr; tcp_abort &rArr; tcp_abandon &rArr; tcp_pcb_remove &rArr; tcp_output &rArr; tcp_output_segment &rArr; ip4_output_if &rArr; ip4_output_if_src &rArr; ip4_frag &rArr; pbuf_alloc &rArr; pbuf_free &rArr; mem_free &rArr; sys_arch_sem_wait &rArr; OSSemPend &rArr; OS_Pend &rArr; OS_TaskBlock &rArr; OS_TickListInsert
 </UL>
 <BR>[Calls]<UL><LI><a href="#[2c0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;tcp_abort
 <LI><a href="#[2df]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;tcp_rexmit
@@ -7623,7 +7623,7 @@ Local Symbols
 
 <P><STRONG><a name="[2e0]"></a>tcp_listen_input</STRONG> (Thumb, 296 bytes, Stack size 32 bytes, tcp_in.o(.text))
 <BR><BR>[Stack]<UL><LI>Max Depth = 692 + Unknown Stack Size
-<LI>Call Chain = tcp_listen_input &rArr; tcp_alloc &rArr; tcp_kill_prio &rArr; tcp_abort &rArr; tcp_abandon &rArr; tcp_pcb_remove &rArr; tcp_output &rArr; tcp_output_segment &rArr; ip4_output_if &rArr; ip4_output_if_src &rArr; ip4_frag &rArr; pbuf_alloc &rArr; pbuf_free &rArr; mem_free &rArr; sys_arch_sem_wait &rArr; OSSemPend &rArr; OS_Pend &rArr; OS_TaskBlock &rArr; OS_RdyListRemove &rArr; OS_PrioRemove
+<LI>Call Chain = tcp_listen_input &rArr; tcp_alloc &rArr; tcp_kill_prio &rArr; tcp_abort &rArr; tcp_abandon &rArr; tcp_pcb_remove &rArr; tcp_output &rArr; tcp_output_segment &rArr; ip4_output_if &rArr; ip4_output_if_src &rArr; ip4_frag &rArr; pbuf_alloc &rArr; pbuf_free &rArr; mem_free &rArr; sys_arch_sem_wait &rArr; OSSemPend &rArr; OS_Pend &rArr; OS_TaskBlock &rArr; OS_TickListInsert
 </UL>
 <BR>[Calls]<UL><LI><a href="#[2af]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;tcp_output
 <LI><a href="#[2dc]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;tcp_parseopt
@@ -7640,7 +7640,7 @@ Local Symbols
 
 <P><STRONG><a name="[2e1]"></a>tcp_timewait_input</STRONG> (Thumb, 134 bytes, Stack size 16 bytes, tcp_in.o(.text))
 <BR><BR>[Stack]<UL><LI>Max Depth = 564 + Unknown Stack Size
-<LI>Call Chain = tcp_timewait_input &rArr; tcp_output &rArr; tcp_output_segment &rArr; ip4_output_if &rArr; ip4_output_if_src &rArr; ip4_frag &rArr; pbuf_alloc &rArr; pbuf_free &rArr; mem_free &rArr; sys_arch_sem_wait &rArr; OSSemPend &rArr; OS_Pend &rArr; OS_TaskBlock &rArr; OS_RdyListRemove &rArr; OS_PrioRemove
+<LI>Call Chain = tcp_timewait_input &rArr; tcp_output &rArr; tcp_output_segment &rArr; ip4_output_if &rArr; ip4_output_if_src &rArr; ip4_frag &rArr; pbuf_alloc &rArr; pbuf_free &rArr; mem_free &rArr; sys_arch_sem_wait &rArr; OSSemPend &rArr; OS_Pend &rArr; OS_TaskBlock &rArr; OS_TickListInsert
 </UL>
 <BR>[Calls]<UL><LI><a href="#[2af]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;tcp_output
 <LI><a href="#[2ae]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;tcp_rst
@@ -7650,7 +7650,7 @@ Local Symbols
 
 <P><STRONG><a name="[2e4]"></a>tcp_output_alloc_header</STRONG> (Thumb, 152 bytes, Stack size 32 bytes, tcp_out.o(.text))
 <BR><BR>[Stack]<UL><LI>Max Depth = 292 + Unknown Stack Size
-<LI>Call Chain = tcp_output_alloc_header &rArr; pbuf_alloc &rArr; pbuf_free &rArr; mem_free &rArr; sys_arch_sem_wait &rArr; OSSemPend &rArr; OS_Pend &rArr; OS_TaskBlock &rArr; OS_RdyListRemove &rArr; OS_PrioRemove
+<LI>Call Chain = tcp_output_alloc_header &rArr; pbuf_alloc &rArr; pbuf_free &rArr; mem_free &rArr; sys_arch_sem_wait &rArr; OSSemPend &rArr; OS_Pend &rArr; OS_TaskBlock &rArr; OS_TickListInsert
 </UL>
 <BR>[Calls]<UL><LI><a href="#[239]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;pbuf_alloc
 <LI><a href="#[2da]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;lwip_htonl
@@ -7664,7 +7664,7 @@ Local Symbols
 
 <P><STRONG><a name="[2e5]"></a>tcp_create_segment</STRONG> (Thumb, 218 bytes, Stack size 40 bytes, tcp_out.o(.text))
 <BR><BR>[Stack]<UL><LI>Max Depth = 268 + Unknown Stack Size
-<LI>Call Chain = tcp_create_segment &rArr; tcp_seg_free &rArr; pbuf_free &rArr; mem_free &rArr; sys_arch_sem_wait &rArr; OSSemPend &rArr; OS_Pend &rArr; OS_TaskBlock &rArr; OS_RdyListRemove &rArr; OS_PrioRemove
+<LI>Call Chain = tcp_create_segment &rArr; tcp_seg_free &rArr; pbuf_free &rArr; mem_free &rArr; sys_arch_sem_wait &rArr; OSSemPend &rArr; OS_Pend &rArr; OS_TaskBlock &rArr; OS_TickListInsert
 </UL>
 <BR>[Calls]<UL><LI><a href="#[254]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;memp_malloc
 <LI><a href="#[23c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;pbuf_free
@@ -7693,20 +7693,20 @@ Local Symbols
 
 <P><STRONG><a name="[2ea]"></a>tcp_output_segment</STRONG> (Thumb, 214 bytes, Stack size 48 bytes, tcp_out.o(.text))
 <BR><BR>[Stack]<UL><LI>Max Depth = 508 + Unknown Stack Size
-<LI>Call Chain = tcp_output_segment &rArr; ip4_output_if &rArr; ip4_output_if_src &rArr; ip4_frag &rArr; pbuf_alloc &rArr; pbuf_free &rArr; mem_free &rArr; sys_arch_sem_wait &rArr; OSSemPend &rArr; OS_Pend &rArr; OS_TaskBlock &rArr; OS_RdyListRemove &rArr; OS_PrioRemove
+<LI>Call Chain = tcp_output_segment &rArr; ip4_output_if &rArr; ip4_output_if_src &rArr; ip4_frag &rArr; pbuf_alloc &rArr; pbuf_free &rArr; mem_free &rArr; sys_arch_sem_wait &rArr; OSSemPend &rArr; OS_Pend &rArr; OS_TaskBlock &rArr; OS_TickListInsert
 </UL>
-<BR>[Calls]<UL><LI><a href="#[2e9]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ip4_output_if
-<LI><a href="#[2c5]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;tcp_eff_send_mss_impl
+<BR>[Calls]<UL><LI><a href="#[2c5]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;tcp_eff_send_mss_impl
 <LI><a href="#[270]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ip_chksum_pseudo
 <LI><a href="#[2da]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;lwip_htonl
 <LI><a href="#[261]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;lwip_htons
+<LI><a href="#[2e9]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ip4_output_if
 </UL>
 <BR>[Called By]<UL><LI><a href="#[2af]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;tcp_output
 </UL>
 
 <P><STRONG><a name="[6f]"></a>tcpip_tcp_timer</STRONG> (Thumb, 40 bytes, Stack size 8 bytes, timeouts.o(.text))
 <BR><BR>[Stack]<UL><LI>Max Depth = 676 + Unknown Stack Size
-<LI>Call Chain = tcpip_tcp_timer &rArr; tcp_tmr &rArr; tcp_fasttmr &rArr; tcp_process_refused_data &rArr; tcp_recv_null &rArr; tcp_close &rArr; tcp_close_shutdown &rArr; tcp_pcb_remove &rArr; tcp_output &rArr; tcp_output_segment &rArr; ip4_output_if &rArr; ip4_output_if_src &rArr; ip4_frag &rArr; pbuf_alloc &rArr; pbuf_free &rArr; mem_free &rArr; sys_arch_sem_wait &rArr; OSSemPend &rArr; OS_Pend &rArr; OS_TaskBlock &rArr; OS_RdyListRemove &rArr; OS_PrioRemove
+<LI>Call Chain = tcpip_tcp_timer &rArr; tcp_tmr &rArr; tcp_fasttmr &rArr; tcp_process_refused_data &rArr; tcp_recv_null &rArr; tcp_close &rArr; tcp_close_shutdown &rArr; tcp_pcb_remove &rArr; tcp_output &rArr; tcp_output_segment &rArr; ip4_output_if &rArr; ip4_output_if_src &rArr; ip4_frag &rArr; pbuf_alloc &rArr; pbuf_free &rArr; mem_free &rArr; sys_arch_sem_wait &rArr; OSSemPend &rArr; OS_Pend &rArr; OS_TaskBlock &rArr; OS_TickListInsert
 </UL>
 <BR>[Calls]<UL><LI><a href="#[76]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;tcp_tmr
 <LI><a href="#[2eb]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;sys_timeout
@@ -7723,7 +7723,7 @@ Local Symbols
 </UL>
 <P><STRONG><a name="[2ed]"></a>sys_check_timeouts</STRONG> (Thumb, 114 bytes, Stack size 32 bytes, timeouts.o(.text))
 <BR><BR>[Stack]<UL><LI>Max Depth = 204 + Unknown Stack Size
-<LI>Call Chain = sys_check_timeouts &rArr; sys_arch_sem_wait &rArr; OSSemPend &rArr; OS_Pend &rArr; OS_TaskBlock &rArr; OS_RdyListRemove &rArr; OS_PrioRemove
+<LI>Call Chain = sys_check_timeouts &rArr; sys_arch_sem_wait &rArr; OSSemPend &rArr; OS_Pend &rArr; OS_TaskBlock &rArr; OS_TickListInsert
 </UL>
 <BR>[Calls]<UL><LI><a href="#[251]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;memp_free
 <LI><a href="#[237]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;sys_now
@@ -7756,7 +7756,7 @@ Local Symbols
 
 <P><STRONG><a name="[2f9]"></a>dhcp_delete_msg</STRONG> (Thumb, 102 bytes, Stack size 8 bytes, dhcp_2.o(.text))
 <BR><BR>[Stack]<UL><LI>Max Depth = 228 + Unknown Stack Size
-<LI>Call Chain = dhcp_delete_msg &rArr; pbuf_free &rArr; mem_free &rArr; sys_arch_sem_wait &rArr; OSSemPend &rArr; OS_Pend &rArr; OS_TaskBlock &rArr; OS_RdyListRemove &rArr; OS_PrioRemove
+<LI>Call Chain = dhcp_delete_msg &rArr; pbuf_free &rArr; mem_free &rArr; sys_arch_sem_wait &rArr; OSSemPend &rArr; OS_Pend &rArr; OS_TaskBlock &rArr; OS_TickListInsert
 </UL>
 <BR>[Calls]<UL><LI><a href="#[23c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;pbuf_free
 <LI><a href="#[227]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__2printf
@@ -7841,7 +7841,7 @@ Local Symbols
 
 <P><STRONG><a name="[2ff]"></a>dhcp_create_msg</STRONG> (Thumb, 1120 bytes, Stack size 24 bytes, dhcp_2.o(.text))
 <BR><BR>[Stack]<UL><LI>Max Depth = 284 + Unknown Stack Size
-<LI>Call Chain = dhcp_create_msg &rArr; pbuf_alloc &rArr; pbuf_free &rArr; mem_free &rArr; sys_arch_sem_wait &rArr; OSSemPend &rArr; OS_Pend &rArr; OS_TaskBlock &rArr; OS_RdyListRemove &rArr; OS_PrioRemove
+<LI>Call Chain = dhcp_create_msg &rArr; pbuf_alloc &rArr; pbuf_free &rArr; mem_free &rArr; sys_arch_sem_wait &rArr; OSSemPend &rArr; OS_Pend &rArr; OS_TaskBlock &rArr; OS_TickListInsert
 </UL>
 <BR>[Calls]<UL><LI><a href="#[239]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;pbuf_alloc
 <LI><a href="#[2da]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;lwip_htonl
@@ -7876,7 +7876,7 @@ Local Symbols
 
 <P><STRONG><a name="[300]"></a>dhcp_select</STRONG> (Thumb, 242 bytes, Stack size 40 bytes, dhcp_2.o(.text))
 <BR><BR>[Stack]<UL><LI>Max Depth = 508 + Unknown Stack Size
-<LI>Call Chain = dhcp_select &rArr; udp_sendto_if_src &rArr; ip4_output_if_src &rArr; ip4_frag &rArr; pbuf_alloc &rArr; pbuf_free &rArr; mem_free &rArr; sys_arch_sem_wait &rArr; OSSemPend &rArr; OS_Pend &rArr; OS_TaskBlock &rArr; OS_RdyListRemove &rArr; OS_PrioRemove
+<LI>Call Chain = dhcp_select &rArr; udp_sendto_if_src &rArr; ip4_output_if_src &rArr; ip4_frag &rArr; pbuf_alloc &rArr; pbuf_free &rArr; mem_free &rArr; sys_arch_sem_wait &rArr; OSSemPend &rArr; OS_Pend &rArr; OS_TaskBlock &rArr; OS_TickListInsert
 </UL>
 <BR>[Calls]<UL><LI><a href="#[294]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;pbuf_realloc
 <LI><a href="#[2da]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;lwip_htonl
@@ -7896,7 +7896,7 @@ Local Symbols
 
 <P><STRONG><a name="[302]"></a>dhcp_handle_offer</STRONG> (Thumb, 36 bytes, Stack size 16 bytes, dhcp_2.o(.text))
 <BR><BR>[Stack]<UL><LI>Max Depth = 524 + Unknown Stack Size
-<LI>Call Chain = dhcp_handle_offer &rArr; dhcp_select &rArr; udp_sendto_if_src &rArr; ip4_output_if_src &rArr; ip4_frag &rArr; pbuf_alloc &rArr; pbuf_free &rArr; mem_free &rArr; sys_arch_sem_wait &rArr; OSSemPend &rArr; OS_Pend &rArr; OS_TaskBlock &rArr; OS_RdyListRemove &rArr; OS_PrioRemove
+<LI>Call Chain = dhcp_handle_offer &rArr; dhcp_select &rArr; udp_sendto_if_src &rArr; ip4_output_if_src &rArr; ip4_frag &rArr; pbuf_alloc &rArr; pbuf_free &rArr; mem_free &rArr; sys_arch_sem_wait &rArr; OSSemPend &rArr; OS_Pend &rArr; OS_TaskBlock &rArr; OS_TickListInsert
 </UL>
 <BR>[Calls]<UL><LI><a href="#[2da]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;lwip_htonl
 <LI><a href="#[300]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;dhcp_select
@@ -7906,7 +7906,7 @@ Local Symbols
 
 <P><STRONG><a name="[303]"></a>dhcp_discover</STRONG> (Thumb, 196 bytes, Stack size 32 bytes, dhcp_2.o(.text))
 <BR><BR>[Stack]<UL><LI>Max Depth = 500 + Unknown Stack Size
-<LI>Call Chain = dhcp_discover &rArr; udp_sendto_if_src &rArr; ip4_output_if_src &rArr; ip4_frag &rArr; pbuf_alloc &rArr; pbuf_free &rArr; mem_free &rArr; sys_arch_sem_wait &rArr; OSSemPend &rArr; OS_Pend &rArr; OS_TaskBlock &rArr; OS_RdyListRemove &rArr; OS_PrioRemove
+<LI>Call Chain = dhcp_discover &rArr; udp_sendto_if_src &rArr; ip4_output_if_src &rArr; ip4_frag &rArr; pbuf_alloc &rArr; pbuf_free &rArr; mem_free &rArr; sys_arch_sem_wait &rArr; OSSemPend &rArr; OS_Pend &rArr; OS_TaskBlock &rArr; OS_TickListInsert
 </UL>
 <BR>[Calls]<UL><LI><a href="#[294]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;pbuf_realloc
 <LI><a href="#[301]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;dhcp_set_state
@@ -7927,7 +7927,7 @@ Local Symbols
 
 <P><STRONG><a name="[304]"></a>dhcp_handle_nak</STRONG> (Thumb, 34 bytes, Stack size 16 bytes, dhcp_2.o(.text))
 <BR><BR>[Stack]<UL><LI>Max Depth = 724 + Unknown Stack Size
-<LI>Call Chain = dhcp_handle_nak &rArr; netif_set_addr &rArr; netif_set_ipaddr &rArr; tcp_netif_ip_addr_changed &rArr; tcp_netif_ip_addr_changed_pcblist &rArr; tcp_abort &rArr; tcp_abandon &rArr; tcp_pcb_remove &rArr; tcp_output &rArr; tcp_output_segment &rArr; ip4_output_if &rArr; ip4_output_if_src &rArr; ip4_frag &rArr; pbuf_alloc &rArr; pbuf_free &rArr; mem_free &rArr; sys_arch_sem_wait &rArr; OSSemPend &rArr; OS_Pend &rArr; OS_TaskBlock &rArr; OS_RdyListRemove &rArr; OS_PrioRemove
+<LI>Call Chain = dhcp_handle_nak &rArr; netif_set_addr &rArr; netif_set_ipaddr &rArr; tcp_netif_ip_addr_changed &rArr; tcp_netif_ip_addr_changed_pcblist &rArr; tcp_abort &rArr; tcp_abandon &rArr; tcp_pcb_remove &rArr; tcp_output &rArr; tcp_output_segment &rArr; ip4_output_if &rArr; ip4_output_if_src &rArr; ip4_frag &rArr; pbuf_alloc &rArr; pbuf_free &rArr; mem_free &rArr; sys_arch_sem_wait &rArr; OSSemPend &rArr; OS_Pend &rArr; OS_TaskBlock &rArr; OS_TickListInsert
 </UL>
 <BR>[Calls]<UL><LI><a href="#[28b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;netif_set_addr
 <LI><a href="#[303]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;dhcp_discover
@@ -7938,7 +7938,7 @@ Local Symbols
 
 <P><STRONG><a name="[305]"></a>dhcp_bind</STRONG> (Thumb, 302 bytes, Stack size 24 bytes, dhcp_2.o(.text))
 <BR><BR>[Stack]<UL><LI>Max Depth = 732 + Unknown Stack Size
-<LI>Call Chain = dhcp_bind &rArr; netif_set_addr &rArr; netif_set_ipaddr &rArr; tcp_netif_ip_addr_changed &rArr; tcp_netif_ip_addr_changed_pcblist &rArr; tcp_abort &rArr; tcp_abandon &rArr; tcp_pcb_remove &rArr; tcp_output &rArr; tcp_output_segment &rArr; ip4_output_if &rArr; ip4_output_if_src &rArr; ip4_frag &rArr; pbuf_alloc &rArr; pbuf_free &rArr; mem_free &rArr; sys_arch_sem_wait &rArr; OSSemPend &rArr; OS_Pend &rArr; OS_TaskBlock &rArr; OS_RdyListRemove &rArr; OS_PrioRemove
+<LI>Call Chain = dhcp_bind &rArr; netif_set_addr &rArr; netif_set_ipaddr &rArr; tcp_netif_ip_addr_changed &rArr; tcp_netif_ip_addr_changed_pcblist &rArr; tcp_abort &rArr; tcp_abandon &rArr; tcp_pcb_remove &rArr; tcp_output &rArr; tcp_output_segment &rArr; ip4_output_if &rArr; ip4_output_if_src &rArr; ip4_frag &rArr; pbuf_alloc &rArr; pbuf_free &rArr; mem_free &rArr; sys_arch_sem_wait &rArr; OSSemPend &rArr; OS_Pend &rArr; OS_TaskBlock &rArr; OS_TickListInsert
 </UL>
 <BR>[Calls]<UL><LI><a href="#[28b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;netif_set_addr
 <LI><a href="#[227]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__2printf
@@ -7958,7 +7958,7 @@ Local Symbols
 
 <P><STRONG><a name="[307]"></a>dhcp_check</STRONG> (Thumb, 62 bytes, Stack size 24 bytes, dhcp_2.o(.text))
 <BR><BR>[Stack]<UL><LI>Max Depth = 428 + Unknown Stack Size
-<LI>Call Chain = dhcp_check &rArr; etharp_query &rArr; etharp_request &rArr; etharp_request_dst &rArr; etharp_raw &rArr; pbuf_alloc &rArr; pbuf_free &rArr; mem_free &rArr; sys_arch_sem_wait &rArr; OSSemPend &rArr; OS_Pend &rArr; OS_TaskBlock &rArr; OS_RdyListRemove &rArr; OS_PrioRemove
+<LI>Call Chain = dhcp_check &rArr; etharp_query &rArr; etharp_request &rArr; etharp_request_dst &rArr; etharp_raw &rArr; pbuf_alloc &rArr; pbuf_free &rArr; mem_free &rArr; sys_arch_sem_wait &rArr; OSSemPend &rArr; OS_Pend &rArr; OS_TaskBlock &rArr; OS_TickListInsert
 </UL>
 <BR>[Calls]<UL><LI><a href="#[308]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;etharp_query
 <LI><a href="#[301]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;dhcp_set_state
@@ -7979,7 +7979,7 @@ Local Symbols
 
 <P><STRONG><a name="[71]"></a>dhcp_recv</STRONG> (Thumb, 508 bytes, Stack size 40 bytes, dhcp_2.o(.text))
 <BR><BR>[Stack]<UL><LI>Max Depth = 772 + Unknown Stack Size
-<LI>Call Chain = dhcp_recv &rArr; dhcp_bind &rArr; netif_set_addr &rArr; netif_set_ipaddr &rArr; tcp_netif_ip_addr_changed &rArr; tcp_netif_ip_addr_changed_pcblist &rArr; tcp_abort &rArr; tcp_abandon &rArr; tcp_pcb_remove &rArr; tcp_output &rArr; tcp_output_segment &rArr; ip4_output_if &rArr; ip4_output_if_src &rArr; ip4_frag &rArr; pbuf_alloc &rArr; pbuf_free &rArr; mem_free &rArr; sys_arch_sem_wait &rArr; OSSemPend &rArr; OS_Pend &rArr; OS_TaskBlock &rArr; OS_RdyListRemove &rArr; OS_PrioRemove
+<LI>Call Chain = dhcp_recv &rArr; dhcp_bind &rArr; netif_set_addr &rArr; netif_set_ipaddr &rArr; tcp_netif_ip_addr_changed &rArr; tcp_netif_ip_addr_changed_pcblist &rArr; tcp_abort &rArr; tcp_abandon &rArr; tcp_pcb_remove &rArr; tcp_output &rArr; tcp_output_segment &rArr; ip4_output_if &rArr; ip4_output_if_src &rArr; ip4_frag &rArr; pbuf_alloc &rArr; pbuf_free &rArr; mem_free &rArr; sys_arch_sem_wait &rArr; OSSemPend &rArr; OS_Pend &rArr; OS_TaskBlock &rArr; OS_TickListInsert
 </UL>
 <BR>[Calls]<UL><LI><a href="#[23c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;pbuf_free
 <LI><a href="#[2da]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;lwip_htonl
@@ -8021,7 +8021,7 @@ Local Symbols
 
 <P><STRONG><a name="[30d]"></a>dhcp_t1_timeout</STRONG> (Thumb, 66 bytes, Stack size 16 bytes, dhcp_2.o(.text))
 <BR><BR>[Stack]<UL><LI>Max Depth = 556 + Unknown Stack Size
-<LI>Call Chain = dhcp_t1_timeout &rArr; dhcp_renew &rArr; udp_sendto_if &rArr; udp_sendto_if_src &rArr; ip4_output_if_src &rArr; ip4_frag &rArr; pbuf_alloc &rArr; pbuf_free &rArr; mem_free &rArr; sys_arch_sem_wait &rArr; OSSemPend &rArr; OS_Pend &rArr; OS_TaskBlock &rArr; OS_RdyListRemove &rArr; OS_PrioRemove
+<LI>Call Chain = dhcp_t1_timeout &rArr; dhcp_renew &rArr; udp_sendto_if &rArr; udp_sendto_if_src &rArr; ip4_output_if_src &rArr; ip4_frag &rArr; pbuf_alloc &rArr; pbuf_free &rArr; mem_free &rArr; sys_arch_sem_wait &rArr; OSSemPend &rArr; OS_Pend &rArr; OS_TaskBlock &rArr; OS_TickListInsert
 </UL>
 <BR>[Calls]<UL><LI><a href="#[30c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;dhcp_renew
 </UL>
@@ -8030,7 +8030,7 @@ Local Symbols
 
 <P><STRONG><a name="[30e]"></a>dhcp_rebind</STRONG> (Thumb, 176 bytes, Stack size 32 bytes, dhcp_2.o(.text))
 <BR><BR>[Stack]<UL><LI>Max Depth = 540 + Unknown Stack Size
-<LI>Call Chain = dhcp_rebind &rArr; udp_sendto_if &rArr; udp_sendto_if_src &rArr; ip4_output_if_src &rArr; ip4_frag &rArr; pbuf_alloc &rArr; pbuf_free &rArr; mem_free &rArr; sys_arch_sem_wait &rArr; OSSemPend &rArr; OS_Pend &rArr; OS_TaskBlock &rArr; OS_RdyListRemove &rArr; OS_PrioRemove
+<LI>Call Chain = dhcp_rebind &rArr; udp_sendto_if &rArr; udp_sendto_if_src &rArr; ip4_output_if_src &rArr; ip4_frag &rArr; pbuf_alloc &rArr; pbuf_free &rArr; mem_free &rArr; sys_arch_sem_wait &rArr; OSSemPend &rArr; OS_Pend &rArr; OS_TaskBlock &rArr; OS_TickListInsert
 </UL>
 <BR>[Calls]<UL><LI><a href="#[294]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;pbuf_realloc
 <LI><a href="#[301]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;dhcp_set_state
@@ -8047,7 +8047,7 @@ Local Symbols
 
 <P><STRONG><a name="[30f]"></a>dhcp_t2_timeout</STRONG> (Thumb, 72 bytes, Stack size 16 bytes, dhcp_2.o(.text))
 <BR><BR>[Stack]<UL><LI>Max Depth = 556 + Unknown Stack Size
-<LI>Call Chain = dhcp_t2_timeout &rArr; dhcp_rebind &rArr; udp_sendto_if &rArr; udp_sendto_if_src &rArr; ip4_output_if_src &rArr; ip4_frag &rArr; pbuf_alloc &rArr; pbuf_free &rArr; mem_free &rArr; sys_arch_sem_wait &rArr; OSSemPend &rArr; OS_Pend &rArr; OS_TaskBlock &rArr; OS_RdyListRemove &rArr; OS_PrioRemove
+<LI>Call Chain = dhcp_t2_timeout &rArr; dhcp_rebind &rArr; udp_sendto_if &rArr; udp_sendto_if_src &rArr; ip4_output_if_src &rArr; ip4_frag &rArr; pbuf_alloc &rArr; pbuf_free &rArr; mem_free &rArr; sys_arch_sem_wait &rArr; OSSemPend &rArr; OS_Pend &rArr; OS_TaskBlock &rArr; OS_TickListInsert
 </UL>
 <BR>[Calls]<UL><LI><a href="#[30e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;dhcp_rebind
 </UL>
@@ -8056,7 +8056,7 @@ Local Symbols
 
 <P><STRONG><a name="[312]"></a>dhcp_reboot</STRONG> (Thumb, 312 bytes, Stack size 32 bytes, dhcp_2.o(.text))
 <BR><BR>[Stack]<UL><LI>Max Depth = 540 + Unknown Stack Size
-<LI>Call Chain = dhcp_reboot &rArr; udp_sendto_if &rArr; udp_sendto_if_src &rArr; ip4_output_if_src &rArr; ip4_frag &rArr; pbuf_alloc &rArr; pbuf_free &rArr; mem_free &rArr; sys_arch_sem_wait &rArr; OSSemPend &rArr; OS_Pend &rArr; OS_TaskBlock &rArr; OS_RdyListRemove &rArr; OS_PrioRemove
+<LI>Call Chain = dhcp_reboot &rArr; udp_sendto_if &rArr; udp_sendto_if_src &rArr; ip4_output_if_src &rArr; ip4_frag &rArr; pbuf_alloc &rArr; pbuf_free &rArr; mem_free &rArr; sys_arch_sem_wait &rArr; OSSemPend &rArr; OS_Pend &rArr; OS_TaskBlock &rArr; OS_TickListInsert
 </UL>
 <BR>[Calls]<UL><LI><a href="#[294]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;pbuf_realloc
 <LI><a href="#[2da]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;lwip_htonl
@@ -8076,7 +8076,7 @@ Local Symbols
 
 <P><STRONG><a name="[313]"></a>dhcp_timeout</STRONG> (Thumb, 116 bytes, Stack size 16 bytes, dhcp_2.o(.text))
 <BR><BR>[Stack]<UL><LI>Max Depth = 756 + Unknown Stack Size
-<LI>Call Chain = dhcp_timeout &rArr; dhcp_release &rArr; netif_set_addr &rArr; netif_set_ipaddr &rArr; tcp_netif_ip_addr_changed &rArr; tcp_netif_ip_addr_changed_pcblist &rArr; tcp_abort &rArr; tcp_abandon &rArr; tcp_pcb_remove &rArr; tcp_output &rArr; tcp_output_segment &rArr; ip4_output_if &rArr; ip4_output_if_src &rArr; ip4_frag &rArr; pbuf_alloc &rArr; pbuf_free &rArr; mem_free &rArr; sys_arch_sem_wait &rArr; OSSemPend &rArr; OS_Pend &rArr; OS_TaskBlock &rArr; OS_RdyListRemove &rArr; OS_PrioRemove
+<LI>Call Chain = dhcp_timeout &rArr; dhcp_release &rArr; netif_set_addr &rArr; netif_set_ipaddr &rArr; tcp_netif_ip_addr_changed &rArr; tcp_netif_ip_addr_changed_pcblist &rArr; tcp_abort &rArr; tcp_abandon &rArr; tcp_pcb_remove &rArr; tcp_output &rArr; tcp_output_segment &rArr; ip4_output_if &rArr; ip4_output_if_src &rArr; ip4_frag &rArr; pbuf_alloc &rArr; pbuf_free &rArr; mem_free &rArr; sys_arch_sem_wait &rArr; OSSemPend &rArr; OS_Pend &rArr; OS_TaskBlock &rArr; OS_TickListInsert
 </UL>
 <BR>[Calls]<UL><LI><a href="#[310]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;dhcp_release
 <LI><a href="#[312]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;dhcp_reboot
@@ -8090,7 +8090,7 @@ Local Symbols
 
 <P><STRONG><a name="[317]"></a>dhcp_decline</STRONG> (Thumb, 318 bytes, Stack size 32 bytes, dhcp_2.o(.text))
 <BR><BR>[Stack]<UL><LI>Max Depth = 500 + Unknown Stack Size
-<LI>Call Chain = dhcp_decline &rArr; udp_sendto_if_src &rArr; ip4_output_if_src &rArr; ip4_frag &rArr; pbuf_alloc &rArr; pbuf_free &rArr; mem_free &rArr; sys_arch_sem_wait &rArr; OSSemPend &rArr; OS_Pend &rArr; OS_TaskBlock &rArr; OS_RdyListRemove &rArr; OS_PrioRemove
+<LI>Call Chain = dhcp_decline &rArr; udp_sendto_if_src &rArr; ip4_output_if_src &rArr; ip4_frag &rArr; pbuf_alloc &rArr; pbuf_free &rArr; mem_free &rArr; sys_arch_sem_wait &rArr; OSSemPend &rArr; OS_Pend &rArr; OS_TaskBlock &rArr; OS_TickListInsert
 </UL>
 <BR>[Calls]<UL><LI><a href="#[294]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;pbuf_realloc
 <LI><a href="#[2da]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;lwip_htonl
@@ -8107,7 +8107,7 @@ Local Symbols
 
 <P><STRONG><a name="[319]"></a>etharp_free_entry</STRONG> (Thumb, 58 bytes, Stack size 8 bytes, etharp.o(.text))
 <BR><BR>[Stack]<UL><LI>Max Depth = 228 + Unknown Stack Size
-<LI>Call Chain = etharp_free_entry &rArr; pbuf_free &rArr; mem_free &rArr; sys_arch_sem_wait &rArr; OSSemPend &rArr; OS_Pend &rArr; OS_TaskBlock &rArr; OS_RdyListRemove &rArr; OS_PrioRemove
+<LI>Call Chain = etharp_free_entry &rArr; pbuf_free &rArr; mem_free &rArr; sys_arch_sem_wait &rArr; OSSemPend &rArr; OS_Pend &rArr; OS_TaskBlock &rArr; OS_TickListInsert
 </UL>
 <BR>[Calls]<UL><LI><a href="#[23c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;pbuf_free
 </UL>
@@ -8118,7 +8118,7 @@ Local Symbols
 
 <P><STRONG><a name="[31a]"></a>etharp_raw</STRONG> (Thumb, 222 bytes, Stack size 48 bytes, etharp.o(.text))
 <BR><BR>[Stack]<UL><LI>Max Depth = 308 + Unknown Stack Size
-<LI>Call Chain = etharp_raw &rArr; pbuf_alloc &rArr; pbuf_free &rArr; mem_free &rArr; sys_arch_sem_wait &rArr; OSSemPend &rArr; OS_Pend &rArr; OS_TaskBlock &rArr; OS_RdyListRemove &rArr; OS_PrioRemove
+<LI>Call Chain = etharp_raw &rArr; pbuf_alloc &rArr; pbuf_free &rArr; mem_free &rArr; sys_arch_sem_wait &rArr; OSSemPend &rArr; OS_Pend &rArr; OS_TaskBlock &rArr; OS_TickListInsert
 </UL>
 <BR>[Calls]<UL><LI><a href="#[23c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;pbuf_free
 <LI><a href="#[239]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;pbuf_alloc
@@ -8132,7 +8132,7 @@ Local Symbols
 
 <P><STRONG><a name="[31b]"></a>etharp_request_dst</STRONG> (Thumb, 38 bytes, Stack size 32 bytes, etharp.o(.text))
 <BR><BR>[Stack]<UL><LI>Max Depth = 340 + Unknown Stack Size
-<LI>Call Chain = etharp_request_dst &rArr; etharp_raw &rArr; pbuf_alloc &rArr; pbuf_free &rArr; mem_free &rArr; sys_arch_sem_wait &rArr; OSSemPend &rArr; OS_Pend &rArr; OS_TaskBlock &rArr; OS_RdyListRemove &rArr; OS_PrioRemove
+<LI>Call Chain = etharp_request_dst &rArr; etharp_raw &rArr; pbuf_alloc &rArr; pbuf_free &rArr; mem_free &rArr; sys_arch_sem_wait &rArr; OSSemPend &rArr; OS_Pend &rArr; OS_TaskBlock &rArr; OS_TickListInsert
 </UL>
 <BR>[Calls]<UL><LI><a href="#[31a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;etharp_raw
 </UL>
@@ -8142,7 +8142,7 @@ Local Symbols
 
 <P><STRONG><a name="[31c]"></a>etharp_find_entry</STRONG> (Thumb, 756 bytes, Stack size 48 bytes, etharp.o(.text))
 <BR><BR>[Stack]<UL><LI>Max Depth = 276 + Unknown Stack Size
-<LI>Call Chain = etharp_find_entry &rArr; etharp_free_entry &rArr; pbuf_free &rArr; mem_free &rArr; sys_arch_sem_wait &rArr; OSSemPend &rArr; OS_Pend &rArr; OS_TaskBlock &rArr; OS_RdyListRemove &rArr; OS_PrioRemove
+<LI>Call Chain = etharp_find_entry &rArr; etharp_free_entry &rArr; pbuf_free &rArr; mem_free &rArr; sys_arch_sem_wait &rArr; OSSemPend &rArr; OS_Pend &rArr; OS_TaskBlock &rArr; OS_TickListInsert
 </UL>
 <BR>[Calls]<UL><LI><a href="#[227]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__2printf
 <LI><a href="#[319]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;etharp_free_entry
@@ -8154,7 +8154,7 @@ Local Symbols
 
 <P><STRONG><a name="[31d]"></a>etharp_update_arp_entry</STRONG> (Thumb, 216 bytes, Stack size 32 bytes, etharp.o(.text))
 <BR><BR>[Stack]<UL><LI>Max Depth = 308 + Unknown Stack Size
-<LI>Call Chain = etharp_update_arp_entry &rArr; etharp_find_entry &rArr; etharp_free_entry &rArr; pbuf_free &rArr; mem_free &rArr; sys_arch_sem_wait &rArr; OSSemPend &rArr; OS_Pend &rArr; OS_TaskBlock &rArr; OS_RdyListRemove &rArr; OS_PrioRemove
+<LI>Call Chain = etharp_update_arp_entry &rArr; etharp_find_entry &rArr; etharp_free_entry &rArr; pbuf_free &rArr; mem_free &rArr; sys_arch_sem_wait &rArr; OSSemPend &rArr; OS_Pend &rArr; OS_TaskBlock &rArr; OS_TickListInsert
 </UL>
 <BR>[Calls]<UL><LI><a href="#[23c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;pbuf_free
 <LI><a href="#[2e3]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ip4_addr_isbroadcast_u32
@@ -8167,7 +8167,7 @@ Local Symbols
 
 <P><STRONG><a name="[320]"></a>etharp_output_to_arp_index</STRONG> (Thumb, 420 bytes, Stack size 24 bytes, etharp.o(.text))
 <BR><BR>[Stack]<UL><LI>Max Depth = 380 + Unknown Stack Size
-<LI>Call Chain = etharp_output_to_arp_index &rArr; etharp_request &rArr; etharp_request_dst &rArr; etharp_raw &rArr; pbuf_alloc &rArr; pbuf_free &rArr; mem_free &rArr; sys_arch_sem_wait &rArr; OSSemPend &rArr; OS_Pend &rArr; OS_TaskBlock &rArr; OS_RdyListRemove &rArr; OS_PrioRemove
+<LI>Call Chain = etharp_output_to_arp_index &rArr; etharp_request &rArr; etharp_request_dst &rArr; etharp_raw &rArr; pbuf_alloc &rArr; pbuf_free &rArr; mem_free &rArr; sys_arch_sem_wait &rArr; OSSemPend &rArr; OS_Pend &rArr; OS_TaskBlock &rArr; OS_TickListInsert
 </UL>
 <BR>[Calls]<UL><LI><a href="#[287]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;etharp_request
 <LI><a href="#[260]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ethernet_output
@@ -8179,15 +8179,15 @@ Local Symbols
 
 <P><STRONG><a name="[322]"></a>icmp_send_response</STRONG> (Thumb, 150 bytes, Stack size 48 bytes, icmp.o(.text))
 <BR><BR>[Stack]<UL><LI>Max Depth = 508 + Unknown Stack Size
-<LI>Call Chain = icmp_send_response &rArr; ip4_output_if &rArr; ip4_output_if_src &rArr; ip4_frag &rArr; pbuf_alloc &rArr; pbuf_free &rArr; mem_free &rArr; sys_arch_sem_wait &rArr; OSSemPend &rArr; OS_Pend &rArr; OS_TaskBlock &rArr; OS_RdyListRemove &rArr; OS_PrioRemove
+<LI>Call Chain = icmp_send_response &rArr; ip4_output_if &rArr; ip4_output_if_src &rArr; ip4_frag &rArr; pbuf_alloc &rArr; pbuf_free &rArr; mem_free &rArr; sys_arch_sem_wait &rArr; OSSemPend &rArr; OS_Pend &rArr; OS_TaskBlock &rArr; OS_TickListInsert
 </UL>
 <BR>[Calls]<UL><LI><a href="#[23c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;pbuf_free
 <LI><a href="#[239]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;pbuf_alloc
-<LI><a href="#[2e9]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ip4_output_if
 <LI><a href="#[2c6]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ip4_route
 <LI><a href="#[274]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;inet_chksum
 <LI><a href="#[227]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__2printf
 <LI><a href="#[117]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_memcpy
+<LI><a href="#[2e9]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ip4_output_if
 </UL>
 <BR>[Called By]<UL><LI><a href="#[323]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;icmp_time_exceeded
 <LI><a href="#[2f2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;icmp_dest_unreach
@@ -8206,7 +8206,7 @@ Local Symbols
 
 <P><STRONG><a name="[32d]"></a>ip_reass_free_complete_datagram</STRONG> (Thumb, 274 bytes, Stack size 32 bytes, ip4_frag.o(.text))
 <BR><BR>[Stack]<UL><LI>Max Depth = 556 + Unknown Stack Size
-<LI>Call Chain = ip_reass_free_complete_datagram &rArr; icmp_time_exceeded &rArr; icmp_send_response &rArr; ip4_output_if &rArr; ip4_output_if_src &rArr; ip4_frag &rArr; pbuf_alloc &rArr; pbuf_free &rArr; mem_free &rArr; sys_arch_sem_wait &rArr; OSSemPend &rArr; OS_Pend &rArr; OS_TaskBlock &rArr; OS_RdyListRemove &rArr; OS_PrioRemove
+<LI>Call Chain = ip_reass_free_complete_datagram &rArr; icmp_time_exceeded &rArr; icmp_send_response &rArr; ip4_output_if &rArr; ip4_output_if_src &rArr; ip4_frag &rArr; pbuf_alloc &rArr; pbuf_free &rArr; mem_free &rArr; sys_arch_sem_wait &rArr; OSSemPend &rArr; OS_Pend &rArr; OS_TaskBlock &rArr; OS_TickListInsert
 </UL>
 <BR>[Calls]<UL><LI><a href="#[23c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;pbuf_free
 <LI><a href="#[2d9]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;pbuf_clen
@@ -8221,7 +8221,7 @@ Local Symbols
 
 <P><STRONG><a name="[32e]"></a>ip_reass_remove_oldest_datagram</STRONG> (Thumb, 130 bytes, Stack size 40 bytes, ip4_frag.o(.text))
 <BR><BR>[Stack]<UL><LI>Max Depth = 596 + Unknown Stack Size
-<LI>Call Chain = ip_reass_remove_oldest_datagram &rArr; ip_reass_free_complete_datagram &rArr; icmp_time_exceeded &rArr; icmp_send_response &rArr; ip4_output_if &rArr; ip4_output_if_src &rArr; ip4_frag &rArr; pbuf_alloc &rArr; pbuf_free &rArr; mem_free &rArr; sys_arch_sem_wait &rArr; OSSemPend &rArr; OS_Pend &rArr; OS_TaskBlock &rArr; OS_RdyListRemove &rArr; OS_PrioRemove
+<LI>Call Chain = ip_reass_remove_oldest_datagram &rArr; ip_reass_free_complete_datagram &rArr; icmp_time_exceeded &rArr; icmp_send_response &rArr; ip4_output_if &rArr; ip4_output_if_src &rArr; ip4_frag &rArr; pbuf_alloc &rArr; pbuf_free &rArr; mem_free &rArr; sys_arch_sem_wait &rArr; OSSemPend &rArr; OS_Pend &rArr; OS_TaskBlock &rArr; OS_TickListInsert
 </UL>
 <BR>[Calls]<UL><LI><a href="#[32d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ip_reass_free_complete_datagram
 </UL>
@@ -8231,7 +8231,7 @@ Local Symbols
 
 <P><STRONG><a name="[32f]"></a>ip_reass_enqueue_new_datagram</STRONG> (Thumb, 80 bytes, Stack size 16 bytes, ip4_frag.o(.text))
 <BR><BR>[Stack]<UL><LI>Max Depth = 612 + Unknown Stack Size
-<LI>Call Chain = ip_reass_enqueue_new_datagram &rArr; ip_reass_remove_oldest_datagram &rArr; ip_reass_free_complete_datagram &rArr; icmp_time_exceeded &rArr; icmp_send_response &rArr; ip4_output_if &rArr; ip4_output_if_src &rArr; ip4_frag &rArr; pbuf_alloc &rArr; pbuf_free &rArr; mem_free &rArr; sys_arch_sem_wait &rArr; OSSemPend &rArr; OS_Pend &rArr; OS_TaskBlock &rArr; OS_RdyListRemove &rArr; OS_PrioRemove
+<LI>Call Chain = ip_reass_enqueue_new_datagram &rArr; ip_reass_remove_oldest_datagram &rArr; ip_reass_free_complete_datagram &rArr; icmp_time_exceeded &rArr; icmp_send_response &rArr; ip4_output_if &rArr; ip4_output_if_src &rArr; ip4_frag &rArr; pbuf_alloc &rArr; pbuf_free &rArr; mem_free &rArr; sys_arch_sem_wait &rArr; OSSemPend &rArr; OS_Pend &rArr; OS_TaskBlock &rArr; OS_TickListInsert
 </UL>
 <BR>[Calls]<UL><LI><a href="#[254]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;memp_malloc
 <LI><a href="#[7e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_memclr4
@@ -8243,7 +8243,7 @@ Local Symbols
 
 <P><STRONG><a name="[330]"></a>ip_reass_chain_frag_into_datagram_and_validate</STRONG> (Thumb, 824 bytes, Stack size 56 bytes, ip4_frag.o(.text))
 <BR><BR>[Stack]<UL><LI>Max Depth = 276 + Unknown Stack Size
-<LI>Call Chain = ip_reass_chain_frag_into_datagram_and_validate &rArr; pbuf_free &rArr; mem_free &rArr; sys_arch_sem_wait &rArr; OSSemPend &rArr; OS_Pend &rArr; OS_TaskBlock &rArr; OS_RdyListRemove &rArr; OS_PrioRemove
+<LI>Call Chain = ip_reass_chain_frag_into_datagram_and_validate &rArr; pbuf_free &rArr; mem_free &rArr; sys_arch_sem_wait &rArr; OSSemPend &rArr; OS_Pend &rArr; OS_TaskBlock &rArr; OS_TickListInsert
 </UL>
 <BR>[Calls]<UL><LI><a href="#[23c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;pbuf_free
 <LI><a href="#[2d9]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;pbuf_clen
@@ -8275,7 +8275,7 @@ Local Symbols
 
 <P><STRONG><a name="[72]"></a>ipfrag_free_pbuf_custom</STRONG> (Thumb, 82 bytes, Stack size 16 bytes, ip4_frag.o(.text))
 <BR><BR>[Stack]<UL><LI>Max Depth = 236 + Unknown Stack Size
-<LI>Call Chain = ipfrag_free_pbuf_custom &rArr; pbuf_free &rArr; mem_free &rArr; sys_arch_sem_wait &rArr; OSSemPend &rArr; OS_Pend &rArr; OS_TaskBlock &rArr; OS_RdyListRemove &rArr; OS_PrioRemove
+<LI>Call Chain = ipfrag_free_pbuf_custom &rArr; pbuf_free &rArr; mem_free &rArr; sys_arch_sem_wait &rArr; OSSemPend &rArr; OS_Pend &rArr; OS_TaskBlock &rArr; OS_TickListInsert
 </UL>
 <BR>[Calls]<UL><LI><a href="#[23c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;pbuf_free
 <LI><a href="#[227]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__2printf

@@ -18,6 +18,7 @@
 ".\obj\lan8720.o"
 ".\obj\eth.o"
 ".\obj\button.o"
+".\obj\flash.o"
 ".\obj\diskio.o"
 ".\obj\ff.o"
 ".\obj\ffsystem.o"
