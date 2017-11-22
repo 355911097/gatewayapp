@@ -55,6 +55,11 @@
 
 
 
+
+extern u16 crc16_modbus(u8 *data, u32 len);
+extern u16 crc16_xmodem(const u8 *data, u32 len );//len
+
+
 extern void init_http(void);
 extern u8 lwip_dev_init(void);
 extern void lwip_periodic_handle(void);
@@ -554,14 +559,16 @@ static void usart3_task_fun(void *p_arg)
 static void eth_init_task_fun(void *p_arg)
 {
 	OS_ERR err;
-	u8 nn = 0;
-
+	u8 nn[2] = {0x33, 0x42};
+	u16 crc =0, crc2 = 0;
 	while(DEF_TRUE)
 	{
-
 		
+		crc =  crc16_modbus(nn, 2);
+		USART_OUT(USART3, "fr1= %d\r", crc);
 		
-
+		crc2 = crc16_xmodem(nn, 2);
+		USART_OUT(USART3, "fr1= %d\r", crc2);
 		OSTimeDly(1000, OS_OPT_TIME_DLY, &err);
 	}
 

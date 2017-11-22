@@ -78,7 +78,7 @@ typedef struct
 
 
 
-
+bool fatch_gprs_data(u8 *buff, u16 *size);
 
 
 #endif

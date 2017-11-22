@@ -112,9 +112,16 @@ static void protocol_task_fun(void *p_arg)
 
 		if(gprs_rx_flag == TRUE)
 		{
+			
+			u8 buffer[USART_BUFF_LENGHT];
+			u16 size;
 			gprs_rx_flag = FALSE;
 			
-			
+			if (fatch_gprs_data(buffer, &size))
+			{
+				
+				
+			}
 				
 		}
 		
@@ -128,8 +135,9 @@ static void protocol_task_fun(void *p_arg)
 
 
 
-u16 crc16(u16 crc, const u8 *data, u32 len )//len
+u16 crc16_xmodem(const u8 *data, u32 len)//len
 {
+	u16 crc = 0;
 	while (len--)
 		
 	crc = crc_table[(crc >> 8 ^ *(data++)) & 0xFFU] ^ (crc << 8);
@@ -141,31 +149,34 @@ u16 crc16(u16 crc, const u8 *data, u32 len )//len
 
 
 
-u16 crc16_modbus(u8 *data, int len)
+u16 crc16_modbus(u8 *data, u32 len)
 {
-	u16 cin = 0xFFFF;
-	u16 poly = 0x8005;
+	u16 reg_crc = 0xFFFF;
+
+	u16 crc = 0;
 	u8 res = 0;
 	u8 i = 0;
 	
 	while(len--)
 	{
-		res = *(data++);
-		cin ^= res << 8;
+	
+		reg_crc ^= *data++;
 		for(i=0; i<8; i++)
 		{
-			if(cin & 0x8000)
+			if(reg_crc & 0x0001)
 			{
-				cin = (cin<<1) ^ poly;
+				reg_crc = reg_crc>>1^0xA001;
 			}
 			else
 			{
-				cin = cin<<1;
+				reg_crc >>= 1;
 			}
 		}
 	}
 	
-	return cin;
+//	crc = ((reg_crc&0x00FF)<<8) | ((reg_crc&0xFF00)>>8);
+	
+	return reg_crc;
 }
 
 
@@ -417,26 +428,113 @@ void heart_beat(u8 *buff, u32 size)
 
 
 
-void fatch_gprs_data(u8 *buff, u16 size)
+bool fatch_gprs_data(u8 *buff, u16 *size)
 {
 	u16 i = 0;
-	
+	u16 data_len = 0;
+	u16 crc = 0, rx_crc = 0;
 	
 	if (gprs_rx_buff->index < 4)
 	{
 		gprs_rx_buff->index = 0;
 		memset(gprs_rx_buff, 0, sizeof(usart_buff_t));	
-		USART_OUT(USART3, "\r fatch_gprs_data too small\r \n");
+		USART_OUT(USART3, "\r fatch_gprs_data too small\r\n");
+		return FALSE;
 	}
 	
 	
 	for (i=0; i<gprs_rx_buff->index; i++)
 	{
-	
+		if(gprs_rx_buff->pdata[i] == TELEGRAM_HEAD)
+		{
+			break;
+		}
 	
 	}
 	
+	if(i >= USART_BUFF_LENGHT)	//一直到结束没有找到报文头， 
+	{
+		gprs_rx_buff->index = 0;
+		memset(gprs_rx_buff, 0, sizeof(usart_buff_t));	
+		USART_OUT(USART3, "\r fatch_gprs_data no TELEGRAM_HEAD\r\n");
+		return FALSE;
+	}
+	
+	memcpy(gprs_rx_buff->pdata, gprs_rx_buff->pdata+i, gprs_rx_buff->index-i);	//移除至报文开始标志	
+	gprs_rx_buff->index -= i;	
+	
+	if (gprs_rx_buff->index < 5)
+	{
+		gprs_rx_buff->index = 0;
+		memset(gprs_rx_buff, 0, sizeof(usart_buff_t));	
+		USART_OUT(USART3, "\r fatch_gprs_data too short\r\n");
+		return FALSE;
+	}
+	
+	if (gprs_rx_buff->pdata[3] != TELEGRAM_SYNC)
+	{
+		gprs_rx_buff->index = 0;
+		memset(gprs_rx_buff, 0, sizeof(usart_buff_t));	
+		USART_OUT(USART3, "\r fatch_gprs_data no TELEGRAM_SYNC\r\n");
+		return FALSE;
+		
+	}
+	
+	//获取报文数据的长度
+	data_len = gprs_rx_buff->pdata[2];	
+	data_len = data_len<<8 + gprs_rx_buff->pdata[1];
+	
 
+	if (data_len > USART_BUFF_LENGHT)	// 防止接收的数据不对
+	{
+		gprs_rx_buff->index = 0;
+		memset(gprs_rx_buff, 0, sizeof(usart_buff_t));	
+		USART_OUT(USART3, "\r fatch_gprs_data buffer overflow\r\n");	
+		return FALSE;
+	}
+	
+	
+	if (gprs_rx_buff->index >= data_len)
+	{
+		if (gprs_rx_buff->pdata[data_len+6] == TELEGRAM_END)
+		{
+			crc = crc16_modbus(&(gprs_rx_buff->pdata[3]), data_len);
+			rx_crc = gprs_rx_buff->pdata[data_len+6-1];
+			rx_crc <<= 8;
+			rx_crc += gprs_rx_buff->pdata[data_len+6-2];
+			
+			if(crc == rx_crc)
+			{
+				*size = data_len+7;
+				memcpy(buff, gprs_rx_buff->pdata, *size);
+				gprs_rx_buff->index -= data_len+7;
+				gprs_rx_buff->index = 0;
+				memset(gprs_rx_buff, 0, sizeof(usart_buff_t));
+			}
+			else
+			{
+				gprs_rx_buff->index = 0;
+				memset(gprs_rx_buff, 0, sizeof(usart_buff_t));
+				return FALSE;
+			}
+		}
+		else
+		{
+			gprs_rx_buff->index = 0;
+			memset(gprs_rx_buff, 0, sizeof(usart_buff_t));
+			return FALSE;
+		
+		}
+	}
+	else
+	{
+		gprs_rx_buff->index = 0;
+		memset(gprs_rx_buff, 0, sizeof(usart_buff_t));
+		return FALSE;
+	}
+	
+	
+	
 }
 
 
