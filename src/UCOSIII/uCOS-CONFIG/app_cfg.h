@@ -71,6 +71,7 @@
 #define ETH_INIT_TASK_STK_SIZE							256
 #define DHCP_TASK_STK_SIZE								256
 #define RAWUDP_TASK_STK_SIZE							256
+#define PROTOCOL_TASK_STK_SIZE							256
 
 /*
 *********************************************************************************************************

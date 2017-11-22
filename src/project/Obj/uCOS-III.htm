@@ -3,7 +3,7 @@
 <title>Static Call Graph - [.\Obj\uCOS-III.axf]</title></head>
 <body><HR>
 <H1>Static Call Graph for image .\Obj\uCOS-III.axf</H1><HR>
-<BR><P>#&#060CALLGRAPH&#062# ARM Linker, 5060061: Last Updated: Mon Nov 20 18:01:42 2017
+<BR><P>#&#060CALLGRAPH&#062# ARM Linker, 5060061: Last Updated: Wed Nov 22 15:14:06 2017
 <BR><P>
 <H3>Maximum Stack Usage =        868 bytes + Unknown(Functions without stacksize, Cycles, Untraceable Function Pointers)</H3><H3>
 Call chain for Maximum Stack Depth:</H3>
@@ -344,8 +344,6 @@ Global Symbols
 <P><STRONG><a name="[17f]"></a>CPU_TS_TmrRd</STRONG> (Thumb, 6 bytes, Stack size 0 bytes, bsp.o(.text))
 <BR><BR>[Called By]<UL><LI><a href="#[1f0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;OSSemPost
 <LI><a href="#[db]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;OSQPost
-<LI><a href="#[1a5]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;OS_SchedLockTimeMeasStop
-<LI><a href="#[1a3]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;OS_SchedLockTimeMeasStart
 <LI><a href="#[73]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;OSTaskSwHook
 <LI><a href="#[17e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;CPU_TS_Get32
 <LI><a href="#[223]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;OS_TmrTask
@@ -369,6 +367,8 @@ Global Symbols
 <LI><a href="#[1cf]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;OSFlagPost
 <LI><a href="#[1cb]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;OSFlagPendAbort
 <LI><a href="#[1c7]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;OSFlagDel
+<LI><a href="#[1a5]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;OS_SchedLockTimeMeasStop
+<LI><a href="#[1a3]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;OS_SchedLockTimeMeasStart
 </UL>
 
 <P><STRONG><a name="[b4]"></a>bsp205_gpio_init</STRONG> (Thumb, 412 bytes, Stack size 16 bytes, bsp.o(.text), UNUSED)
@@ -3027,10 +3027,6 @@ Global Symbols
 <LI><a href="#[8d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;OSQCreate
 <LI><a href="#[5a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
 <LI><a href="#[5f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;AppTaskStart
-<LI><a href="#[1a7]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;OSSchedRoundRobinYield
-<LI><a href="#[1a6]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;OSSchedUnlock
-<LI><a href="#[1a4]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;OSSchedLock
-<LI><a href="#[1a2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;OSSched
 <LI><a href="#[18f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;OS_IdleTask
 <LI><a href="#[8]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;OS_CPU_SysTickHandler
 <LI><a href="#[18d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;CPU_IntSrcPrioGet
@@ -3099,6 +3095,10 @@ Global Symbols
 <LI><a href="#[1c7]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;OSFlagDel
 <LI><a href="#[1c3]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;OSFlagCreate
 <LI><a href="#[1c2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;OS_SchedRoundRobin
+<LI><a href="#[1a7]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;OSSchedRoundRobinYield
+<LI><a href="#[1a6]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;OSSchedUnlock
+<LI><a href="#[1a4]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;OSSchedLock
+<LI><a href="#[1a2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;OSSched
 <LI><a href="#[297]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;pbuf_ref
 <LI><a href="#[283]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;do_memp_free_pool
 <LI><a href="#[281]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;do_memp_malloc_pool
@@ -3126,10 +3126,6 @@ Global Symbols
 <LI><a href="#[8d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;OSQCreate
 <LI><a href="#[5a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
 <LI><a href="#[5f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;AppTaskStart
-<LI><a href="#[1a7]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;OSSchedRoundRobinYield
-<LI><a href="#[1a6]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;OSSchedUnlock
-<LI><a href="#[1a4]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;OSSchedLock
-<LI><a href="#[1a2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;OSSched
 <LI><a href="#[18f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;OS_IdleTask
 <LI><a href="#[8]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;OS_CPU_SysTickHandler
 <LI><a href="#[18d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;CPU_IntSrcPrioGet
@@ -3198,6 +3194,10 @@ Global Symbols
 <LI><a href="#[1c7]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;OSFlagDel
 <LI><a href="#[1c3]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;OSFlagCreate
 <LI><a href="#[1c2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;OS_SchedRoundRobin
+<LI><a href="#[1a7]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;OSSchedRoundRobinYield
+<LI><a href="#[1a6]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;OSSchedUnlock
+<LI><a href="#[1a4]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;OSSchedLock
+<LI><a href="#[1a2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;OSSched
 <LI><a href="#[297]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;pbuf_ref
 <LI><a href="#[283]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;do_memp_free_pool
 <LI><a href="#[281]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;do_memp_malloc_pool
@@ -3326,8 +3326,7 @@ Global Symbols
 <BR><BR>[Stack]<UL><LI>Max Depth = 168 + Unknown Stack Size
 <LI>Call Chain = OSInit &rArr; OS_TmrInit &rArr; OSTaskCreate &rArr; OSSched &rArr; OS_PrioGetHighest
 </UL>
-<BR>[Calls]<UL><LI><a href="#[194]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;OS_RdyListInit
-<LI><a href="#[191]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;OS_IdleTaskInit
+<BR>[Calls]<UL><LI><a href="#[191]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;OS_IdleTaskInit
 <LI><a href="#[1a0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;OSCfg_Init
 <LI><a href="#[192]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;OSInitHook
 <LI><a href="#[19e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;OS_TmrInit
@@ -3342,6 +3341,7 @@ Global Symbols
 <LI><a href="#[196]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;OS_MemInit
 <LI><a href="#[195]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;OS_FlagInit
 <LI><a href="#[19f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;OS_Dbg_Init
+<LI><a href="#[194]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;OS_RdyListInit
 </UL>
 <BR>[Called By]<UL><LI><a href="#[5a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
 </UL>
@@ -3380,8 +3380,6 @@ Global Symbols
 <LI><a href="#[7f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;OSTimeDlyHMSM
 <LI><a href="#[7d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;OSTimeDly
 <LI><a href="#[85]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;OSTaskCreate
-<LI><a href="#[1a7]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;OSSchedRoundRobinYield
-<LI><a href="#[1a6]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;OSSchedUnlock
 <LI><a href="#[216]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;OSTimeDlyResume
 <LI><a href="#[210]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;OS_TaskSuspend
 <LI><a href="#[20d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;OS_TaskSemPost
@@ -3408,6 +3406,8 @@ Global Symbols
 <LI><a href="#[1cb]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;OSFlagPendAbort
 <LI><a href="#[1ca]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;OSFlagPend
 <LI><a href="#[1c7]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;OSFlagDel
+<LI><a href="#[1a7]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;OSSchedRoundRobinYield
+<LI><a href="#[1a6]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;OSSchedUnlock
 </UL>
 
 <P><STRONG><a name="[1a3]"></a>OS_SchedLockTimeMeasStart</STRONG> (Thumb, 20 bytes, Stack size 8 bytes, os_core.o(.text))
@@ -3470,8 +3470,8 @@ Global Symbols
 <P><STRONG><a name="[1a8]"></a>OS_RdyListMoveHeadToTail</STRONG> (Thumb, 68 bytes, Stack size 8 bytes, os_core.o(.text))
 <BR><BR>[Stack]<UL><LI>Max Depth = 8<LI>Call Chain = OS_RdyListMoveHeadToTail
 </UL>
-<BR>[Called By]<UL><LI><a href="#[1a7]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;OSSchedRoundRobinYield
-<LI><a href="#[1c2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;OS_SchedRoundRobin
+<BR>[Called By]<UL><LI><a href="#[1c2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;OS_SchedRoundRobin
+<LI><a href="#[1a7]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;OSSchedRoundRobinYield
 </UL>
 
 <P><STRONG><a name="[1a7]"></a>OSSchedRoundRobinYield</STRONG> (Thumb, 164 bytes, Stack size 24 bytes, os_core.o(.text), UNUSED)
@@ -3540,10 +3540,10 @@ Global Symbols
 <P><STRONG><a name="[1ae]"></a>OS_Pend</STRONG> (Thumb, 98 bytes, Stack size 24 bytes, os_core.o(.text))
 <BR><BR>[Stack]<UL><LI>Max Depth = 76<LI>Call Chain = OS_Pend &rArr; OS_TaskBlock &rArr; OS_TickListInsert
 </UL>
-<BR>[Calls]<UL><LI><a href="#[1b0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;OS_PendListInsertPrio
-<LI><a href="#[1b1]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;OS_PendDbgNameAdd
-<LI><a href="#[1ac]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;OS_TaskBlock
+<BR>[Calls]<UL><LI><a href="#[1ac]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;OS_TaskBlock
 <LI><a href="#[1af]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;OS_PendDataInit
+<LI><a href="#[1b0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;OS_PendListInsertPrio
+<LI><a href="#[1b1]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;OS_PendDbgNameAdd
 </UL>
 <BR>[Called By]<UL><LI><a href="#[1ed]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;OSSemPend
 <LI><a href="#[20b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;OSTaskSemPend
@@ -3641,8 +3641,8 @@ Global Symbols
 </UL>
 
 <P><STRONG><a name="[1bc]"></a>OS_PendListChangePrio</STRONG> (Thumb, 70 bytes, Stack size 28 bytes, os_core.o(.text), UNUSED)
-<BR><BR>[Calls]<UL><LI><a href="#[1b0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;OS_PendListInsertPrio
-<LI><a href="#[1b3]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;OS_PendListRemove1
+<BR><BR>[Calls]<UL><LI><a href="#[1b3]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;OS_PendListRemove1
+<LI><a href="#[1b0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;OS_PendListInsertPrio
 </UL>
 <BR>[Called By]<UL><LI><a href="#[1fa]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;OSTaskChangePrio
 <LI><a href="#[1d9]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;OSMutexPend
@@ -3740,10 +3740,10 @@ Global Symbols
 <BR><BR>[Calls]<UL><LI><a href="#[17f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;CPU_TS_TmrRd
 <LI><a href="#[92]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;CPU_SR_Save
 <LI><a href="#[93]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;CPU_SR_Restore
-<LI><a href="#[1a2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;OSSched
 <LI><a href="#[1c8]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;OS_FlagDbgListRemove
 <LI><a href="#[1c6]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;OS_FlagClr
 <LI><a href="#[1bd]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;OS_PendObjDel
+<LI><a href="#[1a2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;OSSched
 </UL>
 
 <P><STRONG><a name="[1c9]"></a>OS_FlagBlock</STRONG> (Thumb, 58 bytes, Stack size 24 bytes, os_flag.o(.text), UNUSED)
@@ -3755,16 +3755,16 @@ Global Symbols
 <P><STRONG><a name="[1ca]"></a>OSFlagPend</STRONG> (Thumb, 1248 bytes, Stack size 80 bytes, os_flag.o(.text), UNUSED)
 <BR><BR>[Calls]<UL><LI><a href="#[92]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;CPU_SR_Save
 <LI><a href="#[93]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;CPU_SR_Restore
-<LI><a href="#[1a2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;OSSched
 <LI><a href="#[1c9]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;OS_FlagBlock
+<LI><a href="#[1a2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;OSSched
 </UL>
 
 <P><STRONG><a name="[1cb]"></a>OSFlagPendAbort</STRONG> (Thumb, 236 bytes, Stack size 40 bytes, os_flag.o(.text), UNUSED)
 <BR><BR>[Calls]<UL><LI><a href="#[17f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;CPU_TS_TmrRd
 <LI><a href="#[92]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;CPU_SR_Save
 <LI><a href="#[93]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;CPU_SR_Restore
-<LI><a href="#[1a2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;OSSched
 <LI><a href="#[1ba]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;OS_PendAbort
+<LI><a href="#[1a2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;OSSched
 </UL>
 
 <P><STRONG><a name="[1cc]"></a>OSFlagPendGetFlagsRdy</STRONG> (Thumb, 86 bytes, Stack size 16 bytes, os_flag.o(.text), UNUSED)
@@ -3782,8 +3782,8 @@ Global Symbols
 <P><STRONG><a name="[1ce]"></a>OS_FlagPost</STRONG> (Thumb, 418 bytes, Stack size 56 bytes, os_flag.o(.text), UNUSED)
 <BR><BR>[Calls]<UL><LI><a href="#[92]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;CPU_SR_Save
 <LI><a href="#[93]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;CPU_SR_Restore
-<LI><a href="#[1a2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;OSSched
 <LI><a href="#[1cd]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;OS_FlagTaskRdy
+<LI><a href="#[1a2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;OSSched
 </UL>
 <BR>[Called By]<UL><LI><a href="#[1cf]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;OSFlagPost
 </UL>
@@ -3882,7 +3882,6 @@ Global Symbols
 <BR><BR>[Calls]<UL><LI><a href="#[17f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;CPU_TS_TmrRd
 <LI><a href="#[92]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;CPU_SR_Save
 <LI><a href="#[93]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;CPU_SR_Restore
-<LI><a href="#[1a2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;OSSched
 <LI><a href="#[1d8]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;OS_MutexDbgListRemove
 <LI><a href="#[1d6]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;OS_MutexClr
 <LI><a href="#[1b5]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;OS_PrioInsert
@@ -3890,36 +3889,37 @@ Global Symbols
 <LI><a href="#[1bc]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;OS_PendListChangePrio
 <LI><a href="#[1b6]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;OS_RdyListInsertTail
 <LI><a href="#[1aa]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;OS_RdyListRemove
+<LI><a href="#[1a2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;OSSched
 </UL>
 
 <P><STRONG><a name="[1d9]"></a>OSMutexPend</STRONG> (Thumb, 618 bytes, Stack size 64 bytes, os_mutex.o(.text), UNUSED)
 <BR><BR>[Calls]<UL><LI><a href="#[92]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;CPU_SR_Save
 <LI><a href="#[93]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;CPU_SR_Restore
-<LI><a href="#[1a2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;OSSched
 <LI><a href="#[1b5]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;OS_PrioInsert
 <LI><a href="#[1bc]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;OS_PendListChangePrio
 <LI><a href="#[1b7]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;OS_RdyListInsertHead
 <LI><a href="#[1ae]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;OS_Pend
 <LI><a href="#[1aa]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;OS_RdyListRemove
+<LI><a href="#[1a2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;OSSched
 </UL>
 
 <P><STRONG><a name="[1da]"></a>OSMutexPendAbort</STRONG> (Thumb, 236 bytes, Stack size 40 bytes, os_mutex.o(.text), UNUSED)
 <BR><BR>[Calls]<UL><LI><a href="#[17f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;CPU_TS_TmrRd
 <LI><a href="#[92]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;CPU_SR_Save
 <LI><a href="#[93]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;CPU_SR_Restore
-<LI><a href="#[1a2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;OSSched
 <LI><a href="#[1ba]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;OS_PendAbort
+<LI><a href="#[1a2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;OSSched
 </UL>
 
 <P><STRONG><a name="[1db]"></a>OSMutexPost</STRONG> (Thumb, 354 bytes, Stack size 40 bytes, os_mutex.o(.text), UNUSED)
 <BR><BR>[Calls]<UL><LI><a href="#[17f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;CPU_TS_TmrRd
 <LI><a href="#[92]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;CPU_SR_Save
 <LI><a href="#[93]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;CPU_SR_Restore
-<LI><a href="#[1a2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;OSSched
 <LI><a href="#[1b5]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;OS_PrioInsert
 <LI><a href="#[1bf]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;OS_Post
 <LI><a href="#[1b6]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;OS_RdyListInsertTail
 <LI><a href="#[1aa]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;OS_RdyListRemove
+<LI><a href="#[1a2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;OSSched
 </UL>
 
 <P><STRONG><a name="[198]"></a>OS_MutexInit</STRONG> (Thumb, 14 bytes, Stack size 0 bytes, os_mutex.o(.text))
@@ -3992,10 +3992,10 @@ Global Symbols
 <BR><BR>[Calls]<UL><LI><a href="#[17f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;CPU_TS_TmrRd
 <LI><a href="#[92]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;CPU_SR_Save
 <LI><a href="#[93]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;CPU_SR_Restore
-<LI><a href="#[1a2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;OSSched
 <LI><a href="#[1e1]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;OS_QDbgListRemove
 <LI><a href="#[1de]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;OS_QClr
 <LI><a href="#[1bd]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;OS_PendObjDel
+<LI><a href="#[1a2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;OSSched
 </UL>
 <BR>[Called By]<UL><LI><a href="#[226]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;sys_mbox_free
 </UL>
@@ -4014,9 +4014,9 @@ Global Symbols
 </UL>
 <BR>[Calls]<UL><LI><a href="#[92]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;CPU_SR_Save
 <LI><a href="#[93]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;CPU_SR_Restore
-<LI><a href="#[1a2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;OSSched
 <LI><a href="#[1e4]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;OS_MsgQGet
 <LI><a href="#[1ae]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;OS_Pend
+<LI><a href="#[1a2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;OSSched
 </UL>
 <BR>[Called By]<UL><LI><a href="#[22b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;sys_arch_mbox_fetch
 </UL>
@@ -4025,8 +4025,8 @@ Global Symbols
 <BR><BR>[Calls]<UL><LI><a href="#[17f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;CPU_TS_TmrRd
 <LI><a href="#[92]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;CPU_SR_Save
 <LI><a href="#[93]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;CPU_SR_Restore
-<LI><a href="#[1a2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;OSSched
 <LI><a href="#[1ba]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;OS_PendAbort
+<LI><a href="#[1a2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;OSSched
 </UL>
 
 <P><STRONG><a name="[1e6]"></a>OS_QPost</STRONG> (Thumb, 190 bytes, Stack size 56 bytes, os_q.o(.text))
@@ -4035,9 +4035,9 @@ Global Symbols
 </UL>
 <BR>[Calls]<UL><LI><a href="#[92]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;CPU_SR_Save
 <LI><a href="#[93]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;CPU_SR_Restore
-<LI><a href="#[1a2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;OSSched
 <LI><a href="#[1e7]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;OS_MsgQPut
 <LI><a href="#[1bf]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;OS_Post
+<LI><a href="#[1a2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;OSSched
 </UL>
 <BR>[Called By]<UL><LI><a href="#[db]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;OSQPost
 </UL>
@@ -4089,10 +4089,10 @@ Global Symbols
 <BR><BR>[Calls]<UL><LI><a href="#[17f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;CPU_TS_TmrRd
 <LI><a href="#[92]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;CPU_SR_Save
 <LI><a href="#[93]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;CPU_SR_Restore
-<LI><a href="#[1a2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;OSSched
 <LI><a href="#[1ec]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;OS_SemDbgListRemove
 <LI><a href="#[1ea]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;OS_SemClr
 <LI><a href="#[1bd]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;OS_PendObjDel
+<LI><a href="#[1a2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;OSSched
 </UL>
 <BR>[Called By]<UL><LI><a href="#[233]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;sys_sem_free
 </UL>
@@ -4103,8 +4103,8 @@ Global Symbols
 </UL>
 <BR>[Calls]<UL><LI><a href="#[92]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;CPU_SR_Save
 <LI><a href="#[93]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;CPU_SR_Restore
-<LI><a href="#[1a2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;OSSched
 <LI><a href="#[1ae]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;OS_Pend
+<LI><a href="#[1a2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;OSSched
 </UL>
 <BR>[Called By]<UL><LI><a href="#[231]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;sys_arch_sem_wait
 </UL>
@@ -4113,8 +4113,8 @@ Global Symbols
 <BR><BR>[Calls]<UL><LI><a href="#[17f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;CPU_TS_TmrRd
 <LI><a href="#[92]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;CPU_SR_Save
 <LI><a href="#[93]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;CPU_SR_Restore
-<LI><a href="#[1a2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;OSSched
 <LI><a href="#[1ba]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;OS_PendAbort
+<LI><a href="#[1a2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;OSSched
 </UL>
 
 <P><STRONG><a name="[1ef]"></a>OS_SemPost</STRONG> (Thumb, 294 bytes, Stack size 56 bytes, os_sem.o(.text))
@@ -4123,8 +4123,8 @@ Global Symbols
 </UL>
 <BR>[Calls]<UL><LI><a href="#[92]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;CPU_SR_Save
 <LI><a href="#[93]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;CPU_SR_Restore
-<LI><a href="#[1a2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;OSSched
 <LI><a href="#[1bf]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;OS_Post
+<LI><a href="#[1a2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;OSSched
 </UL>
 <BR>[Called By]<UL><LI><a href="#[1f0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;OSSemPost
 </UL>
@@ -4200,12 +4200,12 @@ Global Symbols
 <P><STRONG><a name="[1fa]"></a>OSTaskChangePrio</STRONG> (Thumb, 274 bytes, Stack size 24 bytes, os_task.o(.text), UNUSED)
 <BR><BR>[Calls]<UL><LI><a href="#[92]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;CPU_SR_Save
 <LI><a href="#[93]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;CPU_SR_Restore
-<LI><a href="#[1a2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;OSSched
 <LI><a href="#[1b5]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;OS_PrioInsert
 <LI><a href="#[1bc]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;OS_PendListChangePrio
 <LI><a href="#[1b6]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;OS_RdyListInsertTail
 <LI><a href="#[1b7]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;OS_RdyListInsertHead
 <LI><a href="#[1aa]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;OS_RdyListRemove
+<LI><a href="#[1a2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;OSSched
 </UL>
 
 <P><STRONG><a name="[1fe]"></a>OS_TaskDbgListAdd</STRONG> (Thumb, 42 bytes, Stack size 0 bytes, os_task.o(.text))
@@ -4228,7 +4228,6 @@ Global Symbols
 </UL>
 <BR>[Calls]<UL><LI><a href="#[92]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;CPU_SR_Save
 <LI><a href="#[93]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;CPU_SR_Restore
-<LI><a href="#[1a2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;OSSched
 <LI><a href="#[1fc]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;OSTaskStkInit
 <LI><a href="#[1fd]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;OSTaskCreateHook
 <LI><a href="#[1fb]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;OS_TaskInitTCB
@@ -4236,6 +4235,7 @@ Global Symbols
 <LI><a href="#[1dc]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;OS_MsgQInit
 <LI><a href="#[1b5]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;OS_PrioInsert
 <LI><a href="#[1b6]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;OS_RdyListInsertTail
+<LI><a href="#[1a2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;OSSched
 </UL>
 <BR>[Called By]<UL><LI><a href="#[87]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;dhcp_task_create
 <LI><a href="#[5a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
@@ -4258,7 +4258,6 @@ Global Symbols
 </UL>
 <BR>[Calls]<UL><LI><a href="#[92]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;CPU_SR_Save
 <LI><a href="#[93]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;CPU_SR_Restore
-<LI><a href="#[1a2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;OSSched
 <LI><a href="#[200]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;OSTaskDelHook
 <LI><a href="#[201]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;OS_TaskDbgListRemove
 <LI><a href="#[1fb]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;OS_TaskInitTCB
@@ -4266,6 +4265,7 @@ Global Symbols
 <LI><a href="#[1b9]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;OS_TickListRemove
 <LI><a href="#[1b2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;OS_PendListRemove
 <LI><a href="#[1aa]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;OS_RdyListRemove
+<LI><a href="#[1a2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;OSSched
 </UL>
 <BR>[Called By]<UL><LI><a href="#[61]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;OS_TaskReturn
 <LI><a href="#[246]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;dhcp_task_delete
@@ -4281,25 +4281,25 @@ Global Symbols
 <BR><BR>[Calls]<UL><LI><a href="#[17f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;CPU_TS_TmrRd
 <LI><a href="#[92]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;CPU_SR_Save
 <LI><a href="#[93]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;CPU_SR_Restore
-<LI><a href="#[1a2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;OSSched
 <LI><a href="#[1e4]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;OS_MsgQGet
 <LI><a href="#[1ae]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;OS_Pend
+<LI><a href="#[1a2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;OSSched
 </UL>
 
 <P><STRONG><a name="[204]"></a>OSTaskQPendAbort</STRONG> (Thumb, 206 bytes, Stack size 24 bytes, os_task.o(.text), UNUSED)
 <BR><BR>[Calls]<UL><LI><a href="#[17f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;CPU_TS_TmrRd
 <LI><a href="#[92]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;CPU_SR_Save
 <LI><a href="#[93]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;CPU_SR_Restore
-<LI><a href="#[1a2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;OSSched
 <LI><a href="#[1ba]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;OS_PendAbort
+<LI><a href="#[1a2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;OSSched
 </UL>
 
 <P><STRONG><a name="[205]"></a>OS_TaskQPost</STRONG> (Thumb, 220 bytes, Stack size 40 bytes, os_task.o(.text), UNUSED)
 <BR><BR>[Calls]<UL><LI><a href="#[92]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;CPU_SR_Save
 <LI><a href="#[93]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;CPU_SR_Restore
-<LI><a href="#[1a2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;OSSched
 <LI><a href="#[1e7]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;OS_MsgQPut
 <LI><a href="#[1bf]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;OS_Post
+<LI><a href="#[1a2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;OSSched
 </UL>
 <BR>[Called By]<UL><LI><a href="#[206]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;OSTaskQPost
 </UL>
@@ -4330,8 +4330,8 @@ Global Symbols
 </UL>
 <BR>[Calls]<UL><LI><a href="#[92]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;CPU_SR_Save
 <LI><a href="#[93]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;CPU_SR_Restore
-<LI><a href="#[1a2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;OSSched
 <LI><a href="#[1b8]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;OS_TaskRdy
+<LI><a href="#[1a2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;OSSched
 </UL>
 <BR>[Called By]<UL><LI><a href="#[1f6]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;OSTaskResume
 </UL>
@@ -4354,8 +4354,8 @@ Global Symbols
 <BR>[Calls]<UL><LI><a href="#[17f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;CPU_TS_TmrRd
 <LI><a href="#[92]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;CPU_SR_Save
 <LI><a href="#[93]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;CPU_SR_Restore
-<LI><a href="#[1a2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;OSSched
 <LI><a href="#[1ae]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;OS_Pend
+<LI><a href="#[1a2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;OSSched
 </UL>
 <BR>[Called By]<UL><LI><a href="#[223]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;OS_TmrTask
 <LI><a href="#[214]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;OS_TickTask
@@ -4365,8 +4365,8 @@ Global Symbols
 <BR><BR>[Calls]<UL><LI><a href="#[17f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;CPU_TS_TmrRd
 <LI><a href="#[92]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;CPU_SR_Save
 <LI><a href="#[93]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;CPU_SR_Restore
-<LI><a href="#[1a2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;OSSched
 <LI><a href="#[1ba]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;OS_PendAbort
+<LI><a href="#[1a2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;OSSched
 </UL>
 
 <P><STRONG><a name="[20d]"></a>OS_TaskSemPost</STRONG> (Thumb, 448 bytes, Stack size 32 bytes, os_task.o(.text))
@@ -4375,8 +4375,8 @@ Global Symbols
 </UL>
 <BR>[Calls]<UL><LI><a href="#[92]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;CPU_SR_Save
 <LI><a href="#[93]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;CPU_SR_Restore
-<LI><a href="#[1a2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;OSSched
 <LI><a href="#[1bf]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;OS_Post
+<LI><a href="#[1a2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;OSSched
 </UL>
 <BR>[Called By]<UL><LI><a href="#[20e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;OSTaskSemPost
 </UL>
@@ -4412,8 +4412,8 @@ Global Symbols
 </UL>
 <BR>[Calls]<UL><LI><a href="#[92]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;CPU_SR_Save
 <LI><a href="#[93]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;CPU_SR_Restore
-<LI><a href="#[1a2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;OSSched
 <LI><a href="#[1aa]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;OS_RdyListRemove
+<LI><a href="#[1a2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;OSSched
 </UL>
 <BR>[Called By]<UL><LI><a href="#[1f5]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;OSTaskSuspend
 </UL>
@@ -4512,9 +4512,9 @@ Global Symbols
 </UL>
 <BR>[Calls]<UL><LI><a href="#[92]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;CPU_SR_Save
 <LI><a href="#[93]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;CPU_SR_Restore
-<LI><a href="#[1a2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;OSSched
 <LI><a href="#[1ad]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;OS_TickListInsert
 <LI><a href="#[1aa]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;OS_RdyListRemove
+<LI><a href="#[1a2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;OSSched
 </UL>
 <BR>[Called By]<UL><LI><a href="#[87]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;dhcp_task_create
 <LI><a href="#[90]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;OSStatTaskCPUUsageInit
@@ -4532,9 +4532,9 @@ Global Symbols
 </UL>
 <BR>[Calls]<UL><LI><a href="#[92]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;CPU_SR_Save
 <LI><a href="#[93]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;CPU_SR_Restore
-<LI><a href="#[1a2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;OSSched
 <LI><a href="#[1ad]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;OS_TickListInsert
 <LI><a href="#[1aa]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;OS_RdyListRemove
+<LI><a href="#[1a2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;OSSched
 </UL>
 <BR>[Called By]<UL><LI><a href="#[5b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;led0_task_fun
 <LI><a href="#[5c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;led1_task_fun
@@ -4545,9 +4545,9 @@ Global Symbols
 <P><STRONG><a name="[216]"></a>OSTimeDlyResume</STRONG> (Thumb, 334 bytes, Stack size 16 bytes, os_time.o(.text), UNUSED)
 <BR><BR>[Calls]<UL><LI><a href="#[92]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;CPU_SR_Save
 <LI><a href="#[93]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;CPU_SR_Restore
-<LI><a href="#[1a2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;OSSched
 <LI><a href="#[1b9]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;OS_TickListRemove
 <LI><a href="#[1b4]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;OS_RdyListInsert
+<LI><a href="#[1a2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;OSSched
 </UL>
 
 <P><STRONG><a name="[217]"></a>OSTimeGet</STRONG> (Thumb, 46 bytes, Stack size 16 bytes, os_time.o(.text))
@@ -4611,11 +4611,11 @@ Global Symbols
 </UL>
 
 <P><STRONG><a name="[21b]"></a>OSTmrDel</STRONG> (Thumb, 182 bytes, Stack size 24 bytes, os_tmr.o(.text), UNUSED)
-<BR><BR>[Calls]<UL><LI><a href="#[1a6]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;OSSchedUnlock
-<LI><a href="#[1a4]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;OSSchedLock
-<LI><a href="#[21c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;OS_TmrDbgListRemove
+<BR><BR>[Calls]<UL><LI><a href="#[21c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;OS_TmrDbgListRemove
 <LI><a href="#[21d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;OS_TmrUnlink
 <LI><a href="#[21e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;OS_TmrClr
+<LI><a href="#[1a6]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;OSSchedUnlock
+<LI><a href="#[1a4]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;OSSchedLock
 </UL>
 
 <P><STRONG><a name="[21f]"></a>OSTmrRemainGet</STRONG> (Thumb, 188 bytes, Stack size 24 bytes, os_tmr.o(.text), UNUSED)
@@ -4634,10 +4634,10 @@ Global Symbols
 <BR><BR>[Stack]<UL><LI>Max Depth = 64 + Unknown Stack Size
 <LI>Call Chain = OSTmrStart &rArr; OSSchedUnlock &rArr; OSSched &rArr; OS_PrioGetHighest
 </UL>
-<BR>[Calls]<UL><LI><a href="#[1a6]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;OSSchedUnlock
-<LI><a href="#[1a4]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;OSSchedLock
-<LI><a href="#[220]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;OS_TmrLink
+<BR>[Calls]<UL><LI><a href="#[220]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;OS_TmrLink
 <LI><a href="#[21d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;OS_TmrUnlink
+<LI><a href="#[1a6]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;OSSchedUnlock
+<LI><a href="#[1a4]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;OSSchedLock
 </UL>
 <BR>[Called By]<UL><LI><a href="#[8a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;AppObjCreate
 </UL>
@@ -4648,9 +4648,9 @@ Global Symbols
 </UL>
 
 <P><STRONG><a name="[222]"></a>OSTmrStop</STRONG> (Thumb, 246 bytes, Stack size 32 bytes, os_tmr.o(.text), UNUSED)
-<BR><BR>[Calls]<UL><LI><a href="#[1a6]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;OSSchedUnlock
+<BR><BR>[Calls]<UL><LI><a href="#[21d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;OS_TmrUnlink
+<LI><a href="#[1a6]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;OSSchedUnlock
 <LI><a href="#[1a4]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;OSSchedLock
-<LI><a href="#[21d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;OS_TmrUnlink
 </UL>
 
 <P><STRONG><a name="[223]"></a>OS_TmrTask</STRONG> (Thumb, 176 bytes, Stack size 16 bytes, os_tmr.o(.text))
@@ -4658,11 +4658,11 @@ Global Symbols
 <LI>Call Chain = OS_TmrTask &rArr; OSTaskSemPend &rArr; OS_Pend &rArr; OS_TaskBlock &rArr; OS_TickListInsert
 </UL>
 <BR>[Calls]<UL><LI><a href="#[17f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;CPU_TS_TmrRd
-<LI><a href="#[1a6]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;OSSchedUnlock
-<LI><a href="#[1a4]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;OSSchedLock
 <LI><a href="#[220]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;OS_TmrLink
 <LI><a href="#[21d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;OS_TmrUnlink
 <LI><a href="#[20b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;OSTaskSemPend
+<LI><a href="#[1a6]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;OSSchedUnlock
+<LI><a href="#[1a4]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;OSSchedLock
 </UL>
 <BR>[Address Reference Count : 1]<UL><LI> os_tmr.o(.text)
 </UL>
@@ -5462,12 +5462,12 @@ Global Symbols
 <LI><a href="#[6b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;mem_free
 <LI><a href="#[227]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__2printf
 </UL>
-<BR>[Called By]<UL><LI><a href="#[2e8]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;tcp_write
+<BR>[Called By]<UL><LI><a href="#[238]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;rawudp_send_data
+<LI><a href="#[2e8]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;tcp_write
 <LI><a href="#[2be]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;tcp_shutdown
 <LI><a href="#[24f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ethernetif_input
 <LI><a href="#[239]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;pbuf_alloc
 <LI><a href="#[23d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;rawudp_recv_callback
-<LI><a href="#[238]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;rawudp_send_data
 <LI><a href="#[2e5]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;tcp_create_segment
 <LI><a href="#[2db]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;tcp_send_empty_ack
 <LI><a href="#[2e2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;tcp_input
@@ -5510,8 +5510,8 @@ Global Symbols
 <LI><a href="#[26a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;mem_malloc
 <LI><a href="#[227]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__2printf
 </UL>
-<BR>[Called By]<UL><LI><a href="#[2e8]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;tcp_write
-<LI><a href="#[238]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;rawudp_send_data
+<BR>[Called By]<UL><LI><a href="#[238]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;rawudp_send_data
+<LI><a href="#[2e8]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;tcp_write
 <LI><a href="#[2e6]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;tcp_pbuf_prealloc
 <LI><a href="#[2e4]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;tcp_output_alloc_header
 <LI><a href="#[2ae]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;tcp_rst
@@ -7022,8 +7022,8 @@ Global Symbols
 <P><STRONG><a name="[df]"></a>__2sprintf</STRONG> (Thumb, 0 bytes, Stack size 24 bytes, printf3.o(i.__0sprintf$3))
 <BR><BR>[Stack]<UL><LI>Max Depth = 24<LI>Call Chain = __2sprintf
 </UL>
-<BR>[Called By]<UL><LI><a href="#[86]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;USART_OUT
-<LI><a href="#[238]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;rawudp_send_data
+<BR>[Called By]<UL><LI><a href="#[238]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;rawudp_send_data
+<LI><a href="#[86]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;USART_OUT
 </UL>
 
 <P><STRONG><a name="[470]"></a>__scatterload_copy</STRONG> (Thumb, 14 bytes, Stack size unknown bytes, handlers.o(i.__scatterload_copy), UNUSED)
@@ -7321,13 +7321,13 @@ Local Symbols
 <BR><BR>[Stack]<UL><LI>Max Depth = 604 + Unknown Stack Size
 <LI>Call Chain = rawudp_task_fun &rArr; rawudp_send_data &rArr; udp_send &rArr; udp_sendto &rArr; udp_sendto_if &rArr; udp_sendto_if_src &rArr; ip4_output_if_src &rArr; ip4_frag &rArr; pbuf_alloc &rArr; pbuf_free &rArr; mem_free &rArr; sys_arch_sem_wait &rArr; OSSemPend &rArr; OS_Pend &rArr; OS_TaskBlock &rArr; OS_TickListInsert
 </UL>
-<BR>[Calls]<UL><LI><a href="#[86]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;USART_OUT
+<BR>[Calls]<UL><LI><a href="#[238]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;rawudp_send_data
+<LI><a href="#[86]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;USART_OUT
 <LI><a href="#[7d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;OSTimeDly
 <LI><a href="#[242]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;udp_recv
 <LI><a href="#[23f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;udp_new
 <LI><a href="#[240]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;udp_connect
 <LI><a href="#[241]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;udp_bind
-<LI><a href="#[238]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;rawudp_send_data
 </UL>
 <BR>[Address Reference Count : 1]<UL><LI> rawudp.o(.text)
 </UL>

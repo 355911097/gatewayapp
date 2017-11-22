@@ -30,6 +30,9 @@ typedef struct dev
 	u8 server_ip[32];
 	u32 server_port;
 	
+	u8 dev_is_login;
+	
+	
 	u8 IMEI[8];					//GPRS的IMEI为BCD格式	
 	u8 gprs_heart_timeout;		//GPRS心跳超时时间
 	u8 gprs_comm_timeout;		//GPRS通信超时时间

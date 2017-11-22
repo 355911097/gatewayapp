@@ -124,8 +124,10 @@ void rawudp_recv_callback(void *arg, struct udp_pcb *upcb, struct pbuf *p, const
 				memcpy(rawudp_recv_buff+data_len,q->payload,q->len);
 			}
 			data_len += q->len;  
-			USART_OUT(USART3, rawudp_recv_buff);			
-			if(data_len > RAWUDP_RX_BUFSIZE) break; //超出TCP客户端接收数组,跳出	
+				
+			if(data_len > RAWUDP_RX_BUFSIZE) break; //超出TCP客户端接收数组,跳出
+			
+			USART_OUT(USART3, rawudp_recv_buff);		
 		}
 		
 		upcb->remote_ip=*addr; 				//记录远程主机的eIP地址
@@ -135,10 +137,10 @@ void rawudp_recv_callback(void *arg, struct udp_pcb *upcb, struct pbuf *p, const
 		lwip_dev.remote_ip[2] = (upcb->remote_ip.addr>>16)&0xff;//IADDR2
 		lwip_dev.remote_ip[3] = (upcb->remote_ip.addr>>24)&0xff;//IADDR1 
 		pbuf_free(p);//释放内存
-	}else
+	}
+	else
 	{
 		udp_disconnect(upcb); 
-	
 	} 
 } 
 

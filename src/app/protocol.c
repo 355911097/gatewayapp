@@ -7,9 +7,21 @@
 *                                             INCLUDE FILES
 *********************************************************************************************************
 */
+#include <string.h>
 #include "bsp.h"
 #include "protocol.h"
 #include "usart.h"
+#include "rawudp.h"
+#include "app.h"
+
+
+
+extern uint8_t gprs_rx_flag;
+extern usart_buff_t *gprs_rx_buff;
+
+extern struct udp_pcb *udppcb;  	//定义一个UDP服务器控制块
+extern OS_TCB 	protocol_task_TCB;
+extern CPU_STK	protocol_task_stk[PROTOCOL_TASK_STK_SIZE];
 
 
 const u16 crc_table[256] = {
@@ -50,6 +62,72 @@ const u16 crc_table[256] = {
 
 
 
+dev_info_t dev_info;
+
+
+
+static void protocol_task_fun(void *p_arg);
+
+
+void protocol_task_create(void)
+{
+	OS_ERR os_err;
+	CPU_SR_ALLOC();
+
+	
+	CPU_CRITICAL_ENTER();
+	OSTaskCreate((OS_TCB 	* )&protocol_task_TCB,		
+				 (CPU_CHAR	* )"protocol_task", 		
+                 (OS_TASK_PTR )protocol_task_fun, 			
+                 (void		* )0,					
+                 (OS_PRIO	  )PROTOCOL_TASK_PRIO,     
+                 (CPU_STK   * )&protocol_task_stk[0],	
+                 (CPU_STK_SIZE)PROTOCOL_TASK_STK_SIZE/10,	
+                 (CPU_STK_SIZE)PROTOCOL_TASK_STK_SIZE,		
+                 (OS_MSG_QTY  )0,					
+                 (OS_TICK	  )0,					
+                 (void   	* )0,					
+                 (OS_OPT      )OS_OPT_TASK_STK_CHK|OS_OPT_TASK_STK_CLR,
+                 (OS_ERR 	* )&os_err); 
+				 
+	CPU_CRITICAL_EXIT();
+				 
+	OSTimeDly(10, OS_OPT_TIME_DLY, &os_err);
+	
+	if(os_err != OS_ERR_NONE)
+	{
+		USART_OUT(USART3, "\rrawudp_task fail\r");			 
+	}			 
+
+}
+
+
+static void protocol_task_fun(void *p_arg)
+{
+	OS_ERR err;
+	u8 nn = 0;
+
+	while(DEF_TRUE)
+	{
+
+		if(gprs_rx_flag == TRUE)
+		{
+			gprs_rx_flag = FALSE;
+			
+			
+				
+		}
+		
+
+		OSTimeDly(1000, OS_OPT_TIME_DLY, &err);
+	}
+
+}
+
+
+
+
+
 u16 crc16(u16 crc, const u8 *data, u32 len )//len
 {
 	while (len--)
@@ -86,7 +164,7 @@ u16 crc16_modbus(u8 *data, int len)
 			}
 		}
 	}
-  
+	
 	return cin;
 }
 
@@ -94,9 +172,49 @@ u16 crc16_modbus(u8 *data, int len)
 
 
 
-u8 svr_to_ctu(u8 *buff, u32 size, u8 channel)
+u8 svr_to_ctu(u8 *buff, u16 size, u8 channel)
 {
 	
+	u16 cmd = 0;
+	u16 ctr_unit = 0;
+	
+	
+	cmd = *buff++;
+	cmd += (*buff++)<<8;  
+	
+	ctr_unit = *buff++;
+	ctr_unit += (*buff++)<<8; 
+	
+	
+	if ((ctr_unit&DIR_UP_FLAG) == DIR_UP_FLAG)
+	{
+		return 2;
+	}
+	
+	
+	if(dev_info.dev_is_login == FALSE)
+	{
+		
+		return 1;
+	}
+	
+	
+	switch (cmd)
+	{
+		case 0001:
+			
+		
+		break;
+	
+		
+		case 0002:
+			
+		break;
+		
+		
+		default:
+			break;
+	}
 	
 	
 	
@@ -106,45 +224,39 @@ u8 svr_to_ctu(u8 *buff, u32 size, u8 channel)
 
 
 
-bool ctu_to_srv(u8 *buff, u32 size, u8 channel)
+bool ctu_to_srv(u8 *buff, u16 size, u8 channel)
 {
-	telegram_t tele;
+
 	u16 i = 0, crc = 0;
 	u16 telegram_lenth = 0;
-	u8 tel[512] = {0};
+	u8 tele[512] = {0};
 	
-	tel[0] = TELEGRAM_HEAD;
-	tel[1] = (u8)size;
-	tel[3] = (u8)(size>>8);
+	tele[0] = TELEGRAM_HEAD;
+	tele[1] = (u8)size;
+	tele[3] = (u8)(size>>8);
+	tele[4] = TELEGRAM_SYNC;
 	
-	for (i=0; i<i+4; i++)
+	
+	for (i=0; i<size-7; i++)
 	{
-		tel[i+3] = 0;
+		tele[i+7] = *buff++;
 	}
 	
-	tel[i++] = 0x01;	//控制单元
+	crc = crc16_modbus(tele+6, size);
 	
-	for (i=0; i<size-8; i++)
-	{
-		tel[i+8] = *buff++;
-	}
+	tele[size+5] = (u8)crc;
+	tele[size+6] = (u8)crc>>8;
+	tele[size+7] = TELEGRAM_END;
 	
-	crc = crc16_modbus(tel+6, size);
-	
-	tel[size+6] = (u8)crc;
-	tel[size+7] = (u8)crc>>8;
-	tel[size+8] = TELEGRAM_END;
-	
-	
-//	telegram_lenth  = size+9;
+
 	
 	if(channel == CHANNEL_GPRS)
 	{
-		USART_OUT(USART2, tel);
+		USART_OUT(USART2, tele);
 	}
 	else if(channel == CHANNEL_ETH)
 	{
-		
+		rawudp_send_data(udppcb, tele);
 	}
 	
 	return TRUE;
@@ -167,10 +279,131 @@ bool ctu_to_srv(u8 *buff, u32 size, u8 channel)
 void sign_in(u8 *buff, u32 size)
 {
 
+	u32 i = 0, buff_cnt = 0;
+	u16 cmd = 0x0100;
+	u16 ctr_unit = 0;
+	u16 dev_id = 0x0001;
+	u16 node_id = 0;
+	u16 mes = 0;
+	u8 date[8] = {0};
+	u8 gw_id[6] = {0};
+	u16 gw_software_version = 0;
+	u16 gw_hardware_version = 0;
+	
+	
+	SETBIT(ctr_unit, 1);
+	CLRBIT(ctr_unit, 2);
+	
+	buff[buff_cnt++] = cmd&0xFF;
+	buff[buff_cnt++] = cmd>>8;
+	
+	buff[buff_cnt++] = ctr_unit&0xFF;
+	buff[buff_cnt++] = ctr_unit>>8;
+	
+	
+	for(i=0; i<4; i++)
+	{
+		buff[buff_cnt+i] = 00;
+	}
+	
+	buff[buff_cnt++] = dev_id &0xFF;
+	buff[buff_cnt++] = dev_id>>8;
+	
+	buff[buff_cnt++] = node_id &0xF;
+	buff[buff_cnt++] = node_id>>8;
+	
+	buff[buff_cnt++] = mes &0xF;
+	buff[buff_cnt++] = mes>>8;
+	
+	for(i=0; i<8; i++)
+	{
+		buff[buff_cnt+i] = 00;
+	}
+	
+	
+	for(i=0; i<6; i++)
+	{
+		buff[buff_cnt+i] = gw_id[i];
+	}
+	
+	buff[buff_cnt++] = gw_software_version&0xFF;
+	buff[buff_cnt++] = gw_software_version>>8;
+	
+	buff[buff_cnt++] = gw_hardware_version&0xFF;
+	buff[buff_cnt++] = gw_hardware_version>>8;
+	
+	for(i=0; i<6; i++)	//硬件编号
+	{
+		buff[buff_cnt+i] = 00;
+	}
+	
+	for(i=0; i<6; i++)
+	{
+		buff[buff_cnt+i] = 00;
+	}
+	
+	for(i=0; i<8; i++)
+	{
+		buff[buff_cnt+i] = 00;
+	}
+	
+	size = buff_cnt;
+}
+
+
+
+
+
+void heart_beat(u8 *buff, u32 size)
+{
+
+	u32 i = 0, buff_cnt = 0;
+	u16 cmd = 0x0200;
+	u16 ctr_unit = 0;
+	u16 dev_id = 0x0001;
+	u16 node_id = 0;
+	u16 mes = 0;
+	u8 date[8] = {0};
+	u8 gw_id[6] = {0};
 
 	
 	
+	SETBIT(ctr_unit, 1);
+	CLRBIT(ctr_unit, 2);
 	
+	buff[buff_cnt++] = cmd&0xFF;
+	buff[buff_cnt++] = cmd>>8;
+	
+	buff[buff_cnt++] = ctr_unit&0xFF;
+	buff[buff_cnt++] = ctr_unit>>8;
+	
+	
+	for(i=0; i<4; i++)
+	{
+		buff[buff_cnt+i] = 00;
+	}
+	
+	buff[buff_cnt++] = dev_id &0xFF;
+	buff[buff_cnt++] = dev_id>>8;
+	
+	buff[buff_cnt++] = node_id &0xF;
+	buff[buff_cnt++] = node_id>>8;
+	
+	buff[buff_cnt++] = mes &0xF;
+	buff[buff_cnt++] = mes>>8;
+	
+	for(i=0; i<8; i++)
+	{
+		buff[buff_cnt+i] = 00;
+	}
+	
+	for(i=0; i<6; i++)
+	{
+		buff[buff_cnt+i] = gw_id[i];
+	}
+
+	
+	size = buff_cnt;
 }
 
 
@@ -184,13 +417,27 @@ void sign_in(u8 *buff, u32 size)
 
 
 
+void fatch_gprs_data(u8 *buff, u16 size)
+{
+	u16 i = 0;
+	
+	
+	if (gprs_rx_buff->index < 4)
+	{
+		gprs_rx_buff->index = 0;
+		memset(gprs_rx_buff, 0, sizeof(usart_buff_t));	
+		USART_OUT(USART3, "\r fatch_gprs_data too small\r \n");
+	}
+	
+	
+	for (i=0; i<gprs_rx_buff->index; i++)
+	{
+	
+	
+	}
+	
 
-
-
-
-
-
-
+}
 
 
 

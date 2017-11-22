@@ -105,6 +105,10 @@ OS_TCB 	usart3_task_TCB;
 CPU_STK	usart3_task_stk[USART3_TASK_STK_SIZE];
 
 
+OS_TCB 	protocol_task_TCB;
+CPU_STK	protocol_task_stk[PROTOCOL_TASK_STK_SIZE];
+
+
 
 //OS_TCB tcpip_thread_task_TCB1;//LWIP内核任务的任务控制块
 //CPU_STK tcpip_thread_task_stk1[1000];
@@ -401,10 +405,8 @@ static  void  AppTaskCreate (void)
 	
 	USART_OUT(USART3, "\eth_init_task err=%d\r", os_err);
 				 
-#if 0
-				 
-	gprs_task_create();	
-				 
+#if 0				 
+	gprs_task_create();					 
 #else
 				 
 #if LWIP_DHCP
@@ -557,6 +559,8 @@ static void eth_init_task_fun(void *p_arg)
 	while(DEF_TRUE)
 	{
 
+		
+		
 
 		OSTimeDly(1000, OS_OPT_TIME_DLY, &err);
 	}

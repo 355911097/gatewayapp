@@ -15,12 +15,24 @@
 
 
 
-//报文头尾标识
-#define TELEGRAM_HEAD		0x68//
-#define TELEGRAM_END		0x16
+
+#define SETBIT(x, y)		x|=(1<<y)		//将x的第y位置1
+#define CLRBIT(x, y)		x&=!(1<<y)		//将x的第y位清0	
+
 
 
 #define DIR_UP_FLAG			(u8)(1<<0)
+
+
+
+
+//报文头尾标识
+#define TELEGRAM_HEAD		0x68		//
+#define TELEGRAM_SYNC		0x68
+#define TELEGRAM_END		0x16
+
+
+
 
 
 

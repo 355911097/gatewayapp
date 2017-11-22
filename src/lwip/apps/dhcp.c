@@ -136,7 +136,7 @@ static void dhcp_task_fun(void *p_arg)
 			break;
 				
 			case 2:
-				rawudp_task_create();
+				rawudp_task_create();		//udp任务确认
 				lwip_dev.dhcp_status = 3;
 			break;
 			
