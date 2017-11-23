@@ -98,3 +98,4 @@
 .\obj\protocol.o: ..\lwip\include\lwip/icmp.h
 .\obj\protocol.o: ..\lwip\include\lwip/prot/icmp.h
 .\obj\protocol.o: ..\app\app.h
+.\obj\protocol.o: ..\driver\timer.h

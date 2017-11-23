@@ -13,6 +13,9 @@
 #include "usart.h"
 #include "rawudp.h"
 #include "app.h"
+#include "timer.h"
+
+
 
 
 
@@ -64,6 +67,9 @@ const u16 crc_table[256] = {
 
 dev_info_t dev_info;
 
+u32 heart_cnt = 0;		//心跳计数器
+
+
 
 
 static void protocol_task_fun(void *p_arg);
@@ -96,7 +102,7 @@ void protocol_task_create(void)
 	
 	if(os_err != OS_ERR_NONE)
 	{
-		USART_OUT(USART3, "\rrawudp_task fail\r");			 
+		USART_OUT(USART3, "\r rawudp_task fail\r");			 
 	}			 
 
 }
@@ -105,26 +111,90 @@ void protocol_task_create(void)
 static void protocol_task_fun(void *p_arg)
 {
 	OS_ERR err;
-	u8 nn = 0;
+	u8 cmd = 0;
+	u8 protocol_err = 0;
+	u8 protocol_status = 0;
+	u32 err_cnt = 0;
 
 	while(DEF_TRUE)
 	{
-
-		if(gprs_rx_flag == TRUE)
-		{
-			
-			u8 buffer[USART_BUFF_LENGHT];
-			u16 size;
-			gprs_rx_flag = FALSE;
-			
-			if (fatch_gprs_data(buffer, &size))
+		
+		if (heart_cnt == 0)
+		{	
+			if(protocol_status == STATE_LOGIN)
 			{
-				
+				sign_in(CHANNEL_GPRS);
+				memset(gprs_rx_buff, 0, sizeof(usart_buff_t));	
+				heart_cnt = get_heart_tick();
 				
 			}
+			else if(protocol_status == STATE_HEART)
+			{
+				heart_beat(CHANNEL_GPRS);
+				memset(gprs_rx_buff, 0, sizeof(usart_buff_t));	
+				heart_cnt = get_heart_tick();
+			}
+		}
+		else
+		{
+			if((get_heart_tick()-heart_cnt) >= 0) //心跳阶段检测心跳时间
+			{
+				if(err_cnt >= GPRS_HEAT_ERR_COUNT)	//超过最大尝试次数，重启GPRS
+				{
+					
+					heart_cnt = 0;
+					err_cnt++;
+				}
+				else	//重新发送心跳指令
+				{
+					heart_cnt = 0;
+				}
+			}
+			else
+			{
 				
+				if(gprs_rx_flag == TRUE)	//收到数据标志
+				{
+					
+					u8 buffer[USART_BUFF_LENGHT];
+					u16 size;
+					gprs_rx_flag = FALSE;
+								
+					
+					if (fatch_gprs_data(buffer, &size))		//取得消息报文
+					{
+						protocol_err = process_protocol(buffer, size, CHANNEL_GPRS);	//处理报文
+						
+						
+						if (protocol_err == TRUE)
+						{
+							
+							switch (protocol_status)
+							{
+								case 0:
+									
+								break;
+								
+								case 1:
+									
+								
+								break;
+								
+								
+							}
+							
+						}
+					}
+						
+				}
+		
+					
+			}
+			
 		}
 		
+		
+	
 
 		OSTimeDly(1000, OS_OPT_TIME_DLY, &err);
 	}
@@ -180,6 +250,30 @@ u16 crc16_modbus(u8 *data, u32 len)
 }
 
 
+void clear_rx_buff(void)
+{
+	memset(gprs_rx_buff, 0, sizeof(usart_buff_t));	
+}
+
+
+
+
+u8 process_protocol(u8 *buff, u16 size, u8 channel)
+{
+
+	u16 lenth = 0;
+	
+	buff += 3;	
+	
+	lenth -= 6;
+	
+	return svr_to_ctu(buff, size, channel);
+	
+}
+
+
+
+
 
 
 
@@ -199,13 +293,14 @@ u8 svr_to_ctu(u8 *buff, u16 size, u8 channel)
 	
 	if ((ctr_unit&DIR_UP_FLAG) == DIR_UP_FLAG)
 	{
+		USART_OUT(USART3, "GPRS ctr_unit UD= %d\r", ctr_unit);
 		return 2;
 	}
 	
 	
-	if(dev_info.dev_is_login == FALSE)
+	if((dev_info.dev_is_login == FALSE) && (channel == CHANNEL_GPRS))
 	{
-		
+		USART_OUT(USART3, "GPRS  without Login");
 		return 1;
 	}
 	
@@ -214,7 +309,7 @@ u8 svr_to_ctu(u8 *buff, u16 size, u8 channel)
 	{
 		case 0001:
 			
-		
+			return TRUE;
 		break;
 	
 		
@@ -224,7 +319,7 @@ u8 svr_to_ctu(u8 *buff, u16 size, u8 channel)
 		
 		
 		default:
-			break;
+		break;
 	}
 	
 	
@@ -287,9 +382,10 @@ bool ctu_to_srv(u8 *buff, u16 size, u8 channel)
 
 
 
-void sign_in(u8 *buff, u32 size)
+u8 sign_in(u8 channel)
 {
 
+	u8 buff[100] = {0};	
 	u32 i = 0, buff_cnt = 0;
 	u16 cmd = 0x0100;
 	u16 ctr_unit = 0;
@@ -305,6 +401,7 @@ void sign_in(u8 *buff, u32 size)
 	SETBIT(ctr_unit, 1);
 	CLRBIT(ctr_unit, 2);
 	
+	/*消息头*/	
 	buff[buff_cnt++] = cmd&0xFF;
 	buff[buff_cnt++] = cmd>>8;
 	
@@ -330,44 +427,48 @@ void sign_in(u8 *buff, u32 size)
 	{
 		buff[buff_cnt+i] = 00;
 	}
-	
-	
-	for(i=0; i<6; i++)
+
+	/*消息体*/
+	for(i=0; i<6; i++)		//网关id
 	{
 		buff[buff_cnt+i] = gw_id[i];
 	}
 	
+	//软件版本号
 	buff[buff_cnt++] = gw_software_version&0xFF;
 	buff[buff_cnt++] = gw_software_version>>8;
-	
+	//硬件版本号
 	buff[buff_cnt++] = gw_hardware_version&0xFF;
 	buff[buff_cnt++] = gw_hardware_version>>8;
 	
-	for(i=0; i<6; i++)	//硬件编号
+	//硬件编号
+	for(i=0; i<6; i++)	
 	{
 		buff[buff_cnt+i] = 00;
 	}
-	
+	//MAC地址
 	for(i=0; i<6; i++)
 	{
 		buff[buff_cnt+i] = 00;
 	}
-	
+	//GSM模块的IMEI
 	for(i=0; i<8; i++)
 	{
 		buff[buff_cnt+i] = 00;
-	}
+	}	
 	
-	size = buff_cnt;
+	
+	return ctu_to_srv(buff, buff_cnt, CHANNEL_GPRS);
+
 }
 
 
 
 
 
-void heart_beat(u8 *buff, u32 size)
+u8 heart_beat(u8 channel)
 {
-
+	u8 buff[100] = {0};
 	u32 i = 0, buff_cnt = 0;
 	u16 cmd = 0x0200;
 	u16 ctr_unit = 0;
@@ -377,8 +478,7 @@ void heart_beat(u8 *buff, u32 size)
 	u8 date[8] = {0};
 	u8 gw_id[6] = {0};
 
-	
-	
+		
 	SETBIT(ctr_unit, 1);
 	CLRBIT(ctr_unit, 2);
 	
@@ -414,7 +514,7 @@ void heart_beat(u8 *buff, u32 size)
 	}
 
 	
-	size = buff_cnt;
+	return ctu_to_srv(buff, buff_cnt, CHANNEL_GPRS);
 }
 
 

@@ -32,6 +32,7 @@ enum timer3
 	tim_ftp_cnt7,
 	timer_gprs,
 	timer_at,
+	timer_hear,
 	timer_max
 };
 
@@ -51,7 +52,7 @@ void timer3_init(u16 arr, u16 psc);
 void TIM3_IRQHandler(void);
 int timer_is_timeout_1MS(uint8_t type, uint32_t count);
 void timer_delay_1ms(uint32_t ms);
-
+u32 get_heart_tick(void);
 
 
 #endif

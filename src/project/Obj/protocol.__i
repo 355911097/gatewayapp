@@ -1,0 +1,6 @@
+-c --cpu Cortex-M3 -D__MICROLIB -g -W -O0 --apcs=interwork -I..\app -I..\bsp -I..\driver -I..\Libraries\STM32F2xx_StdPeriph_Driver\src -I..\Libraries\STM32F2xx_StdPeriph_Driver\inc -I..\Libraries\STM32F2x7_ETH_Driver\src -I..\Libraries\STM32F2x7_ETH_Driver\inc -I..\Libraries\CMSIS\Include -I..\Libraries\CMSIS\Device -I..\UCOSIII\uC-LIB -I..\UCOSIII\uC-CPU -I..\UCOSIII\uCOS-CONFIG -I..\UCOSIII\uC-CPU\ARM-Cortex-M3\RealView -I..\UCOSIII\uC-LIB\Ports\ARM-Cortex-M3\RealView -I..\UCOSIII\uCOS-III\Source -I..\UCOSIII\uCOS-III\Ports\ARM-Cortex-M3\Generic\RealView -I..\FATFS -I..\lwip\include -I..\lwip\apps\tcpecho_raw -I..\lwip\apps -I..\lwip\apps\socket_examples --diag_suppress=177
+-I E:\github\gatewayapp\src\project\RTE
+-I d:\Keil_v5\ARM\PACK\ARM\CMSIS\5.1.0\CMSIS\Include
+-I d:\Keil_v5\ARM\PACK\Keil\STM32F2xx_DFP\2.7.0\Drivers\CMSIS\Device\ST\STM32F2xx\Include
+-D__UVISION_VERSION="517" -D_RTE_ -DSTM32F207xx -DSTM32F2XX -DUSE_STDPERIPH_DRIVER
+-o .\obj\protocol.o --omf_browse .\obj\protocol.crf --depend .\obj\protocol.d "..\app\protocol.c"

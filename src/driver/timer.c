@@ -30,6 +30,8 @@ volatile uint32_t g_timeout_cnt = 0;
 extern u32 lwip_localtime;	
 
 
+u32 heart_tick = 0;
+
 void timer3_init(u16 arr, u16 psc)
 {
 	TIM_TimeBaseInitTypeDef tim_init_structure;
@@ -78,8 +80,10 @@ void TIM3_IRQHandler(void)
         for (i = 0; i<(uint8_t)timer_max; i++)
         {
             g_timer_cnt[i]++;
-        }	
+        }
 
+		heart_tick++;	
+		
 		lwip_localtime++;
     }
 }
@@ -91,6 +95,11 @@ void timer_delay_1ms(uint32_t ms)
 	while(g_timeout_cnt != 0);					//
 }
 
+
+u32 get_heart_tick(void)
+{
+	return heart_tick;
+}
 /*
 *********************************************************************************************************
 *                                          timer_is_timeout_1MS()

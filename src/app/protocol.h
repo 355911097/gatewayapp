@@ -57,6 +57,16 @@
 
 
 
+#define STATE_LOGIN				0
+#define STATE_HEART				1
+#define	STATE_RPT				2
+
+
+
+#define GPRS_HEAT_ERR_COUNT		5
+
+
+
 typedef struct
 {
 	u8 head;
@@ -75,10 +85,11 @@ typedef struct
 
 
 
-
-
+u8 process_protocol(u8 *buff, u16 size, u8 channel);
+u8 svr_to_ctu(u8 *buff, u16 size, u8 channel);
 
 bool fatch_gprs_data(u8 *buff, u16 *size);
-
+u8 sign_in(u8 channel);
+u8 heart_beat(u8 channel);
 
 #endif
