@@ -21,6 +21,19 @@
 
 
 
+
+typedef struct
+{
+	u8 hour;
+	u8 minute;
+	u8 second;
+	u32 ms;
+
+}date_time_t;
+
+
+
+
 enum timer3
 {
     tim_led1_cnt1,
@@ -51,8 +64,11 @@ extern volatile uint32_t g_timer_cnt[(uint8_t)timer_max];
 void timer3_init(u16 arr, u16 psc);
 void TIM3_IRQHandler(void);
 int timer_is_timeout_1MS(uint8_t type, uint32_t count);
+u32 timer_get_heart_ms(void);
 void timer_delay_1ms(uint32_t ms);
-u32 get_heart_tick(void);
+u8 timer_get_time_minute(void);
+u8 timer_get_time_second(void);
+date_time_t timer_get_time(void);
 
 
 #endif

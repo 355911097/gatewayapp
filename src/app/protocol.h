@@ -63,8 +63,8 @@
 
 
 
-#define GPRS_HEAT_ERR_COUNT		5
-
+#define GPRS_HEART_ERR_COUNT		5
+#define GPRS_HEART_TIME				1000*60*2			//心跳包时间
 
 
 typedef struct

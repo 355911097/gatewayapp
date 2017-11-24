@@ -67,14 +67,29 @@ const u16 crc_table[256] = {
 
 dev_info_t dev_info;
 
-u32 heart_cnt = 0;		//心跳计数器
+u32 heart_time_cnt = 0;		//心跳计数器
 
 
 
 
 static void protocol_task_fun(void *p_arg);
 
-
+/*
+*********************************************************************************************************
+*                                          timer3_init()
+*
+* Description : Create application kernel objects tasks.
+*
+* Argument(s) : type ?????  enum timer3
+*				count ?????? 
+*
+* Return(s)   : 0 ??????  1???????
+*
+* Caller(s)   : 
+*
+* Note(s)     : none.
+*********************************************************************************************************
+*/
 void protocol_task_create(void)
 {
 	OS_ERR os_err;
@@ -107,7 +122,22 @@ void protocol_task_create(void)
 
 }
 
-
+/*
+*********************************************************************************************************
+*                                          timer3_init()
+*
+* Description : Create application kernel objects tasks.
+*
+* Argument(s) : type ?????  enum timer3
+*				count ?????? 
+*
+* Return(s)   : 0 ??????  1???????
+*
+* Caller(s)   : 
+*
+* Note(s)     : none.
+*********************************************************************************************************
+*/
 static void protocol_task_fun(void *p_arg)
 {
 	OS_ERR err;
@@ -119,35 +149,36 @@ static void protocol_task_fun(void *p_arg)
 	while(DEF_TRUE)
 	{
 		
-		if (heart_cnt == 0)
+		if (heart_time_cnt == 0)
 		{	
 			if(protocol_status == STATE_LOGIN)
 			{
 				sign_in(CHANNEL_GPRS);
 				memset(gprs_rx_buff, 0, sizeof(usart_buff_t));	
-				heart_cnt = get_heart_tick();
+				heart_time_cnt = timer_get_heart_ms();
 				
 			}
 			else if(protocol_status == STATE_HEART)
 			{
 				heart_beat(CHANNEL_GPRS);
 				memset(gprs_rx_buff, 0, sizeof(usart_buff_t));	
-				heart_cnt = get_heart_tick();
+				heart_time_cnt = timer_get_heart_ms();
 			}
 		}
 		else
 		{
-			if((get_heart_tick()-heart_cnt) >= 0) //心跳阶段检测心跳时间
+			if((timer_get_heart_ms()-heart_time_cnt) >= GPRS_HEART_TIME) //心跳阶段检测心跳时间
 			{
-				if(err_cnt >= GPRS_HEAT_ERR_COUNT)	//超过最大尝试次数，重启GPRS
+				err_cnt++; //错误计数器增加
+				if(err_cnt >= GPRS_HEART_ERR_COUNT)	//超过最大尝试次数，重启GPRS
 				{
 					
-					heart_cnt = 0;
-					err_cnt++;
+					heart_time_cnt = 0;
+					err_cnt = 0;	
 				}
 				else	//重新发送心跳指令
 				{
-					heart_cnt = 0;
+					heart_time_cnt = 0;
 				}
 			}
 			else
@@ -171,11 +202,13 @@ static void protocol_task_fun(void *p_arg)
 							
 							switch (protocol_status)
 							{
-								case 0:
+								case STATE_LOGIN:
 									
+								
 								break;
 								
-								case 1:
+								
+								case STATE_HEART:
 									
 								
 								break;
@@ -204,7 +237,22 @@ static void protocol_task_fun(void *p_arg)
 
 
 
-
+/*
+*********************************************************************************************************
+*                                          timer3_init()
+*
+* Description : Create application kernel objects tasks.
+*
+* Argument(s) : type ?????  enum timer3
+*				count ?????? 
+*
+* Return(s)   : 0 ??????  1???????
+*
+* Caller(s)   : 
+*
+* Note(s)     : none.
+*********************************************************************************************************
+*/
 u16 crc16_xmodem(const u8 *data, u32 len)//len
 {
 	u16 crc = 0;
@@ -217,8 +265,22 @@ u16 crc16_xmodem(const u8 *data, u32 len)//len
 
 
 
-
-
+/*
+*********************************************************************************************************
+*                                          timer3_init()
+*
+* Description : Create application kernel objects tasks.
+*
+* Argument(s) : type ?????  enum timer3
+*				count ?????? 
+*
+* Return(s)   : 0 ??????  1???????
+*
+* Caller(s)   : 
+*
+* Note(s)     : none.
+*********************************************************************************************************
+*/
 u16 crc16_modbus(u8 *data, u32 len)
 {
 	u16 reg_crc = 0xFFFF;
@@ -249,7 +311,22 @@ u16 crc16_modbus(u8 *data, u32 len)
 	return reg_crc;
 }
 
-
+/*
+*********************************************************************************************************
+*                                          timer3_init()
+*
+* Description : Create application kernel objects tasks.
+*
+* Argument(s) : type ?????  enum timer3
+*				count ?????? 
+*
+* Return(s)   : 0 ??????  1???????
+*
+* Caller(s)   : 
+*
+* Note(s)     : none.
+*********************************************************************************************************
+*/
 void clear_rx_buff(void)
 {
 	memset(gprs_rx_buff, 0, sizeof(usart_buff_t));	
@@ -257,7 +334,22 @@ void clear_rx_buff(void)
 
 
 
-
+/*
+*********************************************************************************************************
+*                                          timer3_init()
+*
+* Description : Create application kernel objects tasks.
+*
+* Argument(s) : type ?????  enum timer3
+*				count ?????? 
+*
+* Return(s)   : 0 ??????  1???????
+*
+* Caller(s)   : 
+*
+* Note(s)     : none.
+*********************************************************************************************************
+*/
 u8 process_protocol(u8 *buff, u16 size, u8 channel)
 {
 
@@ -276,7 +368,22 @@ u8 process_protocol(u8 *buff, u16 size, u8 channel)
 
 
 
-
+/*
+*********************************************************************************************************
+*                                          timer3_init()
+*
+* Description : Create application kernel objects tasks.
+*
+* Argument(s) : type ?????  enum timer3
+*				count ?????? 
+*
+* Return(s)   : 0 ??????  1???????
+*
+* Caller(s)   : 
+*
+* Note(s)     : none.
+*********************************************************************************************************
+*/
 u8 svr_to_ctu(u8 *buff, u16 size, u8 channel)
 {
 	
@@ -329,7 +436,22 @@ u8 svr_to_ctu(u8 *buff, u16 size, u8 channel)
 
 
 
-
+/*
+*********************************************************************************************************
+*                                          timer3_init()
+*
+* Description : Create application kernel objects tasks.
+*
+* Argument(s) : type ?????  enum timer3
+*				count ?????? 
+*
+* Return(s)   : 0 ??????  1???????
+*
+* Caller(s)   : 
+*
+* Note(s)     : none.
+*********************************************************************************************************
+*/
 bool ctu_to_srv(u8 *buff, u16 size, u8 channel)
 {
 
@@ -381,7 +503,22 @@ bool ctu_to_srv(u8 *buff, u16 size, u8 channel)
 
 
 
-
+/*
+*********************************************************************************************************
+*                                          timer3_init()
+*
+* Description : Create application kernel objects tasks.
+*
+* Argument(s) : type ?????  enum timer3
+*				count 
+*
+* Return(s)   : 0 ??????  1???????
+*
+* Caller(s)   : 
+*
+* Note(s)     : none.
+*********************************************************************************************************
+*/
 u8 sign_in(u8 channel)
 {
 
@@ -465,7 +602,22 @@ u8 sign_in(u8 channel)
 
 
 
-
+/*
+*********************************************************************************************************
+*                                          timer3_init()
+*
+* Description : Create application kernel objects tasks.
+*
+* Argument(s) : type ?????  enum timer3
+*				count ?????? 
+*
+* Return(s)   : 0 ??????  1???????
+*
+* Caller(s)   : 
+*
+* Note(s)     : none.
+*********************************************************************************************************
+*/
 u8 heart_beat(u8 channel)
 {
 	u8 buff[100] = {0};
@@ -527,7 +679,22 @@ u8 heart_beat(u8 channel)
 
 
 
-
+/*
+*********************************************************************************************************
+*                                          timer3_init()
+*
+* Description : Create application kernel objects tasks.
+*
+* Argument(s) : type ?????  enum timer3
+*				count ?????? 
+*
+* Return(s)   : 0 ??????  1???????
+*
+* Caller(s)   : 
+*
+* Note(s)     : none.
+*********************************************************************************************************
+*/
 bool fatch_gprs_data(u8 *buff, u16 *size)
 {
 	u16 i = 0;

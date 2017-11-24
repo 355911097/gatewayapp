@@ -21,13 +21,28 @@
 			
 
 		
-u32 lwip_localtime;		//
 
 
 
 
 
 
+/*
+*********************************************************************************************************
+*                                          timer3_init()
+*
+* Description : Create application kernel objects tasks.
+*
+* Argument(s) : type ?????  enum timer3
+*				count ?????? 
+*
+* Return(s)   : 0 ??????  1???????
+*
+* Caller(s)   : 
+*
+* Note(s)     : none.
+*********************************************************************************************************
+*/
 u8 LAN8720_Init(void)
 {
 	OS_ERR err;
@@ -47,7 +62,22 @@ u8 LAN8720_Init(void)
 }
 
 
-
+/*
+*********************************************************************************************************
+*                                          timer3_init()
+*
+* Description : Create application kernel objects tasks.
+*
+* Argument(s) : type ?????  enum timer3
+*				count ?????? 
+*
+* Return(s)   : 0 ??????  1???????
+*
+* Caller(s)   : 
+*
+* Note(s)     : none.
+*********************************************************************************************************
+*/
 u8 ETH_MACDMA_Config(void)
 {
 	u8 rval;
@@ -105,7 +135,22 @@ u8 ETH_MACDMA_Config(void)
 
 
 
-
+/*
+*********************************************************************************************************
+*                                          timer3_init()
+*
+* Description : Create application kernel objects tasks.
+*
+* Argument(s) : type ?????  enum timer3
+*				count ?????? 
+*
+* Return(s)   : 0 ??????  1???????
+*
+* Caller(s)   : 
+*
+* Note(s)     : none.
+*********************************************************************************************************
+*/
 u8 LAN8720_Get_Speed(void)
 {
 	u8 speed = 0;
@@ -119,6 +164,23 @@ u8 LAN8720_Get_Speed(void)
 
 extern void lwip_comm_pkt_handle(void);
 //以太网DMA接收中断服务函数
+
+/*
+*********************************************************************************************************
+*                                          timer3_init()
+*
+* Description : Create application kernel objects tasks.
+*
+* Argument(s) : type ?????  enum timer3
+*				count ?????? 
+*
+* Return(s)   : 0 ??????  1???????
+*
+* Caller(s)   : 
+*
+* Note(s)     : none.
+*********************************************************************************************************
+*/
 void ETH_IRQHandler(void)
 {
 	while(ETH_GetRxPktSize(DMARxDescToGet)!=0) 	//检测是否收到数据包
@@ -133,6 +195,22 @@ void ETH_IRQHandler(void)
 
 //接收一个网卡数据包
 //返回值:网络数据包帧结构体
+/*
+*********************************************************************************************************
+*                                          timer3_init()
+*
+* Description : Create application kernel objects tasks.
+*
+* Argument(s) : type ?????  enum timer3
+*				count ?????? 
+*
+* Return(s)   : 0 ??????  1???????
+*
+* Caller(s)   : 
+*
+* Note(s)     : none.
+*********************************************************************************************************
+*/
 FrameTypeDef ETH_Rx_Packet(void)
 { 
 	u32 framelength=0;
@@ -171,6 +249,22 @@ FrameTypeDef ETH_Rx_Packet(void)
 //FrameLength:数据包长度
 //返回值:ETH_ERROR,发送失败(0)
 //		ETH_SUCCESS,发送成功(1)
+/*
+*********************************************************************************************************
+*                                          timer3_init()
+*
+* Description : Create application kernel objects tasks.
+*
+* Argument(s) : type ?????  enum timer3
+*				count ?????? 
+*
+* Return(s)   : 0 ??????  1???????
+*
+* Caller(s)   : 
+*
+* Note(s)     : none.
+*********************************************************************************************************
+*/
 u8 ETH_Tx_Packet(u16 FrameLength)
 {   
 	 
@@ -197,13 +291,44 @@ u8 ETH_Tx_Packet(u16 FrameLength)
 
 //得到当前描述符的Tx buffer地址
 //返回值:Tx buffer地址
+/*
+*********************************************************************************************************
+*                                          timer3_init()
+*
+* Description : Create application kernel objects tasks.
+*
+* Argument(s) : type ?????  enum timer3
+*				count ?????? 
+*
+* Return(s)   : 0 ??????  1???????
+*
+* Caller(s)   : 
+*
+* Note(s)     : none.
+*********************************************************************************************************
+*/
 u32 ETH_GetCurrentTxBuffer(void)
 {  
 	return DMATxDescToSet->Buffer1Addr;//返回Tx buffer地址  
 }
 
 
-
+/*
+*********************************************************************************************************
+*                                          timer3_init()
+*
+* Description : Create application kernel objects tasks.
+*
+* Argument(s) : type ?????  enum timer3
+*				count ?????? 
+*
+* Return(s)   : 0 ??????  1???????
+*
+* Caller(s)   : 
+*
+* Note(s)     : none.
+*********************************************************************************************************
+*/
 void lan8720_rx_packet(FrameTypeDef frame)
 {
 	
@@ -214,7 +339,22 @@ void lan8720_rx_packet(FrameTypeDef frame)
 		ETH->DMARPDR=0;//恢复DMA接收
 	}
 }
-
+/*
+*********************************************************************************************************
+*                                          timer3_init()
+*
+* Description : Create application kernel objects tasks.
+*
+* Argument(s) : type ?????  enum timer3
+*				count ?????? 
+*
+* Return(s)   : 0 ??????  1???????
+*
+* Caller(s)   : 
+*
+* Note(s)     : none.
+*********************************************************************************************************
+*/
 FrameTypeDef lan8720_rxDMA_config(void)
 {
 	u32 frame_len = 0;
@@ -247,7 +387,22 @@ FrameTypeDef lan8720_rxDMA_config(void)
 }
 
 
-
+/*
+*********************************************************************************************************
+*                                          lan8720_txDMA_config()
+*
+* Description : Create application kernel objects tasks.
+*
+* Argument(s) : type ?????  enum timer3
+*				count ?????? 
+*
+* Return(s)   : 0 ??????  1???????
+*
+* Caller(s)   : 
+*
+* Note(s)     : none.
+*********************************************************************************************************
+*/
 u8 lan8720_txDMA_config(u16 frame_len)
 {
 	if((DMATxDescToSet->Status&ETH_DMATxDesc_OWN) != (u32)RESET) 
@@ -276,7 +431,22 @@ u8 lan8720_txDMA_config(u16 frame_len)
 //	memcpy(p, (u8*)DMARxDescToGet->Buffer1Addr, len);
 //}
 
-
+/*
+*********************************************************************************************************
+*                                          lan8720_write_buff()
+*
+* Description : Create application kernel objects tasks.
+*
+* Argument(s) : type ?????  enum timer3
+*				count ?????? 
+*
+* Return(s)   : 0 ??????  1???????
+*
+* Caller(s)   : 
+*
+* Note(s)     : none.
+*********************************************************************************************************
+*/
 void lan8720_write_buff(u8 *p, u16 len)
 {
 	

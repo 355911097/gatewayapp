@@ -27,11 +27,30 @@
 volatile uint32_t g_timer_cnt[(uint8_t)timer_max] = {0};
 volatile uint32_t g_timeout_cnt = 0;
 
-extern u32 lwip_localtime;	
+u32 time_heart_ms = 0;	//ĞÄÌø¼ÆÊıÆ÷
+
+u32 time_ms = 0;
+u8 time_second = 0;
+u8 time_minute = 0;
+u8 time_hour = 0;
 
 
-u32 heart_tick = 0;
-
+/*
+*********************************************************************************************************
+*                                          timer3_init()
+*
+* Description : Create application kernel objects tasks.
+*
+* Argument(s) : type ¶¨Ê±Æ÷ÀàĞÍ  enum timer3
+*				count ¶¨Ê±Æ÷¼ÆÊıÖµ 
+*
+* Return(s)   : 0 ¶¨Ê±Æ÷Ê±¼äµ½  1¶¨Ê±Æ÷Ê±¼äÎ´µ½
+*
+* Caller(s)   : 
+*
+* Note(s)     : none.
+*********************************************************************************************************
+*/
 void timer3_init(u16 arr, u16 psc)
 {
 	TIM_TimeBaseInitTypeDef tim_init_structure;
@@ -39,7 +58,7 @@ void timer3_init(u16 arr, u16 psc)
 	TIM_DeInit(TIM3);
 	tim_init_structure.TIM_CounterMode = TIM_CounterMode_Up;
 	tim_init_structure.TIM_ClockDivision = TIM_CKD_DIV1;
-	tim_init_structure.TIM_Period = arr;		//å‘ç”Ÿä¸­æ–­æ—¶é—´=(TIM_Prescaler+1)* (TIM_Period+1)/FLK
+	tim_init_structure.TIM_Period = arr;		//·¢ÉúÖĞ¶ÏÊ±¼ä=(TIM_Prescaler+1)* (TIM_Period+1)/FLK
 	tim_init_structure.TIM_Prescaler = psc;	
 	TIM_TimeBaseInit(TIM3, &tim_init_structure);
 
@@ -54,15 +73,20 @@ void timer3_init(u16 arr, u16 psc)
 
 
 /*
-*Function: TIM2_IRQHandler      
-*Description: å®šæ—¶å™¨2ä¸­æ–­æœåŠ¡ç¨‹åº
-*Calls: 
-*Data Accessed:  
-*Data Updated: g_tim_cnt   
-*Input: æ— 
-*Output: æ— 
-*Return: æˆåŠŸTRUE å¤±è´¥FALSH    
-*Others: æ—     
+*********************************************************************************************************
+*                                          timer3_init()
+*
+* Description : Create application kernel objects tasks.
+*
+* Argument(s) : type ¶¨Ê±Æ÷ÀàĞÍ  enum timer3
+*				count ¶¨Ê±Æ÷¼ÆÊıÖµ 
+*
+* Return(s)   : 0 ¶¨Ê±Æ÷Ê±¼äµ½  1¶¨Ê±Æ÷Ê±¼äÎ´µ½
+*
+* Caller(s)   : 
+*
+* Note(s)     : none.
+*********************************************************************************************************
 */
 void TIM3_IRQHandler(void)
 {
@@ -72,23 +96,157 @@ void TIM3_IRQHandler(void)
     {
         TIM_ClearITPendingBit( TIM3, TIM_IT_Update);
 		
-		if (g_timeout_cnt != 0x00)
+		if (g_timeout_cnt != 0x00)	//ÑÓÊ±
 		{
 			g_timeout_cnt--;
 		}
 				
-        for (i = 0; i<(uint8_t)timer_max; i++)
+        for (i = 0; i<(uint8_t)timer_max; i++)	//ºÁÃë¼¶¶¨Ê±Æ÷
         {
             g_timer_cnt[i]++;
         }
-
-		heart_tick++;	
 		
-		lwip_localtime++;
+
+		/****Ê±¼ä****/			
+		time_ms++;
+		if(time_ms > 999)
+		{
+			time_ms = 0;	
+			time_second++;
+			if(time_second > 59)
+			{	
+				time_second = 0;
+				time_minute++;
+				if(time_minute > 59)
+				{
+					time_minute = 0;
+					time_hour++;
+					if (time_hour > 23)
+					{
+						time_hour = 0;
+					}
+				}
+			}
+			
+		}	
+		
+	
+		time_heart_ms++;
     }
 }
 
 
+
+
+/*
+*********************************************************************************************************
+*                                          timer_get_heart_ms()
+*
+* Description : Create application kernel objects tasks.
+*
+* Argument(s) : type ¶¨Ê±Æ÷ÀàĞÍ  enum timer3
+*				count ¶¨Ê±Æ÷¼ÆÊıÖµ
+*
+* Return(s)   : ·µ»ØĞÄÌø°ü¼ÆÊıÆ÷µÄÖµ£¨µ¥Î»£ºms£©
+*
+* Caller(s)   : 
+*
+* Note(s)     : none.
+*********************************************************************************************************
+*/
+u32 timer_get_heart_ms(void)
+{
+	return time_heart_ms;
+}
+
+
+/*
+*********************************************************************************************************
+*                                          timer_delay_1ms()
+*
+* Description : Create application kernel objects tasks.
+*
+* Argument(s) : type ¶¨Ê±Æ÷ÀàĞÍ  enum timer3
+*				count ¶¨Ê±Æ÷¼ÆÊıÖµ 
+*
+* Return(s)   : 0 ¶¨Ê±Æ÷Ê±¼äµ½  1¶¨Ê±Æ÷Ê±¼äÎ´µ½
+*
+* Caller(s)   : 
+*
+* Note(s)     : none.
+*********************************************************************************************************
+*/
+u8 timer_get_time_minute(void)
+{
+	return time_minute;
+}	
+
+/*
+*********************************************************************************************************
+*                                          timer_delay_1ms()
+*
+* Description : Create application kernel objects tasks.
+*
+* Argument(s) : type ¶¨Ê±Æ÷ÀàĞÍ  enum timer3
+*				count ¶¨Ê±Æ÷¼ÆÊıÖµ 
+*
+* Return(s)   : 0 ¶¨Ê±Æ÷Ê±¼äµ½  1¶¨Ê±Æ÷Ê±¼äÎ´µ½
+*
+* Caller(s)   : 
+*
+* Note(s)     : none.
+*********************************************************************************************************
+*/
+u8 timer_get_time_second(void)
+{
+	return time_second;
+}	
+
+
+/*
+*********************************************************************************************************
+*                                          timer_delay_1ms()
+*
+* Description : Create application kernel objects tasks.
+*
+* Argument(s) : type ¶¨Ê±Æ÷ÀàĞÍ  enum timer3
+*				count ¶¨Ê±Æ÷¼ÆÊıÖµ 
+*
+* Return(s)   : 0 ¶¨Ê±Æ÷Ê±¼äµ½  1¶¨Ê±Æ÷Ê±¼äÎ´µ½
+*
+* Caller(s)   : 
+*
+* Note(s)     : none.
+*********************************************************************************************************
+*/
+date_time_t timer_get_time(void)
+{
+	date_time_t dt;
+	
+	dt.hour = time_hour;
+	dt.minute = time_minute;
+	dt.second = time_second;
+	dt.ms = time_ms;
+	
+	return dt;
+}
+
+/*
+*********************************************************************************************************
+*                                          timer_delay_1ms()
+*
+* Description : Create application kernel objects tasks.
+*
+* Argument(s) : type ¶¨Ê±Æ÷ÀàĞÍ  enum timer3
+*				count ¶¨Ê±Æ÷¼ÆÊıÖµ 
+*
+* Return(s)   : 0 ¶¨Ê±Æ÷Ê±¼äµ½  1¶¨Ê±Æ÷Ê±¼äÎ´µ½
+*
+* Caller(s)   : 
+*
+* Note(s)     : none.
+*********************************************************************************************************
+*/
 void timer_delay_1ms(uint32_t ms)
 {
 	g_timeout_cnt = ms;		 
@@ -96,20 +254,16 @@ void timer_delay_1ms(uint32_t ms)
 }
 
 
-u32 get_heart_tick(void)
-{
-	return heart_tick;
-}
 /*
 *********************************************************************************************************
 *                                          timer_is_timeout_1MS()
 *
 * Description : Create application kernel objects tasks.
 *
-* Argument(s) : type å®šæ—¶å™¨ç±»å‹  enum timer3
-*				count å®šæ—¶å™¨è®¡æ•°å€¼ 
+* Argument(s) : type ¶¨Ê±Æ÷ÀàĞÍ  enum timer3
+*				count ¶¨Ê±Æ÷¼ÆÊıÖµ 
 *
-* Return(s)   : 0 å®šæ—¶å™¨æ—¶é—´åˆ°  1å®šæ—¶å™¨æ—¶é—´æœªåˆ°
+* Return(s)   : 0 ¶¨Ê±Æ÷Ê±¼äµ½  1¶¨Ê±Æ÷Ê±¼äÎ´µ½
 *
 * Caller(s)   : 
 *
