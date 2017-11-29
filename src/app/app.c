@@ -182,8 +182,8 @@ int main(void)
 	FIL fil;
 	FRESULT fr;
 	DIR dirs;
-	u8 work[FF_MAX_SS];
-	u8 buff[100] = {0};
+//	u8 work[FF_MAX_SS];
+//	u8 buff[100] = {0};
 	u32 bw;
 	OS_ERR  err;
     CPU_SR_ALLOC();			//临界区函数使用                                        /* Init OS.                                                 */
@@ -564,11 +564,11 @@ static void eth_init_task_fun(void *p_arg)
 	while(DEF_TRUE)
 	{
 		
-		crc =  crc16_modbus(nn, 2);
-		USART_OUT(USART3, "fr1= %d\r", crc);
-		
-		crc2 = crc16_xmodem(nn, 2);
-		USART_OUT(USART3, "fr1= %d\r", crc2);
+//		crc =  crc16_modbus(nn, 2);
+//		USART_OUT(USART3, "fr1= %d\r", crc);
+//		
+//		crc2 = crc16_xmodem(nn, 2);
+//		USART_OUT(USART3, "fr1= %d\r", crc2);
 		OSTimeDly(1000, OS_OPT_TIME_DLY, &err);
 	}
 
@@ -619,7 +619,7 @@ static  void  AppObjCreate (void)
                 (void	    *)0,			//参数为0
                 (OS_ERR	    *)&err);		//返回的错误码	
 	
-	USART_OUT(USART3, "\rerr1=%d\r", err);
+	USART_OUT(USART3, "\r err1=%d\r", err);
 	OSTmrStart(&tmr1,&err);	
 				
 	OSTmrCreate((OS_TMR		*)&gprs,		//定时器1

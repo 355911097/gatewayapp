@@ -103,3 +103,4 @@
 .\obj\rawudp.o: ..\Libraries\STM32F2x7_ETH_Driver\inc\stm32f2x7_eth_conf.h
 .\obj\rawudp.o: ..\lwip\apps\lwip_comm.h
 .\obj\rawudp.o: ..\app\app.h
+.\obj\rawudp.o: ..\app\protocol.h

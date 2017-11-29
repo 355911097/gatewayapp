@@ -97,6 +97,7 @@ void protocol_task_create(void)
 
 	
 	CPU_CRITICAL_ENTER();
+	USART_OUT(USART3, "\r protocol_task_create......\r");
 	OSTaskCreate((OS_TCB 	* )&protocol_task_TCB,		
 				 (CPU_CHAR	* )"protocol_task", 		
                  (OS_TASK_PTR )protocol_task_fun, 			
@@ -146,6 +147,7 @@ static void protocol_task_fun(void *p_arg)
 	u8 protocol_status = 0;
 	u32 err_cnt = 0;
 
+	USART_OUT(USART3, "\r protocol_task_fun......\r");
 	while(DEF_TRUE)
 	{
 		
@@ -153,14 +155,14 @@ static void protocol_task_fun(void *p_arg)
 		{	
 			if(protocol_status == STATE_LOGIN)
 			{
-				sign_in(CHANNEL_GPRS);
+				sign_in(CHANNEL_ETH);
 				memset(gprs_rx_buff, 0, sizeof(usart_buff_t));	
 				heart_time_cnt = timer_get_heart_ms();
 				
 			}
 			else if(protocol_status == STATE_HEART)
 			{
-				heart_beat(CHANNEL_GPRS);
+				heart_beat(CHANNEL_ETH);
 				memset(gprs_rx_buff, 0, sizeof(usart_buff_t));	
 				heart_time_cnt = timer_get_heart_ms();
 			}
@@ -194,7 +196,7 @@ static void protocol_task_fun(void *p_arg)
 					
 					if (fatch_gprs_data(buffer, &size))		//取得消息报文
 					{
-						protocol_err = process_protocol(buffer, size, CHANNEL_GPRS);	//处理报文
+						protocol_err = process_protocol(buffer, size, CHANNEL_ETH);	//处理报文
 						
 						
 						if (protocol_err == TRUE)
@@ -213,6 +215,15 @@ static void protocol_task_fun(void *p_arg)
 								
 								break;
 								
+								case STATE_RPT:
+									
+								
+								break;
+								
+								
+								default:
+								break;
+										
 								
 							}
 							
@@ -227,6 +238,129 @@ static void protocol_task_fun(void *p_arg)
 		}
 		
 		
+		
+
+		
+	//////////////////////////////////////////////////////////////////////////
+		
+		if (heart_time_cnt == 0)
+		{	
+			
+			switch(protocol_status)
+			{
+				case STATE_LOGIN:
+					sign_in(CHANNEL_ETH);
+					memset(gprs_rx_buff, 0, sizeof(usart_buff_t));	
+					heart_time_cnt = timer_get_heart_ms();
+				break;
+				
+				
+				case STATE_HEART:
+					heart_beat(CHANNEL_ETH);
+					memset(gprs_rx_buff, 0, sizeof(usart_buff_t));	
+					heart_time_cnt = timer_get_heart_ms();
+				
+				break;
+				
+
+			}
+			
+		}
+		else
+		{
+			if((timer_get_heart_ms()-heart_time_cnt) >= GPRS_HEART_TIME) //心跳阶段检测心跳时间
+			{
+				err_cnt++; //错误计数器增加
+				if(err_cnt >= GPRS_HEART_ERR_COUNT)	//超过最大尝试次数，重启GPRS
+				{
+					
+					heart_time_cnt = 0;
+					err_cnt = 0;	
+				}
+				else	//重新发送心跳指令
+				{
+					heart_time_cnt = 0;
+				}
+			}
+			else	//接收数据
+			{
+				
+				if(gprs_rx_flag == TRUE)	//收到数据标志
+				{
+					
+					u8 buffer[USART_BUFF_LENGHT];
+					u16 size;
+					gprs_rx_flag = FALSE;
+								
+					
+					if (fatch_gprs_data(buffer, &size))		//取得消息报文
+					{
+						protocol_err = process_protocol(buffer, size, CHANNEL_ETH);	//处理报文
+						
+						
+						if (protocol_err == TRUE)
+						{
+							
+							switch (protocol_status)
+							{
+								case STATE_LOGIN:	//登录成功
+										
+									protocol_status = STATE_HEART;
+									
+								break;
+								
+								
+								case STATE_HEART:
+									
+								
+								break;
+								
+								
+								case STATE_RPT:
+									
+								
+								break;
+								
+								
+								default:
+								break;
+										
+								
+							}
+							
+						}
+					}
+						
+				}
+		
+					
+			}
+			
+		}
+				
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
 	
 
 		OSTimeDly(1000, OS_OPT_TIME_DLY, &err);
@@ -239,7 +373,7 @@ static void protocol_task_fun(void *p_arg)
 
 /*
 *********************************************************************************************************
-*                                          timer3_init()
+*                                          crc16_xmodem()
 *
 * Description : Create application kernel objects tasks.
 *
@@ -267,7 +401,7 @@ u16 crc16_xmodem(const u8 *data, u32 len)//len
 
 /*
 *********************************************************************************************************
-*                                          timer3_init()
+*                                          crc16_modbus()
 *
 * Description : Create application kernel objects tasks.
 *
@@ -313,7 +447,7 @@ u16 crc16_modbus(u8 *data, u32 len)
 
 /*
 *********************************************************************************************************
-*                                          timer3_init()
+*                                          clear_rx_buff()
 *
 * Description : Create application kernel objects tasks.
 *
@@ -336,7 +470,7 @@ void clear_rx_buff(void)
 
 /*
 *********************************************************************************************************
-*                                          timer3_init()
+*                                          process_protocol()
 *
 * Description : Create application kernel objects tasks.
 *
@@ -370,7 +504,7 @@ u8 process_protocol(u8 *buff, u16 size, u8 channel)
 
 /*
 *********************************************************************************************************
-*                                          timer3_init()
+*                                          svr_to_ctu()
 *
 * Description : Create application kernel objects tasks.
 *
@@ -438,7 +572,7 @@ u8 svr_to_ctu(u8 *buff, u16 size, u8 channel)
 
 /*
 *********************************************************************************************************
-*                                          timer3_init()
+*                                          ctu_to_srv()
 *
 * Description : Create application kernel objects tasks.
 *
@@ -455,37 +589,42 @@ u8 svr_to_ctu(u8 *buff, u16 size, u8 channel)
 bool ctu_to_srv(u8 *buff, u16 size, u8 channel)
 {
 
-	u16 i = 0, crc = 0;
+	u16 i = 0, crc = 0, tmp_len = 0;
 	u16 telegram_lenth = 0;
-	u8 tele[512] = {0};
+	u8 *tmp;
 	
-	tele[0] = TELEGRAM_HEAD;
-	tele[1] = (u8)size;
-	tele[3] = (u8)(size>>8);
-	tele[4] = TELEGRAM_SYNC;
+	tmp = (u8 *)malloc(256);
+	usart_printf(USART3, size, buff);
+	tmp[0] = TELEGRAM_HEAD;
+	tmp[1] = (u8)size;
+	tmp[2] = (u8)(size>>8);
+	tmp[3] = TELEGRAM_SYNC;
 	
 	
-	for (i=0; i<size-7; i++)
+	for (i=0; i<size; i++)
 	{
-		tele[i+7] = *buff++;
+		tmp[i+4] = *buff++;
 	}
 	
-	crc = crc16_modbus(tele+6, size);
+	crc = crc16_modbus(tmp+4, size);
 	
-	tele[size+5] = (u8)crc;
-	tele[size+6] = (u8)crc>>8;
-	tele[size+7] = TELEGRAM_END;
+	tmp[size+4] = (u8)crc;
+	tmp[size+5] = (u8)(crc>>8);
+	tmp[size+6] = TELEGRAM_END;
 	
-
+	tmp_len = size+7;
 	
 	if(channel == CHANNEL_GPRS)
 	{
-		USART_OUT(USART2, tele);
+		USART_OUT(USART2, tmp);
 	}
 	else if(channel == CHANNEL_ETH)
 	{
-		rawudp_send_data(udppcb, tele);
+		usart_printf(USART3, tmp_len, tmp);
+		rawudp_send_data(udppcb, tmp, tmp_len);
+	
 	}
+	free(tmp);
 	
 	return TRUE;
 }
@@ -505,7 +644,7 @@ bool ctu_to_srv(u8 *buff, u16 size, u8 channel)
 
 /*
 *********************************************************************************************************
-*                                          timer3_init()
+*                                          sign_in()
 *
 * Description : Create application kernel objects tasks.
 *
@@ -531,12 +670,15 @@ u8 sign_in(u8 channel)
 	u16 mes = 0;
 	u8 date[8] = {0};
 	u8 gw_id[6] = {0};
-	u16 gw_software_version = 0;
-	u16 gw_hardware_version = 0;
+	u16 gw_software_version = 0x0102;
+	u16 gw_hardware_version = 0x0103;
 	
 	
 	SETBIT(ctr_unit, 1);
 	CLRBIT(ctr_unit, 2);
+	
+//	
+//	buff = (u8 *)malloc(100);
 	
 	/*消息头*/	
 	buff[buff_cnt++] = cmd&0xFF;
@@ -548,7 +690,7 @@ u8 sign_in(u8 channel)
 	
 	for(i=0; i<4; i++)
 	{
-		buff[buff_cnt+i] = 00;
+		buff[buff_cnt++] = 00;
 	}
 	
 	buff[buff_cnt++] = dev_id &0xFF;
@@ -562,13 +704,13 @@ u8 sign_in(u8 channel)
 	
 	for(i=0; i<8; i++)
 	{
-		buff[buff_cnt+i] = 00;
+		buff[buff_cnt++] = 0xFF;
 	}
 
 	/*消息体*/
 	for(i=0; i<6; i++)		//网关id
 	{
-		buff[buff_cnt+i] = gw_id[i];
+		buff[buff_cnt++] = gw_id[i];
 	}
 	
 	//软件版本号
@@ -581,21 +723,23 @@ u8 sign_in(u8 channel)
 	//硬件编号
 	for(i=0; i<6; i++)	
 	{
-		buff[buff_cnt+i] = 00;
+		buff[buff_cnt++] = 00;
 	}
 	//MAC地址
 	for(i=0; i<6; i++)
 	{
-		buff[buff_cnt+i] = 00;
+		buff[buff_cnt++] = 00;
 	}
 	//GSM模块的IMEI
 	for(i=0; i<8; i++)
 	{
-		buff[buff_cnt+i] = 00;
+		buff[buff_cnt++] = 0x33;
 	}	
-	
-	
-	return ctu_to_srv(buff, buff_cnt, CHANNEL_GPRS);
+	USART_OUT(USART3, "buff=\r");
+	USART_OUT(USART3, buff);
+	USART_OUT(USART3, "buff=\r");
+	usart_printf(USART3, buff_cnt, buff);
+	return ctu_to_srv(buff, buff_cnt, channel);
 
 }
 
@@ -604,7 +748,7 @@ u8 sign_in(u8 channel)
 
 /*
 *********************************************************************************************************
-*                                          timer3_init()
+*                                          heart_beat()
 *
 * Description : Create application kernel objects tasks.
 *
@@ -666,7 +810,7 @@ u8 heart_beat(u8 channel)
 	}
 
 	
-	return ctu_to_srv(buff, buff_cnt, CHANNEL_GPRS);
+	return ctu_to_srv(buff, buff_cnt, channel);
 }
 
 

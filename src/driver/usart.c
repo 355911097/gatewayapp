@@ -430,6 +430,70 @@ void USART_OUT(USART_TypeDef* USARTx, uint8_t *Data,...)
 
 
 
+void usart_printf(USART_TypeDef* USARTx, uint16_t data_size, uint8_t *data,...)
+{ 
+	const char *s;
+    int d;  
+    char buf[32];
+    
+	va_list ap;
+    __va_start(ap, data);
+	
+	
+	USART_GetFlagStatus(USARTx, USART_FLAG_TC);	//
+	while(data_size--)
+	{				                         
+		if(*data==0x5c)
+		{									
+			switch (*++data)
+			{
+				case 'r':							          
+					USART_SendData(USARTx, 0x0d);	   
+					data++;
+				break;
+				case 'n':							          
+					USART_SendData(USARTx, 0x0a);	
+					data++;
+				break;
+				
+				default:
+					data++;
+			    break;
+			}						 
+		}
+		else if(*data=='%')
+		{									  //
+			switch (*++data){				
+				case 's':										  
+                	s = __va_arg(ap, const char *);
+                	for ( ; *s; s++) 
+					{
+                    	USART_SendData(USARTx,*s);
+						while(USART_GetFlagStatus(USARTx, USART_FLAG_TC)==RESET);
+                	}
+					data++;
+                	break;
+            	case 'd':										 
+                	d = __va_arg(ap, int);
+					
+					sprintf(buf, "%d", d);
+                	for (s = buf; *s; s++) 
+					{
+                    	USART_SendData(USARTx,*s);
+						while(USART_GetFlagStatus(USARTx, USART_FLAG_TC)==RESET);
+                	}
+					data++;
+                	break;
+				default:
+					data++;
+				    break;
+			}		 
+		}
+		else 
+			USART_SendData(USARTx, *data++);
+		while(USART_GetFlagStatus(USARTx, USART_FLAG_TC)==RESET);
+	}
+}
 
 
 

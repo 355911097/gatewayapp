@@ -11,7 +11,7 @@
 #include "lan8720.h"
 #include "lwip_comm.h"
 #include "app.h"
- 
+#include "protocol.h"
 
 
 
@@ -87,8 +87,9 @@ static void rawudp_task_fun(void *p_arg)
 			}
 		}		
 	}
-
-	rawudp_send_data(udppcb, "www");
+	
+	rawudp_send_data(udppcb, "www", 3);
+	protocol_task_create();
 	while(DEF_TRUE)
 	{
 		
@@ -145,15 +146,16 @@ void rawudp_recv_callback(void *arg, struct udp_pcb *upcb, struct pbuf *p, const
 } 
 
 
-void rawudp_send_data(struct udp_pcb *upcb, u8 *pdata)
+void rawudp_send_data(struct udp_pcb *upcb, u8 *pdata, u16 pdata_size)
 {
 	struct pbuf *ptr;
-	
-	sprintf((char*)rawudp_send_buff, "%s\r", (char*)pdata);
-	ptr=pbuf_alloc(PBUF_TRANSPORT, strlen((char*)rawudp_send_buff), PBUF_POOL); //申请内存
+
+	memcpy(rawudp_send_buff, pdata, pdata_size);
+
+	ptr=pbuf_alloc(PBUF_TRANSPORT, pdata_size, PBUF_POOL); //申请内存
 	if(ptr)
 	{
-		pbuf_take(ptr, (char*)rawudp_send_buff, strlen((char*)rawudp_send_buff)); //将tcp_demo_sendbuf中的数据打包进pbuf结构中
+		pbuf_take(ptr, (char*)rawudp_send_buff, pdata_size); //将tcp_demo_sendbuf中的数据打包进pbuf结构中
 		udp_send(upcb, ptr);	//udp发送数据 
 		pbuf_free(ptr);//释放内存
 	} 

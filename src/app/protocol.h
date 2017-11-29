@@ -27,8 +27,8 @@
 
 
 //报文头尾标识
-#define TELEGRAM_HEAD		0x68		//
-#define TELEGRAM_SYNC		0x68
+#define TELEGRAM_HEAD		0x3A		//
+#define TELEGRAM_SYNC		0x3A
 #define TELEGRAM_END		0x16
 
 
@@ -83,7 +83,7 @@ typedef struct
 
 
 
-
+void protocol_task_create(void);
 
 u8 process_protocol(u8 *buff, u16 size, u8 channel);
 u8 svr_to_ctu(u8 *buff, u16 size, u8 channel);

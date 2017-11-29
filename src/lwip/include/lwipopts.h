@@ -36,41 +36,41 @@
 /* MEM_ALIGNMENT: should be set to the alignment of the CPU for which
    lwIP is compiled. 4 byte alignment -> define MEM_ALIGNMENT to 4, 2
    byte alignment -> define MEM_ALIGNMENT to 2. */
-#define MEM_ALIGNMENT 	4
+#define MEM_ALIGNMENT 				4
 
 /* MEM_SIZE: the size of the heap memory. If the application will send
 a lot of data that needs to be copied, this should be set high. */
-#define MEM_SIZE (5 * 1024)
+#define MEM_SIZE					(5 * 1024)
 
 /* MEMP_NUM_PBUF: the number of memp struct pbufs. If the application
    sends a lot of data out of ROM (or other static memory), this
    should be set high. */
-#define MEMP_NUM_PBUF 10
+#define MEMP_NUM_PBUF 				10
 /* MEMP_NUM_UDP_PCB: the number of UDP protocol control blocks. One
    per active UDP "connection". */
-#define MEMP_NUM_UDP_PCB 6
+#define MEMP_NUM_UDP_PCB 			6
 /* MEMP_NUM_TCP_PCB: the number of simulatenously active TCP
    connections. */
-#define MEMP_NUM_TCP_PCB 10
+#define MEMP_NUM_TCP_PCB 			10
 /* MEMP_NUM_TCP_PCB_LISTEN: the number of listening TCP
    connections. */
-#define MEMP_NUM_TCP_PCB_LISTEN 6
+#define MEMP_NUM_TCP_PCB_LISTEN 	6
 /* MEMP_NUM_TCP_SEG: the number of simultaneously queued TCP
    segments. */
-#define MEMP_NUM_TCP_SEG 12
+#define MEMP_NUM_TCP_SEG 			12
 /* MEMP_NUM_SYS_TIMEOUT: the number of simulateously active
    timeouts. */
-#define MEMP_NUM_SYS_TIMEOUT 8
+#define MEMP_NUM_SYS_TIMEOUT 		8
 
 
 
 
 /* ---------- Pbuf options ---------- */
 /* PBUF_POOL_SIZE: the number of buffers in the pbuf pool. */
-#define PBUF_POOL_SIZE 10
+#define PBUF_POOL_SIZE 				10
 
 /* PBUF_POOL_BUFSIZE: the size of each pbuf in the pbuf pool. */
-#define PBUF_POOL_BUFSIZE 1500
+#define PBUF_POOL_BUFSIZE 			1500
 
 
 
@@ -85,7 +85,7 @@ a lot of data that needs to be copied, this should be set high. */
 #define TCP_QUEUE_OOSEQ 0
 
 #undef TCPIP_MBOX_SIZE
-#define TCPIP_MBOX_SIZE         	MAX_QUEUE_ENTRIES   //tcpip创建主线程时的消息邮箱大小
+#define TCPIP_MBOX_SIZE         		MAX_QUEUE_ENTRIES   //tcpip创建主线程时的消息邮箱大小
 
 #undef DEFAULT_TCP_RECVMBOX_SIZE
 #define DEFAULT_TCP_RECVMBOX_SIZE       MAX_QUEUE_ENTRIES  
@@ -98,17 +98,17 @@ a lot of data that needs to be copied, this should be set high. */
 
 
 /* TCP Maximum segment size. */
-#define TCP_MSS (1500 - 40) /* TCP_MSS = (Ethernet MTU - IP header size - TCP header size) */
+#define TCP_MSS 						(1500 - 40) 	/* TCP_MSS = (Ethernet MTU - IP header size - TCP header size) */
 
 /* TCP sender buffer space (bytes). */
-#define TCP_SND_BUF (2 * TCP_MSS)
+#define TCP_SND_BUF 					(2 * TCP_MSS)
 
 /* TCP sender buffer space (pbufs). This must be at least = 2 *
    TCP_SND_BUF/TCP_MSS for things to work. */
-#define TCP_SND_QUEUELEN (6 * TCP_SND_BUF) / TCP_MSS
+#define TCP_SND_QUEUELEN 				(6 * TCP_SND_BUF) / TCP_MSS
 
 /* TCP receive window. */
-#define TCP_WND (2 * TCP_MSS)
+#define TCP_WND 						(2 * TCP_MSS)
 
 
 
@@ -122,7 +122,7 @@ a lot of data that needs to be copied, this should be set high. */
 /* Define LWIP_DHCP to 1 if you want DHCP configuration of
    interfaces. DHCP is not implemented in lwIP 0.5.1, however, so
    turning this on does currently not work. */
-#define LWIP_DHCP 1
+#define LWIP_DHCP 						1
 
 
 
@@ -173,8 +173,8 @@ a lot of data that needs to be copied, this should be set high. */
 
 
 /* ---------- Statistics options ---------- */
-#define LWIP_STATS 0
-#define LWIP_PROVIDE_ERRNO 1
+#define LWIP_STATS 						0
+#define LWIP_PROVIDE_ERRNO 				1
 
 // LWIP_NETCONN==1: Enable Netconn API (require to use api_lib.c)
 #define LWIP_NETCONN 					1

@@ -16,7 +16,7 @@
  
 
 void rawudp_recv_callback(void *arg, struct udp_pcb *upcb, struct pbuf *p, const ip_addr_t *addr, u16_t port);
-void rawudp_send_data(struct udp_pcb *upcb, u8 *pdata);
+void rawudp_send_data(struct udp_pcb *upcb, u8 *pdata, u16 pdata_size);
 void rawudp_connection_close(struct udp_pcb *upcb);
 void rawudp_task_create(void);
 
