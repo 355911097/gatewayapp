@@ -146,7 +146,8 @@ static void protocol_task_fun(void *p_arg)
 	u8 protocol_err = 0;
 	u8 protocol_status = 0;
 	u32 err_cnt = 0;
-
+	u8 login_cnt = 0;
+	
 	USART_OUT(USART3, "\r protocol_task_fun......\r");
 	while(DEF_TRUE)
 	{
@@ -249,9 +250,17 @@ static void protocol_task_fun(void *p_arg)
 			switch(protocol_status)
 			{
 				case STATE_LOGIN:
+					
 					sign_in(CHANNEL_ETH);
 					memset(gprs_rx_buff, 0, sizeof(usart_buff_t));	
 					heart_time_cnt = timer_get_heart_ms();
+				
+					login_cnt++;
+					if(login_cnt > 3)
+					{
+						//重启设备
+					}
+				
 				break;
 				
 				
@@ -262,6 +271,17 @@ static void protocol_task_fun(void *p_arg)
 				
 				break;
 				
+				
+				case STATE_RPT:
+									
+				
+				break;
+				
+				
+				case STATE_PTR:
+					
+					protocol_status = STATE_HEART;
+				break;
 
 			}
 			
@@ -311,16 +331,21 @@ static void protocol_task_fun(void *p_arg)
 								
 								
 								case STATE_HEART:
-									
+									protocol_status = STATE_RPT;
 								
 								break;
 								
 								
 								case STATE_RPT:
 									
-								
+									protocol_status = STATE_PTR;
 								break;
 								
+								
+								case STATE_PTR:		//接收模式
+									
+								
+								break;
 								
 								default:
 								break;

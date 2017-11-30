@@ -60,6 +60,9 @@
 #define STATE_LOGIN				0
 #define STATE_HEART				1
 #define	STATE_RPT				2
+#define STATE_PTR				3
+
+
 
 
 
