@@ -19,12 +19,19 @@
 
 
 
-extern uint8_t gprs_rx_flag;
-extern usart_buff_t *gprs_rx_buff;
+extern uint8_t gprs_rx_flag;						//GPRS接收数据标志位
+extern usart_buff_t *gprs_rx_buff;					//GPRS接收数据缓冲区
 
+extern u8 eth_rx_flag;								//以太网接收标志位
+extern u8 rawudp_recv_buff[RAWUDP_RX_LENGHT];		//UDP接收数据缓冲区 
+extern u32 rawudp_recv_buff_len;				//UDP接收数据的长度
+	
 extern struct udp_pcb *udppcb;  	//定义一个UDP服务器控制块
 extern OS_TCB 	protocol_task_TCB;
 extern CPU_STK	protocol_task_stk[PROTOCOL_TASK_STK_SIZE];
+
+
+
 
 
 const u16 crc_table[256] = {
@@ -69,6 +76,12 @@ dev_info_t dev_info;
 
 u32 heart_time_cnt = 0;		//心跳计数器
 
+
+
+
+u8 protocol_buff[PROTOCOL_BUFF_LENGHT] = {0};
+u32 protocol_buff_len = 0;
+ 
 
 
 
@@ -151,7 +164,8 @@ static void protocol_task_fun(void *p_arg)
 	USART_OUT(USART3, "\r protocol_task_fun......\r");
 	while(DEF_TRUE)
 	{
-		
+
+/*		
 		if (heart_time_cnt == 0)
 		{	
 			if(protocol_status == STATE_LOGIN)
@@ -238,21 +252,75 @@ static void protocol_task_fun(void *p_arg)
 			
 		}
 		
-		
+*/		
 		
 
 		
 	//////////////////////////////////////////////////////////////////////////
-		
-		if (heart_time_cnt == 0)
-		{	
+
+	
+		if(eth_rx_flag == 1)												//收到数据标志
+		{
 			
+			u8 buffer[USART_BUFF_LENGHT];
+			u16 size;
+			gprs_rx_flag = FALSE;
+						
+			eth_rx_flag = 0;
+
+			if (fatch_gprs_data(buffer, &size))								//取得消息报文
+			{
+				protocol_err = process_protocol(buffer, size, CHANNEL_ETH);	//处理报文
+			
+				if (protocol_err == TRUE)
+				{
+					
+					switch (protocol_status)
+					{
+						case STATE_LOGIN:	//登录成功
+								
+							protocol_status = STATE_HEART;		
+						break;
+						
+						
+						case STATE_HEART:
+							
+						
+							protocol_status = STATE_RPT;					
+						break;
+						
+						
+						case STATE_RPT:
+							
+							protocol_status = STATE_PTR;
+						break;
+						
+						
+						case STATE_PTR:		//接收模式
+							
+						
+						break;
+						
+						default:
+						break;
+								
+						
+					}
+					
+				}
+					
+			}
+			
+		}
+		else
+		{
 			switch(protocol_status)
 			{
 				case STATE_LOGIN:
 					
 					sign_in(CHANNEL_ETH);
-					memset(gprs_rx_buff, 0, sizeof(usart_buff_t));	
+					memset(protocol_buff, 0, PROTOCOL_BUFF_LENGHT);  //数据接收缓冲区清零
+					protocol_buff_len = 0;							//数据接收计数清零	
 					heart_time_cnt = timer_get_heart_ms();
 				
 					login_cnt++;
@@ -266,9 +334,10 @@ static void protocol_task_fun(void *p_arg)
 				
 				case STATE_HEART:
 					heart_beat(CHANNEL_ETH);
-					memset(gprs_rx_buff, 0, sizeof(usart_buff_t));	
+					memset(protocol_buff, 0, PROTOCOL_BUFF_LENGHT);  //数据接收缓冲区清零
+					protocol_buff_len = 0;							//数据接收计数清零
 					heart_time_cnt = timer_get_heart_ms();
-				
+					protocol_status = STATE_HEART;
 				break;
 				
 				
@@ -282,95 +351,21 @@ static void protocol_task_fun(void *p_arg)
 					
 					protocol_status = STATE_HEART;
 				break;
+				
+				default:
+				break;
 
 			}
-			
+		
+		
 		}
-		else
-		{
-			if((timer_get_heart_ms()-heart_time_cnt) >= GPRS_HEART_TIME) //心跳阶段检测心跳时间
-			{
-				err_cnt++; //错误计数器增加
-				if(err_cnt >= GPRS_HEART_ERR_COUNT)	//超过最大尝试次数，重启GPRS
-				{
-					
-					heart_time_cnt = 0;
-					err_cnt = 0;	
-				}
-				else	//重新发送心跳指令
-				{
-					heart_time_cnt = 0;
-				}
-			}
-			else	//接收数据
-			{
-				
-				if(gprs_rx_flag == TRUE)	//收到数据标志
-				{
-					
-					u8 buffer[USART_BUFF_LENGHT];
-					u16 size;
-					gprs_rx_flag = FALSE;
-								
-					
-					if (fatch_gprs_data(buffer, &size))		//取得消息报文
-					{
-						protocol_err = process_protocol(buffer, size, CHANNEL_ETH);	//处理报文
-						
-						
-						if (protocol_err == TRUE)
-						{
-							
-							switch (protocol_status)
-							{
-								case STATE_LOGIN:	//登录成功
-										
-									protocol_status = STATE_HEART;
-									
-								break;
-								
-								
-								case STATE_HEART:
-									protocol_status = STATE_RPT;
-								
-								break;
-								
-								
-								case STATE_RPT:
-									
-									protocol_status = STATE_PTR;
-								break;
-								
-								
-								case STATE_PTR:		//接收模式
-									
-								
-								break;
-								
-								default:
-								break;
-										
-								
-							}
-							
-						}
-					}
-						
-				}
-		
-					
-			}
-			
-		}
-				
 		
 		
 		
 		
 		
 		
-		
-		
+	
 		
 		
 		
@@ -511,12 +506,10 @@ void clear_rx_buff(void)
 */
 u8 process_protocol(u8 *buff, u16 size, u8 channel)
 {
-
-	u16 lenth = 0;
 	
-	buff += 3;	
+	buff += 4;					 //指针指向msgID
 	
-	lenth -= 6;
+	size -=	7;					//去掉开始字符、长度、同步、crc和结束字符 总共6个字节
 	
 	return svr_to_ctu(buff, size, channel);
 	
@@ -549,7 +542,7 @@ u8 svr_to_ctu(u8 *buff, u16 size, u8 channel)
 	u16 cmd = 0;
 	u16 ctr_unit = 0;
 	
-	
+	//取出消息ID
 	cmd = *buff++;
 	cmd += (*buff++)<<8;  
 	
@@ -557,30 +550,32 @@ u8 svr_to_ctu(u8 *buff, u16 size, u8 channel)
 	ctr_unit += (*buff++)<<8; 
 	
 	
-	if ((ctr_unit&DIR_UP_FLAG) == DIR_UP_FLAG)
+	if ((ctr_unit&DIR_UP_FLAG) == DIR_UP_FLAG)	//判断消息是上行还是下行
 	{
 		USART_OUT(USART3, "GPRS ctr_unit UD= %d\r", ctr_unit);
 		return 2;
 	}
 	
 	
-	if((dev_info.dev_is_login == FALSE) && (channel == CHANNEL_GPRS))
-	{
-		USART_OUT(USART3, "GPRS  without Login");
-		return 1;
-	}
+//	if((dev_info.dev_is_login == 0) && (channel == CHANNEL_ETH))
+//	{
+//		USART_OUT(USART3, "GPRS  without Login");
+//		return 1;
+//	}
 	
 	
 	switch (cmd)
 	{
-		case 0001:
+		case 0x0100:
 			
-			return TRUE;
+			
+			return sign_in_ack(buff, size, channel);
 		break;
 	
 		
-		case 0002:
+		case 0x0200:
 			
+			return heart_beat_ack(buff, size, channel);
 		break;
 		
 		
@@ -699,41 +694,43 @@ u8 sign_in(u8 channel)
 	u16 gw_hardware_version = 0x0103;
 	
 	
-	SETBIT(ctr_unit, 1);
+	SETBIT(ctr_unit, 1);	//控制单元
 	CLRBIT(ctr_unit, 2);
 	
-//	
-//	buff = (u8 *)malloc(100);
+
 	
-	/*消息头*/	
+	/************消息头******************/	
+	//消息ID
 	buff[buff_cnt++] = cmd&0xFF;
 	buff[buff_cnt++] = cmd>>8;
 	
+	//控制单元
 	buff[buff_cnt++] = ctr_unit&0xFF;
 	buff[buff_cnt++] = ctr_unit>>8;
 	
-	
-	for(i=0; i<4; i++)
+	//通信地址
+	for(i=0; i<4; i++)	
 	{
 		buff[buff_cnt++] = 00;
 	}
-	
+	//设备id
 	buff[buff_cnt++] = dev_id &0xFF;
 	buff[buff_cnt++] = dev_id>>8;
-	
+	//终端id
 	buff[buff_cnt++] = node_id &0xF;
 	buff[buff_cnt++] = node_id>>8;
-	
+	//消息流水号
 	buff[buff_cnt++] = mes &0xF;
 	buff[buff_cnt++] = mes>>8;
 	
-	for(i=0; i<8; i++)
+	for(i=0; i<8; i++)	//时间
 	{
 		buff[buff_cnt++] = 0xFF;
 	}
 
-	/*消息体*/
-	for(i=0; i<6; i++)		//网关id
+	/*********消息体**********************/
+	//网关id
+	for(i=0; i<6; i++)		
 	{
 		buff[buff_cnt++] = gw_id[i];
 	}
@@ -760,13 +757,66 @@ u8 sign_in(u8 channel)
 	{
 		buff[buff_cnt++] = 0x33;
 	}	
-	USART_OUT(USART3, "buff=\r");
-	USART_OUT(USART3, buff);
-	USART_OUT(USART3, "buff=\r");
-	usart_printf(USART3, buff_cnt, buff);
+
 	return ctu_to_srv(buff, buff_cnt, channel);
 
 }
+
+
+
+
+
+bool sign_in_ack(u8 *buff, u16 size, u8 channel)
+{
+
+	u8 ack_status = 0;	
+	u8 data1 = 0;
+	
+	
+	data1 = buff[18];
+	
+	
+	
+	switch (data1)
+	{
+		case 0:
+			
+			//设备状态 为登录状态
+			dev_info.dev_is_login = 1;
+		break;
+		
+		case 1:
+			
+		break;
+		
+		case 2:
+
+		
+		break;
+		
+		
+		case 3:
+			
+		
+		break;
+		
+		
+		case 4:
+			
+		break;
+		
+		default:
+			return FALSE;
+		break;
+		
+	}
+	
+	return TRUE;
+
+}
+
+
+
 
 
 
@@ -803,44 +853,53 @@ u8 heart_beat(u8 channel)
 	SETBIT(ctr_unit, 1);
 	CLRBIT(ctr_unit, 2);
 	
+	/************消息头******************/	
+	//消息ID
 	buff[buff_cnt++] = cmd&0xFF;
 	buff[buff_cnt++] = cmd>>8;
 	
+	//控制单元
 	buff[buff_cnt++] = ctr_unit&0xFF;
 	buff[buff_cnt++] = ctr_unit>>8;
 	
-	
-	for(i=0; i<4; i++)
+	//通信地址
+	for(i=0; i<4; i++)	
 	{
-		buff[buff_cnt+i] = 00;
+		buff[buff_cnt++] = 00;
 	}
-	
+	//设备id
 	buff[buff_cnt++] = dev_id &0xFF;
 	buff[buff_cnt++] = dev_id>>8;
-	
+	//终端id
 	buff[buff_cnt++] = node_id &0xF;
 	buff[buff_cnt++] = node_id>>8;
-	
+	//消息流水号
 	buff[buff_cnt++] = mes &0xF;
 	buff[buff_cnt++] = mes>>8;
 	
-	for(i=0; i<8; i++)
+	for(i=0; i<8; i++)	//时间
 	{
-		buff[buff_cnt+i] = 00;
-	}
-	
-	for(i=0; i<6; i++)
-	{
-		buff[buff_cnt+i] = gw_id[i];
+		buff[buff_cnt++] = 0xFF;
 	}
 
-	
+	/*********消息体**********************/
+	//网关id
+	for(i=0; i<6; i++)		
+	{
+		buff[buff_cnt++] = i;
+	}
+		
 	return ctu_to_srv(buff, buff_cnt, channel);
 }
 
 
+bool heart_beat_ack(u8 *buff, u16 size, u8 channel)
+{
+	u8 ack_status = 0;	
+		
+	return TRUE;
 
-
+}
 
 
 
@@ -870,102 +929,109 @@ bool fatch_gprs_data(u8 *buff, u16 *size)
 	u16 data_len = 0;
 	u16 crc = 0, rx_crc = 0;
 	
-	if (gprs_rx_buff->index < 4)
-	{
-		gprs_rx_buff->index = 0;
-		memset(gprs_rx_buff, 0, sizeof(usart_buff_t));	
+	
+	
+	if(protocol_buff_len < 4)		//数据包太短
+	{	
+		memset(protocol_buff, 0, PROTOCOL_BUFF_LENGHT);  //数据接收缓冲区清零
+		protocol_buff_len = 0;						//数据接收计数清零
+		
 		USART_OUT(USART3, "\r fatch_gprs_data too small\r\n");
-		return FALSE;
+		return FALSE;		
 	}
 	
-	
-	for (i=0; i<gprs_rx_buff->index; i++)
+	for (i=0; i<protocol_buff_len; i++)			//找协议开始标志
 	{
-		if(gprs_rx_buff->pdata[i] == TELEGRAM_HEAD)
+		if(protocol_buff[i] == TELEGRAM_HEAD)	//找到协议开始标志
 		{
 			break;
 		}
-	
 	}
+
 	
-	if(i >= USART_BUFF_LENGHT)	//一直到结束没有找到报文头， 
+	if(i >= PROTOCOL_BUFF_LENGHT)	//一直到结束没有找到报文头， 
 	{
-		gprs_rx_buff->index = 0;
-		memset(gprs_rx_buff, 0, sizeof(usart_buff_t));	
+		memset(protocol_buff, 0, PROTOCOL_BUFF_LENGHT);  //数据接收缓冲区清零
+		protocol_buff_len = 0;								//数据接收计数清零
 		USART_OUT(USART3, "\r fatch_gprs_data no TELEGRAM_HEAD\r\n");
 		return FALSE;
 	}
 	
-	memcpy(gprs_rx_buff->pdata, gprs_rx_buff->pdata+i, gprs_rx_buff->index-i);	//移除至报文开始标志	
-	gprs_rx_buff->index -= i;	
+
 	
-	if (gprs_rx_buff->index < 5)
+	memcpy(protocol_buff, protocol_buff+i, protocol_buff_len-i);	//移除至报文开始标志	
+	protocol_buff_len -= i;	
+	
+	if (protocol_buff_len < 5)				//数据包太短了
 	{
-		gprs_rx_buff->index = 0;
-		memset(gprs_rx_buff, 0, sizeof(usart_buff_t));	
+		memset(protocol_buff, 0, PROTOCOL_BUFF_LENGHT);  //数据接收缓冲区清零
+		protocol_buff_len = 0;							//数据接收计数清零
 		USART_OUT(USART3, "\r fatch_gprs_data too short\r\n");
 		return FALSE;
 	}
 	
-	if (gprs_rx_buff->pdata[3] != TELEGRAM_SYNC)
+	if (protocol_buff[3] != TELEGRAM_SYNC)		//找到报文中同步字段
 	{
-		gprs_rx_buff->index = 0;
-		memset(gprs_rx_buff, 0, sizeof(usart_buff_t));	
+		memset(protocol_buff, 0, PROTOCOL_BUFF_LENGHT);  	//数据接收缓冲区清零
+		protocol_buff_len = 0;								//数据接收计数清零
 		USART_OUT(USART3, "\r fatch_gprs_data no TELEGRAM_SYNC\r\n");
 		return FALSE;
 		
 	}
 	
-	//获取报文数据的长度
-	data_len = gprs_rx_buff->pdata[2];	
-	data_len = data_len<<8 + gprs_rx_buff->pdata[1];
+	//获取报文数据的长度（长度域）
+	data_len = protocol_buff[2];
+	data_len <<= 8;
+	data_len |=  protocol_buff[1];
 	
 
-	if (data_len > USART_BUFF_LENGHT)	// 防止接收的数据不对
+	if (data_len > PROTOCOL_BUFF_LENGHT)					// 防止接收的数据不对
 	{
-		gprs_rx_buff->index = 0;
-		memset(gprs_rx_buff, 0, sizeof(usart_buff_t));	
+		memset(protocol_buff, 0, PROTOCOL_BUFF_LENGHT);  	//数据接收缓冲区清零
+		protocol_buff_len = 0;								//数据接收计数清零
 		USART_OUT(USART3, "\r fatch_gprs_data buffer overflow\r\n");	
 		return FALSE;
 	}
 	
 	
-	if (gprs_rx_buff->index >= data_len)
+	if (protocol_buff_len >= data_len)			//分析协议
 	{
-		if (gprs_rx_buff->pdata[data_len+6] == TELEGRAM_END)
+		if (protocol_buff[data_len+6] == TELEGRAM_END)
 		{
-			crc = crc16_modbus(&(gprs_rx_buff->pdata[3]), data_len);
-			rx_crc = gprs_rx_buff->pdata[data_len+6-1];
+			crc = crc16_modbus(&protocol_buff[4], data_len);
+			rx_crc = protocol_buff[data_len+6-1];
 			rx_crc <<= 8;
-			rx_crc += gprs_rx_buff->pdata[data_len+6-2];
+			rx_crc += protocol_buff[data_len+6-2];
 			
 			if(crc == rx_crc)
 			{
-				*size = data_len+7;
-				memcpy(buff, gprs_rx_buff->pdata, *size);
-				gprs_rx_buff->index -= data_len+7;
-				gprs_rx_buff->index = 0;
-				memset(gprs_rx_buff, 0, sizeof(usart_buff_t));
+				*size = data_len+7;		//一个完整数据包的长度
+				memcpy(buff, protocol_buff, *size);				//拷贝一个完整的数据包
+				protocol_buff_len -= data_len+7;				
+				
+				memset(protocol_buff, 0, PROTOCOL_BUFF_LENGHT);  //数据接收缓冲区清零
+				protocol_buff_len = 0;							//数据接收计数清零
+				return TRUE;
 			}
-			else
+			else	//crc错误
 			{
-				gprs_rx_buff->index = 0;
-				memset(gprs_rx_buff, 0, sizeof(usart_buff_t));
+				memset(protocol_buff, 0, PROTOCOL_BUFF_LENGHT);  //数据接收缓冲区清零
+				protocol_buff_len = 0;							//数据接收计数清零
 				return FALSE;
 			}
 		}
-		else
+		else	//报文的结束字符错误
 		{
-			gprs_rx_buff->index = 0;
-			memset(gprs_rx_buff, 0, sizeof(usart_buff_t));
+			memset(protocol_buff, 0, PROTOCOL_BUFF_LENGHT);  //数据接收缓冲区清零
+			protocol_buff_len = 0;							//数据接收计数清零
 			return FALSE;
 		
 		}
 	}
 	else
 	{
-		gprs_rx_buff->index = 0;
-		memset(gprs_rx_buff, 0, sizeof(usart_buff_t));
+		memset(protocol_buff, 0, PROTOCOL_BUFF_LENGHT);  //数据接收缓冲区清零
+		protocol_buff_len = 0;							//数据接收计数清零
 		return FALSE;
 	}
 	

@@ -65,6 +65,9 @@
 
 
 
+#define PROTOCOL_BUFF_LENGHT 			512
+
+
 
 #define GPRS_HEART_ERR_COUNT		5
 #define GPRS_HEART_TIME				1000*60*2			//心跳包时间
@@ -93,6 +96,8 @@ u8 svr_to_ctu(u8 *buff, u16 size, u8 channel);
 
 bool fatch_gprs_data(u8 *buff, u16 *size);
 u8 sign_in(u8 channel);
+bool sign_in_ack(u8 *buff, u16 size, u8 channel);
 u8 heart_beat(u8 channel);
+bool heart_beat_ack(u8 *buff, u16 size, u8 channel);
 
 #endif

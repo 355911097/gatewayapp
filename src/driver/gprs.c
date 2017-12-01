@@ -25,7 +25,7 @@
 #include "usart.h"
 #include "timer.h"
 #include "app.h"
-
+#include "protocol.h"
 
 
 extern usart_buff_t  *gprs_rx_buff;
@@ -34,9 +34,12 @@ extern u16 usart2_rx_status;
 extern OS_TCB 	gprs_init_task_TCB;
 extern CPU_STK	gprs_init_task_stk[GPRS_INIT_TASK_STK_SIZE];
 
+extern u8 protocol_buff[PROTOCOL_BUFF_LENGHT];
+extern u32 protocol_buff_len;
 
 
-static void gprs_init_task_fun(void *p_arg);
+
+
 
 //dev_info_t dev_info;
 
@@ -52,7 +55,7 @@ uint8_t gprs_rx_flag = 0;
 
 
 
-
+static void gprs_init_task_fun(void *p_arg);
 
 
 /*

@@ -64,3 +64,4 @@
 .\obj\gprs.o: d:\Keil_v5\ARM\ARMCC\Bin\..\include\stdlib.h
 .\obj\gprs.o: d:\Keil_v5\ARM\ARMCC\Bin\..\include\math.h
 .\obj\gprs.o: ..\UCOSIII\uC-LIB\lib_math.h
+.\obj\gprs.o: ..\app\protocol.h

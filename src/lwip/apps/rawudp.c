@@ -16,6 +16,9 @@
 
 
 
+extern u8 protocol_buff[PROTOCOL_BUFF_LENGHT];
+extern u32 protocol_buff_len;
+
 struct udp_pcb *udppcb;  	//定义一个UDP服务器控制块
 
 
@@ -24,9 +27,14 @@ CPU_STK	rawudp_task_stk[RAWUDP_TASK_STK_SIZE];
 
 
 
-u8 rawudp_recv_buff[RAWUDP_RX_BUFSIZE];		//UDP接收数据缓冲区 
-u8 rawudp_send_buff[RAWUDP_RX_BUFSIZE];		//UDP发送数据内容
+u8 rawudp_recv_buff[RAWUDP_RX_LENGHT];		//UDP接收数据缓冲区 
+u8 rawudp_send_buff[RAWUDP_RX_LENGHT];		//UDP发送数据内容
+u32 rawudp_recv_buff_len = 0;				//UDP接收数据的长度
 
+
+
+
+u8 eth_rx_flag = 0;
 
 static void rawudp_task_fun(void *p_arg);
 
@@ -104,35 +112,47 @@ static void rawudp_task_fun(void *p_arg)
 
 void rawudp_recv_callback(void *arg, struct udp_pcb *upcb, struct pbuf *p, const ip_addr_t *addr, u16_t port)
 {
-	u32 data_len = 0;
+
 	struct pbuf *q;
 	LWIP_UNUSED_ARG(arg);
 	
+	
 	if(p != NULL)	//接收到不为空的数据时
 	{
-		memset(rawudp_recv_buff, 0, RAWUDP_RX_BUFSIZE);  //数据接收缓冲区清零
+		memset(rawudp_recv_buff, 0, RAWUDP_RX_LENGHT);  //数据接收缓冲区清零
+		rawudp_recv_buff_len = 0;						//数据接收计数清零
 		
 		for(q=p; q!=NULL; q=q->next)  //遍历完整个pbuf链表
 		{
 			//判断要拷贝到UDP_DEMO_RX_BUFSIZE中的数据是否大于UDP_DEMO_RX_BUFSIZE的剩余空间，如果大于
 			//的话就只拷贝UDP_DEMO_RX_BUFSIZE中剩余长度的数据，否则的话就拷贝所有的数据
-			if(q->len > (RAWUDP_RX_BUFSIZE - data_len)) 
+			if(q->len > (RAWUDP_RX_LENGHT - rawudp_recv_buff_len)) 
 			{	
-				memcpy(rawudp_recv_buff+data_len,q->payload,(RAWUDP_RX_BUFSIZE-data_len));//拷贝数据
+				memcpy(rawudp_recv_buff+rawudp_recv_buff_len,q->payload,(RAWUDP_RX_LENGHT-rawudp_recv_buff_len));//拷贝数据
 			}
 			else
 			{
-				memcpy(rawudp_recv_buff+data_len,q->payload,q->len);
+				memcpy(rawudp_recv_buff+rawudp_recv_buff_len,q->payload,q->len);
 			}
-			data_len += q->len;  
+			rawudp_recv_buff_len += q->len;  
 				
-			if(data_len > RAWUDP_RX_BUFSIZE) break; //超出TCP客户端接收数组,跳出
+			if(rawudp_recv_buff_len > RAWUDP_RX_LENGHT) break; //超出TCP客户端接收数组,跳出
 			
-			USART_OUT(USART3, rawudp_recv_buff);		
+			memcpy(protocol_buff, rawudp_recv_buff, rawudp_recv_buff_len);	//把以太网接收的数据复制到协议buff
+			protocol_buff_len = rawudp_recv_buff_len;
+			eth_rx_flag = 1;
+			
+			memset(rawudp_recv_buff, 0, RAWUDP_RX_LENGHT);  //数据使用完后，数据接收缓冲区清零
+			rawudp_recv_buff_len = 0;	
+			
+//			USART_OUT(USART3, protocol_buff);
+//			USART_OUT(USART3, "protocol_buff data_len = %d\r", protocol_buff_len);
+					//数据接收计数清零
+			
 		}
 		
-		upcb->remote_ip=*addr; 				//记录远程主机的eIP地址
-		upcb->remote_port=port;  			//记录远程主机的端口号
+		upcb->remote_ip = *addr; 				//记录远程主机的eIP地址
+		upcb->remote_port = port;  				//记录远程主机的端口号
 		lwip_dev.remote_ip[0] = upcb->remote_ip.addr&0xff; 		//IADDR4
 		lwip_dev.remote_ip[1] = (upcb->remote_ip.addr>>8)&0xff; //IADDR3
 		lwip_dev.remote_ip[2] = (upcb->remote_ip.addr>>16)&0xff;//IADDR2

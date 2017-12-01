@@ -10,7 +10,7 @@
 
 
 
-#define RAWUDP_RX_BUFSIZE		512	//定义udp最大接收数据长度 
+#define RAWUDP_RX_LENGHT		512	//定义udp最大接收数据长度 
 #define RAWUDP_PORT				16650  //8089	//定义udp连接的端口 
 
  
