@@ -160,6 +160,9 @@ static void protocol_task_fun(void *p_arg)
 	u8 protocol_status = 0;
 	u32 err_cnt = 0;
 	u8 login_cnt = 0;
+	u8 res_val = 0;
+	
+	
 	
 	USART_OUT(USART3, "\r protocol_task_fun......\r");
 	while(DEF_TRUE)
@@ -258,7 +261,7 @@ static void protocol_task_fun(void *p_arg)
 		
 	//////////////////////////////////////////////////////////////////////////
 
-	
+
 		if(eth_rx_flag == 1)												//收到数据标志
 		{
 			
@@ -279,25 +282,20 @@ static void protocol_task_fun(void *p_arg)
 					{
 						case STATE_LOGIN:	//登录成功
 								
-							protocol_status = STATE_HEART;		
+							protocol_status = STATE_PTR;		
 						break;
+	
 						
-						
-						case STATE_HEART:
+						case STATE_RPT:		//上报模式
 							
 						
-							protocol_status = STATE_RPT;					
-						break;
-						
-						
-						case STATE_RPT:
-							
 							protocol_status = STATE_PTR;
 						break;
 						
 						
-						case STATE_PTR:		//接收模式
+						case STATE_PTR:		//查询模式
 							
+					//		protocol_status = STATE_PTR;
 						
 						break;
 						
@@ -330,26 +328,31 @@ static void protocol_task_fun(void *p_arg)
 					}
 				
 				break;
+							
 				
+				case STATE_RPT:		//上报模式	
+
+
 				
-				case STATE_HEART:
-					heart_beat(CHANNEL_ETH);
-					memset(protocol_buff, 0, PROTOCOL_BUFF_LENGHT);  //数据接收缓冲区清零
-					protocol_buff_len = 0;							//数据接收计数清零
-					heart_time_cnt = timer_get_heart_ms();
-					protocol_status = STATE_HEART;
-				break;
-				
-				
-				case STATE_RPT:
-									
-				
-				break;
-				
-				
-				case STATE_PTR:
 					
-					protocol_status = STATE_HEART;
+				break;
+				
+				
+				case STATE_PTR:		//查询模式
+					
+					
+					
+					res_val = dev_restart_ack(CHANNEL_ETH);
+					if(res_val == TRUE)
+					{
+						protocol_status = STATE_RPT;
+					}
+					else						
+					{
+						
+					}
+					
+				
 				break;
 				
 				default:
@@ -546,6 +549,7 @@ u8 svr_to_ctu(u8 *buff, u16 size, u8 channel)
 	cmd = *buff++;
 	cmd += (*buff++)<<8;  
 	
+	//取出控制单元
 	ctr_unit = *buff++;
 	ctr_unit += (*buff++)<<8; 
 	
@@ -566,17 +570,26 @@ u8 svr_to_ctu(u8 *buff, u16 size, u8 channel)
 	
 	switch (cmd)
 	{
-		case 0x0100:
+		case 0x0100:		//登录应答包			
 			
-			
-			return sign_in_ack(buff, size, channel);
+			return sign_in_ack(buff, size, channel);		
+		
 		break;
 	
 		
-		case 0x0200:
+		case 0x0200:	//心跳应答包
 			
 			return heart_beat_ack(buff, size, channel);
+		
 		break;
+		
+		case 0x0300:		
+		
+			return dev_restart(buff, size, channel);		
+		break;
+
+	
+
 		
 		
 		default:
@@ -611,10 +624,9 @@ bool ctu_to_srv(u8 *buff, u16 size, u8 channel)
 
 	u16 i = 0, crc = 0, tmp_len = 0;
 	u16 telegram_lenth = 0;
-	u8 *tmp;
+	u8 tmp[100] = {0};
 	
-	tmp = (u8 *)malloc(256);
-	usart_printf(USART3, size, buff);
+
 	tmp[0] = TELEGRAM_HEAD;
 	tmp[1] = (u8)size;
 	tmp[2] = (u8)(size>>8);
@@ -640,11 +652,11 @@ bool ctu_to_srv(u8 *buff, u16 size, u8 channel)
 	}
 	else if(channel == CHANNEL_ETH)
 	{
-		usart_printf(USART3, tmp_len, tmp);
+//		usart_printf(USART3, tmp_len, tmp);
 		rawudp_send_data(udppcb, tmp, tmp_len);
 	
 	}
-	free(tmp);
+
 	
 	return TRUE;
 }
@@ -761,6 +773,7 @@ u8 sign_in(u8 channel)
 	return ctu_to_srv(buff, buff_cnt, channel);
 
 }
+
 
 
 
@@ -901,6 +914,98 @@ bool heart_beat_ack(u8 *buff, u16 size, u8 channel)
 
 }
 
+
+
+
+
+
+
+
+
+
+
+
+bool dev_restart(u8 *buff, u16 size, u8 channel)
+{
+	u8 para1 = 0;
+	
+	
+	para1 = buff[18];
+
+	switch(para1)
+	{
+		case 0:
+			
+			//恢复出厂设置
+		break;
+		
+		case 1:
+			
+			//一般重启	
+		break;
+		
+		default:
+			return FALSE;
+		break;
+	}
+	
+	return TRUE;
+}
+
+
+
+
+u8 dev_restart_ack(u8 channel)
+{
+	u8 buff[100] = {0};
+	u32 i = 0, buff_cnt = 0;
+	u16 cmd = 0x0300;
+	u16 ctr_unit = 0;
+	u16 dev_id = 0x0001;
+	u16 node_id = 0;
+	u16 mes = 0;
+	u8 date[8] = {0};
+	u8 gw_id[6] = {0};
+
+		
+	SETBIT(ctr_unit, 1);
+	CLRBIT(ctr_unit, 2);
+	
+	/************消息头******************/	
+	//消息ID
+	buff[buff_cnt++] = cmd&0xFF;
+	buff[buff_cnt++] = cmd>>8;
+	
+	//控制单元
+	buff[buff_cnt++] = ctr_unit&0xFF;
+	buff[buff_cnt++] = ctr_unit>>8;
+	
+	//通信地址
+	for(i=0; i<4; i++)	
+	{
+		buff[buff_cnt++] = 00;
+	}
+	//设备id
+	buff[buff_cnt++] = dev_id &0xFF;
+	buff[buff_cnt++] = dev_id>>8;
+	//终端id
+	buff[buff_cnt++] = node_id &0xF;
+	buff[buff_cnt++] = node_id>>8;
+	//消息流水号
+	buff[buff_cnt++] = mes &0xF;
+	buff[buff_cnt++] = mes>>8;
+	
+	for(i=0; i<8; i++)	//时间
+	{
+		buff[buff_cnt++] = 0xFF;
+	}
+
+	/*********消息体**********************/
+
+		
+	return ctu_to_srv(buff, buff_cnt, channel);
+
+}
 
 
 

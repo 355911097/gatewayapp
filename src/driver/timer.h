@@ -46,6 +46,7 @@ enum timer3
 	timer_gprs,
 	timer_at,
 	timer_hear,
+	timer_protocol,
 	timer_max
 };
 

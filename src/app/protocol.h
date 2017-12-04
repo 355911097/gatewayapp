@@ -99,5 +99,9 @@ u8 sign_in(u8 channel);
 bool sign_in_ack(u8 *buff, u16 size, u8 channel);
 u8 heart_beat(u8 channel);
 bool heart_beat_ack(u8 *buff, u16 size, u8 channel);
+bool dev_restart(u8 *buff, u16 size, u8 channel);
+u8 dev_restart_ack(u8 channel);
+
+
 
 #endif
