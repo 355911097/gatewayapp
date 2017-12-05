@@ -91,8 +91,9 @@ typedef struct
 
 void protocol_task_create(void);
 
-u8 process_protocol(u8 *buff, u16 size, u8 channel);
-u8 svr_to_ctu(u8 *buff, u16 size, u8 channel);
+u16 process_protocol(u8 *buff, u16 size, u8 channel);
+u16 svr_to_ctu(u8 *buff, u16 size, u8 channel, u16 *cmd);
+bool ctu_to_srv(u8 *buff, u16 size, u8 channel, u16 cmd);
 
 bool fatch_gprs_data(u8 *buff, u16 *size);
 u8 sign_in(u8 channel);
