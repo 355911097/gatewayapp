@@ -88,6 +88,20 @@ typedef struct
 }telegram_t;
 
 
+typedef  enum
+{
+	PROTOCOL_ERR_NONE 				= 0,
+	PROTOCOL_ERR_LEN_SMALL,
+	PROTOCOL_ERR_HEAD,
+	PROTOCOL_ERR_SYNC,
+	PROTOCOL_ERR_OVERFLOW,
+	PROTOCOL_ERR_CRC,
+	PROTOCOL_ERR_END
+	
+}PROTOCOL_ERR_E;
+
+
+
 
 void protocol_task_create(void);
 
@@ -102,7 +116,7 @@ u8 heart_beat(u8 channel);
 bool heart_beat_ack(u8 *buff, u16 size, u8 channel);
 bool dev_restart(u8 *buff, u16 size, u8 channel);
 u8 dev_restart_ack(u8 channel);
-
-
+u8 fire_alarm_0101(u8 channel);
+bool fire_alarm_ack_0101(u8 *buff, u16 size, u8 channel);
 
 #endif

@@ -32,15 +32,54 @@ extern OS_TMR gprs;
 
 
 static usart_buff_t sb = SerialBuffDefault();
-//usart_buff_t *usart2_buff = &sb;
-usart_buff_t *usart3_buff = &sb;
+usart_buff_t *usart1_rx_buff = &sb;
+usart_buff_t *usart2_rx_buff = &sb;
+usart_buff_t *usart3_rx_buff = &sb;
 usart_buff_t *gprs_rx_buff = &sb;
-usart_buff_t *usart5_buff = &sb;
+usart_buff_t *usart5_rx_buff = &sb;
 
 
 
+u16 usart1_rx_status = 0;
 u16 usart2_rx_status = 0;
 
+
+
+/*
+*********************************************************************************************************
+*                                          usart1_init()
+*
+* Description : Create application kernel objects tasks.
+*
+* Argument(s) : none
+*
+* Return(s)   : none
+*
+* Caller(s)   : AppTaskStart()
+*
+* Note(s)     : none.
+*********************************************************************************************************
+*/
+void usart1_init(u32 band_rate, u8 word_length, u8 parity, u8 stop_bit)
+{
+	
+	USART_InitTypeDef usart_init_structre;
+	
+	usart_init_structre.USART_BaudRate = band_rate;
+	usart_init_structre.USART_WordLength = word_length;
+	usart_init_structre.USART_StopBits = stop_bit;
+	usart_init_structre.USART_Parity = parity;
+	usart_init_structre.USART_HardwareFlowControl = USART_HardwareFlowControl_None;
+	usart_init_structre.USART_Mode = USART_Mode_Rx | USART_Mode_Tx;
+	USART_Init(USART1, &usart_init_structre);
+		
+	USART_ITConfig(USART1, USART_IT_RXNE, ENABLE);
+	
+	USART_Cmd(USART1, ENABLE);
+	
+	BSP_IntVectSet(BSP_INT_ID_USART1, USART1_IRQHandler);
+
+}
 
 
 
@@ -158,6 +197,67 @@ void usart5_init(u32 band_rate)
 
 }
 
+
+
+
+/*
+*********************************************************************************************************
+*                                          USART1_IRQHandler()
+*
+* Description : Create application kernel objects tasks.
+*
+* Argument(s) : none
+*
+* Return(s)   : none
+*
+* Caller(s)   : AppTaskStart()
+*
+* Note(s)     : none.
+*********************************************************************************************************
+*/
+void USART1_IRQHandler(void)
+{
+	OS_ERR err;	
+	u8 ch = 0;	
+
+	OSIntEnter();   
+   	if (USART_GetITStatus(USART1, USART_IT_RXNE) != RESET)
+    {   
+	    USART_ClearITPendingBit(USART1, USART_IT_RXNE);	
+				
+        ch = USART_ReceiveData(USART1);	 
+		if(usart1_rx_status == 0)
+		{
+			if (gprs_rx_buff->index < USART_BUFF_LENGHT)
+			{
+				//开始定时器
+//				timer_is_timeout_1MS(timer_gprs, 0);
+				usart1_rx_buff->pdata[usart1_rx_buff->index++] = ch;
+			
+			//	USART_SendData(USART3, ch);	
+//			OSQPost((OS_Q*		)&usart3_msg,
+//					(void*		)usart3_buff->pdata,
+//					(OS_MSG_SIZE)10,
+//					(OS_OPT		)OS_OPT_POST_FIFO,
+//					(OS_ERR*	)&err);
+			}
+			else
+			{
+				memset(usart1_rx_buff, 0, sizeof(usart_buff_t));	//清理缓冲区		
+			}
+		}
+	}
+	
+	if(USART_GetITStatus(USART1, USART_IT_TXE) != RESET)                  
+  	{ 
+     	USART_ITConfig(USART1, USART_IT_TXE, DISABLE);					   
+  	}	
+	
+	OSIntExit();  	
+}
+
+
+
 /*
 *********************************************************************************************************
 *                                          USART2_IRQHandler()
@@ -190,7 +290,7 @@ void USART2_IRQHandler(void)
 			{
 				//开始定时器
 //				timer_is_timeout_1MS(timer_gprs, 0);
-				gprs_rx_buff->pdata[gprs_rx_buff->index++] = ch;
+				usart2_rx_buff->pdata[usart2_rx_buff->index++] = ch;
 				
 			//	USART_SendData(USART3, ch);	
 //			OSQPost((OS_Q*		)&usart3_msg,
@@ -201,8 +301,7 @@ void USART2_IRQHandler(void)
 			}
 			else
 			{
-				gprs_rx_buff->index = 0;
-				memset(gprs_rx_buff, 0, sizeof(usart_buff_t));			
+				memset(usart2_rx_buff, 0, sizeof(usart_buff_t));			
 			}
 		}
 	}
@@ -245,14 +344,14 @@ void USART3_IRQHandler(void)
 				
         ch = USART_ReceiveData(USART3);	 
 		
-		if (usart3_buff->index < USART_BUFF_LENGHT)
+		if (usart3_rx_buff->index < USART_BUFF_LENGHT)
 		{
-			usart3_buff->pdata[usart3_buff->index++] = ch;
-						
+			usart3_rx_buff->pdata[usart3_rx_buff->index++] = ch;
+				
 		
 			OSQPost((OS_Q*		)&usart3_msg,
-					(void*		)usart3_buff->pdata,
-					(OS_MSG_SIZE)usart3_buff->index,
+					(void*		)usart3_rx_buff->pdata,
+					(OS_MSG_SIZE)usart3_rx_buff->index,
 					(OS_OPT		)OS_OPT_POST_FIFO,
 					(OS_ERR*	)&err);
 			
@@ -260,9 +359,7 @@ void USART3_IRQHandler(void)
 		}
 		else
 		{
-			usart3_buff->index = 0;
-			memset(usart3_buff, 0, sizeof(usart_buff_t));
-			
+			memset(usart3_rx_buff, 0, sizeof(usart_buff_t));	
 		}
 		
 	}
@@ -307,14 +404,14 @@ void UART5_IRQHandler(void)
 				
         ch = USART_ReceiveData(UART5);	 
 		
-		if (usart5_buff->index < USART_BUFF_LENGHT)
+		if (usart5_rx_buff->index < USART_BUFF_LENGHT)
 		{
-			usart5_buff->pdata[usart5_buff->index++] = ch;
+			usart5_rx_buff->pdata[usart5_rx_buff->index++] = ch;
 						
 		
 			OSQPost((OS_Q*		)&usart3_msg,
-					(void*		)usart3_buff->pdata,
-					(OS_MSG_SIZE)usart3_buff->index,
+					(void*		)usart3_rx_buff->pdata,
+					(OS_MSG_SIZE)usart3_rx_buff->index,
 					(OS_OPT		)OS_OPT_POST_FIFO,
 					(OS_ERR*	)&err);
 			
@@ -322,8 +419,7 @@ void UART5_IRQHandler(void)
 		}
 		else
 		{
-			usart5_buff->index = 0;
-			memset(usart5_buff, 0, sizeof(usart_buff_t));
+			memset(usart5_rx_buff, 0, sizeof(usart_buff_t));
 			
 		}
 		

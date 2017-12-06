@@ -76,7 +76,7 @@ dev_info_t dev_info;
 
 u32 heart_time_cnt = 0;		//心跳计数器
 
-
+u16 protocol_stream_num = 0;		//报文流水号
 
 
 u8 protocol_buff[PROTOCOL_BUFF_LENGHT] = {0};
@@ -161,106 +161,13 @@ static void protocol_task_fun(void *p_arg)
 	u32 err_cnt = 0;
 	u8 login_cnt = 0;
 	u8 res_val = 0;
-	
+	u8 ack_err_cnt = 0;
+	u8 send_status = 0;
 	
 	
 	USART_OUT(USART3, "\r protocol_task_fun......\r");
 	while(DEF_TRUE)
 	{
-
-/*		
-		if (heart_time_cnt == 0)
-		{	
-			if(protocol_status == STATE_LOGIN)
-			{
-				sign_in(CHANNEL_ETH);
-				memset(gprs_rx_buff, 0, sizeof(usart_buff_t));	
-				heart_time_cnt = timer_get_heart_ms();
-				
-			}
-			else if(protocol_status == STATE_HEART)
-			{
-				heart_beat(CHANNEL_ETH);
-				memset(gprs_rx_buff, 0, sizeof(usart_buff_t));	
-				heart_time_cnt = timer_get_heart_ms();
-			}
-		}
-		else
-		{
-			if((timer_get_heart_ms()-heart_time_cnt) >= GPRS_HEART_TIME) //心跳阶段检测心跳时间
-			{
-				err_cnt++; //错误计数器增加
-				if(err_cnt >= GPRS_HEART_ERR_COUNT)	//超过最大尝试次数，重启GPRS
-				{
-					
-					heart_time_cnt = 0;
-					err_cnt = 0;	
-				}
-				else	//重新发送心跳指令
-				{
-					heart_time_cnt = 0;
-				}
-			}
-			else
-			{
-				
-				if(gprs_rx_flag == TRUE)	//收到数据标志
-				{
-					
-					u8 buffer[USART_BUFF_LENGHT];
-					u16 size;
-					gprs_rx_flag = FALSE;
-								
-					
-					if (fatch_gprs_data(buffer, &size))		//取得消息报文
-					{
-						protocol_err = process_protocol(buffer, size, CHANNEL_ETH);	//处理报文
-						
-						
-						if (protocol_err == TRUE)
-						{
-							
-							switch (protocol_status)
-							{
-								case STATE_LOGIN:
-									
-								
-								break;
-								
-								
-								case STATE_HEART:
-									
-								
-								break;
-								
-								case STATE_RPT:
-									
-								
-								break;
-								
-								
-								default:
-								break;
-										
-								
-							}
-							
-						}
-					}
-						
-				}
-		
-					
-			}
-			
-		}
-		
-*/		
-		
-
-		
-	//////////////////////////////////////////////////////////////////////////
-
 
 		if(eth_rx_flag == 1)												//收到数据标志
 		{
@@ -278,7 +185,7 @@ static void protocol_task_fun(void *p_arg)
 				if (protocol_err == TRUE)
 				{
 					
-					heart_time_cnt = timer_get_heart_ms();
+					heart_time_cnt = timer_get_heart_ms();		//更新心跳时间
 					
 					switch (cmd)
 					{
@@ -288,9 +195,9 @@ static void protocol_task_fun(void *p_arg)
 						break;
 	
 						
-						case 0x0200:		//
+						case 0x0200:		//心跳阶段
 							
-						
+							
 							err_cnt = 0;	//心跳错误计数器清零
 						
 						break;
@@ -298,15 +205,36 @@ static void protocol_task_fun(void *p_arg)
 						
 						case 0x0300:		//
 							
-				
-						
+							if(ack_err_cnt > 3)
+							{
+								//记录日志
+								//重启网络
+							}
+							else
+							{
+								dev_restart_ack(CHANNEL_ETH);	//发送应答包
+								
+							}
+							
 						break;
+						
+							
+						case 0x0101:
+							
+							send_status = 1;
+							
+						break;
+						
 						
 						default:
 						break;
-								
-						
+	
 					}
+					
+				}
+				else
+				{
+					
 					
 				}
 					
@@ -322,12 +250,13 @@ static void protocol_task_fun(void *p_arg)
 					sign_in(CHANNEL_ETH);
 					memset(protocol_buff, 0, PROTOCOL_BUFF_LENGHT);  //数据接收缓冲区清零
 					protocol_buff_len = 0;							//数据接收计数清零	
-					heart_time_cnt = timer_get_heart_ms();
+					heart_time_cnt = timer_get_heart_ms();			//更新心跳时间
 				
 					login_cnt++;
 					if(login_cnt > 3)
 					{
 						//重启设备
+						//记录日志
 					}
 				
 				break;
@@ -337,11 +266,14 @@ static void protocol_task_fun(void *p_arg)
 					if((timer_get_heart_ms()-heart_time_cnt) >= GPRS_HEART_TIME) //心跳阶段检测心跳时间
 					{
 						err_cnt++; //错误计数器增加
-						if(err_cnt >= GPRS_HEART_ERR_COUNT)	//超过最大尝试次数，重启GPRS
+						if(err_cnt >= GPRS_HEART_ERR_COUNT)	//超过最大尝试次数，重启网络
 						{
 							
 							heart_time_cnt = 0;
-							err_cnt = 0;	
+							err_cnt = 0;
+
+							//重启设备
+							//记录日志
 						}
 						else	//重新发送心跳指令
 						{
@@ -349,8 +281,19 @@ static void protocol_task_fun(void *p_arg)
 							heart_time_cnt = timer_get_heart_ms();
 						}
 					}
+									
+				break;
 					
-				
+				case 2:
+					if(send_status == 1)
+					{
+						
+					}
+					else
+					{
+						fire_alarm_0101(CHANNEL_ETH);
+					}
+					
 				break;
 				
 				
@@ -539,7 +482,7 @@ u16 svr_to_ctu(u8 *buff, u16 size, u8 channel, u16 *cmd)
 	//取出控制单元
 	ctr_unit = *buff++;
 	ctr_unit += (*buff++)<<8; 
-	
+		
 	
 	if ((ctr_unit&DIR_UP_FLAG) == DIR_UP_FLAG)	//判断消息是上行还是下行
 	{
@@ -575,8 +518,31 @@ u16 svr_to_ctu(u8 *buff, u16 size, u8 channel, u16 *cmd)
 			dev_restart(buff, size, channel);
 			
 		break;
-
+		
+		case 0x0101:	//火警应答包	
+		
+			fire_alarm_ack_0101(buff, size, channel);
+			
+		break;
+		
+		case 0x0201:		
+		
+		
+		break;
+				
+		case 0x0301:		
+		
+			
+		break;
+		
+		case 0x0401:		
+		
+			
+		break;
+		
+		
 		default:
+			return FALSE;
 		break;
 	}
 	
@@ -610,10 +576,8 @@ bool ctu_to_srv(u8 *buff, u16 size, u8 channel, u16 cmd)
 	u16 telegram_lenth = 0;
 	u8 tmp[512] = {0};
 	u16 ctr_unit = 0;
-	u16 cnt = 0;
 	u16 dev_id = 0x0001;
 	u16 node_id = 0;
-	u16 mes = 0;
 
 	
 	telegram_lenth = size + 22;		//报文长度域
@@ -648,14 +612,14 @@ bool ctu_to_srv(u8 *buff, u16 size, u8 channel, u16 cmd)
 		tmp[i+8] = 00;
 	}
 	//设备id
-	tmp[12] = dev_id &0xFF;
+	tmp[12] = dev_id&0xFF;
 	tmp[13] = dev_id>>8;
 	//终端id
-	tmp[14] = node_id &0xF;
+	tmp[14] = node_id&0xFF;
 	tmp[15] = node_id>>8;
 	//消息流水号
-	tmp[16] = mes &0xF;
-	tmp[17] = mes>>8;
+	tmp[16] = protocol_stream_num&0xFF;
+	tmp[17] = protocol_stream_num>>8;
 	
 	//时间
 	for(i=0; i<8; i++)	
@@ -686,7 +650,6 @@ bool ctu_to_srv(u8 *buff, u16 size, u8 channel, u16 cmd)
 	
 	if(channel == CHANNEL_GPRS)
 	{
-//		USART_OUT(USART2, tmp);
 		usart_printf(USART2, tmp_len, tmp);
 	}
 	else if(channel == CHANNEL_ETH)
@@ -694,7 +657,7 @@ bool ctu_to_srv(u8 *buff, u16 size, u8 channel, u16 cmd)
 		rawudp_send_data(udppcb, tmp, tmp_len);
 	
 	}
-
+	protocol_stream_num++;		//报文流水号增加1
 	
 	return TRUE;
 }
@@ -868,7 +831,22 @@ u8 heart_beat(u8 channel)
 	return ctu_to_srv(buff, buff_cnt, channel, cmd);
 }
 
-
+/*
+*********************************************************************************************************
+*                                          heart_beat()
+*
+* Description : Create application kernel objects tasks.
+*
+* Argument(s) : type ?????  enum timer3
+*				count ?????? 
+*
+* Return(s)   : 0 ??????  1???????
+*
+* Caller(s)   : 
+*
+* Note(s)     : none.
+*********************************************************************************************************
+*/
 bool heart_beat_ack(u8 *buff, u16 size, u8 channel)
 {
 	u8 ack_status = 0;	
@@ -914,7 +892,7 @@ bool dev_restart(u8 *buff, u16 size, u8 channel)
 	
 	
 	
-	return dev_restart_ack(channel);	//发送应答包
+	return TRUE;
 }
 
 
@@ -936,6 +914,111 @@ u8 dev_restart_ack(u8 channel)
 	return ctu_to_srv(buff, buff_cnt, channel, cmd);
 
 }
+
+
+
+
+
+
+
+
+/*
+*********************************************************************************************************
+*                                          heart_beat()
+*
+* Description : Create application kernel objects tasks.
+*
+* Argument(s) : type ?????  enum timer3
+*				count ?????? 
+*
+* Return(s)   : 0 ??????  1???????
+*
+* Caller(s)   : 
+*
+* Note(s)     : none.
+*********************************************************************************************************
+*/
+u8 fire_alarm_0101(u8 channel)
+{
+	u8 buff[100] = {0};
+	u32 i = 0, buff_cnt = 0;
+	u16 cmd = 0x0101;
+	u8 gw_id[6] = {0};
+	
+
+	/*********消息体**********************/
+	//预留
+	for(i=0; i<4; i++)		
+	{
+		buff[buff_cnt++] = 00;
+	}
+	
+	//区号
+	for(i=0; i<4; i++)		
+	{
+		buff[buff_cnt++] = 11;
+	}
+	//回路号
+	for(i=0; i<4; i++)		
+	{
+		buff[buff_cnt++] = 22;
+	}
+	//点位号
+	for(i=0; i<4; i++)		
+	{
+		buff[buff_cnt++] = 33;
+	}		
+
+	//火警状态	
+	buff[buff_cnt++] = 01;
+
+	//火警数据
+	for(i=0; i<6; i++)		
+	{
+		buff[buff_cnt++] = 44;
+	}	
+	
+	//预留
+	for(i=0; i<30; i++)		
+	{
+		buff[buff_cnt++] = 55;
+	}	
+	
+	
+	return ctu_to_srv(buff, buff_cnt, channel, cmd);
+}
+
+
+
+bool fire_alarm_ack_0101(u8 *buff, u16 size, u8 channel)
+{
+	u8 para1 = 0;
+	
+	
+	para1 = buff[18];
+
+	switch(para1)
+	{
+		case 0:
+			
+			//恢复出厂设置
+		break;
+		
+		case 1:
+			
+			//一般重启	
+		break;
+		
+		default:
+			return FALSE;
+		break;
+	}
+	
+	
+	
+	return TRUE;
+}
+
 
 
 
