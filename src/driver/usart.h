@@ -50,9 +50,11 @@ typedef struct
 *                                           FUNCTION PROTOTYPES
 *********************************************************************************************************
 */
+void usart1_init(u32 band_rate, u8 word_length, u8 parity, u8 stop_bit);
 void usart2_init(u32 band_rate);
 void usart3_init(u32 band_rate);
 void usart5_init(u32 band_rate);
+void USART1_IRQHandler(void);
 void USART2_IRQHandler(void);
 void USART3_IRQHandler(void);
 void UART5_IRQHandler(void);
