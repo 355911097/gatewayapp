@@ -89,20 +89,6 @@ typedef struct
 }telegram_t;
 
 
-typedef  enum
-{
-	PROTOCOL_ERR_NONE 				= 0,
-	PROTOCOL_ERR_LEN_SMALL,
-	PROTOCOL_ERR_HEAD,
-	PROTOCOL_ERR_SYNC,
-	PROTOCOL_ERR_OVERFLOW,
-	PROTOCOL_ERR_CRC,
-	PROTOCOL_ERR_END
-	
-}PROTOCOL_ERR_E;
-
-
-
 
 void protocol_task_create(void);
 
@@ -110,6 +96,7 @@ u16 process_protocol(u8 *buff, u16 size, u8 channel);
 u16 svr_to_ctu(u8 *buff, u16 size, u8 channel, u16 *cmd);
 bool ctu_to_srv(u8 *buff, u16 size, u8 channel, u16 cmd);
 bool fatch_gprs_data(u8 *buff, u16 *size);
+<<<<<<< HEAD
 
 u8 sign_in_0001(u8 channel);
 bool sign_in_0001_ack(u8 *buff, u16 size, u8 channel);
@@ -120,6 +107,15 @@ u8 dev_restart_0003_ack(u8 channel);
 u8 fire_alarm_0101(u8 channel);
 bool fire_alarm_0101_ack(u8 *buff, u16 size, u8 channel);
 u16 crc16_modbus(u8 *data, u32 len);
+=======
+u8 sign_in(u8 channel);
+bool sign_in_ack(u8 *buff, u16 size, u8 channel);
+u8 heart_beat(u8 channel);
+bool heart_beat_ack(u8 *buff, u16 size, u8 channel);
+bool dev_restart(u8 *buff, u16 size, u8 channel);
+u8 dev_restart_ack(u8 channel);
+
+>>>>>>> parent of cbdf3f0... t
 
 
 #endif

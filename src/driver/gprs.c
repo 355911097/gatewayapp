@@ -29,7 +29,6 @@
 
 
 extern usart_buff_t  *gprs_rx_buff;
-extern usart_buff_t  *usart2_rx_buff;
 extern u16 usart2_rx_status;
 
 extern OS_TCB 	gprs_init_task_TCB;
@@ -148,7 +147,7 @@ u8 gprs_send_at(u8 *cmd, u8 *ack, u16 waittime, u16 timeout)
 	while (res == 1)
 	{
 		
-		memset(usart2_rx_buff, 0, sizeof(usart_buff_t));
+		memset(gprs_rx_buff, 0, sizeof(usart_buff_t));
 		usart2_rx_status = 0;
 		USART_OUT(USART2, cmd);							
 		OSTimeDly(waittime, OS_OPT_TIME_DLY, &err);		//AT÷∏¡Ó—” ±
