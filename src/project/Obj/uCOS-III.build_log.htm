@@ -27,14 +27,148 @@ Project File Date:  11/20/2017
 <h2>Output:</h2>
 *** Using Compiler 'V5.06 update 1 (build 61)', folder: 'd:\Keil_v5\ARM\ARMCC\Bin'
 Build target 'uCOS-III'
-<<<<<<< HEAD
-=======
+compiling gprs.c...
+..\app\protocol.h(110): error:  #169: expected a declaration
+  =======
+..\app\protocol.h(118): error:  #169: expected a declaration
+  >>>>>>> parent of cbdf3f0... t
+..\driver\gprs.c(117): error:  #20: identifier "gprs_rx_buff" is undefined
+  	USART_OUT(
+SART3, gprs_rx_buff->pdata);
+..\driver\gprs.c(150): error:  #20: identifier "gprs_rx_buff" is undefined
+  		memset(gprs_rx_buff, 0, sizeof(usart_buff_t));
+..\driver\gprs.c: 0 warnings, 4 errors
 compiling protocol.c...
-linking...
-Program Size: Code=111032 RO-data=2756 RW-data=524 ZI-data=80204  
-FromELF: creating hex file...
->>>>>>> parent of cbdf3f0... t
-".\Obj\uCOS-III.axf" - 0 Error(s), 0 Warning(s).
+..\app\protocol.h(110): error:  #169: expected a declaration
+  =======
+..\app\protocol.h(118): error:  #169: expected a declaration
+  >>>>>>> parent of cbdf3f0... t
+..\app\protocol.c(23): error:  #20: identifier "usart_buff_t" is undefined
+  extern usart_buff_t *gprs_rx_buff;					//GPRS?????ý¾Ý»º³???
+..\app\protocol.c(291): error:  #29: expected an expression
+  <<<<<<< HEAD
+..\app\protocol.c(306): error:  #29: expected an expression
+  <<<<<<< HEAD
+..\app\protocol.c(319): error:  #29: expected an expression
+  =======
+..\app\protocol.c(372): error:  #29: expected an expression
+  <<<<<<< HEAD
+..\app\protocol.c(378): error:  #20: identifier "send_status" is undefined
+  					if(send_status == 1)
+..\app\protocol.c(386): error:  #29: expected an expression
+  =======
+..\app\protocol.c(478): error:  #29: expected an expression
+  <<<<<<< HEAD
+..\app\protocol.c(516): error:  #29: expected an expression
+  =======
+..\app\protocol.c(519): error:  #122: a default label may only be used within a switch
+  		default:
+..\app\protocol.c(520): error:  #116: a break statement may only be used within a loop or switch
+  		break;
+..\app\protocol.c(521): error:  #29: expected an expression
+  >>>>>>> parent of cbdf3f0... t
+..\app\protocol.c(522): error:  #65: expected a ";"
+  	}
+..\app\protocol.c(643): error:  #29: expected an expression
+  <<<<<<< HEAD
+..\app\protocol.c(821): error:  #169: expected a declaration
+  <<<<<<< HEAD
+..\app\protocol.c(888): error:  #169: expected a declaration
+  }
+..\app\protocol.c(958): error:  #169: expected a declaration
+  	}
+..\app\protocol.c(969): error:  #169: expected a declaration
+  	for(i=0; i<6; i++)		
+..\app\protocol.c(982): error:  #169: expected a declaration
+  }
+..\app\protocol.c(1013): error:  #169: expected a declaration
+  }
+..\app\protocol.c(1076): error:  #77-D: this declaration has no storage class or type specifier
+  	protocol_buff_len -= i;	
+..\app\protocol.c(1076): error:  #147: declaration is incompatible with "u32 protocol_buff_len" (declared at line 83)
+  	protocol_buff_len -= i;	
+..\app\protocol.c(1076): error:  #65: expected a ";"
+  	protocol_buff_len -= i;	
+..\app\protocol.c(1078): error:  #169: expected a declaration
+  	if (protocol_buff_len < 5)				//?ý¾Ý°?Ì«????
+..\app\protocol.c(1097): error:  #77-D: this declaration has no storage class or type specifier
+  	data_len <<= 8;
+..\app\protocol.c(1097): error:  #65: expected a ";"
+  	data_len <<= 8;
+..\app\protocol.c(1098): error:  #77-D: this declaration has no storage class or type specifier
+  	data_len |=  protocol_buff[1];
+..\app\protocol.c(1098): error:  #65: expected a ";"
+  	data_len |=  protocol_buff[1];
+..\app\protocol.c: 0 warnings, 30 errors
+compiling usart.c...
+..\driver\usart.c(166): error:  #169: expected a declaration
+  <<<<<<< HEAD
+..\driver\usart.c(224): error:  #169: expected a declaration
+  }
+..\driver\usart.c(285): error:  #169: expected a declaration
+  }
+..\driver\usart.c(332): error:  #169: expected a declaration
+  		}
+..\driver\usart.c(349): error:  #169: expected a declaration
+  }
+..\driver\usart.c(429): error:  #169: expected a declaration
+  >>>>>>> parent of cbdf3f0... t
+..\driver\usart.c(448): error:  #169: expected a declaration
+  }
+..\driver\usart.c(498): error:  #77-D: this declaration has no storage class or type specifier
+  					Data++;
+..\driver\usart.c(498): error:  #65: expected a ";"
+  					Data++;
+..\driver\usart.c(499): error:  #169: expected a declaration
+  				break;
+..\driver\usart.c(501): error:  #169: expected a declaration
+  				default:
+..\driver\usart.c(503): error:  #169: expected a declaration
+  			    break;
+..\driver\usart.c(504): error:  #169: expected a declaration
+  			}						 
+..\driver\usart.c(529): error:  #169: expected a declaration
+  				default:
+..\driver\usart.c(531): error:  #169: expected a declaration
+  				    break;
+..\driver\usart.c(532): error:  #169: expected a declaration
+  			}		 
+..\driver\usart.c(536): error:  #169: expected a declaration
+  		while(USART_GetFlagStatus(USARTx, USART_FLAG_TC)==RESET);
+..\driver\usart.c(537): error:  #169: expected a declaration
+  	}
+..\driver\usart.c(566): error:  #77-D: this declaration has no storage class or type specifier
+  					data++;
+..\driver\usart.c(566): error:  #65: expected a ";"
+  					data++;
+..\driver\usart.c(567): error:  #169: expected a declaration
+  				break;
+..\driver\usart.c(569): error:  #169: expected a declaration
+  				default:
+..\driver\usart.c(571): error:  #169: expected a declaration
+  			    break;
+..\driver\usart.c(572): error:  #169: expected a declaration
+  			}						 
+..\driver\usart.c(597): error:  #169: expected a declaration
+  				default:
+..\driver\usart.c(599): error:  #169: expected a declaration
+  				    break;
+..\driver\usart.c(600): error:  #169: expected a declaration
+  			}		 
+..\driver\usart.c(604): error:  #169: expected a declaration
+  		while(USART_GetFlagStatus(USARTx, USART_FLAG_TC)==RESET);
+..\driver\usart.c(605): error:  #169: expected a declaration
+  	}
+..\driver\usart.c: 0 warnings, 29 errors
+compiling rawudp.c...
+..\app\protocol.h(110): error:  #169: expected a declaration
+  =======
+..\app\protocol.h(118): error:  #169: expected a declaration
+  >>>>>>> parent of cbdf3f0... t
+..\lwip\apps\rawudp.c(142): error:  #20: identifier "protocol_buff" is undefined
+  			memcpy(protocol_buff, rawudp_recv_buff, rawudp_recv_buff_len);	//????Ì«?ø½??Õµ??ý¾Ý¸??Æµ?Ð­??buff
+..\lwip\apps\rawudp.c: 0 warnings, 3 errors
+".\Obj\uCOS-III.axf" - 66 Error(s), 0 Warning(s).
 
 <h2>Software Packages used:</h2>
 
@@ -52,7 +186,8 @@ Package Vendor: ARM
 <h2>Collection of Component Files used:</h2>
 
    * Component: ARM::CMSIS:CORE:5.0.2
-Build Time Elapsed:  00:00:02
+Target not created.
+Build Time Elapsed:  00:00:05
 </pre>
 </body>
 </html>

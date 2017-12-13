@@ -96,7 +96,7 @@ u16 process_protocol(u8 *buff, u16 size, u8 channel);
 u16 svr_to_ctu(u8 *buff, u16 size, u8 channel, u16 *cmd);
 bool ctu_to_srv(u8 *buff, u16 size, u8 channel, u16 cmd);
 bool fatch_gprs_data(u8 *buff, u16 *size);
-<<<<<<< HEAD
+
 
 u8 sign_in_0001(u8 channel);
 bool sign_in_0001_ack(u8 *buff, u16 size, u8 channel);

@@ -37,7 +37,7 @@ extern struct udp_pcb *udppcb;  	//定义一个UDP服务器控制块
 
 
 static usart_buff_t sb = SerialBuffDefault();
-//usart_buff_t *usart2_buff = &sb;
+usart_buff_t *usart2_buff = &sb;
 usart_buff_t *usart3_buff = &sb;
 usart_buff_t *gprs_rx_buff = &sb;
 usart_buff_t *usart5_buff = &sb;
