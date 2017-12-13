@@ -189,13 +189,13 @@ static void protocol_task_fun(void *p_arg)
 					
 					switch (cmd)
 					{
-						case 0x0100:	//登录成功
+						case 0x0001:	//登录成功
 								
 							protocol_status = 1;
 						break;
 	
 						
-						case 0x0200:		//心跳阶段
+						case 0x0002:		//心跳阶段
 							
 							
 							err_cnt = 0;	//心跳错误计数器清零
@@ -203,7 +203,7 @@ static void protocol_task_fun(void *p_arg)
 						break;
 						
 						
-						case 0x0300:		//
+						case 0x0003:		//
 							
 							if(ack_err_cnt > 3)
 							{
@@ -212,7 +212,7 @@ static void protocol_task_fun(void *p_arg)
 							}
 							else
 							{
-								dev_restart_ack(CHANNEL_ETH);	//发送应答包
+								dev_restart_0003_ack(CHANNEL_ETH);	//发送应答包
 								
 							}
 							
@@ -247,7 +247,7 @@ static void protocol_task_fun(void *p_arg)
 			{
 				case 0:
 					
-					sign_in(CHANNEL_ETH);
+					sign_in_0001(CHANNEL_ETH);
 					memset(protocol_buff, 0, PROTOCOL_BUFF_LENGHT);  //数据接收缓冲区清零
 					protocol_buff_len = 0;							//数据接收计数清零	
 					heart_time_cnt = timer_get_heart_ms();			//更新心跳时间
@@ -277,7 +277,7 @@ static void protocol_task_fun(void *p_arg)
 						}
 						else	//重新发送心跳指令
 						{
-							heart_beat(CHANNEL_ETH);
+							heart_beat_0002(CHANNEL_ETH);
 							heart_time_cnt = timer_get_heart_ms();
 						}
 					}
@@ -285,6 +285,7 @@ static void protocol_task_fun(void *p_arg)
 				break;
 					
 				case 2:
+					
 					if(send_status == 1)
 					{
 						
@@ -319,129 +320,7 @@ static void protocol_task_fun(void *p_arg)
 
 
 
-/*
-*********************************************************************************************************
-*                                          crc16_xmodem()
-*
-* Description : Create application kernel objects tasks.
-*
-* Argument(s) : type ?????  enum timer3
-*				count ?????? 
-*
-* Return(s)   : 0 ??????  1???????
-*
-* Caller(s)   : 
-*
-* Note(s)     : none.
-*********************************************************************************************************
-*/
-u16 crc16_xmodem(const u8 *data, u32 len)//len
-{
-	u16 crc = 0;
-	while (len--)
-		
-	crc = crc_table[(crc >> 8 ^ *(data++)) & 0xFFU] ^ (crc << 8);
-	
-	return crc;
-}
 
-
-
-/*
-*********************************************************************************************************
-*                                          crc16_modbus()
-*
-* Description : Create application kernel objects tasks.
-*
-* Argument(s) : type ?????  enum timer3
-*				count ?????? 
-*
-* Return(s)   : 0 ??????  1???????
-*
-* Caller(s)   : 
-*
-* Note(s)     : none.
-*********************************************************************************************************
-*/
-u16 crc16_modbus(u8 *data, u32 len)
-{
-	u16 reg_crc = 0xFFFF;
-
-	u16 crc = 0;
-	u8 res = 0;
-	u8 i = 0;
-	
-	while(len--)
-	{
-	
-		reg_crc ^= *data++;
-		for(i=0; i<8; i++)
-		{
-			if(reg_crc & 0x0001)
-			{
-				reg_crc = reg_crc>>1^0xA001;
-			}
-			else
-			{
-				reg_crc >>= 1;
-			}
-		}
-	}
-	
-//	crc = ((reg_crc&0x00FF)<<8) | ((reg_crc&0xFF00)>>8);
-	
-	return reg_crc;
-}
-
-/*
-*********************************************************************************************************
-*                                          clear_rx_buff()
-*
-* Description : Create application kernel objects tasks.
-*
-* Argument(s) : type ?????  enum timer3
-*				count ?????? 
-*
-* Return(s)   : 0 ??????  1???????
-*
-* Caller(s)   : 
-*
-* Note(s)     : none.
-*********************************************************************************************************
-*/
-void clear_rx_buff(void)
-{
-	memset(gprs_rx_buff, 0, sizeof(usart_buff_t));	
-}
-
-
-
-/*
-*********************************************************************************************************
-*                                          process_protocol()
-*
-* Description : Create application kernel objects tasks.
-*
-* Argument(s) : type ?????  enum timer3
-*				count ?????? 
-*
-* Return(s)   : 0 ??????  1???????
-*
-* Caller(s)   : 
-*
-* Note(s)     : none.
-*********************************************************************************************************
-*/
-u16 process_protocol(u8 *buff, u16 size, u8 channel)
-{
-	
-	buff += 4;					 //指针指向msgID
-	
-	size -=	7;					//去掉开始字符、长度、同步、crc和结束字符 总共6个字节
-	
-//	return svr_to_ctu(buff, size, channel);
-	
-}
 
 
 
@@ -468,7 +347,7 @@ u16 svr_to_ctu(u8 *buff, u16 size, u8 channel, u16 *cmd)
 {
 	
 
-	u16 ctr_unit = 0;
+	u16 ctr_unit = 2;
 	
 	buff += 4;					 //指针指向msgID
 	
@@ -484,70 +363,71 @@ u16 svr_to_ctu(u8 *buff, u16 size, u8 channel, u16 *cmd)
 	ctr_unit += (*buff++)<<8; 
 		
 	
-	if ((ctr_unit&DIR_UP_FLAG) == DIR_UP_FLAG)	//判断消息是上行还是下行
+	if ((ctr_unit&CTR_UNIT_BIT0) == CTR_UNIT_BIT0)	//判断消息是上行还是下行
 	{
 		USART_OUT(USART3, "GPRS ctr_unit UD= %d\r", ctr_unit);
 		return 2;
 	}
 	
-	
-//	if((dev_info.dev_is_login == 0) && (channel == CHANNEL_ETH))
-//	{
-//		USART_OUT(USART3, "GPRS  without Login");
-//		return 1;
-//	}
-	
-	
-	switch (*cmd)
+	if ((ctr_unit&CTR_UNIT_BIT1) == CTR_UNIT_BIT1)	//消息为从消息
 	{
-		case 0x0100:		//登录应答包			
-			
-			sign_in_ack(buff, size, channel);		
-			
-		break;
-	
+		USART_OUT(USART3, "GPRS ctr_unit MS= %d\r", ctr_unit);
+
 		
-		case 0x0200:	//心跳应答包
-			
-			heart_beat_ack(buff, size, channel);
-		
-		break;
-		
-		case 0x0300:		
-		
-			dev_restart(buff, size, channel);
-			
-		break;
-		
-		case 0x0101:	//火警应答包	
-		
-			fire_alarm_ack_0101(buff, size, channel);
-			
-		break;
-		
-		case 0x0201:		
-		
-		
-		break;
+		switch (*cmd)
+		{
+			case 0x0001:		//登录应答包			
 				
-		case 0x0301:		
+				return sign_in_0001_ack(buff, size, channel);		
+				
+			break;
 		
 			
-		break;
-		
-		case 0x0401:		
-		
+			case 0x0002:	//心跳应答包
+				
+				return heart_beat_0002_ack(buff, size, channel);
 			
-		break;
+			break;
+
+			
+			case 0x0101:	//火警应答包	
+			
+				return fire_alarm_0101_ack(buff, size, channel);
+				
+			break;
+					
+			default:
+				return FALSE;
+			break;
+		}
 		
+	}
+	else // 消息为主消息
+	{
+		switch (*cmd)
+		{
+
+			
+			case 0x0003:		
+			
+				return dev_restart_0003(buff, size, channel);
+				
+			break;
+					
+			
+			default:
+				return FALSE;
+			break;
+		}
 		
-		default:
-			return FALSE;
-		break;
 	}
 	
 	
-	return TRUE;
+	
+
+	
+	
+	return FALSE;
 	
 }
 
@@ -592,9 +472,10 @@ bool ctu_to_srv(u8 *buff, u16 size, u8 channel, u16 cmd)
 	/************同步域******************/	
 	tmp[3] = TELEGRAM_SYNC;
 	
-	
-	SETBIT(ctr_unit, 1);	//控制单元
-	CLRBIT(ctr_unit, 2);
+	//控制单元
+	SETBIT(ctr_unit, 0);	 	//UD位 上下行标志位	
+	CLRBIT(ctr_unit, 1);		//MS位 主从标志位
+	CLRBIT(ctr_unit, 2);		//TIM位 时间标签位
 	
 	
 	/************消息头******************/	
@@ -657,7 +538,7 @@ bool ctu_to_srv(u8 *buff, u16 size, u8 channel, u16 cmd)
 		rawudp_send_data(udppcb, tmp, tmp_len);
 	
 	}
-	protocol_stream_num++;		//报文流水号增加1
+//	protocol_stream_num++;		//报文流水号增加1
 	
 	return TRUE;
 }
@@ -691,12 +572,12 @@ bool ctu_to_srv(u8 *buff, u16 size, u8 channel, u16 cmd)
 * Note(s)     : none.
 *********************************************************************************************************
 */
-u8 sign_in(u8 channel)
+u8 sign_in_0001(u8 channel)
 {
 
 	u8 buff[100] = {0};	
 	u32 i = 0, buff_cnt = 0;
-	u16 cmd = 0x0100;
+	u16 cmd = 0x0001;
 	u8 gw_id[6] = {0};
 	u16 gw_software_version = 0x0102;
 	u16 gw_hardware_version = 0x0103;
@@ -742,7 +623,7 @@ u8 sign_in(u8 channel)
 
 
 
-bool sign_in_ack(u8 *buff, u16 size, u8 channel)
+bool sign_in_0001_ack(u8 *buff, u16 size, u8 channel)
 {
 
 	u8 ack_status = 0;	
@@ -813,11 +694,11 @@ bool sign_in_ack(u8 *buff, u16 size, u8 channel)
 * Note(s)     : none.
 *********************************************************************************************************
 */
-u8 heart_beat(u8 channel)
+u8 heart_beat_0002(u8 channel)
 {
 	u8 buff[100] = {0};
 	u32 i = 0, buff_cnt = 0;
-	u16 cmd = 0x0200;
+	u16 cmd = 0x0002;
 	u8 gw_id[6] = {0};
 	
 
@@ -847,7 +728,7 @@ u8 heart_beat(u8 channel)
 * Note(s)     : none.
 *********************************************************************************************************
 */
-bool heart_beat_ack(u8 *buff, u16 size, u8 channel)
+bool heart_beat_0002_ack(u8 *buff, u16 size, u8 channel)
 {
 	u8 ack_status = 0;	
 		
@@ -866,7 +747,7 @@ bool heart_beat_ack(u8 *buff, u16 size, u8 channel)
 
 
 
-bool dev_restart(u8 *buff, u16 size, u8 channel)
+bool dev_restart_0003(u8 *buff, u16 size, u8 channel)
 {
 	u8 para1 = 0;
 	
@@ -898,11 +779,11 @@ bool dev_restart(u8 *buff, u16 size, u8 channel)
 
 
 
-u8 dev_restart_ack(u8 channel)
+u8 dev_restart_0003_ack(u8 channel)
 {
 	u8 buff[100] = {0};
 	u32 i = 0, buff_cnt = 0;
-	u16 cmd = 0x0300;
+	u16 cmd = 0x0003;
 
 
 		
@@ -990,7 +871,7 @@ u8 fire_alarm_0101(u8 channel)
 
 
 
-bool fire_alarm_ack_0101(u8 *buff, u16 size, u8 channel)
+bool fire_alarm_0101_ack(u8 *buff, u16 size, u8 channel)
 {
 	u8 para1 = 0;
 	
@@ -1135,6 +1016,7 @@ bool fatch_gprs_data(u8 *buff, u16 *size)
 			{
 				memset(protocol_buff, 0, PROTOCOL_BUFF_LENGHT);  //数据接收缓冲区清零
 				protocol_buff_len = 0;							//数据接收计数清零
+				USART_OUT(USART3, "\r fatch_gprs_data crc error\r\n");
 				return FALSE;
 			}
 		}
@@ -1161,11 +1043,133 @@ bool fatch_gprs_data(u8 *buff, u16 *size)
 
 
 
+/*
+*********************************************************************************************************
+*                                          crc16_xmodem()
+*
+* Description : Create application kernel objects tasks.
+*
+* Argument(s) : type ?????  enum timer3
+*				count ?????? 
+*
+* Return(s)   : 0 ??????  1???????
+*
+* Caller(s)   : 
+*
+* Note(s)     : none.
+*********************************************************************************************************
+*/
+u16 crc16_xmodem(const u8 *data, u32 len)		//len
+{
+	u16 crc = 0;
+	while (len--)
+		
+	crc = crc_table[(crc >> 8 ^ *(data++)) & 0xFFU] ^ (crc << 8);
+	
+	return crc;
+}
 
 
 
 
 
+
+
+/*
+*********************************************************************************************************
+*                                          crc16_modbus()
+*
+* Description : Create application kernel objects tasks.
+*
+* Argument(s) : type ?????  enum timer3
+*				count ?????? 
+*
+* Return(s)   : 0 ??????  1???????
+*
+* Caller(s)   : 
+*
+* Note(s)     : none.
+*********************************************************************************************************
+*/
+u16 crc16_modbus(u8 *data, u32 len)
+{
+	u16 reg_crc = 0xFFFF;
+
+	u16 crc = 0;
+	u8 res = 0;
+	u8 i = 0;
+	
+	while(len--)
+	{
+	
+		reg_crc ^= *data++;
+		for(i=0; i<8; i++)
+		{
+			if(reg_crc & 0x0001)
+			{
+				reg_crc = reg_crc>>1^0xA001;
+			}
+			else
+			{
+				reg_crc >>= 1;
+			}
+		}
+	}
+	
+//	crc = ((reg_crc&0x00FF)<<8) | ((reg_crc&0xFF00)>>8);
+	
+	return reg_crc;
+}
+
+/*
+*********************************************************************************************************
+*                                          clear_rx_buff()
+*
+* Description : Create application kernel objects tasks.
+*
+* Argument(s) : type ?????  enum timer3
+*				count ?????? 
+*
+* Return(s)   : 0 ??????  1???????
+*
+* Caller(s)   : 
+*
+* Note(s)     : none.
+*********************************************************************************************************
+*/
+void clear_rx_buff(void)
+{
+	memset(gprs_rx_buff, 0, sizeof(usart_buff_t));	
+}
+
+
+
+/*
+*********************************************************************************************************
+*                                          process_protocol()
+*
+* Description : Create application kernel objects tasks.
+*
+* Argument(s) : type ?????  enum timer3
+*				count ?????? 
+*
+* Return(s)   : 0 ??????  1???????
+*
+* Caller(s)   : 
+*
+* Note(s)     : none.
+*********************************************************************************************************
+*/
+u16 process_protocol(u8 *buff, u16 size, u8 channel)
+{
+	
+	buff += 4;					 //指针指向msgID
+	
+	size -=	7;					//去掉开始字符、长度、同步、crc和结束字符 总共6个字节
+	
+//	return svr_to_ctu(buff, size, channel);
+	
+}
 
 
 

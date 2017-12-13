@@ -17,12 +17,13 @@
 
 
 #define SETBIT(x, y)		x|=(1<<y)		//将x的第y位置1
-#define CLRBIT(x, y)		x&=!(1<<y)		//将x的第y位清0	
+#define CLRBIT(x, y)		x&=~(1<<y)		//将x的第y位清0	
 
 
 
-#define DIR_UP_FLAG			(u8)(1<<0)
-
+#define CTR_UNIT_BIT0			(u8)(1<<0)
+#define CTR_UNIT_BIT1			(u8)(1<<1)
+#define CTR_UNIT_BIT2			(u8)(1<<2)
 
 
 
@@ -108,15 +109,17 @@ void protocol_task_create(void);
 u16 process_protocol(u8 *buff, u16 size, u8 channel);
 u16 svr_to_ctu(u8 *buff, u16 size, u8 channel, u16 *cmd);
 bool ctu_to_srv(u8 *buff, u16 size, u8 channel, u16 cmd);
-
 bool fatch_gprs_data(u8 *buff, u16 *size);
-u8 sign_in(u8 channel);
-bool sign_in_ack(u8 *buff, u16 size, u8 channel);
-u8 heart_beat(u8 channel);
-bool heart_beat_ack(u8 *buff, u16 size, u8 channel);
-bool dev_restart(u8 *buff, u16 size, u8 channel);
-u8 dev_restart_ack(u8 channel);
+
+u8 sign_in_0001(u8 channel);
+bool sign_in_0001_ack(u8 *buff, u16 size, u8 channel);
+u8 heart_beat_0002(u8 channel);
+bool heart_beat_0002_ack(u8 *buff, u16 size, u8 channel);
+bool dev_restart_0003(u8 *buff, u16 size, u8 channel);
+u8 dev_restart_0003_ack(u8 channel);
 u8 fire_alarm_0101(u8 channel);
-bool fire_alarm_ack_0101(u8 *buff, u16 size, u8 channel);
+bool fire_alarm_0101_ack(u8 *buff, u16 size, u8 channel);
+u16 crc16_modbus(u8 *data, u32 len);
+
 
 #endif

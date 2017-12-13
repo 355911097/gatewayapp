@@ -70,6 +70,10 @@ extern u16 usart2_rx_status;
 extern usart_buff_t *usart3_buff;
 extern struct netif lwip_netif;	
 
+extern usart_buff_t *usart3_rx_buff;
+
+extern struct udp_pcb *udppcb;  	//定义一个UDP服务器控制块
+
 /*
 *********************************************************************************************************
 *                                            LOCAL DEFINES
@@ -79,9 +83,11 @@ extern struct netif lwip_netif;
 
 
 
-
+#define USART2_Q_NUM			1
 #define USART3_Q_NUM			1
-#define ETH_Q_NUM			1
+#define ETH_Q_NUM				1
+
+
 /*
 *********************************************************************************************************
 *                                       LOCAL GLOBAL VARIABLES
@@ -119,6 +125,7 @@ CPU_STK	protocol_task_stk[PROTOCOL_TASK_STK_SIZE];
 //CPU_STK tcpip_thread_task_stk1[1000];
 
 
+OS_Q usart2_msg;
 OS_Q usart3_msg;
 OS_Q eth_msg;
 
@@ -463,7 +470,21 @@ static void led0_task_fun(void *p_arg)
 	}
 	
 }
-
+/*
+*********************************************************************************************************
+*                                          led0_task_create()
+*
+* Description : Create application tasks.
+*
+* Argument(s) : none
+*
+* Return(s)   : none
+*
+* Caller(s)   : AppTaskStart()
+*
+* Note(s)     : none.
+*********************************************************************************************************
+*/
 static void led1_task_fun(void *p_arg)
 {
 	OS_ERR err;
@@ -491,9 +512,68 @@ static void led1_task_fun(void *p_arg)
 	
 }
 
+
+
+
+/*
+*********************************************************************************************************
+*                                          led0_task_create()
+*
+* Description : Create application tasks.
+*
+* Argument(s) : none
+*
+* Return(s)   : none
+*
+* Caller(s)   : AppTaskStart()
+*
+* Note(s)     : none.
+*********************************************************************************************************
+*/
 static void usart3_task_fun(void *p_arg)
 {
 	OS_ERR err;
+	OS_MSG_SIZE size = 0;
+	u8 buff[100] = {0};
+	u8 *msg = buff;
+
+
+
+	while(DEF_TRUE)
+	{
+
+		
+
+		msg = OSQPend((OS_Q*		)&usart3_msg,   
+					(OS_TICK		)0,
+					(OS_OPT			)OS_OPT_PEND_BLOCKING,
+					(OS_MSG_SIZE*	)&size,		
+					(CPU_TS*		)0,
+					(OS_ERR*		)&err);
+
+		
+		
+		usart_printf(USART3, size, msg);
+		
+//		rawudp_send_data(udppcb, msg, size);
+		
+		
+		memset(usart3_rx_buff, 0, sizeof(usart_buff_t));	//清空接收缓冲区
+		
+		OSTimeDlyHMSM(0,0,0,500, OS_OPT_TIME_HMSM_STRICT,&err);
+		
+	}
+		
+}
+
+
+
+
+static void eth_init_task_fun(void *p_arg)
+{
+	OS_ERR err;
+	u8 nn[2] = {0x33, 0x42};
+	u16 crc =0, crc2 = 0;
 	OS_MSG_SIZE size = 0;
 	u8 buff[100] = {0};
 	u8 *msg = buff;
@@ -507,13 +587,11 @@ static void usart3_task_fun(void *p_arg)
 	u8 work[FF_MAX_SS];
 	rtc_calendar_t ret;
 
-
 	while(DEF_TRUE)
 	{
-
-	
-	
-	
+		
+		
+			
 //	res = f_mkfs("", FM_ANY, 4096, work, sizeof (work));
 		
 //	res = f_mount(&fs, "", 0); 
@@ -546,23 +624,7 @@ static void usart3_task_fun(void *p_arg)
 //		USART_OUT(USART3, "fr1= %d\r", fr);
 //	}
 
-		dhcp_coarse_tmr();
-		OSTimeDlyHMSM(0,0,5,0,OS_OPT_TIME_HMSM_STRICT,&err);
 		
-	}
-		
-}
-
-
-
-
-static void eth_init_task_fun(void *p_arg)
-{
-	OS_ERR err;
-	u8 nn[2] = {0x33, 0x42};
-	u16 crc =0, crc2 = 0;
-	while(DEF_TRUE)
-	{
 		
 //		crc =  crc16_modbus(nn, 2);
 //		USART_OUT(USART3, "fr1= %d\r", crc);
@@ -632,17 +694,21 @@ static  void  AppObjCreate (void)
                 (OS_ERR	    *)&err);		//返回的错误码	
 	
 	
+	OSQCreate ((OS_Q*		)&usart2_msg,	//消息队列
+                (CPU_CHAR*	)"usart2 msg",	//消息队列名称
+                (OS_MSG_QTY	)USART2_Q_NUM,	//消息队列长度，这里设置为1
+                (OS_ERR*	)&err);			//错误码
 				
 	OSQCreate ((OS_Q*		)&usart3_msg,	//消息队列
                 (CPU_CHAR*	)"usart3 msg",	//消息队列名称
                 (OS_MSG_QTY	)USART3_Q_NUM,	//消息队列长度，这里设置为1
-                (OS_ERR*	)&err);		//错误码
+                (OS_ERR*	)&err);			//错误码
 	
 	
-	OSQCreate ((OS_Q*		)&eth_msg,	//消息队列
-                (CPU_CHAR*	)"eth msg",	//消息队列名称
-                (OS_MSG_QTY	)USART3_Q_NUM,	//消息队列长度，这里设置为1
-                (OS_ERR*	)&err);		//错误码
+	OSQCreate ((OS_Q*		)&eth_msg,		//消息队列
+                (CPU_CHAR*	)"eth msg",		//消息队列名称
+                (OS_MSG_QTY	)ETH_Q_NUM,	//消息队列长度，这里设置为1
+                (OS_ERR*	)&err);			//错误码
 					
 		
 				

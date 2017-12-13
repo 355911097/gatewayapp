@@ -119,6 +119,7 @@ void rawudp_recv_callback(void *arg, struct udp_pcb *upcb, struct pbuf *p, const
 	
 	if(p != NULL)	//接收到不为空的数据时
 	{
+		
 		memset(rawudp_recv_buff, 0, RAWUDP_RX_LENGHT);  //数据接收缓冲区清零
 		rawudp_recv_buff_len = 0;						//数据接收计数清零
 		
@@ -140,14 +141,11 @@ void rawudp_recv_callback(void *arg, struct udp_pcb *upcb, struct pbuf *p, const
 			
 			memcpy(protocol_buff, rawudp_recv_buff, rawudp_recv_buff_len);	//把以太网接收的数据复制到协议buff
 			protocol_buff_len = rawudp_recv_buff_len;
-			eth_rx_flag = 1;
+			
+			eth_rx_flag = 1; 												//接收到数据标志位
 			
 			memset(rawudp_recv_buff, 0, RAWUDP_RX_LENGHT);  //数据使用完后，数据接收缓冲区清零
-			rawudp_recv_buff_len = 0;	
-			
-//			USART_OUT(USART3, protocol_buff);
-//			USART_OUT(USART3, "protocol_buff data_len = %d\r", protocol_buff_len);
-					//数据接收计数清零
+			rawudp_recv_buff_len = 0;				
 			
 		}
 		

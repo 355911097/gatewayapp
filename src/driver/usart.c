@@ -24,11 +24,16 @@
 #include <stdio.h>
 #include "usart.h"
 #include "timer.h"
+#include "rawudp.h"
+
 
 
 extern OS_Q usart3_msg;
 extern OS_TCB usart3_task_TCB;
 extern OS_TMR gprs;
+extern struct udp_pcb *udppcb;  	//¶¨ÒåÒ»¸öUDP·þÎñÆ÷¿ØÖÆ¿é
+
+
 
 
 static usart_buff_t sb = SerialBuffDefault();
@@ -230,7 +235,7 @@ void USART1_IRQHandler(void)
 		{
 			if (gprs_rx_buff->index < USART_BUFF_LENGHT)
 			{
-				//å¼€å§‹å®šæ—¶å™¨
+				//¿ªÊ¼¶¨Ê±Æ÷
 //				timer_is_timeout_1MS(timer_gprs, 0);
 				usart1_rx_buff->pdata[usart1_rx_buff->index++] = ch;
 			
@@ -243,7 +248,7 @@ void USART1_IRQHandler(void)
 			}
 			else
 			{
-				memset(usart1_rx_buff, 0, sizeof(usart_buff_t));	//æ¸…ç†ç¼“å†²åŒº		
+				memset(usart1_rx_buff, 0, sizeof(usart_buff_t));	//ÇåÀí»º³åÇø		
 			}
 		}
 	}
@@ -288,16 +293,16 @@ void USART2_IRQHandler(void)
 		{
 			if (gprs_rx_buff->index < USART_BUFF_LENGHT)
 			{
-				//å¼€å§‹å®šæ—¶å™¨
+				//¿ªÊ¼¶¨Ê±Æ÷
 //				timer_is_timeout_1MS(timer_gprs, 0);
 				usart2_rx_buff->pdata[usart2_rx_buff->index++] = ch;
 				
 			//	USART_SendData(USART3, ch);	
-//			OSQPost((OS_Q*		)&usart3_msg,
-//					(void*		)usart3_buff->pdata,
-//					(OS_MSG_SIZE)10,
-//					(OS_OPT		)OS_OPT_POST_FIFO,
-//					(OS_ERR*	)&err);
+	//			OSQPost((OS_Q*		)&usart3_msg,
+	//					(void*		)usart3_buff->pdata,
+	//					(OS_MSG_SIZE)10,
+	//					(OS_OPT		)OS_OPT_POST_FIFO,
+	//					(OS_ERR*	)&err);
 			}
 			else
 			{
@@ -342,26 +347,7 @@ void USART3_IRQHandler(void)
     {   
 	    USART_ClearITPendingBit(USART3, USART_IT_RXNE);	
 				
-        ch = USART_ReceiveData(USART3);	 
-		
-		if (usart3_rx_buff->index < USART_BUFF_LENGHT)
-		{
-			usart3_rx_buff->pdata[usart3_rx_buff->index++] = ch;
-				
-		
-			OSQPost((OS_Q*		)&usart3_msg,
-					(void*		)usart3_rx_buff->pdata,
-					(OS_MSG_SIZE)usart3_rx_buff->index,
-					(OS_OPT		)OS_OPT_POST_FIFO,
-					(OS_ERR*	)&err);
-			
-		//			USART_SendData(USART3, ch);		
-		}
-		else
-		{
-			memset(usart3_rx_buff, 0, sizeof(usart_buff_t));	
-		}
-		
+		usart3_recv_data();
 	}
 	
 	if(USART_GetITStatus(USART3, USART_IT_TXE) != RESET)                  
@@ -373,6 +359,35 @@ void USART3_IRQHandler(void)
 }
 
 
+
+
+void usart3_recv_data(void)
+{
+	OS_ERR err;
+	u8 ch = 0;
+	
+	ch = USART_ReceiveData(USART3);	 
+
+	if (usart3_rx_buff->index < USART_BUFF_LENGHT)
+	{
+		usart3_rx_buff->pdata[usart3_rx_buff->index++] = ch;
+			
+		if(ch == 0x16)
+		{
+			OSQPost((OS_Q*		)&usart3_msg,
+					(void*		)usart3_rx_buff->pdata,
+					(OS_MSG_SIZE)usart3_rx_buff->index,
+					(OS_OPT		)OS_OPT_POST_FIFO,
+					(OS_ERR*	)&err);
+					
+		
+		}		
+	}
+	else
+	{
+		memset(usart3_rx_buff, 0, sizeof(usart_buff_t));	
+	}
+}
 
 
 /*
@@ -409,11 +424,11 @@ void UART5_IRQHandler(void)
 			usart5_rx_buff->pdata[usart5_rx_buff->index++] = ch;
 						
 		
-			OSQPost((OS_Q*		)&usart3_msg,
-					(void*		)usart3_rx_buff->pdata,
-					(OS_MSG_SIZE)usart3_rx_buff->index,
-					(OS_OPT		)OS_OPT_POST_FIFO,
-					(OS_ERR*	)&err);
+//			OSQPost((OS_Q*		)&usart3_msg,
+//					(void*		)usart3_rx_buff->pdata,
+//					(OS_MSG_SIZE)usart3_rx_buff->index,
+//					(OS_OPT		)OS_OPT_POST_FIFO,
+//					(OS_ERR*	)&err);
 			
 		//			USART_SendData(USART3, ch);		
 		}
@@ -454,8 +469,8 @@ void UART5_IRQHandler(void)
 *
 * Caller(s)   : AppTaskStart()
 *
-* Note(s)     : ä½†æ˜¯åœ¨ä»”ç»†çœ‹æ‰‹å†Œçš„æ—¶å€™å‘çŽ° TC å’Œ TXE æ ‡å¿—ä½åœ¨å¤ä½çš„æ—¶å€™è¢«ç½®1 ï¼Œè¿™æ ·ç¬¬ä¸€æ¬¡whileå¾ªçŽ¯å°±æ˜¯æ²¡æœ‰ç”¨çš„ã€‚è¿™æ ·å¯¼è‡´äº†é¦–æ¬¡ç¬¬ä¸€ä¸ªå­—ç¬¦è¿˜æ²¡æœ‰è¢«è¾“å‡ºï¼Œ
-*               å°±è¢«åŽé¢çš„å­—ç¬¦è¦†ç›–æŽ‰ï¼Œé€ æˆå®žé™…çœ‹åˆ°çš„ä¸¢å¤±çŽ°è±¡ã€‚è§£å†³åŠžæ³•å°±å¾ˆç®€å•ï¼šåœ¨å‰é¢åŠ ä¸Šä¸€å¥ USART1->SR
+* Note(s)     : µ«ÊÇÔÚ×ÐÏ¸¿´ÊÖ²áµÄÊ±ºò·¢ÏÖ TC ºÍ TXE ±êÖ¾Î»ÔÚ¸´Î»µÄÊ±ºò±»ÖÃ1 £¬ÕâÑùµÚÒ»´ÎwhileÑ­»·¾ÍÊÇÃ»ÓÐÓÃµÄ¡£ÕâÑùµ¼ÖÂÁËÊ×´ÎµÚÒ»¸ö×Ö·û»¹Ã»ÓÐ±»Êä³ö£¬
+*               ¾Í±»ºóÃæµÄ×Ö·û¸²¸Çµô£¬Ôì³ÉÊµ¼Ê¿´µ½µÄ¶ªÊ§ÏÖÏó¡£½â¾ö°ì·¨¾ÍºÜ¼òµ¥£ºÔÚÇ°Ãæ¼ÓÉÏÒ»¾ä USART1->SR
 *********************************************************************************************************
 */
 void USART_OUT(USART_TypeDef* USARTx, uint8_t *Data,...)

@@ -58,6 +58,8 @@ void USART1_IRQHandler(void);
 void USART2_IRQHandler(void);
 void USART3_IRQHandler(void);
 void UART5_IRQHandler(void);
+
+void usart3_recv_data(void);
 void USART_OUT(USART_TypeDef* USARTx, uint8_t *Data,...);
 void usart_printf(USART_TypeDef* USARTx, uint16_t data_size, uint8_t *data,...);
 #endif

@@ -157,7 +157,7 @@ u8 gprs_send_at(u8 *cmd, u8 *ack, u16 waittime, u16 timeout)
 		
 		if (gprs_check_cmd(ack))	
 		{
-			res = 0;		//监测到正确的应答数据
+			res = 0;				//监测到正确的应答数据
 			usart2_rx_status = 0;	//数据处理完 开始接收数据
 			break;
 		}
