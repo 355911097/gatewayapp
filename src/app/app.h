@@ -25,7 +25,7 @@
 #define DHCP_TASK_PRIO			5
 #define RAWUDP_TASK_PRIO		5
 #define PROTOCOL_TASK_PRIO		5
-
+#define TRANSLATE_TASK_PRIO		5
 
 
 

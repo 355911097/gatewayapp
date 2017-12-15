@@ -27,8 +27,13 @@
 #include "rawudp.h"
 
 
-
+extern OS_Q usart1_msg;
+extern OS_Q usart2_msg;
 extern OS_Q usart3_msg;
+extern OS_Q usart4_msg;
+extern OS_Q usart5_msg;
+
+
 extern OS_TCB usart3_task_TCB;
 extern OS_TMR gprs;
 extern struct udp_pcb *udppcb;  	//定义一个UDP服务器控制块
@@ -37,29 +42,27 @@ extern struct udp_pcb *udppcb;  	//定义一个UDP服务器控制块
 
 
 static usart_buff_t sb = SerialBuffDefault();
-<<<<<<< HEAD
-usart_buff_t *usart2_buff = &sb;
-usart_buff_t *usart3_buff = &sb;
-=======
+
 usart_buff_t *usart1_rx_buff = &sb;
 usart_buff_t *usart2_rx_buff = &sb;
 usart_buff_t *usart3_rx_buff = &sb;
->>>>>>> parent of 3e91c4a... Revert "t"
-usart_buff_t *gprs_rx_buff = &sb;
+usart_buff_t *usart4_rx_buff = &sb;
 usart_buff_t *usart5_rx_buff = &sb;
+usart_buff_t *gprs_rx_buff = &sb;
 
 
-
-u16 usart1_rx_status = 0;
-u16 usart2_rx_status = 0;
-
+u8 usart1_rx_status = 0;
+u8 usart2_rx_status = 0;
+u8 usart3_rx_status = 0;
+u8 usart4_rx_status = 0;
+u8 usart5_rx_status = 0;
 
 
 /*
 *********************************************************************************************************
 *                                          usart1_init()
 *
-* Description : Create application kernel objects tasks.
+* Description : 对usart1进行初始化
 *
 * Argument(s) : none
 *
@@ -99,7 +102,7 @@ void usart1_init(u32 band_rate, u8 word_length, u8 parity, u8 stop_bit)
 *********************************************************************************************************
 *                                          usart2_init()
 *
-* Description : Create application kernel objects tasks.
+* Description : 对usart2进行初始化.
 *
 * Argument(s) : none
 *
@@ -137,7 +140,7 @@ void usart2_init(u32 band_rate)
 *********************************************************************************************************
 *                                          usart3_init()
 *
-* Description : Create application kernel objects tasks.
+* Description : 对usart3进行初始化
 *
 * Argument(s) : none
 *
@@ -171,11 +174,49 @@ void usart3_init(u32 band_rate)
 }
 
 
+
 /*
 *********************************************************************************************************
-*                                          usart3_init()
+*                                          usart4_init()
 *
-* Description : Create application kernel objects tasks.
+* Description : 对usart4进行初始化
+*
+* Argument(s) : none
+*
+* Return(s)   : none
+*
+* Caller(s)   : AppTaskStart()
+*
+* Note(s)     : none.
+*********************************************************************************************************
+*/
+void usart4_init(u32 band_rate)
+{
+	USART_InitTypeDef usart_init_structre;
+	
+	usart_init_structre.USART_BaudRate = band_rate;
+	usart_init_structre.USART_WordLength = USART_WordLength_8b;
+	usart_init_structre.USART_StopBits = USART_StopBits_1;
+	usart_init_structre.USART_Parity = USART_Parity_No;
+	usart_init_structre.USART_HardwareFlowControl = USART_HardwareFlowControl_None;
+	usart_init_structre.USART_Mode = USART_Mode_Rx | USART_Mode_Tx;
+	USART_Init(UART4, &usart_init_structre);
+		
+
+	USART_ITConfig(UART4, USART_IT_RXNE, ENABLE);
+	
+	
+	USART_Cmd(UART4, ENABLE);
+	
+	BSP_IntVectSet(BSP_INT_ID_USART4, USART3_IRQHandler);
+
+}
+
+/*
+*********************************************************************************************************
+*                                          usart5_init()
+*
+* Description : 对usart5进行初始化
 *
 * Argument(s) : none
 *
@@ -266,7 +307,37 @@ void USART1_IRQHandler(void)
 	OSIntExit();  	
 }
 
+void usart1_recv_data(void)
+{
+	OS_ERR err;
+	u8 ch = 0;
+	
+	if(usart1_rx_status == 0)
+	{
+	
+		ch = USART_ReceiveData(USART1);	 
 
+		if (usart1_rx_buff->index < USART_BUFF_LENGHT)
+		{
+			usart1_rx_buff->pdata[usart1_rx_buff->index++] = ch;
+				
+			if(ch == 0x16)
+			{
+				OSQPost((OS_Q*		)&usart1_msg,
+						(void*		)usart1_rx_buff->pdata,
+						(OS_MSG_SIZE)usart1_rx_buff->index,
+						(OS_OPT		)OS_OPT_POST_FIFO,
+						(OS_ERR*	)&err);
+						
+				usart1_rx_status = 1;
+			}		
+		}
+		else
+		{
+			memset(usart1_rx_buff, 0, sizeof(usart_buff_t));	
+		}
+	}	
+}
 
 /*
 *********************************************************************************************************
@@ -292,22 +363,18 @@ void USART2_IRQHandler(void)
    	if (USART_GetITStatus(USART2, USART_IT_RXNE) != RESET)
     {   
 	    USART_ClearITPendingBit(USART2, USART_IT_RXNE);	
-				
-        ch = USART_ReceiveData(USART2);	 
+		
+		timer_is_timeout_1MS(timer_gprs, 0);		//定时器清零
+		
 		if(usart2_rx_status == 0)
 		{
+			ch = USART_ReceiveData(USART2);	 
+			
 			if (gprs_rx_buff->index < USART_BUFF_LENGHT)
 			{
-				//开始定时器
-//				timer_is_timeout_1MS(timer_gprs, 0);
+				
 				usart2_rx_buff->pdata[usart2_rx_buff->index++] = ch;
 				
-			//	USART_SendData(USART3, ch);	
-	//			OSQPost((OS_Q*		)&usart3_msg,
-	//					(void*		)usart3_buff->pdata,
-	//					(OS_MSG_SIZE)10,
-	//					(OS_OPT		)OS_OPT_POST_FIFO,
-	//					(OS_ERR*	)&err);
 			}
 			else
 			{
@@ -323,6 +390,19 @@ void USART2_IRQHandler(void)
 	
 	OSIntExit();  	
 }
+
+
+void usart2_recv_data(void)
+{
+	OS_ERR err;
+	u8 ch = 0;
+	
+	if(timer_is_timeout_1MS(timer_gprs, 50))	//50ms没接收到数据认为接收数据完成		
+	{
+		usart2_rx_status = 1;
+	}	
+}
+
 
 
 /*
@@ -371,28 +451,36 @@ void usart3_recv_data(void)
 	OS_ERR err;
 	u8 ch = 0;
 	
-	ch = USART_ReceiveData(USART3);	 
+	if(usart3_rx_status == 0)
+	{
+	
+		ch = USART_ReceiveData(USART3);	 
 
-	if (usart3_rx_buff->index < USART_BUFF_LENGHT)
-	{
-		usart3_rx_buff->pdata[usart3_rx_buff->index++] = ch;
-			
-		if(ch == 0x16)
+		if (usart3_rx_buff->index < USART_BUFF_LENGHT)
 		{
-			OSQPost((OS_Q*		)&usart3_msg,
-					(void*		)usart3_rx_buff->pdata,
-					(OS_MSG_SIZE)usart3_rx_buff->index,
-					(OS_OPT		)OS_OPT_POST_FIFO,
-					(OS_ERR*	)&err);
-					
-		
-		}		
-	}
-	else
-	{
-		memset(usart3_rx_buff, 0, sizeof(usart_buff_t));	
-	}
+			usart3_rx_buff->pdata[usart3_rx_buff->index++] = ch;
+				
+			if(ch == 0x16)
+			{
+				OSQPost((OS_Q*		)&usart3_msg,
+						(void*		)usart3_rx_buff->pdata,
+						(OS_MSG_SIZE)usart3_rx_buff->index,
+						(OS_OPT		)OS_OPT_POST_FIFO,
+						(OS_ERR*	)&err);
+						
+				usart3_rx_status = 1;
+			}		
+		}
+		else
+		{
+			memset(usart3_rx_buff, 0, sizeof(usart_buff_t));	
+		}
+	}	
 }
+
+
+
+
 
 
 /*

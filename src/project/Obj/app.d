@@ -111,3 +111,5 @@
 .\obj\app.o: ..\Libraries\STM32F2x7_ETH_Driver\inc\stm32f2x7_eth_conf.h
 .\obj\app.o: ..\lwip\include\lwip/dhcp.h
 .\obj\app.o: ..\lwip\apps\dhcp.h
+.\obj\app.o: ..\app\protocol.h
+.\obj\app.o: ..\app\translate.h

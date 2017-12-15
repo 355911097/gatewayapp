@@ -3,6 +3,7 @@
 ".\obj\os_app_hooks.o"
 ".\obj\system_stm32f2xx.o"
 ".\obj\protocol.o"
+".\obj\translate.o"
 ".\obj\bsp.o"
 ".\obj\bsp_int.o"
 ".\obj\bsp_ioe.o"

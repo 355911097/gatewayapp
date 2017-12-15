@@ -51,28 +51,23 @@
 #include "rawudp.h" 
 #include "dhcp.h"
 #include "gprs.h"
+#include "protocol.h"
+#include "translate.h"
 
 
 
 
 
-extern u16 crc16_modbus(u8 *data, u32 len);
-extern u16 crc16_xmodem(const u8 *data, u32 len );//len
-
-
-extern void init_http(void);
-extern u8 lwip_dev_init(void);
-extern void lwip_periodic_handle(void);
-
-extern void socket_examples_init(void);
-
-extern u16 usart2_rx_status;
-extern usart_buff_t *usart3_buff;
 extern struct netif lwip_netif;	
+extern struct udp_pcb *udppcb;  	//定义一个UDP服务器控制块
+
+
 
 extern usart_buff_t *usart3_rx_buff;
+extern u8 usart3_rx_status;
 
-extern struct udp_pcb *udppcb;  	//定义一个UDP服务器控制块
+
+
 
 /*
 *********************************************************************************************************
@@ -112,8 +107,7 @@ OS_TCB 	eth_init_task_TCB;
 CPU_STK	eth_init_task_stk[ETH_INIT_TASK_STK_SIZE];
 
 
-OS_TCB 	usart3_task_TCB;
-CPU_STK	usart3_task_stk[USART3_TASK_STK_SIZE];
+
 
 
 OS_TCB 	protocol_task_TCB;
@@ -124,9 +118,12 @@ CPU_STK	protocol_task_stk[PROTOCOL_TASK_STK_SIZE];
 //OS_TCB tcpip_thread_task_TCB1;//LWIP内核任务的任务控制块
 //CPU_STK tcpip_thread_task_stk1[1000];
 
-
+OS_Q usart1_msg;
 OS_Q usart2_msg;
 OS_Q usart3_msg;
+OS_Q usart4_msg;
+OS_Q usart5_msg;
+
 OS_Q eth_msg;
 
 
@@ -384,22 +381,7 @@ static  void  AppTaskCreate (void)
                  (void   	* )0,					
                  (OS_OPT      )OS_OPT_TASK_STK_CHK|OS_OPT_TASK_STK_CLR,
                  (OS_ERR 	* )&os_err);                                             /* Create Application Kernel Objects                        */
-				 
-				 
-	OSTaskCreate((OS_TCB 	* )&usart3_task_TCB,		
-				 (CPU_CHAR	* )"usart3 task", 		
-                 (OS_TASK_PTR )usart3_task_fun, 			
-                 (void		* )0,					
-                 (OS_PRIO	  )USART3_TASK_PRIO,     
-                 (CPU_STK   * )&usart3_task_stk[0],	
-                 (CPU_STK_SIZE)USART3_TASK_STK_SIZE/10,	
-                 (CPU_STK_SIZE)USART3_TASK_STK_SIZE,		
-                 (OS_MSG_QTY  )0,					
-                 (OS_TICK	  )0,					
-                 (void   	* )0,					
-                 (OS_OPT      )OS_OPT_TASK_STK_CHK|OS_OPT_TASK_STK_CLR,
-                 (OS_ERR 	* )&os_err);                                             /* Create Application Kernel Objects                        */
-                                           /* Create Application Kernel Objects                        */
+				 				                           
 
 	OSTaskCreate((OS_TCB 	* )&eth_init_task_TCB,		
 				 (CPU_CHAR	* )"eth_init_task", 		
@@ -416,6 +398,14 @@ static  void  AppTaskCreate (void)
                  (OS_ERR 	* )&os_err);                                             /* Create Application Kernel Objects                        */
 	
 	USART_OUT(USART3, "\eth_init_task err=%d\r", os_err);
+	
+
+				 
+	usart3_task_create();			// 串口接收任务创建		 
+	
+	translate_task_create();		// 串口接收过来的数据转译成平台报文格式
+	
+	
 				 
 #if 0				 
 	gprs_task_create();					 
@@ -506,7 +496,7 @@ static void led1_task_fun(void *p_arg)
 			}
 		}
 			
-		OSTimeDlyHMSM(0,0,1,0,OS_OPT_TIME_HMSM_STRICT,&err); //延时
+		OSTimeDlyHMSM(0,0,1,0,OS_OPT_TIME_HMSM_STRICT,&err); 		//延时
 //		OSTimeDly(100, OS_OPT_TIME_DLY, &err);
 	}
 	
@@ -515,56 +505,6 @@ static void led1_task_fun(void *p_arg)
 
 
 
-/*
-*********************************************************************************************************
-*                                          led0_task_create()
-*
-* Description : Create application tasks.
-*
-* Argument(s) : none
-*
-* Return(s)   : none
-*
-* Caller(s)   : AppTaskStart()
-*
-* Note(s)     : none.
-*********************************************************************************************************
-*/
-static void usart3_task_fun(void *p_arg)
-{
-	OS_ERR err;
-	OS_MSG_SIZE size = 0;
-	u8 buff[100] = {0};
-	u8 *msg = buff;
-
-
-
-	while(DEF_TRUE)
-	{
-
-		
-
-		msg = OSQPend((OS_Q*		)&usart3_msg,   
-					(OS_TICK		)0,
-					(OS_OPT			)OS_OPT_PEND_BLOCKING,
-					(OS_MSG_SIZE*	)&size,		
-					(CPU_TS*		)0,
-					(OS_ERR*		)&err);
-
-		
-		
-		usart_printf(USART3, size, msg);
-		
-//		rawudp_send_data(udppcb, msg, size);
-		
-		
-		memset(usart3_rx_buff, 0, sizeof(usart_buff_t));	//清空接收缓冲区
-		
-		OSTimeDlyHMSM(0,0,0,500, OS_OPT_TIME_HMSM_STRICT,&err);
-		
-	}
-		
-}
 
 
 
@@ -732,7 +672,7 @@ void tmr1_callback(void *p_tmr, void *p_arg)
 void gprs_callback(void *p_tmr, void *p_arg)
 {
 
-	usart2_rx_status = 1;
+	
 	
 	USART_OUT(USART3, "gprs_callback\r");
 //	bsp_system_reset();

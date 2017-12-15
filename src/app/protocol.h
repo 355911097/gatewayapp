@@ -58,10 +58,10 @@
 
 
 
-#define STATE_LOGIN				0
-#define STATE_HEART				1
-#define	STATE_RPT				2
-#define STATE_PTR				3
+#define STATE_LOGIN						0
+#define STATE_HEART						1
+#define	STATE_RPT						2
+#define STATE_PTR						3
 
 
 
@@ -71,7 +71,7 @@
 
 
 #define GPRS_HEART_ERR_COUNT		5
-#define GPRS_HEART_TIME				1000*60*2			//心跳包时间
+#define GPRS_HEART_TIME				1000*60*2				//心跳包时间
 
 
 typedef struct
@@ -106,14 +106,10 @@ typedef  enum
 
 void protocol_task_create(void);
 
-u16 process_protocol(u8 *buff, u16 size, u8 channel);
-u16 svr_to_ctu(u8 *buff, u16 size, u8 channel, u16 *cmd);
-bool ctu_to_srv(u8 *buff, u16 size, u8 channel, u16 cmd);
-bool fatch_gprs_data(u8 *buff, u16 *size);
-<<<<<<< HEAD
 
-=======
->>>>>>> parent of 3e91c4a... Revert "t"
+u8 svr_to_ctu(u8 *buff, u16 size, u8 channel, u16 *cmd);
+bool ctu_to_srv(u8 *buff, u16 size, u8 channel, u16 cmd);
+bool fatch_protocol_data(u8 *buff, u16 *size);
 
 u8 sign_in_0001(u8 channel);
 bool sign_in_0001_ack(u8 *buff, u16 size, u8 channel);

@@ -22,6 +22,8 @@
 extern uint8_t gprs_rx_flag;						//GPRS接收数据标志位
 extern usart_buff_t *gprs_rx_buff;					//GPRS接收数据缓冲区
 
+extern u8 usart3_rx_status;		
+
 extern u8 eth_rx_flag;								//以太网接收标志位
 extern u8 rawudp_recv_buff[RAWUDP_RX_LENGHT];		//UDP接收数据缓冲区 
 extern u32 rawudp_recv_buff_len;				//UDP接收数据的长度
@@ -178,53 +180,29 @@ static void protocol_task_fun(void *p_arg)
 						
 			eth_rx_flag = 0;
 
-			if (fatch_gprs_data(buffer, &size))								//取得消息报文
+			if (fatch_protocol_data(buffer, &size))								//取得消息报文
 			{
-				protocol_err = svr_to_ctu(buffer, size, CHANNEL_ETH, &cmd);	//处理报文
+				protocol_err = svr_to_ctu(buffer, size, CHANNEL_ETH, &cmd);		//处理报文
 			
 				if (protocol_err == TRUE)
 				{
 					
 					heart_time_cnt = timer_get_heart_ms();		//更新心跳时间
 					
-					switch (cmd)
+					switch (protocol_status)
 					{
-						case 0x0001:	//登录成功
+						case 0:	//登录成功
 								
 							protocol_status = 1;
+						
 						break;
 	
 						
-						case 0x0002:		//心跳阶段
-							
-							
+						case 1:		//心跳阶段
+														
 							err_cnt = 0;	//心跳错误计数器清零
 						
 						break;
-						
-						
-						case 0x0003:		//
-							
-							if(ack_err_cnt > 3)
-							{
-								//记录日志
-								//重启网络
-							}
-							else
-							{
-								dev_restart_0003_ack(CHANNEL_ETH);	//发送应答包
-								
-							}
-							
-						break;
-						
-							
-						case 0x0101:
-							
-							send_status = 1;
-							
-						break;
-						
 						
 						default:
 						break;
@@ -248,6 +226,7 @@ static void protocol_task_fun(void *p_arg)
 				case 0:
 					
 					sign_in_0001(CHANNEL_ETH);
+		
 					memset(protocol_buff, 0, PROTOCOL_BUFF_LENGHT);  //数据接收缓冲区清零
 					protocol_buff_len = 0;							//数据接收计数清零	
 					heart_time_cnt = timer_get_heart_ms();			//更新心跳时间
@@ -281,35 +260,30 @@ static void protocol_task_fun(void *p_arg)
 							heart_time_cnt = timer_get_heart_ms();
 						}
 					}
+//					heart_beat_0002(CHANNEL_ETH);
+//					if(usart3_rx_status == 1)
+//					{
+//						fire_alarm_0101(CHANNEL_ETH);
+//						
+//					}
+					
 									
 				break;
-					
-				case 2:
-					
-					if(send_status == 1)
-					{
-						
-					}
-					else
-					{
-						fire_alarm_0101(CHANNEL_ETH);
-					}
+				
+				case 3:
+//					if(usart3_rx_status == 1)
+//					{
+//						fire_alarm_0101(CHANNEL_ETH);
+//						OSTimeDly(1000, OS_OPT_TIME_DLY, &err);
+//					}
 					
 				break;
-				
 				
 				default:
 				break;
 
 			}
-		
-		
-		}
-		
-		
-
-
-		
+		}	
 	
 
 		OSTimeDly(1000, OS_OPT_TIME_DLY, &err);
@@ -343,10 +317,10 @@ static void protocol_task_fun(void *p_arg)
 * Note(s)     : none.
 *********************************************************************************************************
 */
-u16 svr_to_ctu(u8 *buff, u16 size, u8 channel, u16 *cmd)
+u8 svr_to_ctu(u8 *buff, u16 size, u8 channel, u16 *cmd)
 {
 	
-
+	
 	u16 ctr_unit = 2;
 	
 	buff += 4;					 //指针指向msgID
@@ -391,9 +365,10 @@ u16 svr_to_ctu(u8 *buff, u16 size, u8 channel, u16 *cmd)
 
 			
 			case 0x0101:	//火警应答包	
-			
+						
+				usart3_rx_status = 0;
 				return fire_alarm_0101_ack(buff, size, channel);
-				
+					
 			break;
 					
 			default:
@@ -402,7 +377,7 @@ u16 svr_to_ctu(u8 *buff, u16 size, u8 channel, u16 *cmd)
 		}
 		
 	}
-	else // 消息为主消息
+	else // 消息为主消息  
 	{
 		switch (*cmd)
 		{
@@ -410,8 +385,11 @@ u16 svr_to_ctu(u8 *buff, u16 size, u8 channel, u16 *cmd)
 			
 			case 0x0003:		
 			
-				return dev_restart_0003(buff, size, channel);
-				
+				if (dev_restart_0003(buff, size, channel) == TRUE)
+				{
+					return dev_restart_0003_ack(channel);
+				}
+						
 			break;
 					
 			
@@ -837,32 +815,32 @@ u8 fire_alarm_0101(u8 channel)
 	//区号
 	for(i=0; i<4; i++)		
 	{
-		buff[buff_cnt++] = 11;
+		buff[buff_cnt++] = 0x11;
 	}
 	//回路号
 	for(i=0; i<4; i++)		
 	{
-		buff[buff_cnt++] = 22;
+		buff[buff_cnt++] = 0x22;
 	}
 	//点位号
 	for(i=0; i<4; i++)		
 	{
-		buff[buff_cnt++] = 33;
+		buff[buff_cnt++] = 0x33;
 	}		
 
 	//火警状态	
-	buff[buff_cnt++] = 01;
+	buff[buff_cnt++] = 0x01;
 
 	//火警数据
 	for(i=0; i<6; i++)		
 	{
-		buff[buff_cnt++] = 44;
+		buff[buff_cnt++] = 0x44;
 	}	
 	
 	//预留
 	for(i=0; i<30; i++)		
 	{
-		buff[buff_cnt++] = 55;
+		buff[buff_cnt++] = 0x55;
 	}	
 	
 	
@@ -922,7 +900,7 @@ bool fire_alarm_0101_ack(u8 *buff, u16 size, u8 channel)
 * Note(s)     : none.
 *********************************************************************************************************
 */
-bool fatch_gprs_data(u8 *buff, u16 *size)
+bool fatch_protocol_data(u8 *buff, u16 *size)
 {
 	u16 i = 0;
 	u16 data_len = 0;
@@ -1010,6 +988,7 @@ bool fatch_gprs_data(u8 *buff, u16 *size)
 				
 				memset(protocol_buff, 0, PROTOCOL_BUFF_LENGHT);  //数据接收缓冲区清零
 				protocol_buff_len = 0;							//数据接收计数清零
+				usart_printf(USART3, protocol_buff_len, protocol_buff);	//打印从平台接收到的数据接收到的数据
 				return TRUE;
 			}
 			else	//crc错误
@@ -1034,8 +1013,6 @@ bool fatch_gprs_data(u8 *buff, u16 *size)
 		protocol_buff_len = 0;							//数据接收计数清零
 		return FALSE;
 	}
-	
-	
 	
 }
 
@@ -1170,9 +1147,6 @@ u16 process_protocol(u8 *buff, u16 size, u8 channel)
 //	return svr_to_ctu(buff, size, channel);
 	
 }
-
-
-
 
 
 

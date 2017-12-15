@@ -97,7 +97,9 @@ static void rawudp_task_fun(void *p_arg)
 	}
 	
 	rawudp_send_data(udppcb, "www", 3);
-	protocol_task_create();
+	
+	protocol_task_create();			// 创建协议处理任务
+	
 	while(DEF_TRUE)
 	{
 		
@@ -170,7 +172,7 @@ void rawudp_send_data(struct udp_pcb *upcb, u8 *pdata, u16 pdata_size)
 
 	memcpy(rawudp_send_buff, pdata, pdata_size);
 
-	ptr=pbuf_alloc(PBUF_TRANSPORT, pdata_size, PBUF_POOL); //申请内存
+	ptr = pbuf_alloc(PBUF_TRANSPORT, pdata_size, PBUF_POOL); //申请内存
 	if(ptr)
 	{
 		pbuf_take(ptr, (char*)rawudp_send_buff, pdata_size); //将tcp_demo_sendbuf中的数据打包进pbuf结构中

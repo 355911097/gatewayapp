@@ -436,6 +436,11 @@
               <FileType>1</FileType>
               <FilePath>..\app\protocol.c</FilePath>
             </File>
+            <File>
+              <FileName>translate.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\app\translate.c</FilePath>
+            </File>
           </Files>
         </Group>
         <Group>

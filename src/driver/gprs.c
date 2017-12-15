@@ -28,7 +28,7 @@
 #include "protocol.h"
 
 
-extern usart_buff_t  *gprs_rx_buff;
+
 extern usart_buff_t  *usart2_rx_buff;
 extern u16 usart2_rx_status;
 
@@ -39,10 +39,6 @@ extern u8 protocol_buff[PROTOCOL_BUFF_LENGHT];
 extern u32 protocol_buff_len;
 
 
-
-
-
-//dev_info_t dev_info;
 
 
 uint8_t gprs_err_cnt = 0; 	//GPRS´íÎó¼ÆÊıÆ÷
@@ -115,9 +111,9 @@ u8 *gprs_check_cmd(u8 *p_str)
 {
 	char *str = 0;
 
-	USART_OUT(USART3, gprs_rx_buff->pdata);
+	USART_OUT(USART2, usart2_rx_buff->pdata);
 
-	str = strstr((const char*)gprs_rx_buff->pdata, (const char*)p_str);
+	str = strstr((const char*)usart2_rx_buff->pdata, (const char*)p_str);
 	
 
 	return (u8*)str;
@@ -471,6 +467,13 @@ static void gprs_init_task_fun(void *p_arg)
 					}
 				}		
 			break;
+				
+			case 255:
+				
+				usart2_recv_data();
+			
+			break;
+				
 				
 			default:
 			break;		

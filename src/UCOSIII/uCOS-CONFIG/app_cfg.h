@@ -72,7 +72,7 @@
 #define DHCP_TASK_STK_SIZE								128
 #define RAWUDP_TASK_STK_SIZE							256
 #define PROTOCOL_TASK_STK_SIZE							600
-
+#define TRANSLATE_TASK_STK_SIZE							128
 /*
 *********************************************************************************************************
 *                                            BSP CFG
