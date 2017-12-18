@@ -111,7 +111,7 @@
 ".\obj\timeouts.o"
 ".\obj\udp.o"
 ".\obj\autoip.o"
-".\obj\dhcp_2.o"
+".\obj\dhcp_1.o"
 ".\obj\etharp.o"
 ".\obj\icmp.o"
 ".\obj\igmp.o"

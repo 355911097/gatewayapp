@@ -62,17 +62,24 @@
 *                             Size of the task stacks (# of OS_STK entries)
 *********************************************************************************************************
 */
-
 #define APP_TASK_START_STK_SIZE                         128u
 #define LED0_TASK_STK_SIZE								128
 #define LED1_TASK_STK_SIZE								128
+#define USART1_TASK_STK_SIZE							600
 #define USART3_TASK_STK_SIZE							1000
 #define GPRS_INIT_TASK_STK_SIZE							128
+#define GPRS_RECV_TASK_STK_SIZE							128
 #define ETH_INIT_TASK_STK_SIZE							128
 #define DHCP_TASK_STK_SIZE								128
 #define RAWUDP_TASK_STK_SIZE							256
 #define PROTOCOL_TASK_STK_SIZE							600
 #define TRANSLATE_TASK_STK_SIZE							128
+
+
+
+
+
+
 /*
 *********************************************************************************************************
 *                                            BSP CFG

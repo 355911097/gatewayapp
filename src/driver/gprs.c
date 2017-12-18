@@ -51,8 +51,12 @@ uint8_t gprs_send_at_flag = 0;
 uint8_t gprs_rx_flag = 0;
 
 
+OS_TCB 	gprs_recv_task_TCB;						//usart1任务块定义
+CPU_STK	gprs_recv_task_stk[GPRS_RECV_TASK_STK_SIZE];
 
-static void gprs_init_task_fun(void *p_arg);
+
+
+
 
 
 /*
@@ -468,9 +472,9 @@ static void gprs_init_task_fun(void *p_arg)
 				}		
 			break;
 				
-			case 255:
+			case 255:	//gprs 初始化完成后进行数据传输
 				
-				usart2_recv_data();
+				gprs_recv_task_create();
 			
 			break;
 				
@@ -488,12 +492,80 @@ static void gprs_init_task_fun(void *p_arg)
 
 
 
+/*
+*********************************************************************************************************
+*                                          usart1_task_create()
+*
+* Description : Create application tasks.
+*
+* Argument(s) : none
+*
+* Return(s)   : none
+*
+* Caller(s)   : AppTaskStart()
+*
+* Note(s)     : none.
+*********************************************************************************************************
+*/
+void gprs_recv_task_create(void)
+{
+	OS_ERR os_err;
+	
+	OSTaskCreate((OS_TCB 	* )&gprs_recv_task_TCB,		
+				 (CPU_CHAR	* )"gprs_recv task", 		
+                 (OS_TASK_PTR )gprs_recv_task_fun, 			
+                 (void		* )0,					
+                 (OS_PRIO	  )GPRS_RECV_TASK_PRIO,     
+                 (CPU_STK   * )&gprs_recv_task_stk[0],	
+                 (CPU_STK_SIZE)GPRS_RECV_TASK_STK_SIZE/10,	
+                 (CPU_STK_SIZE)GPRS_RECV_TASK_STK_SIZE,		
+                 (OS_MSG_QTY  )0,					
+                 (OS_TICK	  )0,					
+                 (void   	* )0,					
+                 (OS_OPT      )OS_OPT_TASK_STK_CHK|OS_OPT_TASK_STK_CLR,
+                 (OS_ERR 	* )&os_err);                                             /* Create Application Kernel Objects                        */
+ 
+	if(os_err != OS_ERR_NONE)
+	{
+		USART_OUT(USART3, "\r usart3_task_create fail\r");			 
+	}			 
+
+}
 
 
 
 
+/*
+*********************************************************************************************************
+*                                          usart1_task_fun()
+*
+* Description : Create application tasks.
+*
+* Argument(s) : none
+*
+* Return(s)   : none
+*
+* Caller(s)   : AppTaskStart()
+*
+* Note(s)     : none.
+*********************************************************************************************************
+*/
+static void gprs_recv_task_fun(void *p_arg)
+{
+	OS_ERR err;
 
 
+
+	while(DEF_TRUE)
+	{	
+
+		usart2_recv_data();
+		
+		OSTimeDlyHMSM(0,0,0,50, OS_OPT_TIME_HMSM_STRICT, &err);
+		
+	}
+		
+}
 
 
 

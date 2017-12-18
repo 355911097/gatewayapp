@@ -397,7 +397,7 @@ void usart2_recv_data(void)
 	OS_ERR err;
 	u8 ch = 0;
 	
-	if(timer_is_timeout_1MS(timer_gprs, 50))	//50ms没接收到数据认为接收数据完成		
+	if(timer_is_timeout_1MS(timer_gprs, 40))	//40ms没接收到数据认为接收数据完成		
 	{
 		usart2_rx_status = 1;
 	}	
@@ -445,7 +445,21 @@ void USART3_IRQHandler(void)
 
 
 
-
+/*
+*********************************************************************************************************
+*                                          usart3_recv_data()
+*
+* Description : Create application kernel objects tasks.
+*
+* Argument(s) : none
+*
+* Return(s)   : none
+*
+* Caller(s)   : AppTaskStart()
+*
+* Note(s)     : none.
+*********************************************************************************************************
+*/
 void usart3_recv_data(void)
 {
 	OS_ERR err;

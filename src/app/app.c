@@ -77,7 +77,7 @@ extern u8 usart3_rx_status;
 
 
 
-
+#define USART1_Q_NUM			1
 #define USART2_Q_NUM			1
 #define USART3_Q_NUM			1
 #define ETH_Q_NUM				1
@@ -633,6 +633,11 @@ static  void  AppObjCreate (void)
                 (void	    *)0,			//参数为0
                 (OS_ERR	    *)&err);		//返回的错误码	
 	
+	OSQCreate ((OS_Q*		)&usart1_msg,	//消息队列
+                (CPU_CHAR*	)"usart1 msg",	//消息队列名称
+                (OS_MSG_QTY	)USART1_Q_NUM,	//消息队列长度，这里设置为1
+                (OS_ERR*	)&err);			//错误码
+							
 	
 	OSQCreate ((OS_Q*		)&usart2_msg,	//消息队列
                 (CPU_CHAR*	)"usart2 msg",	//消息队列名称

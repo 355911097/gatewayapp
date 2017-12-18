@@ -60,8 +60,9 @@ u8 gprs_send_at(u8 *cmd, u8 *ack, u16 waittime, u16 timeout);
 uint8_t send_at_cmd(uint8_t *cmd, uint8_t *str, uint32_t timeout);
 uint8_t gprs_init(void);
 void gprs_task_create(void);
-
-
+void gprs_recv_task_create(void);
+static void gprs_init_task_fun(void *p_arg);
+static void gprs_recv_task_fun(void *p_arg);
 
 #endif
 

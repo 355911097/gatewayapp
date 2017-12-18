@@ -18,16 +18,29 @@
 
 extern struct udp_pcb *udppcb;  	//定义一个UDP服务器控制块
 
+
+extern OS_Q usart1_msg;
 extern OS_Q usart3_msg;
+
+
+extern usart_buff_t *usart1_rx_buff;
+extern u8 usart1_rx_status;
+
 
 extern usart_buff_t *usart3_rx_buff;
 extern u8 usart3_rx_status;
 
 
-OS_TCB 	usart3_task_TCB;
+
+OS_TCB 	usart1_task_TCB;						//usart1任务块定义
+CPU_STK	usart1_task_stk[USART1_TASK_STK_SIZE];
+
+
+OS_TCB 	usart3_task_TCB;						//usart1任务块定义
 CPU_STK	usart3_task_stk[USART3_TASK_STK_SIZE];
 
-OS_TCB 	translate_task_TCB;
+
+OS_TCB 	translate_task_TCB;							//协议转译任务块定义
 CPU_STK	translate_task_stk[TRANSLATE_TASK_STK_SIZE];
 
 
@@ -35,6 +48,65 @@ u8 translate_buff[TRANSLATE_BUFF_LENGHT] = {0};
 u16 translate_buff_len = 0;
 
 
+
+
+
+/*
+*********************************************************************************************************
+*                                          usart1_task_create()
+*
+* Description : Create application tasks.
+*
+* Argument(s) : none
+*
+* Return(s)   : none
+*
+* Caller(s)   : AppTaskStart()
+*
+* Note(s)     : none.
+*********************************************************************************************************
+*/
+void usart1_task_create(void)
+{
+	OS_ERR os_err;
+	
+	OSTaskCreate((OS_TCB 	* )&usart1_task_TCB,		
+				 (CPU_CHAR	* )"usart1 task", 		
+                 (OS_TASK_PTR )usart1_task_fun, 			
+                 (void		* )0,					
+                 (OS_PRIO	  )USART1_TASK_PRIO,     
+                 (CPU_STK   * )&usart1_task_stk[0],	
+                 (CPU_STK_SIZE)USART1_TASK_STK_SIZE/10,	
+                 (CPU_STK_SIZE)USART1_TASK_STK_SIZE,		
+                 (OS_MSG_QTY  )0,					
+                 (OS_TICK	  )0,					
+                 (void   	* )0,					
+                 (OS_OPT      )OS_OPT_TASK_STK_CHK|OS_OPT_TASK_STK_CLR,
+                 (OS_ERR 	* )&os_err);                                             /* Create Application Kernel Objects                        */
+ 
+	if(os_err != OS_ERR_NONE)
+	{
+		USART_OUT(USART3, "\r usart3_task_create fail\r");			 
+	}			 
+
+}
+
+
+/*
+*********************************************************************************************************
+*                                          usart3_task_create()
+*
+* Description : Create application tasks.
+*
+* Argument(s) : none
+*
+* Return(s)   : none
+*
+* Caller(s)   : AppTaskStart()
+*
+* Note(s)     : none.
+*********************************************************************************************************
+*/
 void usart3_task_create(void)
 {
 	OS_ERR os_err;
@@ -61,7 +133,21 @@ void usart3_task_create(void)
 }
 
 
-
+/*
+*********************************************************************************************************
+*                                          translate_task_create()
+*
+* Description : Create application tasks.
+*
+* Argument(s) : none
+*
+* Return(s)   : none
+*
+* Caller(s)   : AppTaskStart()
+*
+* Note(s)     : none.
+*********************************************************************************************************
+*/
 void translate_task_create(void)
 {
 	OS_ERR os_err;
@@ -87,6 +173,66 @@ void translate_task_create(void)
 	}
 	
 }
+
+
+
+
+/*
+*********************************************************************************************************
+*                                          usart1_task_fun()
+*
+* Description : Create application tasks.
+*
+* Argument(s) : none
+*
+* Return(s)   : none
+*
+* Caller(s)   : AppTaskStart()
+*
+* Note(s)     : none.
+*********************************************************************************************************
+*/
+static void usart1_task_fun(void *p_arg)
+{
+	OS_ERR err;
+	OS_MSG_SIZE size = 0;
+	u8 buff[100] = {0};
+	u8 *msg = buff;
+
+
+
+	while(DEF_TRUE)
+	{	
+
+		msg = OSQPend((OS_Q*		)&usart1_msg,   
+					(OS_TICK		)0,
+					(OS_OPT			)OS_OPT_PEND_NON_BLOCKING,
+					(OS_MSG_SIZE*	)&size,		
+					(CPU_TS*		)0,
+					(OS_ERR*		)&err);
+
+		
+		if(usart1_rx_status == 1)
+		{
+			
+			usart_process_protocol(msg, size, USART_CHANNEL1);
+			
+			usart_printf(USART3, size, msg);
+			
+			memset(usart1_rx_buff, 0, sizeof(usart_buff_t));	//清空接收缓冲区
+		}
+	
+		
+		OSTimeDlyHMSM(0,0,0,500, OS_OPT_TIME_HMSM_STRICT, &err);
+		
+	}
+		
+}
+
+
+
+
+
 
 
 /*
@@ -128,7 +274,7 @@ static void usart3_task_fun(void *p_arg)
 		{
 			
 			
-			usart3_process_protocol(msg, size, 3);
+			usart_process_protocol(msg, size, USART_CHANNEL3);
 			
 			usart_printf(USART3, size, msg);
 			
@@ -191,7 +337,7 @@ static void translate_task_fun(void *p_arg)
 
 
 
-u8 usart3_process_protocol(u8 *buff, u16 size, u8 channel)
+u8 usart_process_protocol(u8 *buff, u16 size, u8 channel)
 {
 	
 	u32 area_id = 0, addr_id = 0, point_id = 0;
