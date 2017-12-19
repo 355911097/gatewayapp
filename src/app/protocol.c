@@ -913,7 +913,7 @@ bool fatch_protocol_data(u8 *buff, u16 *size)
 		memset(protocol_buff, 0, PROTOCOL_BUFF_LENGHT);  //数据接收缓冲区清零
 		protocol_buff_len = 0;						//数据接收计数清零
 		
-		USART_OUT(USART3, "\r fatch_gprs_data too small\r\n");
+		USART_OUT(USART3, "\r fatch_protocol_data too small\r\n");
 		return FALSE;		
 	}
 	
@@ -930,7 +930,7 @@ bool fatch_protocol_data(u8 *buff, u16 *size)
 	{
 		memset(protocol_buff, 0, PROTOCOL_BUFF_LENGHT);  //数据接收缓冲区清零
 		protocol_buff_len = 0;								//数据接收计数清零
-		USART_OUT(USART3, "\r fatch_gprs_data no TELEGRAM_HEAD\r\n");
+		USART_OUT(USART3, "\r fatch_protocol_data no TELEGRAM_HEAD\r\n");
 		return FALSE;
 	}
 	
@@ -943,7 +943,7 @@ bool fatch_protocol_data(u8 *buff, u16 *size)
 	{
 		memset(protocol_buff, 0, PROTOCOL_BUFF_LENGHT);  //数据接收缓冲区清零
 		protocol_buff_len = 0;							//数据接收计数清零
-		USART_OUT(USART3, "\r fatch_gprs_data too short\r\n");
+		USART_OUT(USART3, "\r fatch_protocol_data too short\r\n");
 		return FALSE;
 	}
 	
@@ -951,7 +951,7 @@ bool fatch_protocol_data(u8 *buff, u16 *size)
 	{
 		memset(protocol_buff, 0, PROTOCOL_BUFF_LENGHT);  	//数据接收缓冲区清零
 		protocol_buff_len = 0;								//数据接收计数清零
-		USART_OUT(USART3, "\r fatch_gprs_data no TELEGRAM_SYNC\r\n");
+		USART_OUT(USART3, "\r fatch_protocol_data no TELEGRAM_SYNC\r\n");
 		return FALSE;
 		
 	}
@@ -966,7 +966,7 @@ bool fatch_protocol_data(u8 *buff, u16 *size)
 	{
 		memset(protocol_buff, 0, PROTOCOL_BUFF_LENGHT);  	//数据接收缓冲区清零
 		protocol_buff_len = 0;								//数据接收计数清零
-		USART_OUT(USART3, "\r fatch_gprs_data buffer overflow\r\n");	
+		USART_OUT(USART3, "\r fatch_protocol_data buffer overflow\r\n");	
 		return FALSE;
 	}
 	
@@ -995,7 +995,7 @@ bool fatch_protocol_data(u8 *buff, u16 *size)
 			{
 				memset(protocol_buff, 0, PROTOCOL_BUFF_LENGHT);  //数据接收缓冲区清零
 				protocol_buff_len = 0;							//数据接收计数清零
-				USART_OUT(USART3, "\r fatch_gprs_data crc error\r\n");
+				USART_OUT(USART3, "\r fatch_protocol_data crc error\r\n");
 				return FALSE;
 			}
 		}
@@ -1003,6 +1003,7 @@ bool fatch_protocol_data(u8 *buff, u16 *size)
 		{
 			memset(protocol_buff, 0, PROTOCOL_BUFF_LENGHT);  //数据接收缓冲区清零
 			protocol_buff_len = 0;							//数据接收计数清零
+			USART_OUT(USART3, "\r fatch_protocol_data no TELEGRAM_END\r\n");
 			return FALSE;
 		
 		}
