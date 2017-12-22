@@ -96,7 +96,7 @@ void usart1_task_create(void)
 *********************************************************************************************************
 *                                          usart3_task_create()
 *
-* Description : Create application tasks.
+* Description : 创建串口3任务
 *
 * Argument(s) : none
 *

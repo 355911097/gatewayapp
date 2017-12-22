@@ -61,7 +61,7 @@ CPU_STK	gprs_recv_task_stk[GPRS_RECV_TASK_STK_SIZE];
 
 /*
 *********************************************************************************************************
-*                                          led0_task_create()
+*                                          gprs_power_on()
 *
 * Description : Create application tasks.
 *
@@ -69,7 +69,7 @@ CPU_STK	gprs_recv_task_stk[GPRS_RECV_TASK_STK_SIZE];
 *
 * Return(s)   : none
 *
-* Caller(s)   : AppTaskStart()
+* Caller(s)   : gprs_init_task_fun()
 *
 * Note(s)     : none.
 *********************************************************************************************************
@@ -100,15 +100,15 @@ void gprs_power_on(void)
 *********************************************************************************************************
 *                                          gprs_check_cmd()
 *
-* Description : Create application tasks.
+* Description : 检测字符串中是否存在子字符串.
 *
-* Argument(s) : none
+* Argument(s) : p_str ： 要检测的子字符串
 *
-* Return(s)   : none
+* Return(s)   : 返回子字符串的位置指针
 *
-* Caller(s)   : 
+* Caller(s)   : gprs_send_at()
 *
-* Note(s)     : none.
+* Note(s)     : 
 *********************************************************************************************************
 */
 u8 *gprs_check_cmd(u8 *p_str)
@@ -134,7 +134,7 @@ u8 *gprs_check_cmd(u8 *p_str)
 *
 * Return(s)   : none
 *
-* Caller(s)   : 
+* Caller(s)   : gprs_init_task_fun()
 *
 * Note(s)     : none.
 *********************************************************************************************************
@@ -179,7 +179,21 @@ u8 gprs_send_at(u8 *cmd, u8 *ack, u16 waittime, u16 timeout)
 
 
 
-
+/*
+*********************************************************************************************************
+*                                          gprs_task_create()
+*
+* Description : 创建GPRS初始化任务.
+*
+* Argument(s) : none
+*
+* Return(s)   : none
+*
+* Caller(s)   : 
+*
+* Note(s)     : none.
+*********************************************************************************************************
+*/
 void gprs_task_create(void)
 {
 	OS_ERR os_err;
@@ -211,7 +225,21 @@ void gprs_task_create(void)
 }
 
 
-
+/*
+*********************************************************************************************************
+*                                          gprs_init_task_fun()
+*
+* Description : GPRS初始化任务函数.
+*
+* Argument(s) : p_arg :该任务要传的参数
+*
+* Return(s)   : none
+*
+* Caller(s)   : 
+*
+* Note(s)     : none.
+*********************************************************************************************************
+*/
 static void gprs_init_task_fun(void *p_arg)
 {
 	OS_ERR err;
@@ -494,7 +522,7 @@ static void gprs_init_task_fun(void *p_arg)
 
 /*
 *********************************************************************************************************
-*                                          usart1_task_create()
+*                                          gprs_recv_task_create()
 *
 * Description : Create application tasks.
 *
@@ -537,7 +565,7 @@ void gprs_recv_task_create(void)
 
 /*
 *********************************************************************************************************
-*                                          usart1_task_fun()
+*                                          gprs_recv_task_fun()
 *
 * Description : Create application tasks.
 *

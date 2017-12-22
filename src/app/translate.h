@@ -14,7 +14,7 @@
 
 
 
-#define TRANSLATE_BUFF_LENGHT				512
+#define TRANSLATE_BUFF_LENGHT					512
 
 
 
