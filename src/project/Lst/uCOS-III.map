@@ -1,4 +1,4 @@
-Component: ARM Compiler 5.06 update 1 (build 61) Tool: armlink [4d35a8]
+Component: ARM Compiler 5.05 update 1 (build 106) Tool: armlink [4d0efa]
 
 ==============================================================================
 
@@ -3234,89 +3234,89 @@ Image component sizes
       Code (inc. data)   RO Data    RW Data    ZI Data      Debug   Object Name
 
          0          0          0          0          0       2335   api_lib.o
-         0          0          0          0          0       2923   api_msg.o
-       952        254          0          0       6528     377288   app.o
-      1616         60          0          0          0      21495   bsp.o
-      1064         10          0          0        328      13598   bsp_int.o
+         0          0          0          0          0       2927   api_msg.o
+       952        254          0          0       6528     377196   app.o
+      1616         60          0          0          0      21503   bsp.o
+      1064         10          0          0        328      13522   bsp_int.o
          0          0          0          0          0        564   bsp_ser.o
         52          0          0          0          0        316   cpu_a.o
-      1916        102          0          0          0       3489   cpu_c.o
-       680         14        256          4         16      14200   cpu_core.o
+      1916        102          0          0          0       3429   cpu_c.o
+       680         14        256          4         16      14080   cpu_core.o
         24          6        388          0       1024        608   cstartup.o
-       344          4         72          0          0       2566   def.o
-       756        338          0          0        708       6706   dhcp.o
-      6836       1234        140         24         32      18244   dhcp_1.o
-      3424        560         65          1        240       8231   etharp.o
-       436        128         12          0          0       2068   ethernet.o
-       500        116          0          0          0       3203   ethernetif.o
-         0          0          0          7          0       3527   gprs.o
-       884        228          0          0          0       3170   icmp.o
-       808         86          0          0          0       4500   inet_chksum.o
+       344          4         72          0          0       2434   def.o
+       756        338          0          0        708       6690   dhcp.o
+      6836       1234        140         24         32      17756   dhcp_1.o
+      3424        560         65          1        240       7831   etharp.o
+       436        128         12          0          0       2012   ethernet.o
+       500        116          0          0          0       3139   ethernetif.o
+         0          0          0          7          0       3431   gprs.o
+       884        228          0          0          0       3074   icmp.o
+       808         86          0          0          0       4184   inet_chksum.o
        136         68         65          0          0        468   init.o
          0          0          0          0         24       2910   ip.o
-      1272        150          0          2          0       4429   ip4.o
-       848         98          8          0         16       9074   ip4_addr.o
-      2744        492          0          6          0       7798   ip4_frag.o
-       844         38          0          0          0       3404   lan8720.o
-       598          0          0          0          0       3856   lib_ascii.o
-      3780         62          0          4       9288      24888   lib_mem.o
+      1272        150          0          2          0       4269   ip4.o
+       848         98          8          0         16       8986   ip4_addr.o
+      2744        492          0          6          0       7610   ip4_frag.o
+       844         38          0          0          0       3356   lan8720.o
+       598          0          0          0          0       3668   lib_ascii.o
+      3780         62          0          4       9288      24364   lib_mem.o
        544          0          0          0          0        460   lib_mem_a.o
-      2344          4        148          0          0      13710   lib_str.o
-       268         40          0          0         76       5549   lwip_comm_1.o
-      1832        552          0         12       5180       4002   mem.o
-       616        216        192         48      18884       8864   memp.o
-       224         20          0          0          0       1849   misc.o
+      2344          4        148          0          0      12994   lib_str.o
+       268         40          0          0         76       5553   lwip_comm_1.o
+      1832        552          0         12       5180       3930   mem.o
+       616        216        192         48      18884       8772   memp.o
+       224         20          0          0          0       1853   misc.o
          0          0          0          0          0       6984   netbuf.o
-       820        110          0          9          0       7381   netif.o
-         2          0        164          0       4928      19498   os_cfg_app.o
-      3484        272          0          0          0      12211   os_core.o
+       820        110          0          9          0       7177   netif.o
+         2          0        164          0       4928      19502   os_cfg_app.o
+      3484        272          0          0          0      11783   os_core.o
        132         32          0          0          0        360   os_cpu_a.o
-       620         66          0          4          0       3697   os_cpu_c.o
-       428        280        364          0          0       4697   os_dbg.o
-      2808         84          0          0          0       7683   os_flag.o
-       508         16          0          0          0       2696   os_mem.o
-       552         14          0          0          0       2614   os_msg.o
-      1932         84          0          0          0       5218   os_mutex.o
+       620         66          0          4          0       3641   os_cpu_c.o
+       428        280        364          0          0       4701   os_dbg.o
+      2808         84          0          0          0       7343   os_flag.o
+       508         16          0          0          0       2596   os_mem.o
+       552         14          0          0          0       2562   os_msg.o
+      1932         84          0          0          0       5030   os_mutex.o
        124          4          0          8          0       1668   os_prio.o
-      1752         58          0          0          0       6112   os_q.o
-      1768         58          0          0          0       6152   os_sem.o
-      1448        150          0          0          0       2733   os_stat.o
-      4960        188          0          0          0      13346   os_task.o
-      1156         74          0          0          0       3189   os_tick.o
-      1116         54          0          0          0       3141   os_time.o
-      2040        134          0          0          0       6630   os_tmr.o
+      1752         58          0          0          0       5844   os_q.o
+      1768         58          0          0          0       5880   os_sem.o
+      1448        150          0          0          0       2681   os_stat.o
+      4960        188          0          0          0      12614   os_task.o
+      1156         74          0          0          0       3125   os_tick.o
+      1116         54          0          0          0       3009   os_time.o
+      2040        134          0          0          0       6414   os_tmr.o
          0          0          0        180       1564      18073   os_var.o
-      4636       1284          0          0          0      13130   pbuf.o
-      2516        508        512         12        588       8596   protocol.o
-       828        132          0          9       2244       2973   rawudp.o
-       732         88          0          0          0       3097   rtc.o
-       132          4          0          0          0        727   spi.o
-      3636        100          0         16      15572      19920   stm32f2x7_eth.o
-       284         10          0          0          0       2307   stm32f2xx_exti.o
-       604         36          0          0          0       4009   stm32f2xx_gpio.o
-        64          6          0          0          0       1293   stm32f2xx_iwdg.o
-       216         12          0          0          0       2276   stm32f2xx_pwr.o
-      1416         48          0         16          0      10991   stm32f2xx_rcc.o
-      2824         36          0          0          0      12101   stm32f2xx_rtc.o
-       936         22          0          0          0       6412   stm32f2xx_spi.o
-       140         12          0          0          0       1531   stm32f2xx_syscfg.o
-      3234         60          0          0          0      22896   stm32f2xx_tim.o
-      1050         26          0          0          0       7744   stm32f2xx_usart.o
-      1208        270          4          0       4196      10271   sys_arch.o
-       480         40          0         20          0       1719   system_stm32f2xx.o
-      5824       1148        197         32          0      25030   tcp.o
-      6584       1076          0         40         16      15805   tcp_in.o
-      5442        996         85          0          0      19646   tcp_out.o
-       864        238          0          8         88       6642   tcpip.o
-       856        170         40         12          0       4597   timeouts.o
-       388         32          0         15         44       3425   timer.o
-       668        166          0          0       8012       3338   translate.o
-      1504        152          0          8          0       8410   udp.o
-      1676         72          0         29        514       5603   usart.o
-       808         30          0          0       4096       3808   w25qxx.o
+      4636       1284          0          0          0      12466   pbuf.o
+      2516        508        512         12        588       8280   protocol.o
+       828        132          0          9       2244       2861   rawudp.o
+       732         88          0          0          0       2965   rtc.o
+       132          4          0          0          0        715   spi.o
+      3636        100          0         16      15572      19600   stm32f2x7_eth.o
+       284         10          0          0          0       2283   stm32f2xx_exti.o
+       604         36          0          0          0       3945   stm32f2xx_gpio.o
+        64          6          0          0          0       1281   stm32f2xx_iwdg.o
+       216         12          0          0          0       2244   stm32f2xx_pwr.o
+      1416         48          0         16          0      10899   stm32f2xx_rcc.o
+      2824         36          0          0          0      11773   stm32f2xx_rtc.o
+       936         22          0          0          0       6344   stm32f2xx_spi.o
+       140         12          0          0          0       1535   stm32f2xx_syscfg.o
+      3234         60          0          0          0      22180   stm32f2xx_tim.o
+      1050         26          0          0          0       7656   stm32f2xx_usart.o
+      1208        270          4          0       4196       9999   sys_arch.o
+       480         40          0         20          0       1723   system_stm32f2xx.o
+      5824       1148        197         32          0      24366   tcp.o
+      6584       1076          0         40         16      15721   tcp_in.o
+      5442        996         85          0          0      19270   tcp_out.o
+       864        238          0          8         88       6382   tcpip.o
+       856        170         40         12          0       4497   timeouts.o
+       388         32          0         15         44       3393   timer.o
+       668        166          0          0       8012       3242   translate.o
+      1504        152          0          8          0       8126   udp.o
+      1676         72          0         29        514       5483   usart.o
+       808         30          0          0       4096       3668   w25qxx.o
 
     ----------------------------------------------------------------------
-    111548      13332       2756        540      84208     942672   Object Totals
+    111548      13332       2756        540      84208     930108   Object Totals
          0          0         32          0          0          0   (incl. Generated)
          6          0         12         14          2          0   (incl. Padding)
 
@@ -3368,8 +3368,8 @@ Image component sizes
 
       Code (inc. data)   RO Data    RW Data    ZI Data      Debug   
 
-    112480      13368       2756        544      84208     936356   Grand Totals
-    112480      13368       2756         52      84208     936356   ELF Image Totals (compressed)
+    112480      13368       2756        544      84208     923792   Grand Totals
+    112480      13368       2756         52      84208     923792   ELF Image Totals (compressed)
     112480      13368       2756         52          0          0   ROM Totals
 
 ==============================================================================

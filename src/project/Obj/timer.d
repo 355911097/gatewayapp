@@ -2,7 +2,7 @@
 .\obj\timer.o: ..\Libraries\STM32F2xx_StdPeriph_Driver\inc\stm32f2xx_tim.h
 .\obj\timer.o: ..\Libraries\CMSIS\Device\stm32f2xx.h
 .\obj\timer.o: ..\Libraries\CMSIS\Include\core_cm3.h
-.\obj\timer.o: d:\Keil_v5\ARM\ARMCC\Bin\..\include\stdint.h
+.\obj\timer.o: D:\Keil_v5\ARM\ARMCC\Bin\..\include\stdint.h
 .\obj\timer.o: ..\Libraries\CMSIS\Include\core_cmInstr.h
 .\obj\timer.o: ..\Libraries\CMSIS\Include\core_cmFunc.h
 .\obj\timer.o: ..\Libraries\CMSIS\Device\system_stm32f2xx.h
@@ -36,8 +36,8 @@
 .\obj\timer.o: ..\Libraries\STM32F2xx_StdPeriph_Driver\inc\misc.h
 .\obj\timer.o: ..\driver\timer.h
 .\obj\timer.o: ..\bsp\bsp.h
-.\obj\timer.o: d:\Keil_v5\ARM\ARMCC\Bin\..\include\stdio.h
-.\obj\timer.o: d:\Keil_v5\ARM\ARMCC\Bin\..\include\stdarg.h
+.\obj\timer.o: D:\Keil_v5\ARM\ARMCC\Bin\..\include\stdio.h
+.\obj\timer.o: D:\Keil_v5\ARM\ARMCC\Bin\..\include\stdarg.h
 .\obj\timer.o: ..\UCOSIII\uC-CPU\ARM-Cortex-M3\RealView\cpu.h
 .\obj\timer.o: ..\UCOSIII\uC-CPU\cpu_def.h
 .\obj\timer.o: ..\UCOSIII\uCOS-CONFIG\cpu_cfg.h

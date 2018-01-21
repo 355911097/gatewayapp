@@ -5,11 +5,11 @@
 .\obj\ip4_addr.o: ..\lwip\include\lwip/arch.h
 .\obj\ip4_addr.o: ..\lwip\include\arch/cc.h
 .\obj\ip4_addr.o: ..\lwip\include\arch/lwip_cpu.h
-.\obj\ip4_addr.o: d:\Keil_v5\ARM\ARMCC\Bin\..\include\stdio.h
+.\obj\ip4_addr.o: D:\Keil_v5\ARM\ARMCC\Bin\..\include\stdio.h
 .\obj\ip4_addr.o: ..\UCOSIII\uCOS-CONFIG\includes.h
-.\obj\ip4_addr.o: d:\Keil_v5\ARM\ARMCC\Bin\..\include\stdarg.h
-.\obj\ip4_addr.o: d:\Keil_v5\ARM\ARMCC\Bin\..\include\stdlib.h
-.\obj\ip4_addr.o: d:\Keil_v5\ARM\ARMCC\Bin\..\include\math.h
+.\obj\ip4_addr.o: D:\Keil_v5\ARM\ARMCC\Bin\..\include\stdarg.h
+.\obj\ip4_addr.o: D:\Keil_v5\ARM\ARMCC\Bin\..\include\stdlib.h
+.\obj\ip4_addr.o: D:\Keil_v5\ARM\ARMCC\Bin\..\include\math.h
 .\obj\ip4_addr.o: ..\UCOSIII\uC-CPU\ARM-Cortex-M3\RealView\cpu.h
 .\obj\ip4_addr.o: ..\UCOSIII\uC-CPU\cpu_def.h
 .\obj\ip4_addr.o: ..\UCOSIII\uCOS-CONFIG\cpu_cfg.h
@@ -29,7 +29,7 @@
 .\obj\ip4_addr.o: ..\bsp\bsp.h
 .\obj\ip4_addr.o: ..\Libraries\CMSIS\Device\stm32f2xx.h
 .\obj\ip4_addr.o: ..\Libraries\CMSIS\Include\core_cm3.h
-.\obj\ip4_addr.o: d:\Keil_v5\ARM\ARMCC\Bin\..\include\stdint.h
+.\obj\ip4_addr.o: D:\Keil_v5\ARM\ARMCC\Bin\..\include\stdint.h
 .\obj\ip4_addr.o: ..\Libraries\CMSIS\Include\core_cmInstr.h
 .\obj\ip4_addr.o: ..\Libraries\CMSIS\Include\core_cmFunc.h
 .\obj\ip4_addr.o: ..\Libraries\CMSIS\Device\system_stm32f2xx.h
@@ -65,9 +65,9 @@
 .\obj\ip4_addr.o: ..\bsp\bsp_os.h
 .\obj\ip4_addr.o: ..\app\system.h
 .\obj\ip4_addr.o: ..\bsp\bsp.h
-.\obj\ip4_addr.o: d:\Keil_v5\ARM\ARMCC\Bin\..\include\stddef.h
-.\obj\ip4_addr.o: d:\Keil_v5\ARM\ARMCC\Bin\..\include\inttypes.h
-.\obj\ip4_addr.o: d:\Keil_v5\ARM\ARMCC\Bin\..\include\limits.h
+.\obj\ip4_addr.o: D:\Keil_v5\ARM\ARMCC\Bin\..\include\stddef.h
+.\obj\ip4_addr.o: D:\Keil_v5\ARM\ARMCC\Bin\..\include\inttypes.h
+.\obj\ip4_addr.o: D:\Keil_v5\ARM\ARMCC\Bin\..\include\limits.h
 .\obj\ip4_addr.o: ..\lwip\include\lwip/opt.h
 .\obj\ip4_addr.o: ..\lwip\include\lwip/ip_addr.h
 .\obj\ip4_addr.o: ..\lwip\include\lwip/def.h

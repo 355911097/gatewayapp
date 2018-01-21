@@ -1,7 +1,7 @@
 .\obj\w25qxx.o: ..\driver\w25qxx.c
-.\obj\w25qxx.o: d:\Keil_v5\ARM\ARMCC\Bin\..\include\stdarg.h
-.\obj\w25qxx.o: d:\Keil_v5\ARM\ARMCC\Bin\..\include\stdio.h
-.\obj\w25qxx.o: d:\Keil_v5\ARM\ARMCC\Bin\..\include\stdlib.h
+.\obj\w25qxx.o: D:\Keil_v5\ARM\ARMCC\Bin\..\include\stdarg.h
+.\obj\w25qxx.o: D:\Keil_v5\ARM\ARMCC\Bin\..\include\stdio.h
+.\obj\w25qxx.o: D:\Keil_v5\ARM\ARMCC\Bin\..\include\stdlib.h
 .\obj\w25qxx.o: ..\bsp\bsp.h
 .\obj\w25qxx.o: ..\UCOSIII\uC-CPU\ARM-Cortex-M3\RealView\cpu.h
 .\obj\w25qxx.o: ..\UCOSIII\uC-CPU\cpu_def.h
@@ -15,7 +15,7 @@
 .\obj\w25qxx.o: ..\UCOSIII\uC-LIB\lib_ascii.h
 .\obj\w25qxx.o: ..\Libraries\CMSIS\Device\stm32f2xx.h
 .\obj\w25qxx.o: ..\Libraries\CMSIS\Include\core_cm3.h
-.\obj\w25qxx.o: d:\Keil_v5\ARM\ARMCC\Bin\..\include\stdint.h
+.\obj\w25qxx.o: D:\Keil_v5\ARM\ARMCC\Bin\..\include\stdint.h
 .\obj\w25qxx.o: ..\Libraries\CMSIS\Include\core_cmInstr.h
 .\obj\w25qxx.o: ..\Libraries\CMSIS\Include\core_cmFunc.h
 .\obj\w25qxx.o: ..\Libraries\CMSIS\Device\system_stm32f2xx.h

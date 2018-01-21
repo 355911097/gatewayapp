@@ -2,7 +2,7 @@
 .\obj\stm32f2xx_cryp_des.o: ..\Libraries\STM32F2xx_StdPeriph_Driver\inc\stm32f2xx_cryp.h
 .\obj\stm32f2xx_cryp_des.o: ..\Libraries\CMSIS\Device\stm32f2xx.h
 .\obj\stm32f2xx_cryp_des.o: ..\Libraries\CMSIS\Include\core_cm3.h
-.\obj\stm32f2xx_cryp_des.o: d:\Keil_v5\ARM\ARMCC\Bin\..\include\stdint.h
+.\obj\stm32f2xx_cryp_des.o: D:\Keil_v5\ARM\ARMCC\Bin\..\include\stdint.h
 .\obj\stm32f2xx_cryp_des.o: ..\Libraries\CMSIS\Include\core_cmInstr.h
 .\obj\stm32f2xx_cryp_des.o: ..\Libraries\CMSIS\Include\core_cmFunc.h
 .\obj\stm32f2xx_cryp_des.o: ..\Libraries\CMSIS\Device\system_stm32f2xx.h

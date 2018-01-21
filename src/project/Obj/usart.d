@@ -1,7 +1,7 @@
 .\obj\usart.o: ..\driver\usart.c
-.\obj\usart.o: d:\Keil_v5\ARM\ARMCC\Bin\..\include\string.h
-.\obj\usart.o: d:\Keil_v5\ARM\ARMCC\Bin\..\include\stdarg.h
-.\obj\usart.o: d:\Keil_v5\ARM\ARMCC\Bin\..\include\stdio.h
+.\obj\usart.o: D:\Keil_v5\ARM\ARMCC\Bin\..\include\string.h
+.\obj\usart.o: D:\Keil_v5\ARM\ARMCC\Bin\..\include\stdarg.h
+.\obj\usart.o: D:\Keil_v5\ARM\ARMCC\Bin\..\include\stdio.h
 .\obj\usart.o: ..\driver\usart.h
 .\obj\usart.o: ..\bsp\bsp.h
 .\obj\usart.o: ..\UCOSIII\uC-CPU\ARM-Cortex-M3\RealView\cpu.h
@@ -16,7 +16,7 @@
 .\obj\usart.o: ..\UCOSIII\uC-LIB\lib_ascii.h
 .\obj\usart.o: ..\Libraries\CMSIS\Device\stm32f2xx.h
 .\obj\usart.o: ..\Libraries\CMSIS\Include\core_cm3.h
-.\obj\usart.o: d:\Keil_v5\ARM\ARMCC\Bin\..\include\stdint.h
+.\obj\usart.o: D:\Keil_v5\ARM\ARMCC\Bin\..\include\stdint.h
 .\obj\usart.o: ..\Libraries\CMSIS\Include\core_cmInstr.h
 .\obj\usart.o: ..\Libraries\CMSIS\Include\core_cmFunc.h
 .\obj\usart.o: ..\Libraries\CMSIS\Device\system_stm32f2xx.h
@@ -67,12 +67,12 @@
 .\obj\usart.o: ..\lwip\include\arch/cc.h
 .\obj\usart.o: ..\lwip\include\arch/lwip_cpu.h
 .\obj\usart.o: ..\UCOSIII\uCOS-CONFIG\includes.h
-.\obj\usart.o: d:\Keil_v5\ARM\ARMCC\Bin\..\include\stdlib.h
-.\obj\usart.o: d:\Keil_v5\ARM\ARMCC\Bin\..\include\math.h
+.\obj\usart.o: D:\Keil_v5\ARM\ARMCC\Bin\..\include\stdlib.h
+.\obj\usart.o: D:\Keil_v5\ARM\ARMCC\Bin\..\include\math.h
 .\obj\usart.o: ..\UCOSIII\uC-LIB\lib_math.h
-.\obj\usart.o: d:\Keil_v5\ARM\ARMCC\Bin\..\include\stddef.h
-.\obj\usart.o: d:\Keil_v5\ARM\ARMCC\Bin\..\include\inttypes.h
-.\obj\usart.o: d:\Keil_v5\ARM\ARMCC\Bin\..\include\limits.h
+.\obj\usart.o: D:\Keil_v5\ARM\ARMCC\Bin\..\include\stddef.h
+.\obj\usart.o: D:\Keil_v5\ARM\ARMCC\Bin\..\include\inttypes.h
+.\obj\usart.o: D:\Keil_v5\ARM\ARMCC\Bin\..\include\limits.h
 .\obj\usart.o: ..\lwip\include\lwip/opt.h
 .\obj\usart.o: ..\lwip\include\lwip/err.h
 .\obj\usart.o: ..\lwip\include\lwip/udp.h

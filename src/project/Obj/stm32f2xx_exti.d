@@ -2,7 +2,7 @@
 .\obj\stm32f2xx_exti.o: ..\Libraries\STM32F2xx_StdPeriph_Driver\inc\stm32f2xx_exti.h
 .\obj\stm32f2xx_exti.o: ..\Libraries\CMSIS\Device\stm32f2xx.h
 .\obj\stm32f2xx_exti.o: ..\Libraries\CMSIS\Include\core_cm3.h
-.\obj\stm32f2xx_exti.o: d:\Keil_v5\ARM\ARMCC\Bin\..\include\stdint.h
+.\obj\stm32f2xx_exti.o: D:\Keil_v5\ARM\ARMCC\Bin\..\include\stdint.h
 .\obj\stm32f2xx_exti.o: ..\Libraries\CMSIS\Include\core_cmInstr.h
 .\obj\stm32f2xx_exti.o: ..\Libraries\CMSIS\Include\core_cmFunc.h
 .\obj\stm32f2xx_exti.o: ..\Libraries\CMSIS\Device\system_stm32f2xx.h

@@ -1,7 +1,7 @@
 .\obj\eth.o: ..\driver\eth.c
 .\obj\eth.o: ..\bsp\bsp.h
-.\obj\eth.o: d:\Keil_v5\ARM\ARMCC\Bin\..\include\stdio.h
-.\obj\eth.o: d:\Keil_v5\ARM\ARMCC\Bin\..\include\stdarg.h
+.\obj\eth.o: D:\Keil_v5\ARM\ARMCC\Bin\..\include\stdio.h
+.\obj\eth.o: D:\Keil_v5\ARM\ARMCC\Bin\..\include\stdarg.h
 .\obj\eth.o: ..\UCOSIII\uC-CPU\ARM-Cortex-M3\RealView\cpu.h
 .\obj\eth.o: ..\UCOSIII\uC-CPU\cpu_def.h
 .\obj\eth.o: ..\UCOSIII\uCOS-CONFIG\cpu_cfg.h
@@ -14,7 +14,7 @@
 .\obj\eth.o: ..\UCOSIII\uC-LIB\lib_ascii.h
 .\obj\eth.o: ..\Libraries\CMSIS\Device\stm32f2xx.h
 .\obj\eth.o: ..\Libraries\CMSIS\Include\core_cm3.h
-.\obj\eth.o: d:\Keil_v5\ARM\ARMCC\Bin\..\include\stdint.h
+.\obj\eth.o: D:\Keil_v5\ARM\ARMCC\Bin\..\include\stdint.h
 .\obj\eth.o: ..\Libraries\CMSIS\Include\core_cmInstr.h
 .\obj\eth.o: ..\Libraries\CMSIS\Include\core_cmFunc.h
 .\obj\eth.o: ..\Libraries\CMSIS\Device\system_stm32f2xx.h

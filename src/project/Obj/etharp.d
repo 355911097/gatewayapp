@@ -5,11 +5,11 @@
 .\obj\etharp.o: ..\lwip\include\lwip/arch.h
 .\obj\etharp.o: ..\lwip\include\arch/cc.h
 .\obj\etharp.o: ..\lwip\include\arch/lwip_cpu.h
-.\obj\etharp.o: d:\Keil_v5\ARM\ARMCC\Bin\..\include\stdio.h
+.\obj\etharp.o: D:\Keil_v5\ARM\ARMCC\Bin\..\include\stdio.h
 .\obj\etharp.o: ..\UCOSIII\uCOS-CONFIG\includes.h
-.\obj\etharp.o: d:\Keil_v5\ARM\ARMCC\Bin\..\include\stdarg.h
-.\obj\etharp.o: d:\Keil_v5\ARM\ARMCC\Bin\..\include\stdlib.h
-.\obj\etharp.o: d:\Keil_v5\ARM\ARMCC\Bin\..\include\math.h
+.\obj\etharp.o: D:\Keil_v5\ARM\ARMCC\Bin\..\include\stdarg.h
+.\obj\etharp.o: D:\Keil_v5\ARM\ARMCC\Bin\..\include\stdlib.h
+.\obj\etharp.o: D:\Keil_v5\ARM\ARMCC\Bin\..\include\math.h
 .\obj\etharp.o: ..\UCOSIII\uC-CPU\ARM-Cortex-M3\RealView\cpu.h
 .\obj\etharp.o: ..\UCOSIII\uC-CPU\cpu_def.h
 .\obj\etharp.o: ..\UCOSIII\uCOS-CONFIG\cpu_cfg.h
@@ -29,7 +29,7 @@
 .\obj\etharp.o: ..\bsp\bsp.h
 .\obj\etharp.o: ..\Libraries\CMSIS\Device\stm32f2xx.h
 .\obj\etharp.o: ..\Libraries\CMSIS\Include\core_cm3.h
-.\obj\etharp.o: d:\Keil_v5\ARM\ARMCC\Bin\..\include\stdint.h
+.\obj\etharp.o: D:\Keil_v5\ARM\ARMCC\Bin\..\include\stdint.h
 .\obj\etharp.o: ..\Libraries\CMSIS\Include\core_cmInstr.h
 .\obj\etharp.o: ..\Libraries\CMSIS\Include\core_cmFunc.h
 .\obj\etharp.o: ..\Libraries\CMSIS\Device\system_stm32f2xx.h
@@ -65,9 +65,9 @@
 .\obj\etharp.o: ..\bsp\bsp_os.h
 .\obj\etharp.o: ..\app\system.h
 .\obj\etharp.o: ..\bsp\bsp.h
-.\obj\etharp.o: d:\Keil_v5\ARM\ARMCC\Bin\..\include\stddef.h
-.\obj\etharp.o: d:\Keil_v5\ARM\ARMCC\Bin\..\include\inttypes.h
-.\obj\etharp.o: d:\Keil_v5\ARM\ARMCC\Bin\..\include\limits.h
+.\obj\etharp.o: D:\Keil_v5\ARM\ARMCC\Bin\..\include\stddef.h
+.\obj\etharp.o: D:\Keil_v5\ARM\ARMCC\Bin\..\include\inttypes.h
+.\obj\etharp.o: D:\Keil_v5\ARM\ARMCC\Bin\..\include\limits.h
 .\obj\etharp.o: ..\lwip\include\lwip/opt.h
 .\obj\etharp.o: ..\lwip\include\lwip/etharp.h
 .\obj\etharp.o: ..\lwip\include\lwip/pbuf.h
@@ -97,4 +97,4 @@
 .\obj\etharp.o: ..\lwip\include\lwip/prot/udp.h
 .\obj\etharp.o: ..\lwip\include\lwip/autoip.h
 .\obj\etharp.o: ..\lwip\include\netif/ethernet.h
-.\obj\etharp.o: d:\Keil_v5\ARM\ARMCC\Bin\..\include\string.h
+.\obj\etharp.o: D:\Keil_v5\ARM\ARMCC\Bin\..\include\string.h

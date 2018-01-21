@@ -3,7 +3,7 @@
 .\obj\stm32f2x7_eth.o: ..\Libraries\STM32F2x7_ETH_Driver\inc\stm32f2x7_eth_conf.h
 .\obj\stm32f2x7_eth.o: ..\Libraries\CMSIS\Device\stm32f2xx.h
 .\obj\stm32f2x7_eth.o: ..\Libraries\CMSIS\Include\core_cm3.h
-.\obj\stm32f2x7_eth.o: d:\Keil_v5\ARM\ARMCC\Bin\..\include\stdint.h
+.\obj\stm32f2x7_eth.o: D:\Keil_v5\ARM\ARMCC\Bin\..\include\stdint.h
 .\obj\stm32f2x7_eth.o: ..\Libraries\CMSIS\Include\core_cmInstr.h
 .\obj\stm32f2x7_eth.o: ..\Libraries\CMSIS\Include\core_cmFunc.h
 .\obj\stm32f2x7_eth.o: ..\Libraries\CMSIS\Device\system_stm32f2xx.h
@@ -35,4 +35,4 @@
 .\obj\stm32f2x7_eth.o: ..\Libraries\STM32F2xx_StdPeriph_Driver\inc\stm32f2xx_usart.h
 .\obj\stm32f2x7_eth.o: ..\Libraries\STM32F2xx_StdPeriph_Driver\inc\stm32f2xx_wwdg.h
 .\obj\stm32f2x7_eth.o: ..\Libraries\STM32F2xx_StdPeriph_Driver\inc\misc.h
-.\obj\stm32f2x7_eth.o: d:\Keil_v5\ARM\ARMCC\Bin\..\include\string.h
+.\obj\stm32f2x7_eth.o: D:\Keil_v5\ARM\ARMCC\Bin\..\include\string.h

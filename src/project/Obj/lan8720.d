@@ -1,7 +1,7 @@
 .\obj\lan8720.o: ..\driver\lan8720.c
 .\obj\lan8720.o: ..\bsp\bsp.h
-.\obj\lan8720.o: d:\Keil_v5\ARM\ARMCC\Bin\..\include\stdio.h
-.\obj\lan8720.o: d:\Keil_v5\ARM\ARMCC\Bin\..\include\stdarg.h
+.\obj\lan8720.o: D:\Keil_v5\ARM\ARMCC\Bin\..\include\stdio.h
+.\obj\lan8720.o: D:\Keil_v5\ARM\ARMCC\Bin\..\include\stdarg.h
 .\obj\lan8720.o: ..\UCOSIII\uC-CPU\ARM-Cortex-M3\RealView\cpu.h
 .\obj\lan8720.o: ..\UCOSIII\uC-CPU\cpu_def.h
 .\obj\lan8720.o: ..\UCOSIII\uCOS-CONFIG\cpu_cfg.h
@@ -14,7 +14,7 @@
 .\obj\lan8720.o: ..\UCOSIII\uC-LIB\lib_ascii.h
 .\obj\lan8720.o: ..\Libraries\CMSIS\Device\stm32f2xx.h
 .\obj\lan8720.o: ..\Libraries\CMSIS\Include\core_cm3.h
-.\obj\lan8720.o: d:\Keil_v5\ARM\ARMCC\Bin\..\include\stdint.h
+.\obj\lan8720.o: D:\Keil_v5\ARM\ARMCC\Bin\..\include\stdint.h
 .\obj\lan8720.o: ..\Libraries\CMSIS\Include\core_cmInstr.h
 .\obj\lan8720.o: ..\Libraries\CMSIS\Include\core_cmFunc.h
 .\obj\lan8720.o: ..\Libraries\CMSIS\Device\system_stm32f2xx.h
@@ -60,4 +60,4 @@
 .\obj\lan8720.o: ..\Libraries\STM32F2x7_ETH_Driver\inc\stm32f2x7_eth.h
 .\obj\lan8720.o: ..\Libraries\STM32F2x7_ETH_Driver\inc\stm32f2x7_eth_conf.h
 .\obj\lan8720.o: ..\driver\usart.h
-.\obj\lan8720.o: d:\Keil_v5\ARM\ARMCC\Bin\..\include\string.h
+.\obj\lan8720.o: D:\Keil_v5\ARM\ARMCC\Bin\..\include\string.h

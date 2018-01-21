@@ -1,9 +1,9 @@
 .\obj\gprs.o: ..\driver\gprs.c
-.\obj\gprs.o: d:\Keil_v5\ARM\ARMCC\Bin\..\include\string.h
+.\obj\gprs.o: D:\Keil_v5\ARM\ARMCC\Bin\..\include\string.h
 .\obj\gprs.o: ..\driver\gprs.h
 .\obj\gprs.o: ..\bsp\bsp.h
-.\obj\gprs.o: d:\Keil_v5\ARM\ARMCC\Bin\..\include\stdio.h
-.\obj\gprs.o: d:\Keil_v5\ARM\ARMCC\Bin\..\include\stdarg.h
+.\obj\gprs.o: D:\Keil_v5\ARM\ARMCC\Bin\..\include\stdio.h
+.\obj\gprs.o: D:\Keil_v5\ARM\ARMCC\Bin\..\include\stdarg.h
 .\obj\gprs.o: ..\UCOSIII\uC-CPU\ARM-Cortex-M3\RealView\cpu.h
 .\obj\gprs.o: ..\UCOSIII\uC-CPU\cpu_def.h
 .\obj\gprs.o: ..\UCOSIII\uCOS-CONFIG\cpu_cfg.h
@@ -16,7 +16,7 @@
 .\obj\gprs.o: ..\UCOSIII\uC-LIB\lib_ascii.h
 .\obj\gprs.o: ..\Libraries\CMSIS\Device\stm32f2xx.h
 .\obj\gprs.o: ..\Libraries\CMSIS\Include\core_cm3.h
-.\obj\gprs.o: d:\Keil_v5\ARM\ARMCC\Bin\..\include\stdint.h
+.\obj\gprs.o: D:\Keil_v5\ARM\ARMCC\Bin\..\include\stdint.h
 .\obj\gprs.o: ..\Libraries\CMSIS\Include\core_cmInstr.h
 .\obj\gprs.o: ..\Libraries\CMSIS\Include\core_cmFunc.h
 .\obj\gprs.o: ..\Libraries\CMSIS\Device\system_stm32f2xx.h
@@ -61,7 +61,7 @@
 .\obj\gprs.o: ..\driver\timer.h
 .\obj\gprs.o: ..\app\app.h
 .\obj\gprs.o: ..\UCOSIII\uCOS-CONFIG\includes.h
-.\obj\gprs.o: d:\Keil_v5\ARM\ARMCC\Bin\..\include\stdlib.h
-.\obj\gprs.o: d:\Keil_v5\ARM\ARMCC\Bin\..\include\math.h
+.\obj\gprs.o: D:\Keil_v5\ARM\ARMCC\Bin\..\include\stdlib.h
+.\obj\gprs.o: D:\Keil_v5\ARM\ARMCC\Bin\..\include\math.h
 .\obj\gprs.o: ..\UCOSIII\uC-LIB\lib_math.h
 .\obj\gprs.o: ..\app\protocol.h

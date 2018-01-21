@@ -5,11 +5,11 @@
 .\obj\sys.o: ..\lwip\include\lwip/arch.h
 .\obj\sys.o: ..\lwip\include\arch/cc.h
 .\obj\sys.o: ..\lwip\include\arch/lwip_cpu.h
-.\obj\sys.o: d:\Keil_v5\ARM\ARMCC\Bin\..\include\stdio.h
+.\obj\sys.o: D:\Keil_v5\ARM\ARMCC\Bin\..\include\stdio.h
 .\obj\sys.o: ..\UCOSIII\uCOS-CONFIG\includes.h
-.\obj\sys.o: d:\Keil_v5\ARM\ARMCC\Bin\..\include\stdarg.h
-.\obj\sys.o: d:\Keil_v5\ARM\ARMCC\Bin\..\include\stdlib.h
-.\obj\sys.o: d:\Keil_v5\ARM\ARMCC\Bin\..\include\math.h
+.\obj\sys.o: D:\Keil_v5\ARM\ARMCC\Bin\..\include\stdarg.h
+.\obj\sys.o: D:\Keil_v5\ARM\ARMCC\Bin\..\include\stdlib.h
+.\obj\sys.o: D:\Keil_v5\ARM\ARMCC\Bin\..\include\math.h
 .\obj\sys.o: ..\UCOSIII\uC-CPU\ARM-Cortex-M3\RealView\cpu.h
 .\obj\sys.o: ..\UCOSIII\uC-CPU\cpu_def.h
 .\obj\sys.o: ..\UCOSIII\uCOS-CONFIG\cpu_cfg.h
@@ -29,7 +29,7 @@
 .\obj\sys.o: ..\bsp\bsp.h
 .\obj\sys.o: ..\Libraries\CMSIS\Device\stm32f2xx.h
 .\obj\sys.o: ..\Libraries\CMSIS\Include\core_cm3.h
-.\obj\sys.o: d:\Keil_v5\ARM\ARMCC\Bin\..\include\stdint.h
+.\obj\sys.o: D:\Keil_v5\ARM\ARMCC\Bin\..\include\stdint.h
 .\obj\sys.o: ..\Libraries\CMSIS\Include\core_cmInstr.h
 .\obj\sys.o: ..\Libraries\CMSIS\Include\core_cmFunc.h
 .\obj\sys.o: ..\Libraries\CMSIS\Device\system_stm32f2xx.h
@@ -65,9 +65,9 @@
 .\obj\sys.o: ..\bsp\bsp_os.h
 .\obj\sys.o: ..\app\system.h
 .\obj\sys.o: ..\bsp\bsp.h
-.\obj\sys.o: d:\Keil_v5\ARM\ARMCC\Bin\..\include\stddef.h
-.\obj\sys.o: d:\Keil_v5\ARM\ARMCC\Bin\..\include\inttypes.h
-.\obj\sys.o: d:\Keil_v5\ARM\ARMCC\Bin\..\include\limits.h
+.\obj\sys.o: D:\Keil_v5\ARM\ARMCC\Bin\..\include\stddef.h
+.\obj\sys.o: D:\Keil_v5\ARM\ARMCC\Bin\..\include\inttypes.h
+.\obj\sys.o: D:\Keil_v5\ARM\ARMCC\Bin\..\include\limits.h
 .\obj\sys.o: ..\lwip\include\lwip/opt.h
 .\obj\sys.o: ..\lwip\include\lwip/sys.h
 .\obj\sys.o: ..\lwip\include\lwip/err.h

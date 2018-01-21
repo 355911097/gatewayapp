@@ -2,8 +2,8 @@
 .\obj\dhcp.o: ..\lwip\apps\dhcp.h
 .\obj\dhcp.o: ..\driver\usart.h
 .\obj\dhcp.o: ..\bsp\bsp.h
-.\obj\dhcp.o: d:\Keil_v5\ARM\ARMCC\Bin\..\include\stdio.h
-.\obj\dhcp.o: d:\Keil_v5\ARM\ARMCC\Bin\..\include\stdarg.h
+.\obj\dhcp.o: D:\Keil_v5\ARM\ARMCC\Bin\..\include\stdio.h
+.\obj\dhcp.o: D:\Keil_v5\ARM\ARMCC\Bin\..\include\stdarg.h
 .\obj\dhcp.o: ..\UCOSIII\uC-CPU\ARM-Cortex-M3\RealView\cpu.h
 .\obj\dhcp.o: ..\UCOSIII\uC-CPU\cpu_def.h
 .\obj\dhcp.o: ..\UCOSIII\uCOS-CONFIG\cpu_cfg.h
@@ -16,7 +16,7 @@
 .\obj\dhcp.o: ..\UCOSIII\uC-LIB\lib_ascii.h
 .\obj\dhcp.o: ..\Libraries\CMSIS\Device\stm32f2xx.h
 .\obj\dhcp.o: ..\Libraries\CMSIS\Include\core_cm3.h
-.\obj\dhcp.o: d:\Keil_v5\ARM\ARMCC\Bin\..\include\stdint.h
+.\obj\dhcp.o: D:\Keil_v5\ARM\ARMCC\Bin\..\include\stdint.h
 .\obj\dhcp.o: ..\Libraries\CMSIS\Include\core_cmInstr.h
 .\obj\dhcp.o: ..\Libraries\CMSIS\Include\core_cmFunc.h
 .\obj\dhcp.o: ..\Libraries\CMSIS\Device\system_stm32f2xx.h
@@ -58,7 +58,7 @@
 .\obj\dhcp.o: ..\app\system.h
 .\obj\dhcp.o: ..\bsp\bsp.h
 .\obj\dhcp.o: ..\driver\malloc.h
-.\obj\dhcp.o: d:\Keil_v5\ARM\ARMCC\Bin\..\include\string.h
+.\obj\dhcp.o: D:\Keil_v5\ARM\ARMCC\Bin\..\include\string.h
 .\obj\dhcp.o: ..\driver\timer.h
 .\obj\dhcp.o: ..\lwip\include\lwip/ip4_addr.h
 .\obj\dhcp.o: ..\lwip\include\lwip/opt.h
@@ -68,12 +68,12 @@
 .\obj\dhcp.o: ..\lwip\include\arch/cc.h
 .\obj\dhcp.o: ..\lwip\include\arch/lwip_cpu.h
 .\obj\dhcp.o: ..\UCOSIII\uCOS-CONFIG\includes.h
-.\obj\dhcp.o: d:\Keil_v5\ARM\ARMCC\Bin\..\include\stdlib.h
-.\obj\dhcp.o: d:\Keil_v5\ARM\ARMCC\Bin\..\include\math.h
+.\obj\dhcp.o: D:\Keil_v5\ARM\ARMCC\Bin\..\include\stdlib.h
+.\obj\dhcp.o: D:\Keil_v5\ARM\ARMCC\Bin\..\include\math.h
 .\obj\dhcp.o: ..\UCOSIII\uC-LIB\lib_math.h
-.\obj\dhcp.o: d:\Keil_v5\ARM\ARMCC\Bin\..\include\stddef.h
-.\obj\dhcp.o: d:\Keil_v5\ARM\ARMCC\Bin\..\include\inttypes.h
-.\obj\dhcp.o: d:\Keil_v5\ARM\ARMCC\Bin\..\include\limits.h
+.\obj\dhcp.o: D:\Keil_v5\ARM\ARMCC\Bin\..\include\stddef.h
+.\obj\dhcp.o: D:\Keil_v5\ARM\ARMCC\Bin\..\include\inttypes.h
+.\obj\dhcp.o: D:\Keil_v5\ARM\ARMCC\Bin\..\include\limits.h
 .\obj\dhcp.o: ..\lwip\include\lwip/opt.h
 .\obj\dhcp.o: ..\lwip\include\lwip/def.h
 .\obj\dhcp.o: ..\lwip\include\lwip/dhcp.h

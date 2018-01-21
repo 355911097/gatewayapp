@@ -5,11 +5,11 @@
 .\obj\sockets.o: ..\lwip\include\lwip/arch.h
 .\obj\sockets.o: ..\lwip\include\arch/cc.h
 .\obj\sockets.o: ..\lwip\include\arch/lwip_cpu.h
-.\obj\sockets.o: d:\Keil_v5\ARM\ARMCC\Bin\..\include\stdio.h
+.\obj\sockets.o: D:\Keil_v5\ARM\ARMCC\Bin\..\include\stdio.h
 .\obj\sockets.o: ..\UCOSIII\uCOS-CONFIG\includes.h
-.\obj\sockets.o: d:\Keil_v5\ARM\ARMCC\Bin\..\include\stdarg.h
-.\obj\sockets.o: d:\Keil_v5\ARM\ARMCC\Bin\..\include\stdlib.h
-.\obj\sockets.o: d:\Keil_v5\ARM\ARMCC\Bin\..\include\math.h
+.\obj\sockets.o: D:\Keil_v5\ARM\ARMCC\Bin\..\include\stdarg.h
+.\obj\sockets.o: D:\Keil_v5\ARM\ARMCC\Bin\..\include\stdlib.h
+.\obj\sockets.o: D:\Keil_v5\ARM\ARMCC\Bin\..\include\math.h
 .\obj\sockets.o: ..\UCOSIII\uC-CPU\ARM-Cortex-M3\RealView\cpu.h
 .\obj\sockets.o: ..\UCOSIII\uC-CPU\cpu_def.h
 .\obj\sockets.o: ..\UCOSIII\uCOS-CONFIG\cpu_cfg.h
@@ -29,7 +29,7 @@
 .\obj\sockets.o: ..\bsp\bsp.h
 .\obj\sockets.o: ..\Libraries\CMSIS\Device\stm32f2xx.h
 .\obj\sockets.o: ..\Libraries\CMSIS\Include\core_cm3.h
-.\obj\sockets.o: d:\Keil_v5\ARM\ARMCC\Bin\..\include\stdint.h
+.\obj\sockets.o: D:\Keil_v5\ARM\ARMCC\Bin\..\include\stdint.h
 .\obj\sockets.o: ..\Libraries\CMSIS\Include\core_cmInstr.h
 .\obj\sockets.o: ..\Libraries\CMSIS\Include\core_cmFunc.h
 .\obj\sockets.o: ..\Libraries\CMSIS\Device\system_stm32f2xx.h
@@ -65,9 +65,9 @@
 .\obj\sockets.o: ..\bsp\bsp_os.h
 .\obj\sockets.o: ..\app\system.h
 .\obj\sockets.o: ..\bsp\bsp.h
-.\obj\sockets.o: d:\Keil_v5\ARM\ARMCC\Bin\..\include\stddef.h
-.\obj\sockets.o: d:\Keil_v5\ARM\ARMCC\Bin\..\include\inttypes.h
-.\obj\sockets.o: d:\Keil_v5\ARM\ARMCC\Bin\..\include\limits.h
+.\obj\sockets.o: D:\Keil_v5\ARM\ARMCC\Bin\..\include\stddef.h
+.\obj\sockets.o: D:\Keil_v5\ARM\ARMCC\Bin\..\include\inttypes.h
+.\obj\sockets.o: D:\Keil_v5\ARM\ARMCC\Bin\..\include\limits.h
 .\obj\sockets.o: ..\lwip\include\lwip/opt.h
 .\obj\sockets.o: ..\lwip\include\lwip/sockets.h
 .\obj\sockets.o: ..\lwip\include\lwip/ip_addr.h
@@ -105,4 +105,4 @@
 .\obj\sockets.o: ..\lwip\include\lwip/priv/tcpip_priv.h
 .\obj\sockets.o: ..\lwip\include\lwip/tcpip.h
 .\obj\sockets.o: ..\lwip\include\lwip/timeouts.h
-.\obj\sockets.o: d:\Keil_v5\ARM\ARMCC\Bin\..\include\string.h
+.\obj\sockets.o: D:\Keil_v5\ARM\ARMCC\Bin\..\include\string.h

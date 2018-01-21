@@ -2,7 +2,7 @@
 .\obj\lwip_comm_1.o: ..\lwip\apps\lwip_comm.h
 .\obj\lwip_comm_1.o: ..\Libraries\CMSIS\Device\stm32f2xx.h
 .\obj\lwip_comm_1.o: ..\Libraries\CMSIS\Include\core_cm3.h
-.\obj\lwip_comm_1.o: d:\Keil_v5\ARM\ARMCC\Bin\..\include\stdint.h
+.\obj\lwip_comm_1.o: D:\Keil_v5\ARM\ARMCC\Bin\..\include\stdint.h
 .\obj\lwip_comm_1.o: ..\Libraries\CMSIS\Include\core_cmInstr.h
 .\obj\lwip_comm_1.o: ..\Libraries\CMSIS\Include\core_cmFunc.h
 .\obj\lwip_comm_1.o: ..\Libraries\CMSIS\Device\system_stm32f2xx.h
@@ -39,8 +39,8 @@
 .\obj\lwip_comm_1.o: ..\Libraries\STM32F2x7_ETH_Driver\inc\stm32f2x7_eth_conf.h
 .\obj\lwip_comm_1.o: ..\driver\usart.h
 .\obj\lwip_comm_1.o: ..\bsp\bsp.h
-.\obj\lwip_comm_1.o: d:\Keil_v5\ARM\ARMCC\Bin\..\include\stdio.h
-.\obj\lwip_comm_1.o: d:\Keil_v5\ARM\ARMCC\Bin\..\include\stdarg.h
+.\obj\lwip_comm_1.o: D:\Keil_v5\ARM\ARMCC\Bin\..\include\stdio.h
+.\obj\lwip_comm_1.o: D:\Keil_v5\ARM\ARMCC\Bin\..\include\stdarg.h
 .\obj\lwip_comm_1.o: ..\UCOSIII\uC-CPU\ARM-Cortex-M3\RealView\cpu.h
 .\obj\lwip_comm_1.o: ..\UCOSIII\uC-CPU\cpu_def.h
 .\obj\lwip_comm_1.o: ..\UCOSIII\uCOS-CONFIG\cpu_cfg.h
@@ -68,12 +68,12 @@
 .\obj\lwip_comm_1.o: ..\lwip\include\arch/cc.h
 .\obj\lwip_comm_1.o: ..\lwip\include\arch/lwip_cpu.h
 .\obj\lwip_comm_1.o: ..\UCOSIII\uCOS-CONFIG\includes.h
-.\obj\lwip_comm_1.o: d:\Keil_v5\ARM\ARMCC\Bin\..\include\stdlib.h
-.\obj\lwip_comm_1.o: d:\Keil_v5\ARM\ARMCC\Bin\..\include\math.h
+.\obj\lwip_comm_1.o: D:\Keil_v5\ARM\ARMCC\Bin\..\include\stdlib.h
+.\obj\lwip_comm_1.o: D:\Keil_v5\ARM\ARMCC\Bin\..\include\math.h
 .\obj\lwip_comm_1.o: ..\UCOSIII\uC-LIB\lib_math.h
-.\obj\lwip_comm_1.o: d:\Keil_v5\ARM\ARMCC\Bin\..\include\stddef.h
-.\obj\lwip_comm_1.o: d:\Keil_v5\ARM\ARMCC\Bin\..\include\inttypes.h
-.\obj\lwip_comm_1.o: d:\Keil_v5\ARM\ARMCC\Bin\..\include\limits.h
+.\obj\lwip_comm_1.o: D:\Keil_v5\ARM\ARMCC\Bin\..\include\stddef.h
+.\obj\lwip_comm_1.o: D:\Keil_v5\ARM\ARMCC\Bin\..\include\inttypes.h
+.\obj\lwip_comm_1.o: D:\Keil_v5\ARM\ARMCC\Bin\..\include\limits.h
 .\obj\lwip_comm_1.o: ..\lwip\include\lwip/opt.h
 .\obj\lwip_comm_1.o: ..\lwip\include\lwip/pbuf.h
 .\obj\lwip_comm_1.o: ..\lwip\include\lwip/err.h

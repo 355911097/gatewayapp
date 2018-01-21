@@ -5,11 +5,11 @@
 .\obj\dhcp_1.o: ..\lwip\include\lwip/arch.h
 .\obj\dhcp_1.o: ..\lwip\include\arch/cc.h
 .\obj\dhcp_1.o: ..\lwip\include\arch/lwip_cpu.h
-.\obj\dhcp_1.o: d:\Keil_v5\ARM\ARMCC\Bin\..\include\stdio.h
+.\obj\dhcp_1.o: D:\Keil_v5\ARM\ARMCC\Bin\..\include\stdio.h
 .\obj\dhcp_1.o: ..\UCOSIII\uCOS-CONFIG\includes.h
-.\obj\dhcp_1.o: d:\Keil_v5\ARM\ARMCC\Bin\..\include\stdarg.h
-.\obj\dhcp_1.o: d:\Keil_v5\ARM\ARMCC\Bin\..\include\stdlib.h
-.\obj\dhcp_1.o: d:\Keil_v5\ARM\ARMCC\Bin\..\include\math.h
+.\obj\dhcp_1.o: D:\Keil_v5\ARM\ARMCC\Bin\..\include\stdarg.h
+.\obj\dhcp_1.o: D:\Keil_v5\ARM\ARMCC\Bin\..\include\stdlib.h
+.\obj\dhcp_1.o: D:\Keil_v5\ARM\ARMCC\Bin\..\include\math.h
 .\obj\dhcp_1.o: ..\UCOSIII\uC-CPU\ARM-Cortex-M3\RealView\cpu.h
 .\obj\dhcp_1.o: ..\UCOSIII\uC-CPU\cpu_def.h
 .\obj\dhcp_1.o: ..\UCOSIII\uCOS-CONFIG\cpu_cfg.h
@@ -29,7 +29,7 @@
 .\obj\dhcp_1.o: ..\bsp\bsp.h
 .\obj\dhcp_1.o: ..\Libraries\CMSIS\Device\stm32f2xx.h
 .\obj\dhcp_1.o: ..\Libraries\CMSIS\Include\core_cm3.h
-.\obj\dhcp_1.o: d:\Keil_v5\ARM\ARMCC\Bin\..\include\stdint.h
+.\obj\dhcp_1.o: D:\Keil_v5\ARM\ARMCC\Bin\..\include\stdint.h
 .\obj\dhcp_1.o: ..\Libraries\CMSIS\Include\core_cmInstr.h
 .\obj\dhcp_1.o: ..\Libraries\CMSIS\Include\core_cmFunc.h
 .\obj\dhcp_1.o: ..\Libraries\CMSIS\Device\system_stm32f2xx.h
@@ -65,9 +65,9 @@
 .\obj\dhcp_1.o: ..\bsp\bsp_os.h
 .\obj\dhcp_1.o: ..\app\system.h
 .\obj\dhcp_1.o: ..\bsp\bsp.h
-.\obj\dhcp_1.o: d:\Keil_v5\ARM\ARMCC\Bin\..\include\stddef.h
-.\obj\dhcp_1.o: d:\Keil_v5\ARM\ARMCC\Bin\..\include\inttypes.h
-.\obj\dhcp_1.o: d:\Keil_v5\ARM\ARMCC\Bin\..\include\limits.h
+.\obj\dhcp_1.o: D:\Keil_v5\ARM\ARMCC\Bin\..\include\stddef.h
+.\obj\dhcp_1.o: D:\Keil_v5\ARM\ARMCC\Bin\..\include\inttypes.h
+.\obj\dhcp_1.o: D:\Keil_v5\ARM\ARMCC\Bin\..\include\limits.h
 .\obj\dhcp_1.o: ..\lwip\include\lwip/opt.h
 .\obj\dhcp_1.o: ..\lwip\include\lwip/stats.h
 .\obj\dhcp_1.o: ..\lwip\include\lwip/mem.h
@@ -97,5 +97,5 @@
 .\obj\dhcp_1.o: ..\lwip\include\lwip/prot/ethernet.h
 .\obj\dhcp_1.o: ..\lwip\include\lwip/prot/etharp.h
 .\obj\dhcp_1.o: ..\lwip\include\lwip/prot/dhcp.h
-.\obj\dhcp_1.o: d:\Keil_v5\ARM\ARMCC\Bin\..\include\string.h
+.\obj\dhcp_1.o: D:\Keil_v5\ARM\ARMCC\Bin\..\include\string.h
 .\obj\dhcp_1.o: ..\driver\usart.h

@@ -5,11 +5,11 @@
 .\obj\mem.o: ..\lwip\include\lwip/arch.h
 .\obj\mem.o: ..\lwip\include\arch/cc.h
 .\obj\mem.o: ..\lwip\include\arch/lwip_cpu.h
-.\obj\mem.o: d:\Keil_v5\ARM\ARMCC\Bin\..\include\stdio.h
+.\obj\mem.o: D:\Keil_v5\ARM\ARMCC\Bin\..\include\stdio.h
 .\obj\mem.o: ..\UCOSIII\uCOS-CONFIG\includes.h
-.\obj\mem.o: d:\Keil_v5\ARM\ARMCC\Bin\..\include\stdarg.h
-.\obj\mem.o: d:\Keil_v5\ARM\ARMCC\Bin\..\include\stdlib.h
-.\obj\mem.o: d:\Keil_v5\ARM\ARMCC\Bin\..\include\math.h
+.\obj\mem.o: D:\Keil_v5\ARM\ARMCC\Bin\..\include\stdarg.h
+.\obj\mem.o: D:\Keil_v5\ARM\ARMCC\Bin\..\include\stdlib.h
+.\obj\mem.o: D:\Keil_v5\ARM\ARMCC\Bin\..\include\math.h
 .\obj\mem.o: ..\UCOSIII\uC-CPU\ARM-Cortex-M3\RealView\cpu.h
 .\obj\mem.o: ..\UCOSIII\uC-CPU\cpu_def.h
 .\obj\mem.o: ..\UCOSIII\uCOS-CONFIG\cpu_cfg.h
@@ -29,7 +29,7 @@
 .\obj\mem.o: ..\bsp\bsp.h
 .\obj\mem.o: ..\Libraries\CMSIS\Device\stm32f2xx.h
 .\obj\mem.o: ..\Libraries\CMSIS\Include\core_cm3.h
-.\obj\mem.o: d:\Keil_v5\ARM\ARMCC\Bin\..\include\stdint.h
+.\obj\mem.o: D:\Keil_v5\ARM\ARMCC\Bin\..\include\stdint.h
 .\obj\mem.o: ..\Libraries\CMSIS\Include\core_cmInstr.h
 .\obj\mem.o: ..\Libraries\CMSIS\Include\core_cmFunc.h
 .\obj\mem.o: ..\Libraries\CMSIS\Device\system_stm32f2xx.h
@@ -65,9 +65,9 @@
 .\obj\mem.o: ..\bsp\bsp_os.h
 .\obj\mem.o: ..\app\system.h
 .\obj\mem.o: ..\bsp\bsp.h
-.\obj\mem.o: d:\Keil_v5\ARM\ARMCC\Bin\..\include\stddef.h
-.\obj\mem.o: d:\Keil_v5\ARM\ARMCC\Bin\..\include\inttypes.h
-.\obj\mem.o: d:\Keil_v5\ARM\ARMCC\Bin\..\include\limits.h
+.\obj\mem.o: D:\Keil_v5\ARM\ARMCC\Bin\..\include\stddef.h
+.\obj\mem.o: D:\Keil_v5\ARM\ARMCC\Bin\..\include\inttypes.h
+.\obj\mem.o: D:\Keil_v5\ARM\ARMCC\Bin\..\include\limits.h
 .\obj\mem.o: ..\lwip\include\lwip/opt.h
 .\obj\mem.o: ..\lwip\include\lwip/mem.h
 .\obj\mem.o: ..\lwip\include\lwip/def.h
@@ -80,4 +80,4 @@
 .\obj\mem.o: ..\lwip\include\lwip/priv/memp_std.h
 .\obj\mem.o: ..\lwip\include\lwip/priv/memp_priv.h
 .\obj\mem.o: ..\lwip\include\lwip/stats.h
-.\obj\mem.o: d:\Keil_v5\ARM\ARMCC\Bin\..\include\string.h
+.\obj\mem.o: D:\Keil_v5\ARM\ARMCC\Bin\..\include\string.h

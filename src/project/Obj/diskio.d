@@ -4,7 +4,7 @@
 .\obj\diskio.o: ..\driver\w25qxx.h
 .\obj\diskio.o: ..\Libraries\CMSIS\Device\stm32f2xx.h
 .\obj\diskio.o: ..\Libraries\CMSIS\Include\core_cm3.h
-.\obj\diskio.o: d:\Keil_v5\ARM\ARMCC\Bin\..\include\stdint.h
+.\obj\diskio.o: D:\Keil_v5\ARM\ARMCC\Bin\..\include\stdint.h
 .\obj\diskio.o: ..\Libraries\CMSIS\Include\core_cmInstr.h
 .\obj\diskio.o: ..\Libraries\CMSIS\Include\core_cmFunc.h
 .\obj\diskio.o: ..\Libraries\CMSIS\Device\system_stm32f2xx.h

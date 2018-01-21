@@ -5,11 +5,11 @@
 .\obj\udp.o: ..\lwip\include\lwip/arch.h
 .\obj\udp.o: ..\lwip\include\arch/cc.h
 .\obj\udp.o: ..\lwip\include\arch/lwip_cpu.h
-.\obj\udp.o: d:\Keil_v5\ARM\ARMCC\Bin\..\include\stdio.h
+.\obj\udp.o: D:\Keil_v5\ARM\ARMCC\Bin\..\include\stdio.h
 .\obj\udp.o: ..\UCOSIII\uCOS-CONFIG\includes.h
-.\obj\udp.o: d:\Keil_v5\ARM\ARMCC\Bin\..\include\stdarg.h
-.\obj\udp.o: d:\Keil_v5\ARM\ARMCC\Bin\..\include\stdlib.h
-.\obj\udp.o: d:\Keil_v5\ARM\ARMCC\Bin\..\include\math.h
+.\obj\udp.o: D:\Keil_v5\ARM\ARMCC\Bin\..\include\stdarg.h
+.\obj\udp.o: D:\Keil_v5\ARM\ARMCC\Bin\..\include\stdlib.h
+.\obj\udp.o: D:\Keil_v5\ARM\ARMCC\Bin\..\include\math.h
 .\obj\udp.o: ..\UCOSIII\uC-CPU\ARM-Cortex-M3\RealView\cpu.h
 .\obj\udp.o: ..\UCOSIII\uC-CPU\cpu_def.h
 .\obj\udp.o: ..\UCOSIII\uCOS-CONFIG\cpu_cfg.h
@@ -29,7 +29,7 @@
 .\obj\udp.o: ..\bsp\bsp.h
 .\obj\udp.o: ..\Libraries\CMSIS\Device\stm32f2xx.h
 .\obj\udp.o: ..\Libraries\CMSIS\Include\core_cm3.h
-.\obj\udp.o: d:\Keil_v5\ARM\ARMCC\Bin\..\include\stdint.h
+.\obj\udp.o: D:\Keil_v5\ARM\ARMCC\Bin\..\include\stdint.h
 .\obj\udp.o: ..\Libraries\CMSIS\Include\core_cmInstr.h
 .\obj\udp.o: ..\Libraries\CMSIS\Include\core_cmFunc.h
 .\obj\udp.o: ..\Libraries\CMSIS\Device\system_stm32f2xx.h
@@ -65,9 +65,9 @@
 .\obj\udp.o: ..\bsp\bsp_os.h
 .\obj\udp.o: ..\app\system.h
 .\obj\udp.o: ..\bsp\bsp.h
-.\obj\udp.o: d:\Keil_v5\ARM\ARMCC\Bin\..\include\stddef.h
-.\obj\udp.o: d:\Keil_v5\ARM\ARMCC\Bin\..\include\inttypes.h
-.\obj\udp.o: d:\Keil_v5\ARM\ARMCC\Bin\..\include\limits.h
+.\obj\udp.o: D:\Keil_v5\ARM\ARMCC\Bin\..\include\stddef.h
+.\obj\udp.o: D:\Keil_v5\ARM\ARMCC\Bin\..\include\inttypes.h
+.\obj\udp.o: D:\Keil_v5\ARM\ARMCC\Bin\..\include\limits.h
 .\obj\udp.o: ..\lwip\include\lwip/opt.h
 .\obj\udp.o: ..\lwip\include\lwip/udp.h
 .\obj\udp.o: ..\lwip\include\lwip/pbuf.h
@@ -97,4 +97,4 @@
 .\obj\udp.o: ..\lwip\include\lwip/prot/icmp6.h
 .\obj\udp.o: ..\lwip\include\lwip/snmp.h
 .\obj\udp.o: ..\lwip\include\lwip/dhcp.h
-.\obj\udp.o: d:\Keil_v5\ARM\ARMCC\Bin\..\include\string.h
+.\obj\udp.o: D:\Keil_v5\ARM\ARMCC\Bin\..\include\string.h

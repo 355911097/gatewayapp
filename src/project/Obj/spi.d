@@ -1,8 +1,8 @@
 .\obj\spi.o: ..\driver\spi.c
 .\obj\spi.o: ..\driver\spi.h
 .\obj\spi.o: ..\bsp\bsp.h
-.\obj\spi.o: d:\Keil_v5\ARM\ARMCC\Bin\..\include\stdio.h
-.\obj\spi.o: d:\Keil_v5\ARM\ARMCC\Bin\..\include\stdarg.h
+.\obj\spi.o: D:\Keil_v5\ARM\ARMCC\Bin\..\include\stdio.h
+.\obj\spi.o: D:\Keil_v5\ARM\ARMCC\Bin\..\include\stdarg.h
 .\obj\spi.o: ..\UCOSIII\uC-CPU\ARM-Cortex-M3\RealView\cpu.h
 .\obj\spi.o: ..\UCOSIII\uC-CPU\cpu_def.h
 .\obj\spi.o: ..\UCOSIII\uCOS-CONFIG\cpu_cfg.h
@@ -15,7 +15,7 @@
 .\obj\spi.o: ..\UCOSIII\uC-LIB\lib_ascii.h
 .\obj\spi.o: ..\Libraries\CMSIS\Device\stm32f2xx.h
 .\obj\spi.o: ..\Libraries\CMSIS\Include\core_cm3.h
-.\obj\spi.o: d:\Keil_v5\ARM\ARMCC\Bin\..\include\stdint.h
+.\obj\spi.o: D:\Keil_v5\ARM\ARMCC\Bin\..\include\stdint.h
 .\obj\spi.o: ..\Libraries\CMSIS\Include\core_cmInstr.h
 .\obj\spi.o: ..\Libraries\CMSIS\Include\core_cmFunc.h
 .\obj\spi.o: ..\Libraries\CMSIS\Device\system_stm32f2xx.h

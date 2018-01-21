@@ -5,11 +5,11 @@
 .\obj\stats.o: ..\lwip\include\lwip/arch.h
 .\obj\stats.o: ..\lwip\include\arch/cc.h
 .\obj\stats.o: ..\lwip\include\arch/lwip_cpu.h
-.\obj\stats.o: d:\Keil_v5\ARM\ARMCC\Bin\..\include\stdio.h
+.\obj\stats.o: D:\Keil_v5\ARM\ARMCC\Bin\..\include\stdio.h
 .\obj\stats.o: ..\UCOSIII\uCOS-CONFIG\includes.h
-.\obj\stats.o: d:\Keil_v5\ARM\ARMCC\Bin\..\include\stdarg.h
-.\obj\stats.o: d:\Keil_v5\ARM\ARMCC\Bin\..\include\stdlib.h
-.\obj\stats.o: d:\Keil_v5\ARM\ARMCC\Bin\..\include\math.h
+.\obj\stats.o: D:\Keil_v5\ARM\ARMCC\Bin\..\include\stdarg.h
+.\obj\stats.o: D:\Keil_v5\ARM\ARMCC\Bin\..\include\stdlib.h
+.\obj\stats.o: D:\Keil_v5\ARM\ARMCC\Bin\..\include\math.h
 .\obj\stats.o: ..\UCOSIII\uC-CPU\ARM-Cortex-M3\RealView\cpu.h
 .\obj\stats.o: ..\UCOSIII\uC-CPU\cpu_def.h
 .\obj\stats.o: ..\UCOSIII\uCOS-CONFIG\cpu_cfg.h
@@ -29,7 +29,7 @@
 .\obj\stats.o: ..\bsp\bsp.h
 .\obj\stats.o: ..\Libraries\CMSIS\Device\stm32f2xx.h
 .\obj\stats.o: ..\Libraries\CMSIS\Include\core_cm3.h
-.\obj\stats.o: d:\Keil_v5\ARM\ARMCC\Bin\..\include\stdint.h
+.\obj\stats.o: D:\Keil_v5\ARM\ARMCC\Bin\..\include\stdint.h
 .\obj\stats.o: ..\Libraries\CMSIS\Include\core_cmInstr.h
 .\obj\stats.o: ..\Libraries\CMSIS\Include\core_cmFunc.h
 .\obj\stats.o: ..\Libraries\CMSIS\Device\system_stm32f2xx.h
@@ -65,7 +65,7 @@
 .\obj\stats.o: ..\bsp\bsp_os.h
 .\obj\stats.o: ..\app\system.h
 .\obj\stats.o: ..\bsp\bsp.h
-.\obj\stats.o: d:\Keil_v5\ARM\ARMCC\Bin\..\include\stddef.h
-.\obj\stats.o: d:\Keil_v5\ARM\ARMCC\Bin\..\include\inttypes.h
-.\obj\stats.o: d:\Keil_v5\ARM\ARMCC\Bin\..\include\limits.h
+.\obj\stats.o: D:\Keil_v5\ARM\ARMCC\Bin\..\include\stddef.h
+.\obj\stats.o: D:\Keil_v5\ARM\ARMCC\Bin\..\include\inttypes.h
+.\obj\stats.o: D:\Keil_v5\ARM\ARMCC\Bin\..\include\limits.h
 .\obj\stats.o: ..\lwip\include\lwip/opt.h

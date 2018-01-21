@@ -1,8 +1,8 @@
 .\obj\translate.o: ..\app\translate.c
-.\obj\translate.o: d:\Keil_v5\ARM\ARMCC\Bin\..\include\string.h
+.\obj\translate.o: D:\Keil_v5\ARM\ARMCC\Bin\..\include\string.h
 .\obj\translate.o: ..\bsp\bsp.h
-.\obj\translate.o: d:\Keil_v5\ARM\ARMCC\Bin\..\include\stdio.h
-.\obj\translate.o: d:\Keil_v5\ARM\ARMCC\Bin\..\include\stdarg.h
+.\obj\translate.o: D:\Keil_v5\ARM\ARMCC\Bin\..\include\stdio.h
+.\obj\translate.o: D:\Keil_v5\ARM\ARMCC\Bin\..\include\stdarg.h
 .\obj\translate.o: ..\UCOSIII\uC-CPU\ARM-Cortex-M3\RealView\cpu.h
 .\obj\translate.o: ..\UCOSIII\uC-CPU\cpu_def.h
 .\obj\translate.o: ..\UCOSIII\uCOS-CONFIG\cpu_cfg.h
@@ -15,7 +15,7 @@
 .\obj\translate.o: ..\UCOSIII\uC-LIB\lib_ascii.h
 .\obj\translate.o: ..\Libraries\CMSIS\Device\stm32f2xx.h
 .\obj\translate.o: ..\Libraries\CMSIS\Include\core_cm3.h
-.\obj\translate.o: d:\Keil_v5\ARM\ARMCC\Bin\..\include\stdint.h
+.\obj\translate.o: D:\Keil_v5\ARM\ARMCC\Bin\..\include\stdint.h
 .\obj\translate.o: ..\Libraries\CMSIS\Include\core_cmInstr.h
 .\obj\translate.o: ..\Libraries\CMSIS\Include\core_cmFunc.h
 .\obj\translate.o: ..\Libraries\CMSIS\Device\system_stm32f2xx.h
@@ -58,8 +58,8 @@
 .\obj\translate.o: ..\bsp\bsp.h
 .\obj\translate.o: ..\app\translate.h
 .\obj\translate.o: ..\UCOSIII\uCOS-CONFIG\includes.h
-.\obj\translate.o: d:\Keil_v5\ARM\ARMCC\Bin\..\include\stdlib.h
-.\obj\translate.o: d:\Keil_v5\ARM\ARMCC\Bin\..\include\math.h
+.\obj\translate.o: D:\Keil_v5\ARM\ARMCC\Bin\..\include\stdlib.h
+.\obj\translate.o: D:\Keil_v5\ARM\ARMCC\Bin\..\include\math.h
 .\obj\translate.o: ..\UCOSIII\uC-LIB\lib_math.h
 .\obj\translate.o: ..\app\protocol.h
 .\obj\translate.o: ..\app\app.h
@@ -72,9 +72,9 @@
 .\obj\translate.o: ..\lwip\include\lwip/arch.h
 .\obj\translate.o: ..\lwip\include\arch/cc.h
 .\obj\translate.o: ..\lwip\include\arch/lwip_cpu.h
-.\obj\translate.o: d:\Keil_v5\ARM\ARMCC\Bin\..\include\stddef.h
-.\obj\translate.o: d:\Keil_v5\ARM\ARMCC\Bin\..\include\inttypes.h
-.\obj\translate.o: d:\Keil_v5\ARM\ARMCC\Bin\..\include\limits.h
+.\obj\translate.o: D:\Keil_v5\ARM\ARMCC\Bin\..\include\stddef.h
+.\obj\translate.o: D:\Keil_v5\ARM\ARMCC\Bin\..\include\inttypes.h
+.\obj\translate.o: D:\Keil_v5\ARM\ARMCC\Bin\..\include\limits.h
 .\obj\translate.o: ..\lwip\include\lwip/opt.h
 .\obj\translate.o: ..\lwip\include\lwip/err.h
 .\obj\translate.o: ..\lwip\include\lwip/udp.h

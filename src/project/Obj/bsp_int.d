@@ -1,7 +1,7 @@
 .\obj\bsp_int.o: ..\bsp\bsp_int.c
 .\obj\bsp_int.o: ..\bsp\bsp.h
-.\obj\bsp_int.o: d:\Keil_v5\ARM\ARMCC\Bin\..\include\stdio.h
-.\obj\bsp_int.o: d:\Keil_v5\ARM\ARMCC\Bin\..\include\stdarg.h
+.\obj\bsp_int.o: D:\Keil_v5\ARM\ARMCC\Bin\..\include\stdio.h
+.\obj\bsp_int.o: D:\Keil_v5\ARM\ARMCC\Bin\..\include\stdarg.h
 .\obj\bsp_int.o: ..\UCOSIII\uC-CPU\ARM-Cortex-M3\RealView\cpu.h
 .\obj\bsp_int.o: ..\UCOSIII\uC-CPU\cpu_def.h
 .\obj\bsp_int.o: ..\UCOSIII\uCOS-CONFIG\cpu_cfg.h
@@ -14,7 +14,7 @@
 .\obj\bsp_int.o: ..\UCOSIII\uC-LIB\lib_ascii.h
 .\obj\bsp_int.o: ..\Libraries\CMSIS\Device\stm32f2xx.h
 .\obj\bsp_int.o: ..\Libraries\CMSIS\Include\core_cm3.h
-.\obj\bsp_int.o: d:\Keil_v5\ARM\ARMCC\Bin\..\include\stdint.h
+.\obj\bsp_int.o: D:\Keil_v5\ARM\ARMCC\Bin\..\include\stdint.h
 .\obj\bsp_int.o: ..\Libraries\CMSIS\Include\core_cmInstr.h
 .\obj\bsp_int.o: ..\Libraries\CMSIS\Include\core_cmFunc.h
 .\obj\bsp_int.o: ..\Libraries\CMSIS\Device\system_stm32f2xx.h

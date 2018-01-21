@@ -1,8 +1,8 @@
 .\obj\protocol.o: ..\app\protocol.c
-.\obj\protocol.o: d:\Keil_v5\ARM\ARMCC\Bin\..\include\string.h
+.\obj\protocol.o: D:\Keil_v5\ARM\ARMCC\Bin\..\include\string.h
 .\obj\protocol.o: ..\bsp\bsp.h
-.\obj\protocol.o: d:\Keil_v5\ARM\ARMCC\Bin\..\include\stdio.h
-.\obj\protocol.o: d:\Keil_v5\ARM\ARMCC\Bin\..\include\stdarg.h
+.\obj\protocol.o: D:\Keil_v5\ARM\ARMCC\Bin\..\include\stdio.h
+.\obj\protocol.o: D:\Keil_v5\ARM\ARMCC\Bin\..\include\stdarg.h
 .\obj\protocol.o: ..\UCOSIII\uC-CPU\ARM-Cortex-M3\RealView\cpu.h
 .\obj\protocol.o: ..\UCOSIII\uC-CPU\cpu_def.h
 .\obj\protocol.o: ..\UCOSIII\uCOS-CONFIG\cpu_cfg.h
@@ -15,7 +15,7 @@
 .\obj\protocol.o: ..\UCOSIII\uC-LIB\lib_ascii.h
 .\obj\protocol.o: ..\Libraries\CMSIS\Device\stm32f2xx.h
 .\obj\protocol.o: ..\Libraries\CMSIS\Include\core_cm3.h
-.\obj\protocol.o: d:\Keil_v5\ARM\ARMCC\Bin\..\include\stdint.h
+.\obj\protocol.o: D:\Keil_v5\ARM\ARMCC\Bin\..\include\stdint.h
 .\obj\protocol.o: ..\Libraries\CMSIS\Include\core_cmInstr.h
 .\obj\protocol.o: ..\Libraries\CMSIS\Include\core_cmFunc.h
 .\obj\protocol.o: ..\Libraries\CMSIS\Device\system_stm32f2xx.h
@@ -58,8 +58,8 @@
 .\obj\protocol.o: ..\bsp\bsp.h
 .\obj\protocol.o: ..\app\protocol.h
 .\obj\protocol.o: ..\UCOSIII\uCOS-CONFIG\includes.h
-.\obj\protocol.o: d:\Keil_v5\ARM\ARMCC\Bin\..\include\stdlib.h
-.\obj\protocol.o: d:\Keil_v5\ARM\ARMCC\Bin\..\include\math.h
+.\obj\protocol.o: D:\Keil_v5\ARM\ARMCC\Bin\..\include\stdlib.h
+.\obj\protocol.o: D:\Keil_v5\ARM\ARMCC\Bin\..\include\math.h
 .\obj\protocol.o: ..\UCOSIII\uC-LIB\lib_math.h
 .\obj\protocol.o: ..\driver\usart.h
 .\obj\protocol.o: ..\lwip\apps\rawudp.h
@@ -70,9 +70,9 @@
 .\obj\protocol.o: ..\lwip\include\lwip/arch.h
 .\obj\protocol.o: ..\lwip\include\arch/cc.h
 .\obj\protocol.o: ..\lwip\include\arch/lwip_cpu.h
-.\obj\protocol.o: d:\Keil_v5\ARM\ARMCC\Bin\..\include\stddef.h
-.\obj\protocol.o: d:\Keil_v5\ARM\ARMCC\Bin\..\include\inttypes.h
-.\obj\protocol.o: d:\Keil_v5\ARM\ARMCC\Bin\..\include\limits.h
+.\obj\protocol.o: D:\Keil_v5\ARM\ARMCC\Bin\..\include\stddef.h
+.\obj\protocol.o: D:\Keil_v5\ARM\ARMCC\Bin\..\include\inttypes.h
+.\obj\protocol.o: D:\Keil_v5\ARM\ARMCC\Bin\..\include\limits.h
 .\obj\protocol.o: ..\lwip\include\lwip/opt.h
 .\obj\protocol.o: ..\lwip\include\lwip/err.h
 .\obj\protocol.o: ..\lwip\include\lwip/udp.h

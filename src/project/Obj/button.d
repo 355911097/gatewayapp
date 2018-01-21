@@ -1,8 +1,8 @@
 .\obj\button.o: ..\driver\button.c
 .\obj\button.o: ..\driver\button.h
 .\obj\button.o: ..\bsp\bsp.h
-.\obj\button.o: d:\Keil_v5\ARM\ARMCC\Bin\..\include\stdio.h
-.\obj\button.o: d:\Keil_v5\ARM\ARMCC\Bin\..\include\stdarg.h
+.\obj\button.o: D:\Keil_v5\ARM\ARMCC\Bin\..\include\stdio.h
+.\obj\button.o: D:\Keil_v5\ARM\ARMCC\Bin\..\include\stdarg.h
 .\obj\button.o: ..\UCOSIII\uC-CPU\ARM-Cortex-M3\RealView\cpu.h
 .\obj\button.o: ..\UCOSIII\uC-CPU\cpu_def.h
 .\obj\button.o: ..\UCOSIII\uCOS-CONFIG\cpu_cfg.h
@@ -15,7 +15,7 @@
 .\obj\button.o: ..\UCOSIII\uC-LIB\lib_ascii.h
 .\obj\button.o: ..\Libraries\CMSIS\Device\stm32f2xx.h
 .\obj\button.o: ..\Libraries\CMSIS\Include\core_cm3.h
-.\obj\button.o: d:\Keil_v5\ARM\ARMCC\Bin\..\include\stdint.h
+.\obj\button.o: D:\Keil_v5\ARM\ARMCC\Bin\..\include\stdint.h
 .\obj\button.o: ..\Libraries\CMSIS\Include\core_cmInstr.h
 .\obj\button.o: ..\Libraries\CMSIS\Include\core_cmFunc.h
 .\obj\button.o: ..\Libraries\CMSIS\Device\system_stm32f2xx.h

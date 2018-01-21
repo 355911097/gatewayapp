@@ -1,7 +1,7 @@
 .\obj\rtc.o: ..\driver\rtc.c
 .\obj\rtc.o: ..\bsp\bsp.h
-.\obj\rtc.o: d:\Keil_v5\ARM\ARMCC\Bin\..\include\stdio.h
-.\obj\rtc.o: d:\Keil_v5\ARM\ARMCC\Bin\..\include\stdarg.h
+.\obj\rtc.o: D:\Keil_v5\ARM\ARMCC\Bin\..\include\stdio.h
+.\obj\rtc.o: D:\Keil_v5\ARM\ARMCC\Bin\..\include\stdarg.h
 .\obj\rtc.o: ..\UCOSIII\uC-CPU\ARM-Cortex-M3\RealView\cpu.h
 .\obj\rtc.o: ..\UCOSIII\uC-CPU\cpu_def.h
 .\obj\rtc.o: ..\UCOSIII\uCOS-CONFIG\cpu_cfg.h
@@ -14,7 +14,7 @@
 .\obj\rtc.o: ..\UCOSIII\uC-LIB\lib_ascii.h
 .\obj\rtc.o: ..\Libraries\CMSIS\Device\stm32f2xx.h
 .\obj\rtc.o: ..\Libraries\CMSIS\Include\core_cm3.h
-.\obj\rtc.o: d:\Keil_v5\ARM\ARMCC\Bin\..\include\stdint.h
+.\obj\rtc.o: D:\Keil_v5\ARM\ARMCC\Bin\..\include\stdint.h
 .\obj\rtc.o: ..\Libraries\CMSIS\Include\core_cmInstr.h
 .\obj\rtc.o: ..\Libraries\CMSIS\Include\core_cmFunc.h
 .\obj\rtc.o: ..\Libraries\CMSIS\Device\system_stm32f2xx.h
