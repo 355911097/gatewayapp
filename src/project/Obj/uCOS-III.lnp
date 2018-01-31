@@ -17,7 +17,6 @@
 ".\obj\spi.o"
 ".\obj\rtc.o"
 ".\obj\lan8720.o"
-".\obj\eth.o"
 ".\obj\button.o"
 ".\obj\flash.o"
 ".\obj\diskio.o"

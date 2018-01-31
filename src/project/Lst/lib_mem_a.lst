@@ -445,12 +445,11 @@ ARM Macro Assembler    Page 7
   311 00000220                 END
 Command Line: --debug --xref --diag_suppress=9931 --cpu=Cortex-M3 --apcs=interw
 ork --depend=.\obj\lib_mem_a.d -o.\obj\lib_mem_a.o -IE:\github\gatewayapp\src\p
-roject\RTE -ID:\Keil_v5\ARM\PACK\ARM\CMSIS\4.2.0\CMSIS\Include -ID:\Keil_v5\ARM
-\PACK\Keil\STM32F2xx_DFP\2.6.0 -ID:\Keil_v5\ARM\PACK\Keil\STM32F2xx_DFP\2.6.0\D
-rivers\CMSIS\Device\ST\STM32F2xx\Include --predefine="__MICROLIB SETA 1" --pred
-efine="__UVISION_VERSION SETA 514" --predefine="_RTE_ SETA 1" --predefine="STM3
-2F207xx SETA 1" --list=.\lst\lib_mem_a.lst ..\UCOSIII\uC-LIB\Ports\ARM-Cortex-M
-3\RealView\lib_mem_a.asm
+roject\RTE -ID:\Keil_v5\ARM\PACK\ARM\CMSIS\4.5.0\CMSIS\Include -ID:\Keil_v5\ARM
+\PACK\Keil\STM32F2xx_DFP\2.7.0\Drivers\CMSIS\Device\ST\STM32F2xx\Include --pred
+efine="__MICROLIB SETA 1" --predefine="__UVISION_VERSION SETA 518" --predefine=
+"_RTE_ SETA 1" --predefine="STM32F207xx SETA 1" --list=.\lst\lib_mem_a.lst ..\U
+COSIII\uC-LIB\Ports\ARM-Cortex-M3\RealView\lib_mem_a.asm
 
 
 
