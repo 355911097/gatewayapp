@@ -1,0 +1,7 @@
+Record=SheetSymbol|SourceDocument=0-OverView.SCHDOC|Designator=U_1-Power|SchDesignator=U_1-Power|FileName=1-Power.SCHDOC
+Record=SheetSymbol|SourceDocument=0-OverView.SCHDOC|Designator=U_2-Charge&Discharge|SchDesignator=U_2-Charge&Discharge|FileName=2-Charge&Discharge.SchDoc
+Record=SheetSymbol|SourceDocument=0-OverView.SCHDOC|Designator=U_3-MCU|SchDesignator=U_3-MCU|FileName=3-MCU.SCHDOC
+Record=SheetSymbol|SourceDocument=0-OverView.SCHDOC|Designator=U_4-LuxSensor|SchDesignator=U_4-LuxSensor|FileName=4-LuxSensor.SCHDOC
+Record=SheetSymbol|SourceDocument=0-OverView.SCHDOC|Designator=U_5-ADC|SchDesignator=U_5-ADC|FileName=5-ADC.SCHDOC
+Record=SheetSymbol|SourceDocument=0-OverView.SCHDOC|Designator=U_6-E2p&RTC|SchDesignator=U_6-E2p&RTC|FileName=6-E2p&RTC.SchDoc
+Record=TopLevelDocument|FileName=0-OverView.SCHDOC
